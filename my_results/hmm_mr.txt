@@ -1,0 +1,111 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  SPY
+  Overall   : 2015-01-01  →  2025-01-01
+  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 7   Trials/window : 30
+======================================================================
+
+[Window 1/7]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.29%  cagr=+0.10%  sharpe=-7.517  calmar=0.000  maxdd=0.00%  (0.1s)
+  Baseline OOS return : +0.00%  cagr=+0.00%  sharpe=0.000  calmar=0.000  maxdd=0.00%  (0.1s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.29%  this=+0.29%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.29%  this=+0.29%  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.29%  this=+0.00%  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.29%  this=+0.29%  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.50%  this=+1.50%  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.50%  this=+0.29%  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.50%  this=+0.29%  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.50%  this=+0.29%  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.50%  this=+0.29%  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.50%  this=+0.29%  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.50%  this=+1.50%  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.50%  this=+1.50%  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.50%  this=+1.50%  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.50%  this=+1.50%  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.50%  this=+1.50%  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.50%  this=+1.50%  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.50%  this=+0.29%  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.50%  this=+1.50%  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.50%  this=+0.29%  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.50%  this=+1.50%  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.50%  this=+1.50%  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.50%  this=+1.50%  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.50%  this=+1.50%  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.50%  this=+1.50%  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.50%  this=+0.29%  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.50%  this=+1.50%  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.50%  this=+1.50%  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.50%  this=+1.50%  [████████████████████████░]  96.7%  trial= 29/30  best=+1.50%  this=+0.29%  [█████████████████████████] 100.0%  trial= 30/30  best=+1.50%  this=+0.29%
+  Best IS return  : +1.50%  (Δ vs baseline: +1.21%)
+  OOS HMM  return : +0.27%  cagr=+0.27%  sharpe=-0.591  calmar=0.618  maxdd=0.44%  (0.0s)
+  OOS Δ return    : +0.27%  ✓ IMPROVEMENT
+
+[Window 2/7]
+
+======================================================================
+  Window : 2016-01-01 → 2019-01-01 | OOS 2019-01-01 → 2020-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.64%  cagr=+0.21%  sharpe=-1.019  calmar=0.224  maxdd=0.94%  (0.1s)
+  Baseline OOS return : +1.08%  cagr=+1.08%  sharpe=0.110  calmar=3.379  maxdd=0.32%  (0.0s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.70%  this=+0.70%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.93%  this=+1.93%  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.93%  this=+0.56%  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.93%  this=+1.61%  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.93%  this=+1.91%  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.93%  this=+1.47%  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.93%  this=+0.64%  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.93%  this=+1.47%  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.93%  this=+0.64%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.93%  this=+1.93%  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.93%  this=+1.59%  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.93%  this=+1.61%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.93%  this=+1.93%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.93%  this=+1.93%  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.93%  this=+1.61%  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.93%  this=+1.59%  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.93%  this=+0.70%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.93%  this=+1.93%  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.93%  this=+1.91%  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.93%  this=+0.64%  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.93%  this=+1.91%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.93%  this=+1.93%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.93%  this=+1.93%  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.93%  this=+1.61%  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.93%  this=+0.70%  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.93%  this=+0.64%Model is not converging.  Current: -3928.600731892977 is not greater than -3928.581410988997. Delta is -0.019320903979860304
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.93%  this=+1.93%  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.93%  this=+1.61%  [████████████████████████░]  96.7%  trial= 29/30  best=+1.93%  this=+0.64%  [█████████████████████████] 100.0%  trial= 30/30  best=+1.93%  this=+0.70%
+  Best IS return  : +1.93%  (Δ vs baseline: +1.30%)
+  OOS HMM  return : +1.08%  cagr=+1.08%  sharpe=0.110  calmar=3.379  maxdd=0.32%  (0.0s)
+  OOS Δ return    : +0.00%  ✗ DEGRADATION
+
+[Window 3/7]
+
+======================================================================
+  Window : 2017-01-01 → 2020-01-01 | OOS 2020-01-01 → 2021-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.00%  cagr=+0.00%  sharpe=0.000  calmar=0.000  maxdd=0.00%  (0.1s)
+  Baseline OOS return : +0.86%  cagr=+0.86%  sharpe=-0.005  calmar=0.172  maxdd=5.02%  (0.1s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.00%  this=+0.00%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.00%  this=+0.00%  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.00%  this=+0.00%  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.00%  this=+0.00%  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.00%  this=+0.00%  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.00%  this=+0.00%  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.00%  this=+0.00%  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.00%  this=+0.00%  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.00%  this=+0.00%[W 2026-04-14 19:15:33,545] Trial 9 failed with parameters: {'hmm_components': 7, 'hmm_score_threshold': 1.684829137724085, 'hmm_threshold': 0.3320507847767984, 'hmm_gate': 'threshold', 'hmm_train_years': 5.0} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 870, in run
+    hmm_mr_state[ticker] = train_hmm_price_model(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 490, in train_hmm_price_model
+    rs = find_best_random_state(X_train, n_components=n_components,
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
+    m.fit(X_train_scaled)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 485, in fit
+    stats, curr_logprob = self._do_estep(X, lengths)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 764, in _do_estep
+    lattice, logprob, posteriors, fwdlattice, bwdlattice = impl(sub_X)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 884, in _fit_log
+    log_prob, fwdlattice = _hmmc.forward_log(
+KeyboardInterrupt
+[W 2026-04-14 19:15:33,558] Trial 9 failed with value None.
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 514, in <module>
+    main()
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 502, in main
+    res = run_window(window, tickers, cfg)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 175, in run_window
+    study.optimize(objective, n_trials=cfg.n_trials, callbacks=[_cb])
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/study.py", line 490, in optimize
+    _optimize(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 68, in _optimize
+    _optimize_sequential(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 263, in _run_trial
+    raise func_err
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 870, in run
+    hmm_mr_state[ticker] = train_hmm_price_model(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 490, in train_hmm_price_model
+    rs = find_best_random_state(X_train, n_components=n_components,
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
+    m.fit(X_train_scaled)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 485, in fit
+    stats, curr_logprob = self._do_estep(X, lengths)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 764, in _do_estep
+    lattice, logprob, posteriors, fwdlattice, bwdlattice = impl(sub_X)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 884, in _fit_log
+    log_prob, fwdlattice = _hmmc.forward_log(
+KeyboardInterrupt

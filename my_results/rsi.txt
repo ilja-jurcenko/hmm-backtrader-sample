@@ -1,0 +1,92 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  SPY
+  Overall   : 2015-01-01  →  2025-01-01
+  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 7   Trials/window : 30
+======================================================================
+
+[Window 1/7]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.77%  cagr=+0.59%  sharpe=-0.420  calmar=0.496  maxdd=1.18%  (0.2s)
+  Baseline OOS return : -0.07%  cagr=-0.07%  sharpe=-0.701  calmar=-0.045  maxdd=1.50%  (0.2s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.77%  this=+0.00%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.77%  this=+0.00%  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.77%  this=+0.00%  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.77%  this=+1.77%  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.77%  this=+0.69%  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.77%  this=+0.00%  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.77%  this=+0.00%  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.77%  this=+0.00%  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.77%  this=+0.00%  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.77%  this=+0.00%  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.77%  this=+1.77%  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.77%  this=+1.77%  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.77%  this=+1.64%  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.77%  this=+0.00%  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.77%  this=+1.77%  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.77%  this=+1.77%  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.77%  this=+0.00%  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.77%  this=+0.76%  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.77%  this=+1.77%  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.77%  this=+1.77%  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.77%  this=+1.77%  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.77%  this=+1.77%  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.77%  this=+1.77%  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.77%  this=+0.00%  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.77%  this=+1.77%  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.77%  this=+0.00%  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.77%  this=+0.00%  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.77%  this=+1.77%  [████████████████████████░]  96.7%  trial= 29/30  best=+1.77%  this=+0.00%  [█████████████████████████] 100.0%  trial= 30/30  best=+1.77%  this=+0.00%
+  Best IS return  : +1.77%  (Δ vs baseline: +0.00%)
+  OOS HMM  return : +0.00%  cagr=+0.00%  sharpe=0.000  calmar=0.000  maxdd=0.00%  (0.0s)
+  OOS Δ return    : +0.07%  ✓ IMPROVEMENT
+
+[Window 2/7]
+
+======================================================================
+  Window : 2016-01-01 → 2019-01-01 | OOS 2019-01-01 → 2020-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.87%  cagr=+0.29%  sharpe=-0.642  calmar=0.180  maxdd=1.62%  (0.2s)
+  Baseline OOS return : +0.68%  cagr=+0.68%  sharpe=-0.247  calmar=0.779  maxdd=0.87%  (0.1s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.87%  this=+0.00%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.87%  this=+0.87%  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.87%  this=+0.00%  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.87%  this=+0.01%  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.87%  this=-0.35%  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.85%  this=+1.85%[W 2026-04-14 19:15:33,545] Trial 6 failed with parameters: {'hmm_components': 6, 'hmm_score_threshold': 1.0824582803960838, 'hmm_threshold': 0.7221784973584418, 'hmm_gate': 'threshold', 'hmm_train_years': 5.0} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 982, in run
+    results = cerebro.run()
+  File "/Users/user/Dev/backtrader/backtrader/cerebro.py", line 1132, in run
+    runstrat = self.runstrategies(iterstrat)
+  File "/Users/user/Dev/backtrader/backtrader/cerebro.py", line 1217, in runstrategies
+    data.preload()
+  File "/Users/user/Dev/backtrader/backtrader/feed.py", line 439, in preload
+    while self.load():
+  File "/Users/user/Dev/backtrader/backtrader/feed.py", line 480, in load
+    _loadret = self._load()
+  File "/Users/user/Dev/backtrader/backtrader/feeds/pandafeed.py", line 255, in _load
+    line[0] = self.p.dataname.iloc[self._idx, colindex]
+  File "/Users/user/Dev/backtrader/backtrader/linebuffer.py", line 214, in __setitem__
+    def __setitem__(self, ago, value):
+KeyboardInterrupt
+[W 2026-04-14 19:15:33,578] Trial 6 failed with value None.
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 514, in <module>
+    main()
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 502, in main
+    res = run_window(window, tickers, cfg)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 175, in run_window
+    study.optimize(objective, n_trials=cfg.n_trials, callbacks=[_cb])
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/study.py", line 490, in optimize
+    _optimize(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 68, in _optimize
+    _optimize_sequential(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 263, in _run_trial
+    raise func_err
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 982, in run
+    results = cerebro.run()
+  File "/Users/user/Dev/backtrader/backtrader/cerebro.py", line 1132, in run
+    runstrat = self.runstrategies(iterstrat)
+  File "/Users/user/Dev/backtrader/backtrader/cerebro.py", line 1217, in runstrategies
+    data.preload()
+  File "/Users/user/Dev/backtrader/backtrader/feed.py", line 439, in preload
+    while self.load():
+  File "/Users/user/Dev/backtrader/backtrader/feed.py", line 480, in load
+    _loadret = self._load()
+  File "/Users/user/Dev/backtrader/backtrader/feeds/pandafeed.py", line 255, in _load
+    line[0] = self.p.dataname.iloc[self._idx, colindex]
+  File "/Users/user/Dev/backtrader/backtrader/linebuffer.py", line 214, in __setitem__
+    def __setitem__(self, ago, value):
+KeyboardInterrupt

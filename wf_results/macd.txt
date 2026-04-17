@@ -1,0 +1,73 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  SPY
+  Overall   : 2015-01-01  →  2025-01-01
+  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 7   Trials/window : 30
+======================================================================
+
+[Window 1/7]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.35%  cagr=+0.45%  sharpe=-0.456  calmar=0.189  maxdd=2.37%  (0.3s)
+  Baseline OOS return : -1.40%  cagr=-1.40%  sharpe=-1.297  calmar=-0.557  maxdd=2.52%  (0.1s)
+
+  Optimising on IS period (30 trials) …
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+2.50%  this=+2.50%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+2.50%  this=+2.30%[W 2026-04-14 19:09:43,333] Trial 2 failed with parameters: {'hmm_components': 3, 'hmm_score_threshold': 2.23235229154987, 'hmm_threshold': 0.7147693581028141, 'hmm_gate': 'threshold', 'hmm_train_years': 5.0} because of the following error: KeyboardInterrupt().
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 825, in run
+    signals = train_hmm_and_get_signals(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 387, in train_hmm_and_get_signals
+    rs = find_best_random_state(X_train, n_components=n_components,
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
+    m.fit(X_train_scaled)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 485, in fit
+    stats, curr_logprob = self._do_estep(X, lengths)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 768, in _do_estep
+    self._accumulate_sufficient_statistics(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/_emissions.py", line 153, in _accumulate_sufficient_statistics
+    stats['obs'] += posteriors.T @ X
+KeyboardInterrupt
+[W 2026-04-14 19:09:43,402] Trial 2 failed with value None.
+Traceback (most recent call last):
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 514, in <module>
+    main()
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 502, in main
+    res = run_window(window, tickers, cfg)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 175, in run_window
+    study.optimize(objective, n_trials=cfg.n_trials, callbacks=[_cb])
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/study.py", line 490, in optimize
+    _optimize(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 68, in _optimize
+    _optimize_sequential(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
+    frozen_trial_id = _run_trial(study, func, catch)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 263, in _run_trial
+    raise func_err
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
+    value_or_values = func(trial)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
+    res = backtest(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
+    return maq.run(args, quiet=quiet)
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 825, in run
+    signals = train_hmm_and_get_signals(
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 387, in train_hmm_and_get_signals
+    rs = find_best_random_state(X_train, n_components=n_components,
+  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
+    m.fit(X_train_scaled)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 485, in fit
+    stats, curr_logprob = self._do_estep(X, lengths)
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 768, in _do_estep
+    self._accumulate_sufficient_statistics(
+  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/_emissions.py", line 153, in _accumulate_sufficient_statistics
+    stats['obs'] += posteriors.T @ X
+KeyboardInterrupt
