@@ -1,0 +1,10 @@
+backtrader==1.9.78.123
+hmmlearn==0.3.3
+matplotlib==3.9.4
+numpy==2.0.2
+optuna==4.8.0
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+quantstats==0.0.77
+scikit-learn==1.6.1
+yfinance==1.1.0
