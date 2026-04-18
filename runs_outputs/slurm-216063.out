@@ -1,0 +1,21 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : SPY
+  Period     : 2023-01-01 → 2025-01-01
+  IS/OOS     : 3y IS  /  1y OOS  (step 1y)
+  Trials     : 50 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results
+======================================================================
+
+  Launching 4 parallel workers …
+
+  [MACD ] ✗ FAILED (exit 1)  (5.5s)  → ./wf_results/macd.txt
+  [DEMA ] ✗ FAILED (exit 1)  (5.5s)  → ./wf_results/dema.txt
+  [SMA  ] ✗ FAILED (exit 1)  (5.5s)  → ./wf_results/sma.txt
+  [RSI  ] ✗ FAILED (exit 1)  (5.5s)  → ./wf_results/rsi.txt
+
+  All strategies finished in 5.5s  (wall-clock, ran in parallel)
+
+  [ERROR] All strategies failed — check output files for details.

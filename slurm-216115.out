@@ -1,0 +1,14 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : SPY
+  Period     : 2010-01-01 → 2025-01-01
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 30 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_2010_2025_SPY_2y_is_1y_oos_30trials
+======================================================================
+
+  Launching 4 parallel workers …
+
+[2026-04-17T21:04:48.903] error: *** JOB 216115 ON node-02 CANCELLED AT 2026-04-17T21:04:48 DUE to SIGNAL Terminated ***

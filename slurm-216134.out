@@ -1,0 +1,56 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : AAPL, MSFT, NVDA, AMZN, BRK-B, XOM, UNH, WMT, BA, KO
+  Period     : 2010-01-01 → 2025-01-01
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 30 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO
+======================================================================
+
+  Launching 4 parallel workers …
+
+  [RSI  ] ✓ OK  (1353.4s)  → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/rsi.txt
+  [MACD ] ✓ OK  (1390.6s)  → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/macd.txt
+  [SMA  ] ✓ OK  (1396.1s)  → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/sma.txt
+  [DEMA ] ✓ OK  (1402.2s)  → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/dema.txt
+
+  All strategies finished in 1402.3s  (wall-clock, ran in parallel)
+
+
+
+========================================================================================================================
+  STRATEGY COMPARISON  –  Walk-Forward OOS Results (means across all windows)
+========================================================================================================================
+  Metric                             SMA          DEMA           RSI          MACD
+  --------------------------------------------------------------------------------
+  Mean Δ Return (%)               -2.28%        -1.72%        +1.27%        -1.19%
+  Baseline Return (%)              3.17%         2.55%           N/A         2.99%
+  HMM Return (%)                   0.89%         0.83%           N/A         1.80%
+
+  Baseline CAGR (%)                3.17%         2.55%           N/A         2.98%
+  HMM CAGR (%)                     0.89%         0.83%           N/A         1.80%
+  Δ CAGR (%)                      -2.28%        -1.72%           N/A        -1.19%
+
+  Baseline Sharpe                  0.189         0.164        -0.504         0.064
+  HMM Sharpe                      -0.161        -0.189        -3.006        -0.180
+  Δ Sharpe                        -0.350        -0.353        -2.503        -0.244
+
+  Baseline MaxDD (%)               5.86%         5.29%         4.39%         5.47%
+  HMM MaxDD (%)                    3.40%         3.05%         0.97%         3.07%
+  Δ MaxDD (%)                     -2.46%        -2.24%        -3.42%        -2.40%
+
+  HMM Win Rate (%)                 46.2%         46.2%         38.5%         46.2%
+  Metrics Improved                   1/5           1/5           2/5           2/5
+========================================================================================================================
+
+  Best HMM synergy : RSI  (mean Δ return +1.27% per OOS window)
+========================================================================================================================
+
+  Output files:
+    SMA    → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/sma.txt
+    DEMA   → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/dema.txt
+    RSI    → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/rsi.txt
+    MACD   → ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO/macd.txt
+

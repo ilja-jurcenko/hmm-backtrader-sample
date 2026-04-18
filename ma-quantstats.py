@@ -773,7 +773,7 @@ def run(args=None, quiet=False):
     if args is None or isinstance(args, list):
         args = parse_args(args)
 
-    datas_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'datas')
+    datas_dir = os.path.join(os.path.dirname(__file__), 'datas')
     tickers = args.tickers
 
     # Ensure CSV files exist for every ticker

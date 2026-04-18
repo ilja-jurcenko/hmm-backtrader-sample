@@ -1,0 +1,56 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : SPY
+  Period     : 2020-01-01 → 2025-01-01
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 50 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results
+======================================================================
+
+  Launching 4 parallel workers …
+
+  [SMA  ] ✓ OK  (279.4s)  → ./wf_results/sma.txt
+  [RSI  ] ✓ OK  (294.4s)  → ./wf_results/rsi.txt
+  [DEMA ] ✓ OK  (310.0s)  → ./wf_results/dema.txt
+  [MACD ] ✓ OK  (319.5s)  → ./wf_results/macd.txt
+
+  All strategies finished in 319.5s  (wall-clock, ran in parallel)
+
+
+
+========================================================================================================================
+  STRATEGY COMPARISON  –  Walk-Forward OOS Results (means across all windows)
+========================================================================================================================
+  Metric                             SMA          DEMA           RSI          MACD
+  --------------------------------------------------------------------------------
+  Mean Δ Return (%)               +0.07%        -0.87%        +0.10%        -0.33%
+  Baseline Return (%)                N/A         2.64%           N/A         1.69%
+  HMM Return (%)                     N/A         1.78%           N/A         1.36%
+
+  Baseline CAGR (%)                  N/A         2.64%           N/A         1.69%
+  HMM CAGR (%)                       N/A         1.77%           N/A         1.36%
+  Δ CAGR (%)                         N/A        -0.87%           N/A        -0.34%
+
+  Baseline Sharpe                  0.507         0.495         0.623         0.274
+  HMM Sharpe                       0.350         0.198         0.700         0.176
+  Δ Sharpe                        -0.157        -0.298        +0.077        -0.099
+
+  Baseline MaxDD (%)               4.50%         3.36%         1.40%         3.19%
+  HMM MaxDD (%)                    2.78%         2.80%         0.11%         3.19%
+  Δ MaxDD (%)                     -1.72%        -0.55%        -1.29%        +0.00%
+
+  HMM Win Rate (%)                 33.3%          0.0%         33.3%         33.3%
+  Metrics Improved                   2/5           1/5           3/5           0/5
+========================================================================================================================
+
+  Best HMM synergy : RSI  (mean Δ return +0.10% per OOS window)
+========================================================================================================================
+
+  Output files:
+    SMA    → ./wf_results/sma.txt
+    DEMA   → ./wf_results/dema.txt
+    RSI    → ./wf_results/rsi.txt
+    MACD   → ./wf_results/macd.txt
+

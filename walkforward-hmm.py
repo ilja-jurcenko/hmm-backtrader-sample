@@ -25,10 +25,14 @@ from __future__ import annotations
 
 import argparse
 import importlib.util
+import io
 import os
 import sys
+import time
 import types
 import warnings
+from concurrent.futures import ProcessPoolExecutor, as_completed
+from contextlib import redirect_stdout
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -464,8 +468,48 @@ def parse_args():
         metavar='SCORE',
         help='Fix hmm_score_threshold instead of letting Optuna search it '
              '(range [0, 3] with default weights); omit to include in search')
+    p.add_argument('--max-workers', type=int, default=0, dest='max_workers',
+        help='Max parallel window workers (0 = auto = number of windows, '
+             '1 = sequential)')
+    p.add_argument('--window-log-dir', default=None, dest='window_log_dir',
+        help='Directory for per-window progress log files '
+             '(default: auto-created alongside output)')
 
     return p.parse_args()
+
+
+def _run_window_worker(i, n_total, window, tickers, cfg, log_path=None):
+    """Run a single window in a worker process, writing output to a log file."""
+    # Pin BLAS threads to 1 to avoid oversubscription in parallel workers
+    for var in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS',
+                'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
+        os.environ.setdefault(var, '1')
+
+    result = None
+    if log_path:
+        fh = open(log_path, 'w')
+    else:
+        fh = io.StringIO()
+
+    try:
+        with redirect_stdout(fh):
+            print(f'\n[Window {i}/{n_total}]')
+            try:
+                result = run_window(window, tickers, cfg)
+            except Exception as exc:
+                print(f'  [WARN] Window failed: {exc}')
+    finally:
+        if log_path:
+            fh.close()
+
+    output = ''
+    if log_path:
+        with open(log_path) as f:
+            output = f.read()
+    else:
+        output = fh.getvalue()
+
+    return i, output, result
 
 
 def main():
@@ -486,23 +530,77 @@ def main():
         sys.exit('[ERROR] No walk-forward windows fit within the date range. '
                  'Reduce --is-years / --oos-years or widen the date range.')
 
+    n_workers = cfg.max_workers if cfg.max_workers > 0 else len(windows)
+
     portfolio_label = ', '.join(tickers)
     print('=' * 70)
     print(f'  Walk-Forward HMM Optimisation  –  {portfolio_label}')
     print(f'  Overall   : {cfg.wf_start}  →  {cfg.wf_end}')
     print(f'  IS window : {cfg.is_years} yr   OOS window : {cfg.oos_years} yr   '
           f'Step : {cfg.step} yr')
-    print(f'  Windows   : {len(windows)}   Trials/window : {cfg.n_trials}')
+    print(f'  Windows   : {len(windows)}   Trials/window : {cfg.n_trials}'
+          f'   Workers : {n_workers}')
     print('=' * 70)
 
-    results = []
-    for i, window in enumerate(windows, 1):
-        print(f'\n[Window {i}/{len(windows)}]')
-        try:
-            res = run_window(window, tickers, cfg)
-            results.append(res)
-        except Exception as exc:
-            print(f'  [WARN] Window failed: {exc}')
+    t_start = time.perf_counter()
+
+    if n_workers == 1:
+        # Sequential mode – direct stdout, no buffering
+        results = []
+        for i, window in enumerate(windows, 1):
+            print(f'\n[Window {i}/{len(windows)}]')
+            try:
+                res = run_window(window, tickers, cfg)
+                results.append(res)
+            except Exception as exc:
+                print(f'  [WARN] Window failed: {exc}')
+    else:
+        # Parallel mode – run windows concurrently, write per-window log files
+        strategy = getattr(cfg, 'strategy', 'sma')
+        log_dir = cfg.window_log_dir or os.path.join(_HERE, 'wf_window_logs')
+        os.makedirs(log_dir, exist_ok=True)
+        log_paths = {
+            idx: os.path.join(log_dir, f'{strategy}_window_{idx+1}.txt')
+            for idx in range(len(windows))
+        }
+
+        print(f'\n  Launching {n_workers} parallel window workers …')
+        print(f'  Per-window logs → {os.path.abspath(log_dir)}/')
+        for idx, lp in sorted(log_paths.items()):
+            print(f'    Window {idx+1}: {os.path.basename(lp)}')
+        print()
+
+        ordered_results = [None] * len(windows)
+        ordered_outputs = [''] * len(windows)
+
+        with ProcessPoolExecutor(max_workers=n_workers) as pool:
+            futures = {}
+            for idx, window in enumerate(windows):
+                fut = pool.submit(_run_window_worker,
+                                  idx + 1, len(windows), window, tickers, cfg,
+                                  log_path=log_paths[idx])
+                futures[fut] = idx
+
+            for fut in as_completed(futures):
+                idx = futures[fut]
+                try:
+                    win_idx, output, result = fut.result()
+                    ordered_outputs[idx] = output
+                    ordered_results[idx] = result
+                    status = '✓' if result is not None else '✗ FAILED'
+                    print(f'  [Window {win_idx}/{len(windows)}] {status}')
+                except Exception as exc:
+                    print(f'  [Window {idx + 1}/{len(windows)}] ✗ ERROR: {exc}')
+
+        # Print buffered output in window order
+        for output in ordered_outputs:
+            if output:
+                print(output, end='')
+
+        results = [r for r in ordered_results if r is not None]
+
+    total_elapsed = time.perf_counter() - t_start
+    print(f'\n  Total walk-forward time: {total_elapsed:.1f}s')
 
     if results:
         print_report(results, cfg)

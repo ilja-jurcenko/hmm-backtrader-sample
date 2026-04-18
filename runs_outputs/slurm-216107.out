@@ -1,0 +1,5 @@
+/var/lib/slurm-llnl/slurmd/job216107/slurm_script: 2: SBATCH: not found
+/var/lib/slurm-llnl/slurmd/job216107/slurm_script: 3: SBATCH: not found
+sbatch: error: This does not look like a batch script.  The first
+sbatch: error: line must start with #! followed by the path to an interpreter.
+sbatch: error: For instance: #!/bin/sh

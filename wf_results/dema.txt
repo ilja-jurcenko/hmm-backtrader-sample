@@ -1,93 +1,253 @@
 ======================================================================
   Walk-Forward HMM Optimisation  –  SPY
-  Overall   : 2015-01-01  →  2025-01-01
-  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
-  Windows   : 7   Trials/window : 30
+  Overall   : 2020-01-01  →  2025-01-01
+  IS window : 2 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 3   Trials/window : 50   Workers : 3
 ======================================================================
 
-[Window 1/7]
+  Launching 3 parallel window workers …
+  Per-window logs → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results/dema_windows/
+    Window 1: dema_window_1.txt
+    Window 2: dema_window_2.txt
+    Window 3: dema_window_3.txt
+
+  [Window 2/3] ✓
+  [Window 3/3] ✓
+  [Window 1/3] ✓
+
+[Window 1/3]
 
 ======================================================================
-  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
-  Trials : 30
+  Window : 2020-01-01 → 2022-01-01 | OOS 2022-01-01 → 2023-01-01
+  Trials : 50
 ======================================================================
-  Baseline IS  return : +1.10%  cagr=+0.37%  sharpe=-0.564  calmar=0.125  maxdd=2.93%  (0.3s)
-  Baseline OOS return : -1.31%  cagr=-1.31%  sharpe=-1.242  calmar=-0.501  maxdd=2.62%  (0.1s)
+  Baseline IS  return : +5.77%  cagr=+2.84%  sharpe=0.514  calmar=0.798  maxdd=3.56%  (0.3s)
+  Baseline OOS return : +1.71%  cagr=+1.71%  sharpe=0.164  calmar=0.335  maxdd=5.10%  (0.2s)
 
-  Optimising on IS period (30 trials) …
-  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.83%  this=+1.83%  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.95%  this=+1.95%[W 2026-04-14 19:09:43,336] Trial 2 failed with parameters: {'hmm_components': 3, 'hmm_score_threshold': 2.23235229154987, 'hmm_threshold': 0.7147693581028141, 'hmm_gate': 'threshold', 'hmm_train_years': 5.0} because of the following error: KeyboardInterrupt().
-Traceback (most recent call last):
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
-    value_or_values = func(trial)
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
-    res = backtest(
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
-    return maq.run(args, quiet=quiet)
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 825, in run
-    signals = train_hmm_and_get_signals(
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 387, in train_hmm_and_get_signals
-    rs = find_best_random_state(X_train, n_components=n_components,
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
-    m.fit(X_train_scaled)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 480, in fit
-    self._init(X, lengths)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/hmm.py", line 314, in _init
-    kmeans.fit(X)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 1510, in fit
-    labels, inertia, centers, n_iter_ = kmeans_single(
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/utils/parallel.py", line 165, in wrapper
-    return func(*args, **kwargs)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 700, in _kmeans_single_lloyd
-    lloyd_iter(
-  File "_k_means_lloyd.pyx", line 160, in sklearn.cluster._k_means_lloyd.lloyd_iter_chunked_dense
-  File "_k_means_common.pyx", line 177, in sklearn.cluster._k_means_common._relocate_empty_clusters_dense
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/numpy/_core/multiarray.py", line 361, in where
-    @array_function_from_c_func_and_dispatcher(_multiarray_umath.where)
-KeyboardInterrupt
-[W 2026-04-14 19:09:43,441] Trial 2 failed with value None.
-Traceback (most recent call last):
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 514, in <module>
-    main()
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 502, in main
-    res = run_window(window, tickers, cfg)
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/walkforward-hmm.py", line 175, in run_window
-    study.optimize(objective, n_trials=cfg.n_trials, callbacks=[_cb])
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/study.py", line 490, in optimize
-    _optimize(
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 68, in _optimize
-    _optimize_sequential(
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 165, in _optimize_sequential
-    frozen_trial_id = _run_trial(study, func, catch)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 263, in _run_trial
-    raise func_err
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/optuna/study/_optimize.py", line 206, in _run_trial
-    value_or_values = func(trial)
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 150, in objective
-    res = backtest(
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/optimize-hmm.py", line 111, in backtest
-    return maq.run(args, quiet=quiet)
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 825, in run
-    signals = train_hmm_and_get_signals(
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 387, in train_hmm_and_get_signals
-    rs = find_best_random_state(X_train, n_components=n_components,
-  File "/Users/user/Dev/backtrader/samples/ma-quantstats/ma-quantstats.py", line 321, in find_best_random_state
-    m.fit(X_train_scaled)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/base.py", line 480, in fit
-    self._init(X, lengths)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/hmmlearn/hmm.py", line 314, in _init
-    kmeans.fit(X)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 1510, in fit
-    labels, inertia, centers, n_iter_ = kmeans_single(
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/utils/parallel.py", line 165, in wrapper
-    return func(*args, **kwargs)
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 700, in _kmeans_single_lloyd
-    lloyd_iter(
-  File "_k_means_lloyd.pyx", line 160, in sklearn.cluster._k_means_lloyd.lloyd_iter_chunked_dense
-  File "_k_means_common.pyx", line 177, in sklearn.cluster._k_means_common._relocate_empty_clusters_dense
-  File "/Users/user/Dev/backtrader/.venv/lib/python3.9/site-packages/numpy/_core/multiarray.py", line 361, in where
-    @array_function_from_c_func_and_dispatcher(_multiarray_umath.where)
-KeyboardInterrupt
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+5.77%  this=+0.03%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+5.77%  this=-0.20%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+5.77%  this=+0.22%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+5.77%  this=+1.20%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+5.77%  this=+1.20%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+5.77%  this=+1.29%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+5.77%  this=+1.20%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+5.77%  this=+1.29%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+5.77%  this=-0.20%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+5.77%  this=+0.58%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+5.77%  this=+1.37%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+5.77%  this=+1.37%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+5.77%  this=+1.37%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+5.77%  this=+4.46%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+5.77%  this=+4.46%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+5.77%  this=+4.46%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+5.77%  this=+4.50%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+5.77%  this=+1.48%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+5.77%  this=+2.37%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+5.77%  this=+1.43%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+5.77%  this=-0.35%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+5.77%  this=+4.46%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+5.77%  this=+0.14%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+5.77%  this=+2.01%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+5.77%  this=+3.27%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+5.77%  this=+4.44%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+5.77%  this=+2.05%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+5.77%  this=+3.24%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+5.77%  this=+1.43%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+5.77%  this=+0.81%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+5.77%  this=-0.20%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+5.77%  this=+4.50%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+5.77%  this=+4.50%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+5.77%  this=+2.05%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+5.77%  this=+4.46%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+5.77%  this=+3.24%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+5.77%  this=+2.05%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+5.77%  this=+0.14%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+5.77%  this=+0.95%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+5.77%  this=+2.75%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+5.77%  this=-0.37%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+5.77%  this=+4.46%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+5.77%  this=+4.48%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+5.77%  this=+2.05%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+5.77%  this=+4.48%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+5.77%  this=+0.65%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+5.77%  this=+4.48%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+5.77%  this=+2.05%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+5.77%  this=+0.84%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+5.77%  this=-0.37%
+  Best IS return  : +4.50%  (Δ vs baseline: -1.27%)
+  OOS HMM  return : -0.89%  cagr=-0.89%  sharpe=-0.729  calmar=-0.258  maxdd=3.44%  (0.1s)
+  OOS Δ return    : -2.60%  ✗ DEGRADATION
+
+[Window 2/3]
+
+======================================================================
+  Window : 2021-01-01 → 2023-01-01 | OOS 2023-01-01 → 2024-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +0.45%  cagr=+0.22%  sharpe=-0.162  calmar=0.035  maxdd=6.49%  (0.3s)
+  Baseline OOS return : +1.57%  cagr=+1.57%  sharpe=0.214  calmar=0.459  maxdd=3.42%  (0.2s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+0.45%  this=+0.41%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+2.20%  this=+2.20%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+2.20%  this=-1.19%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+2.20%  this=+0.45%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+2.20%  this=-0.54%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+2.20%  this=-0.55%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+2.20%  this=-3.24%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+2.20%  this=-0.20%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+2.20%  this=-3.15%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+2.20%  this=-0.36%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+2.20%  this=+0.45%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+2.20%  this=+0.45%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+2.20%  this=-2.92%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+2.20%  this=-2.79%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+2.20%  this=-2.80%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+2.20%  this=+1.31%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+2.20%  this=+1.31%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+2.20%  this=+1.48%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+2.20%  this=-0.56%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+2.20%  this=+1.48%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+2.20%  this=-1.45%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+2.20%  this=-0.56%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+2.20%  this=-2.54%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+2.20%  this=-0.20%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+2.20%  this=-0.47%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+2.20%  this=-2.54%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+2.20%  this=-0.20%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+2.20%  this=+0.33%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+2.20%  this=-0.36%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+2.20%  this=+0.33%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+2.20%  this=-2.54%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+2.20%  this=+1.31%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+2.20%  this=-0.62%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+2.39%  this=+2.39%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+2.39%  this=-1.45%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+2.39%  this=-2.63%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+2.39%  this=-3.21%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+2.39%  this=-0.54%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+2.39%  this=-0.20%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+2.39%  this=-2.54%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+2.39%  this=+1.31%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+2.39%  this=+1.31%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+2.39%  this=+2.20%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+2.39%  this=-3.21%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+2.39%  this=-2.63%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+2.39%  this=+2.20%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+2.39%  this=-3.21%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+2.39%  this=+0.45%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+2.39%  this=+2.20%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+2.39%  this=+2.20%
+  Best IS return  : +2.39%  (Δ vs baseline: +1.94%)
+  OOS HMM  return : +1.57%  cagr=+1.57%  sharpe=0.214  calmar=0.459  maxdd=3.42%  (0.1s)
+  OOS Δ return    : +0.00%  ✗ DEGRADATION
+
+[Window 3/3]
+
+======================================================================
+  Window : 2022-01-01 → 2024-01-01 | OOS 2024-01-01 → 2025-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +5.67%  cagr=+2.80%  sharpe=0.426  calmar=0.549  maxdd=5.10%  (0.3s)
+  Baseline OOS return : +4.65%  cagr=+4.64%  sharpe=1.108  calmar=2.995  maxdd=1.55%  (0.2s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+5.67%  this=-0.37%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+5.67%  this=+5.67%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+5.67%  this=+3.24%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+5.67%  this=+5.67%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+5.67%  this=+5.67%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+5.67%  this=+4.37%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+5.67%  this=+2.31%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+5.67%  this=+4.37%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+5.67%  this=+1.57%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+5.67%  this=+2.33%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+5.67%  this=+5.67%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+5.67%  this=+5.67%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+5.67%  this=+5.67%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+5.67%  this=+3.32%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+5.67%  this=+5.67%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+5.67%  this=+2.77%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+5.67%  this=+1.26%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+5.71%  this=+5.71%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+5.71%  this=+5.36%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+5.71%  this=+2.00%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+5.71%  this=+4.55%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+5.71%  this=+5.67%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+5.71%  this=+0.16%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+5.71%  this=+5.71%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+5.71%  this=+4.59%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+5.71%  this=+5.28%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+5.71%  this=+2.00%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+5.71%  this=+4.17%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+5.71%  this=+1.54%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+5.71%  this=+5.36%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+5.71%  this=+5.71%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+5.71%  this=+5.71%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+5.71%  this=+5.71%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+5.71%  this=+3.63%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+5.71%  this=+0.95%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+5.95%  this=+5.95%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+5.95%  this=+0.16%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+5.95%  this=+4.55%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+5.95%  this=+3.96%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+5.95%  this=+2.31%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+6.22%  this=+6.22%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+6.22%  this=+2.48%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+6.22%  this=+2.48%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+6.22%  this=+4.55%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+6.22%  this=+4.12%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+6.22%  this=+2.77%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+6.22%  this=+5.67%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+6.22%  this=+5.95%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+6.22%  this=+4.03%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+6.22%  this=+3.52%
+  Best IS return  : +6.22%  (Δ vs baseline: +0.55%)
+  OOS HMM  return : +4.65%  cagr=+4.64%  sharpe=1.108  calmar=2.995  maxdd=1.55%  (0.1s)
+  OOS Δ return    : +0.00%  ✗ DEGRADATION
+
+
+==================================================================================================================================
+  WALK-FORWARD SUMMARY REPORT
+==================================================================================================================================
+
+IS Start      OOS Start        Δ Ret%    Δ CAGR%   Δ Sharpe   Δ Calmar   Δ MaxDD%    Result
+----------------------------------------------------------------------------------------------------------------------------------
+2020-01-01    2022-01-01        -2.60      -2.60     -0.893     -0.593      -1.66    ✗ LOSS
+2021-01-01    2023-01-01        +0.00      +0.00     -0.000     +0.000      +0.00    ✗ LOSS
+2022-01-01    2024-01-01        +0.00      +0.00     +0.000     +0.000      +0.00    ✗ LOSS
+
+==================================================================================================================================
+  Total windows     : 3
+  HMM wins (OOS)    : 0 / 3  (0.0%)  [based on total return]
+  Mean Δ return     : -0.87%  per window
+  Best  window      : 2021-01-01 → 2024-01-01  Δ=+0.00%
+  Worst window      : 2020-01-01 → 2023-01-01  Δ=-2.60%
+
+  OOS METRIC COMPARISON  (mean across 3 windows)
+  Metric                      Baseline           HMM    Δ (mean)   Improved?        IR
+  ----------------------  ------------  ------------  ----------  ----------  --------
+  Total Return (%)               +2.64         +1.78       -0.87        ✗ NO    -0.577
+  CAGR (%)                       +2.64         +1.77       -0.87        ✗ NO    -0.577
+  Sharpe                         0.495         0.198      -0.298        ✗ NO    -0.577
+  Calmar                         1.263         1.065      -0.198        ✗ NO    -0.577
+  Max DrawDown (%)                3.36          2.80       -0.55       ✓ YES    +0.577
+  Time (s)                         0.2           0.1        -0.2      (info)    (info)
+
+  Metrics improved by HMM : 1 / 5  →  Max DrawDown (%)
+
+  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  |  IR < 0 = HMM consistently hurts  |  n/a = single window
+==================================================================================================================================
+
+  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:
+    hmm_components        : 7×2  10×1
+    hmm_gate              : threshold×3
+    hmm_threshold         : mean=0.737  min=0.442  max=0.937
+    hmm_score_threshold   : mean=1.370  min=0.905  max=1.905
+
+  Full results saved → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/walkforward-results.csv
+==================================================================================================================================

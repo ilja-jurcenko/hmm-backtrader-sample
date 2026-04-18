@@ -37,9 +37,11 @@ WF_SCRIPT = os.path.join(HERE, 'walkforward-hmm.py')
 PYTHON = sys.executable
 
 
-def _run_strategy(strategy: str, base_args: list[str], out_path: str) -> tuple[str, float, int]:
+def _run_strategy(strategy: str, base_args: list[str], out_path: str,
+                  window_log_dir: str) -> tuple[str, float, int]:
     """Run walkforward-hmm.py for one strategy, write output to out_path."""
-    cmd = [PYTHON, WF_SCRIPT, '--strategy', strategy] + base_args
+    cmd = [PYTHON, WF_SCRIPT, '--strategy', strategy,
+           '--window-log-dir', window_log_dir] + base_args
     t0 = time.perf_counter()
     with open(out_path, 'w') as fh:
         result = subprocess.run(cmd, stdout=fh, stderr=subprocess.STDOUT, text=True)
@@ -208,6 +210,10 @@ def parse_args():
     p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0,
         dest='hmm_mr_z_threshold',
         help='HMM-MR: std-devs below state mean required before entry')
+    p.add_argument('--wf-max-workers', type=int, default=0,
+        dest='wf_max_workers',
+        help='Max parallel window workers inside each strategy '
+             '(0 = auto = number of windows, 1 = sequential)')
 
     return p.parse_args()
 
@@ -237,6 +243,7 @@ def _build_passthrough(cfg) -> list[str]:
     if cfg.hmm_score_threshold is not None:
         args += ['--hmm-score-threshold', str(cfg.hmm_score_threshold)]
     args += ['--hmm-mr-z-threshold', str(cfg.hmm_mr_z_threshold)]
+    args += ['--max-workers', str(cfg.wf_max_workers)]
     return args
 
 
@@ -269,7 +276,8 @@ def main():
 
     with ProcessPoolExecutor(max_workers=len(strategies)) as pool:
         futures = {
-            pool.submit(_run_strategy, s, base_args, out_paths[s]): s
+            pool.submit(_run_strategy, s, base_args, out_paths[s],
+                        os.path.join(cfg.out_dir, f'{s}_windows')): s
             for s in strategies
         }
         for fut in as_completed(futures):

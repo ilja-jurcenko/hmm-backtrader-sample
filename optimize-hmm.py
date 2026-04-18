@@ -138,7 +138,7 @@ def make_objective(tickers, fromdate, todate, fast, slow,
     this value and removed from the search space.
     """
     def objective(trial):
-        hmm_components      = trial.suggest_int('hmm_components', 3, 10)
+        hmm_components      = trial.suggest_int('hmm_components', 3, 3)
         if fixed_score_threshold is not None:
             hmm_score_threshold = fixed_score_threshold
         else:

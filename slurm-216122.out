@@ -1,0 +1,14 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : AAPL, MSFT, NVDA, AMZN, GOOGL, META, BRK-B, LLY, AVGO, JPM
+  Period     : 2010-01-01 → 2025-01-01
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 30 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_GOOGL_META_BRK-B_LLY_AVGO_JPM
+======================================================================
+
+  Launching 4 parallel workers …
+
+[2026-04-17T22:00:01.997] error: *** JOB 216122 ON node-02 CANCELLED AT 2026-04-17T22:00:01 DUE to SIGNAL Terminated ***
