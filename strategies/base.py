@@ -72,6 +72,7 @@ class BaseRegimeStrategy(bt.Strategy):
         # Per-regime trade tracking
         self._regime_entries = []   # (regime_value, size, dname, hmm_state, hmm_score)
         self._regime_bars    = []   # list of regime values for every bar
+        self._all_state_scores = {} # state_id → list of scores (from every bar)
         for d in self.datas:
             self.orders[d] = None
             self.inds[d]   = {}
@@ -130,6 +131,10 @@ class BaseRegimeStrategy(bt.Strategy):
             hmm_st = self._get_hmm_state(d)
             hmm_sc = self._get_hmm_score(d)
             sig    = self._signal(d)
+
+            # Track all states seen (for regime analysis of 0-trade states)
+            if hmm_st >= 0 and hmm_st not in self._all_state_scores:
+                self._all_state_scores[hmm_st] = hmm_sc
 
             # Determine position size based on regime
             if self.p.regime_mode in ('score', 'linear'):
@@ -190,9 +195,6 @@ class BaseRegimeStrategy(bt.Strategy):
         """Print a breakdown of trade entries by HMM component (state)."""
         entries = self._regime_entries
         n = len(entries)
-        print(f'\n{"=" * 75}')
-        print(f'  REGIME TRADE ANALYSIS  ({n} entries)')
-        print(f'{"=" * 75}')
 
         # Group by HMM state number
         from collections import defaultdict
@@ -204,33 +206,61 @@ class BaseRegimeStrategy(bt.Strategy):
             by_state[hmm_st]['regimes'].append(regime)
             by_state[hmm_st]['scores'].append(hmm_sc)
 
+        # Include states that were seen but had 0 trades
+        for st, sc in self._all_state_scores.items():
+            if st not in by_state:
+                by_state[st] = {'count': 0, 'total_size': 0,
+                                'regimes': [], 'scores': [sc]}
+
         # Sort states by score (highest first)
         all_states = sorted(by_state.keys(),
-                            key=lambda s: sum(by_state[s]['scores']) /
-                                          max(by_state[s]['count'], 1),
+                            key=lambda s: (sum(by_state[s]['scores']) /
+                                           max(len(by_state[s]['scores']), 1)),
                             reverse=True)
 
-        print(f'\n  {"State":>7}  {"Score":>7}  {"Entries":>8}  {"% of Total":>10}  '
-              f'{"Avg Size":>9}  {"Avg Regime":>11}  {"Bar":>20}')
-        print(f'  {"-"*7}  {"-"*7}  {"-"*8}  {"-"*10}  {"-"*9}  {"-"*11}  {"-"*20}')
+        n_active = sum(1 for s in all_states if by_state[s]['count'] > 0)
 
-        for st in all_states:
+        # Build rows
+        rows = []
+        for rank, st in enumerate(all_states, 1):
             info = by_state[st]
             cnt = info['count']
-            pct = 100 * cnt / n
-            avg_size = info['total_size'] / cnt
-            avg_regime = sum(info['regimes']) / cnt
-            avg_score = sum(info['scores']) / cnt
-            bar_len = int(pct / 2)
+            pct = (100 * cnt / n) if n > 0 else 0
+            avg_size = info['total_size'] / cnt if cnt > 0 else 0
+            avg_regime = sum(info['regimes']) / cnt if cnt > 0 else 0
+            avg_score = sum(info['scores']) / len(info['scores']) if info['scores'] else 0
+            bar_len = max(1, int(pct / 2)) if cnt > 0 else 0
             bar = '█' * bar_len
             label = f'S{st}' if st >= 0 else 'N/A'
-            print(f'  {label:>7}  {avg_score:>7.3f}  {cnt:>8}  {pct:>9.1f}%  '
-                  f'{avg_size:>9.1f}  {avg_regime:>11.3f}  {bar}')
+            rows.append((f'#{rank}', label, avg_score, cnt, pct, avg_size, avg_regime, bar))
 
-        print(f'  {"-"*7}  {"-"*7}  {"-"*8}  {"-"*10}  {"-"*9}  {"-"*11}')
-        avg_all = sum(r for r, _, _, _, _ in entries) / n
-        avg_sz  = sum(s for _, s, _, _, _ in entries) / n
-        avg_sc  = sum(sc for _, _, _, _, sc in entries) / n
-        print(f'  {"TOTAL":>7}  {avg_sc:>7.3f}  {n:>8}  {100:>9.1f}%  '
-              f'{avg_sz:>9.1f}  {avg_all:>11.3f}')
-        print(f'{"=" * 75}')
+        avg_all = sum(r for r, _, _, _, _ in entries) / n if n > 0 else 0
+        avg_sz  = sum(s for _, s, _, _, _ in entries) / n if n > 0 else 0
+        avg_sc  = sum(sc for _, _, _, _, sc in entries) / n if n > 0 else 0
+
+        W = 80
+        print(f'\n┌{"─" * (W-2)}┐')
+        print(f'│{"REGIME TRADE ANALYSIS":^{W-2}}│')
+        print(f'│{f"{n} entries · {len(all_states)} states ({n_active} active)":^{W-2}}│')
+        print(f'├{"─" * (W-2)}┤')
+        print(f'│  {"Rank":>4}  {"State":>5}  {"Score":>6}  '
+              f'{"Entries":>6}  {"%":>6}  {"AvgSz":>6}  {"PosSz":>6}  '
+              f'{"Distribution":<22} │')
+        print(f'│  {"────":>4}  {"─────":>5}  {"──────":>6}  '
+              f'{"──────":>6}  {"──────":>6}  {"──────":>6}  {"──────":>6}  '
+              f'{"─" * 22} │')
+
+        for rank_s, label, avg_score, cnt, pct, avg_size, avg_regime, bar in rows:
+            entries_s = str(cnt) if cnt > 0 else '—'
+            pct_s = f'{pct:5.1f}%' if cnt > 0 else '    —'
+            sz_s = f'{avg_size:6.0f}' if cnt > 0 else '     —'
+            ps_s = f'{avg_regime:6.3f}' if cnt > 0 else '     —'
+            print(f'│  {rank_s:>4}  {label:>5}  {avg_score:>6.2f}  '
+                  f'{entries_s:>6}  {pct_s:>6}  {sz_s:>6}  {ps_s:>6}  '
+                  f'{bar:<22} │')
+
+        print(f'├{"─" * (W-2)}┤')
+        print(f'│  {"":>4}  {"Total":>5}  {avg_sc:>6.2f}  '
+              f'{n:>6}  {"100%":>6}  {avg_sz:>6.0f}  {avg_all:>6.3f}  '
+              f'{"":22} │')
+        print(f'└{"─" * (W-2)}┘')
