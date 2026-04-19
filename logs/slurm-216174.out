@@ -1,0 +1,21 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : AAPL, MSFT, NVDA, AMZN, BRK-B, XOM, UNH, WMT, BA, KO
+  Period     : 2010-01-01 → 2025-01-01
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 10 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search
+======================================================================
+
+  Launching 4 parallel workers …
+
+  [MACD ] ✗ FAILED (exit 2)  (1.1s)  → ./wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search/macd.txt
+  [RSI  ] ✗ FAILED (exit 2)  (1.1s)  → ./wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search/rsi.txt
+  [SMA  ] ✗ FAILED (exit 2)  (1.1s)  → ./wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search/sma.txt
+  [DEMA ] ✗ FAILED (exit 2)  (1.1s)  → ./wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search/dema.txt
+
+  All strategies finished in 1.1s  (wall-clock, ran in parallel)
+
+  [ERROR] All strategies failed — check output files for details.

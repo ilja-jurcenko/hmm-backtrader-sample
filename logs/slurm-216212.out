@@ -1,0 +1,21 @@
+
+======================================================================
+  Walk-Forward Strategy Comparison
+  Strategies : SMA, DEMA, RSI, MACD
+  Tickers    : AAPL, MSFT, NVDA, AMZN, BRK-B, XOM, UNH, WMT, BA, KO
+  Period     : 2010-01-01 → 2026-04-10
+  IS/OOS     : 2y IS  /  1y OOS  (step 1y)
+  Trials     : 20 per window
+  Output dir : /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_pca2
+======================================================================
+
+  Launching 4 parallel workers …
+
+  [DEMA ] ✗ FAILED (exit 1)  (975.5s)  → ./wf_results_pca2/dema.txt
+  [RSI  ] ✗ FAILED (exit 1)  (996.4s)  → ./wf_results_pca2/rsi.txt
+  [SMA  ] ✗ FAILED (exit 1)  (1007.9s)  → ./wf_results_pca2/sma.txt
+  [MACD ] ✗ FAILED (exit 1)  (1013.5s)  → ./wf_results_pca2/macd.txt
+
+  All strategies finished in 1013.5s  (wall-clock, ran in parallel)
+
+  [ERROR] All strategies failed — check output files for details.

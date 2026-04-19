@@ -1,0 +1,23 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  AAPL, MSFT, NVDA, AMZN, BRK-B, XOM, UNH, WMT, BA, KO
+  Overall   : 2010-01-01  →  2025-01-01
+  IS window : 2 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 13   Trials/window : 10   Workers : 13
+======================================================================
+
+  Launching 13 parallel window workers …
+  Per-window logs → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search/rsi_windows/
+    Window 1: rsi_window_1.txt
+    Window 2: rsi_window_2.txt
+    Window 3: rsi_window_3.txt
+    Window 4: rsi_window_4.txt
+    Window 5: rsi_window_5.txt
+    Window 6: rsi_window_6.txt
+    Window 7: rsi_window_7.txt
+    Window 8: rsi_window_8.txt
+    Window 9: rsi_window_9.txt
+    Window 10: rsi_window_10.txt
+    Window 11: rsi_window_11.txt
+    Window 12: rsi_window_12.txt
+    Window 13: rsi_window_13.txt
+

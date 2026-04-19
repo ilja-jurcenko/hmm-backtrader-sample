@@ -1,0 +1,1277 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  AAPL, MSFT, NVDA, AMZN, BRK-B, XOM, UNH, WMT, BA, KO
+  Overall   : 2010-01-01  →  2025-01-01
+  IS window : 2 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 13   Trials/window : 50   Workers : 13
+======================================================================
+
+  Launching 13 parallel window workers …
+  Per-window logs → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_mode_runs_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO_Size_Search_With_Param/dema_windows/
+    Window 1: dema_window_1.txt
+    Window 2: dema_window_2.txt
+    Window 3: dema_window_3.txt
+    Window 4: dema_window_4.txt
+    Window 5: dema_window_5.txt
+    Window 6: dema_window_6.txt
+    Window 7: dema_window_7.txt
+    Window 8: dema_window_8.txt
+    Window 9: dema_window_9.txt
+    Window 10: dema_window_10.txt
+    Window 11: dema_window_11.txt
+    Window 12: dema_window_12.txt
+    Window 13: dema_window_13.txt
+
+Model is not converging.  Current: -1617.8564419284278 is not greater than -1617.856439461189. Delta is -2.46723880081845e-06
+Model is not converging.  Current: -1617.8564429328796 is not greater than -1617.856438313987. Delta is -4.618892717189738e-06
+Model is not converging.  Current: -4231.162172589863 is not greater than -4231.162114811708. Delta is -5.777815476903925e-05
+Model is not converging.  Current: -4875.37898950359 is not greater than -4875.378930152531. Delta is -5.9351058553147595e-05
+Model is not converging.  Current: -4231.162196624237 is not greater than -4231.16211979952. Delta is -7.682471732550766e-05
+Model is not converging.  Current: -2515.4643078960657 is not greater than -2515.4641630232622. Delta is -0.00014487280350294895
+Model is not converging.  Current: -2634.133791217194 is not greater than -2634.133682974435. Delta is -0.00010824275886989199
+Model is not converging.  Current: -2515.4642680334905 is not greater than -2515.4641269320214. Delta is -0.00014110146912571508
+Model is not converging.  Current: -4265.63825410636 is not greater than -4265.63824861335. Delta is -5.493010576174129e-06
+Model is not converging.  Current: -4265.638257699197 is not greater than -4265.6382425130405. Delta is -1.5186156815616414e-05
+Model is not converging.  Current: -3722.408840589883 is not greater than -3722.4088353902966. Delta is -5.1995862122566905e-06
+Model is not converging.  Current: -3452.342946880394 is not greater than -3452.3429418026703. Delta is -5.077723471913487e-06
+Model is not converging.  Current: -3331.0120792171515 is not greater than -3331.012017872483. Delta is -6.13446686656971e-05
+Model is not converging.  Current: -4596.6446672770935 is not greater than -4596.6446652109935. Delta is -2.066100023512263e-06
+Model is not converging.  Current: -1434.359257359595 is not greater than -1434.3591339121067. Delta is -0.00012344748824943963
+Model is not converging.  Current: -1411.2630576811082 is not greater than -1411.2629320347924. Delta is -0.00012564631583700248
+Model is not converging.  Current: -1434.3592497269567 is not greater than -1434.359116092983. Delta is -0.00013363397374632768
+Model is not converging.  Current: -3957.599335666216 is not greater than -3957.599295089756. Delta is -4.0576459923613584e-05
+Model is not converging.  Current: -2762.4490695415284 is not greater than -2762.449061588787. Delta is -7.952741270855768e-06
+Model is not converging.  Current: -6390.760580274449 is not greater than -6390.76055818996. Delta is -2.2084489501139615e-05
+Model is not converging.  Current: -2327.9014692242454 is not greater than -2327.9014306874274. Delta is -3.85368180104706e-05
+Model is not converging.  Current: -1899.225011493391 is not greater than -1899.2249374570338. Delta is -7.403635731861868e-05
+Model is not converging.  Current: -5931.364017718227 is not greater than -5931.363999568803. Delta is -1.8149424249713775e-05
+Model is not converging.  Current: -38.78782046885481 is not greater than -38.787699042107675. Delta is -0.00012142674713544466
+Model is not converging.  Current: 14.198473360214775 is not greater than 14.19849832137149. Delta is -2.496115671490884e-05
+Model is not converging.  Current: -1882.3137723298007 is not greater than -1882.313689135674. Delta is -8.319412677337823e-05
+Model is not converging.  Current: -38.88984990894662 is not greater than -38.88981394327214. Delta is -3.5965674484828014e-05
+Model is not converging.  Current: -4109.728951844095 is not greater than -4109.728950759993. Delta is -1.0841022231034003e-06
+Model is not converging.  Current: -2544.4876542521797 is not greater than -2544.487624648392. Delta is -2.9603787879750598e-05
+Model is not converging.  Current: -4381.297871794449 is not greater than -4381.2976181198255. Delta is -0.00025367462330905255
+Model is not converging.  Current: -3663.716109592503 is not greater than -3663.715385592041. Delta is -0.0007240004620143736
+Model is not converging.  Current: -4053.9656593059585 is not greater than -4053.9656188171643. Delta is -4.048879418405704e-05
+Model is not converging.  Current: -1139.2050495219064 is not greater than -1139.204995291269. Delta is -5.4230637488217326e-05
+Model is not converging.  Current: -1464.0613036974776 is not greater than -1464.0612693648995. Delta is -3.4332578024987015e-05
+Model is not converging.  Current: -3165.773185341189 is not greater than -3165.7730777499432. Delta is -0.00010759124597825576
+Model is not converging.  Current: -4327.977948865152 is not greater than -4327.977900621096. Delta is -4.82440564155695e-05
+Model is not converging.  Current: -775.1828258144799 is not greater than -775.1816725570043. Delta is -0.001153257475607461
+Model is not converging.  Current: -838.4374432321713 is not greater than -838.4373859366242. Delta is -5.729554709432705e-05
+Model is not converging.  Current: -836.7505200447416 is not greater than -836.7501486334942. Delta is -0.0003714112474426656
+Model is not converging.  Current: -4033.4711826998832 is not greater than -4033.4709068624484. Delta is -0.00027583743485593004
+Model is not converging.  Current: -4033.4723809290713 is not greater than -4033.470752656704. Delta is -0.001628272367270256
+Model is not converging.  Current: -4033.4722151088504 is not greater than -4033.4716525806125. Delta is -0.0005625282378787233
+Model is not converging.  Current: -4033.4719866782048 is not greater than -4033.47172317446. Delta is -0.00026350374491812545
+Model is not converging.  Current: -1129.9499264449248 is not greater than -1129.9498006875897. Delta is -0.0001257573351267638
+Model is not converging.  Current: -2901.7326149140063 is not greater than -2901.732546499272. Delta is -6.841473441454582e-05
+Model is not converging.  Current: -2460.6434377867085 is not greater than -2460.6434154391104. Delta is -2.2347598132910207e-05
+Model is not converging.  Current: -2901.7327026954986 is not greater than -2901.732611312492. Delta is -9.138300674749189e-05
+Model is not converging.  Current: -6267.617547205552 is not greater than -6267.617545497788. Delta is -1.707763658487238e-06
+Model is not converging.  Current: -5946.4410798973495 is not greater than -5946.440998167214. Delta is -8.173013520718087e-05
+Model is not converging.  Current: -2617.213412760654 is not greater than -2617.2134011480193. Delta is -1.161263480753405e-05
+Model is not converging.  Current: -5680.286310854438 is not greater than -5680.2862958620335. Delta is -1.4992404430813622e-05
+Model is not converging.  Current: -2044.7548242912096 is not greater than -2044.754666696187. Delta is -0.000157595022528767
+Model is not converging.  Current: -7637.076100951702 is not greater than -7637.076091203419. Delta is -9.748282536747865e-06
+Model is not converging.  Current: -8174.254385581096 is not greater than -8174.254384591684. Delta is -9.894120012177154e-07
+Model is not converging.  Current: -6386.696463590043 is not greater than -6386.696381449862. Delta is -8.214018089347519e-05
+Model is not converging.  Current: -8011.134795985816 is not greater than -8011.134781652102. Delta is -1.4333713806991e-05
+Model is not converging.  Current: -9098.659119459571 is not greater than -9098.659097085605. Delta is -2.2373966203304008e-05
+Model is not converging.  Current: -9098.659147524064 is not greater than -9098.659121412975. Delta is -2.6111089027835988e-05
+Model is not converging.  Current: -9098.659133331124 is not greater than -9098.65912614395. Delta is -7.187174560385756e-06
+Model is not converging.  Current: -9098.659135308626 is not greater than -9098.65912879446. Delta is -6.514166670967825e-06
+Model is not converging.  Current: -4470.196919132336 is not greater than -4470.196912403779. Delta is -6.728557309543248e-06
+Model is not converging.  Current: -6909.293981516004 is not greater than -6909.293953127557. Delta is -2.8388447390170768e-05
+Model is not converging.  Current: -4343.263052334934 is not greater than -4343.262968285781. Delta is -8.404915297433035e-05
+Model is not converging.  Current: -1422.2947418285478 is not greater than -1422.294406177152. Delta is -0.00033565139574420755
+Model is not converging.  Current: -1301.85909877927 is not greater than -1301.8590843455002. Delta is -1.443376982024347e-05
+Model is not converging.  Current: -1579.310210059353 is not greater than -1579.3101430021165. Delta is -6.705723649247375e-05
+Model is not converging.  Current: -1422.2941811453024 is not greater than -1422.2937934523525. Delta is -0.0003876929499710968
+Model is not converging.  Current: -2925.1671031884543 is not greater than -2925.167041726404. Delta is -6.146205032564467e-05
+Model is not converging.  Current: -3278.530376243242 is not greater than -3278.5303693003234. Delta is -6.942918389540864e-06
+Model is not converging.  Current: -2111.6599154381797 is not greater than -2111.659754744571. Delta is -0.00016069360890469397
+Model is not converging.  Current: -2110.838266671366 is not greater than -2110.838230981551. Delta is -3.568981492207968e-05
+Model is not converging.  Current: -4046.564398152245 is not greater than -4046.5643589856004. Delta is -3.91666444556904e-05
+Model is not converging.  Current: -6469.598273526019 is not greater than -6469.598252093706. Delta is -2.143231267837109e-05
+Model is not converging.  Current: -3081.2059571046752 is not greater than -3081.2059125157807. Delta is -4.4588894525077194e-05
+Model is not converging.  Current: -4057.6107593720767 is not greater than -4057.610522553816. Delta is -0.00023681826087340596
+Model is not converging.  Current: -5265.29444082886 is not greater than -5265.29436986631. Delta is -7.096255012584152e-05
+Model is not converging.  Current: -2098.900812910809 is not greater than -2098.9007927481457. Delta is -2.0162663076916942e-05
+Model is not converging.  Current: -2098.900812910809 is not greater than -2098.9007927481457. Delta is -2.0162663076916942e-05
+Model is not converging.  Current: -4497.546652073922 is not greater than -4497.546630605345. Delta is -2.1468576960614882e-05
+Model is not converging.  Current: -4442.534593251856 is not greater than -4442.534573591402. Delta is -1.966045419976581e-05
+Model is not converging.  Current: -4401.993721330423 is not greater than -4401.993676193591. Delta is -4.513683143159142e-05
+Model is not converging.  Current: -6592.7635562234 is not greater than -6592.763416735649. Delta is -0.00013948775085736997
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -7861.015584125646 is not greater than -7861.001925229154. Delta is -0.013658896491506312
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -4727.429690956187 is not greater than -4727.429634139047. Delta is -5.681713992089499e-05
+Model is not converging.  Current: -1413.0565363108979 is not greater than -1413.0563567445238. Delta is -0.00017956637407223752
+Model is not converging.  Current: -1449.8967332873299 is not greater than -1449.8965512831921. Delta is -0.00018200413774138724
+Model is not converging.  Current: -7980.074006372021 is not greater than -7980.073988456878. Delta is -1.7915142962010577e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -2051.9187893087487 is not greater than -2051.9187098424777. Delta is -7.946627101773629e-05
+Model is not converging.  Current: -5607.825869006233 is not greater than -5607.825861750154. Delta is -7.256078788486775e-06
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -6655.213496041876 is not greater than -6655.213493495191. Delta is -2.546685209381394e-06
+Model is not converging.  Current: -2663.0400071741506 is not greater than -2663.0399827595966. Delta is -2.4414553990936838e-05
+Model is not converging.  Current: -4853.027155795276 is not greater than -4853.027139884897. Delta is -1.591037835169118e-05
+Model is not converging.  Current: -2854.3406685005098 is not greater than -2854.3404539351063. Delta is -0.0002145654034393374
+Model is not converging.  Current: -2835.09403028418 is not greater than -2835.0939737281774. Delta is -5.655600261889049e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -2368.947667966124 is not greater than -2368.947414388549. Delta is -0.00025357757476740517
+Model is not converging.  Current: -2380.0683308792363 is not greater than -2380.068324775635. Delta is -6.103601208451437e-06
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -1752.948102313749 is not greater than -1752.9474180029067. Delta is -0.0006843108421890065
+Model is not converging.  Current: -4834.5729836402 is not greater than -4834.572541207266. Delta is -0.00044243293359613745
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: 521.2582561646042 is not greater than 521.258743853801. Delta is -0.00048768919680242107
+Model is not converging.  Current: 521.2586142812144 is not greater than 521.2587877701626. Delta is -0.00017348894823498995
+Model is not converging.  Current: 521.2584339276925 is not greater than 521.2588509319944. Delta is -0.00041700430188029713
+Model is not converging.  Current: -3377.7997914707626 is not greater than -3377.7997877413636. Delta is -3.7293989407771733e-06
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -1898.061425960796 is not greater than -1898.0613699093171. Delta is -5.605147885034967e-05
+Model is not converging.  Current: -2098.900812910809 is not greater than -2098.9007927481457. Delta is -2.0162663076916942e-05
+Model is not converging.  Current: -5381.982289188268 is not greater than -5381.982196435909. Delta is -9.27523587961332e-05
+Model is not converging.  Current: -2191.680002350608 is not greater than -2191.6800014505725. Delta is -9.000355021271389e-07
+Model is not converging.  Current: -1417.3792719538903 is not greater than -1417.3785488007852. Delta is -0.0007231531051274942
+Model is not converging.  Current: -1510.5965746998058 is not greater than -1510.5963503128705. Delta is -0.000224386935315124
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -2098.900812910809 is not greater than -2098.9007927481457. Delta is -2.0162663076916942e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -4061.217368783624 is not greater than -4061.2173499326836. Delta is -1.885094025055878e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4521.6676622254245 is not greater than -4521.667619799651. Delta is -4.24257732447586e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -2993.4428683287183 is not greater than -2993.442855364439. Delta is -1.2964279449079186e-05
+Model is not converging.  Current: -3027.3949447713817 is not greater than -3027.39491647582. Delta is -2.82955616057734e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -5734.093243000324 is not greater than -5734.093218810081. Delta is -2.4190242584154475e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4153.855695103926 is not greater than -4153.8556934069875. Delta is -1.6969388525467366e-06
+Model is not converging.  Current: -4061.217368783624 is not greater than -4061.2173499326836. Delta is -1.885094025055878e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -5484.068899755994 is not greater than -5484.06888430125. Delta is -1.5454743333975784e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -3452.342946880394 is not greater than -3452.3429418026703. Delta is -5.077723471913487e-06
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -1845.4110872795318 is not greater than -1845.4109862706273. Delta is -0.00010100890449393773
+Model is not converging.  Current: -1966.5104448402235 is not greater than -1966.510439454023. Delta is -5.386200427892618e-06
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4027.8089319263327 is not greater than -4027.808925595189. Delta is -6.331143595161848e-06
+Model is not converging.  Current: -4027.8089317367285 is not greater than -4027.808925238352. Delta is -6.498376478702994e-06
+Model is not converging.  Current: -4061.217368783624 is not greater than -4061.2173499326836. Delta is -1.885094025055878e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -5734.093243000324 is not greater than -5734.093218810081. Delta is -2.4190242584154475e-05
+Model is not converging.  Current: -5484.068899755994 is not greater than -5484.06888430125. Delta is -1.5454743333975784e-05
+Model is not converging.  Current: -2098.900812910809 is not greater than -2098.9007927481457. Delta is -2.0162663076916942e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -1414.2261544458834 is not greater than -1414.2261406506627. Delta is -1.3795220638712635e-05
+Model is not converging.  Current: -1414.2261400845452 is not greater than -1414.2261386619693. Delta is -1.4225759059627308e-06
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4627.553421307289 is not greater than -4627.55253190098. Delta is -0.0008894063084881054
+Model is not converging.  Current: -4564.042587790109 is not greater than -4564.0425437741715. Delta is -4.40159374193172e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -5091.8986235309385 is not greater than -5091.898621474297. Delta is -2.0566412786138244e-06
+Model is not converging.  Current: -4460.2923701172995 is not greater than -4460.292343910131. Delta is -2.620716804813128e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -963.0447140443144 is not greater than -963.0445428011781. Delta is -0.0001712431363785072
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -3693.264681517689 is not greater than -3693.264676179946. Delta is -5.337743004929507e-06
+Model is not converging.  Current: -3693.264689282181 is not greater than -3693.2646771001373. Delta is -1.218204351971508e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -4193.637348488518 is not greater than -4193.637344646163. Delta is -3.842354999505915e-06
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -3691.659621601614 is not greater than -3691.6595804838103. Delta is -4.1117803903034655e-05
+Model is not converging.  Current: -3871.81775418531 is not greater than -3871.817665554806. Delta is -8.863050425134134e-05
+Model is not converging.  Current: -3871.8177083906276 is not greater than -3871.817689579445. Delta is -1.8811182599165477e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4627.553421307289 is not greater than -4627.55253190098. Delta is -0.0008894063084881054
+Model is not converging.  Current: -4564.042587790109 is not greater than -4564.0425437741715. Delta is -4.40159374193172e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -5262.830337424445 is not greater than -5262.830032950651. Delta is -0.0003044737941308995
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -5091.8986235309385 is not greater than -5091.898621474297. Delta is -2.0566412786138244e-06
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -965.205645384414 is not greater than -965.2056405910123. Delta is -4.793401672031905e-06
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4627.553421307289 is not greater than -4627.55253190098. Delta is -0.0008894063084881054
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -4564.042587790109 is not greater than -4564.0425437741715. Delta is -4.40159374193172e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -6627.0633196661465 is not greater than -6627.0633043224925. Delta is -1.5343654013122432e-05
+Model is not converging.  Current: -526.5976495146492 is not greater than -526.5976424275198. Delta is -7.087129461069708e-06
+Model is not converging.  Current: -526.5976531916988 is not greater than -526.5976353565013. Delta is -1.7835197468230035e-05
+Model is not converging.  Current: -6956.143427056936 is not greater than -6956.143411461787. Delta is -1.5595149307046086e-05
+Model is not converging.  Current: -1642.4040705024122 is not greater than -1642.404032705523. Delta is -3.779688927352254e-05
+Model is not converging.  Current: -1642.404074838774 is not greater than -1642.4040305403294. Delta is -4.4298444663581904e-05
+Model is not converging.  Current: -4130.664017865565 is not greater than -4130.664000538264. Delta is -1.7327301065961365e-05
+Model is not converging.  Current: -4153.855695103926 is not greater than -4153.8556934069875. Delta is -1.6969388525467366e-06
+Model is not converging.  Current: -3639.5743617672906 is not greater than -3639.574318401241. Delta is -4.3366049794713035e-05
+Model is not converging.  Current: -5484.068899755994 is not greater than -5484.06888430125. Delta is -1.5454743333975784e-05
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -3608.715244114372 is not greater than -3608.71522751745. Delta is -1.6596922250755597e-05
+Model is not converging.  Current: 730.5432939636252 is not greater than 730.5434192435979. Delta is -0.0001252799727353704
+Model is not converging.  Current: 731.074551452044 is not greater than 731.075047324576. Delta is -0.0004958725319283985
+Model is not converging.  Current: 740.0613432632556 is not greater than 740.0748926797727. Delta is -0.01354941651709396
+Model is not converging.  Current: 746.1571263369163 is not greater than 746.1573138815559. Delta is -0.00018754463951609068
+Model is not converging.  Current: -5388.155421490379 is not greater than -5388.1553669767245. Delta is -5.4513654504262377e-05
+Model is not converging.  Current: -3465.9791268501604 is not greater than -3465.978800195013. Delta is -0.000326655147546262
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -5873.420386935963 is not greater than -5873.420383456484. Delta is -3.4794784369296394e-06
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -1139.2050495219064 is not greater than -1139.204995291269. Delta is -5.4230637488217326e-05
+Model is not converging.  Current: -1464.0613036974776 is not greater than -1464.0612693648995. Delta is -3.4332578024987015e-05
+Model is not converging.  Current: -127.56091716062646 is not greater than -127.55942489095172. Delta is -0.0014922696747419195
+Model is not converging.  Current: -3165.773185341189 is not greater than -3165.7730777499432. Delta is -0.00010759124597825576
+Model is not converging.  Current: -4327.977948865152 is not greater than -4327.977900621096. Delta is -4.82440564155695e-05
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -807.782683833757 is not greater than -807.7823414899224. Delta is -0.0003423438346317198
+Model is not converging.  Current: -807.7826543959056 is not greater than -807.7823394817947. Delta is -0.0003149141109588527
+Model is not converging.  Current: -5979.831804852328 is not greater than -5979.8317923166105. Delta is -1.2535717360151466e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3551.0654195752127 is not greater than -3551.06532084966. Delta is -9.872555256151827e-05
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -5043.150542052629 is not greater than -5043.150522026315. Delta is -2.00263139049639e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -3607.7928988098747 is not greater than -3607.7928229605063. Delta is -7.584936838611611e-05
+Model is not converging.  Current: -7595.550104521722 is not greater than -7595.550098953698. Delta is -5.568023880186956e-06
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -807.782683833757 is not greater than -807.7823414899224. Delta is -0.0003423438346317198
+Model is not converging.  Current: -807.7826543959056 is not greater than -807.7823394817947. Delta is -0.0003149141109588527
+Model is not converging.  Current: -5979.831804852328 is not greater than -5979.8317923166105. Delta is -1.2535717360151466e-05
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -1560.722745810984 is not greater than -1560.7227009416436. Delta is -4.486934039960033e-05
+Model is not converging.  Current: -1541.5542163250698 is not greater than -1541.5541658987802. Delta is -5.0426289590177475e-05
+Model is not converging.  Current: -1584.1153530884949 is not greater than -1584.115159953723. Delta is -0.00019313477196192252
+Model is not converging.  Current: -3488.9127316402714 is not greater than -3488.912594924497. Delta is -0.00013671577426066506
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -3551.0654195752127 is not greater than -3551.06532084966. Delta is -9.872555256151827e-05
+Model is not converging.  Current: -5451.645066386622 is not greater than -5451.644948725167. Delta is -0.00011766145507863257
+Model is not converging.  Current: -7595.550104521722 is not greater than -7595.550098953698. Delta is -5.568023880186956e-06
+Model is not converging.  Current: -4082.4941933055575 is not greater than -4082.494190901903. Delta is -2.4036544346017763e-06
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -1090.8779623063353 is not greater than -1090.8778234655076. Delta is -0.00013884082773074624
+Model is not converging.  Current: -7595.550104521722 is not greater than -7595.550098953698. Delta is -5.568023880186956e-06
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -1410.7326903389435 is not greater than -1410.7325873109487. Delta is -0.00010302799478267843
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -3386.962484916169 is not greater than -3386.9624503261666. Delta is -3.45900025422452e-05
+Model is not converging.  Current: -3512.768321510287 is not greater than -3512.7679789897006. Delta is -0.00034252058640049654
+Model is not converging.  Current: -5734.093243000324 is not greater than -5734.093218810081. Delta is -2.4190242584154475e-05
+Model is not converging.  Current: -4528.947421321009 is not greater than -4528.947351628612. Delta is -6.969239711906994e-05
+Model is not converging.  Current: -6772.027990887714 is not greater than -6772.027942886549. Delta is -4.800116494152462e-05
+Model is not converging.  Current: -4767.588997764902 is not greater than -4767.588695229226. Delta is -0.0003025356763828313
+Model is not converging.  Current: -8493.697056666713 is not greater than -8493.697037687969. Delta is -1.8978744265041314e-05
+Model is not converging.  Current: -4328.204112238175 is not greater than -4328.204090903668. Delta is -2.1334507437131833e-05
+Model is not converging.  Current: -5964.73127133738 is not greater than -5964.731255782521. Delta is -1.5554859601252247e-05
+Model is not converging.  Current: -5488.23096907686 is not greater than -5488.23067302603. Delta is -0.00029605083000205923
+Model is not converging.  Current: -2885.145902490058 is not greater than -2885.145757240427. Delta is -0.00014524963080475572
+Model is not converging.  Current: -2885.147586734571 is not greater than -2885.147548624515. Delta is -3.811005626630504e-05
+Model is not converging.  Current: -4328.724383844206 is not greater than -4328.724190890229. Delta is -0.00019295397760288324
+Model is not converging.  Current: -6333.566234587262 is not greater than -6333.566234230414. Delta is -3.5684843169292435e-07
+Model is not converging.  Current: -2928.7626190794126 is not greater than -2928.762555478409. Delta is -6.360100360325305e-05
+Model is not converging.  Current: -5279.8284484044225 is not greater than -5279.828412384422. Delta is -3.6020000152348075e-05
+Model is not converging.  Current: -6724.436410664084 is not greater than -6724.4364060085845. Delta is -4.6554996515624225e-06
+Model is not converging.  Current: -8709.861755933183 is not greater than -8709.861702822116. Delta is -5.3111067245481536e-05
+Model is not converging.  Current: -8069.729640518344 is not greater than -8069.729621709395. Delta is -1.8808948880177923e-05
+Model is not converging.  Current: -8654.03575629402 is not greater than -8654.03575306044. Delta is -3.233581082895398e-06
+Model is not converging.  Current: -5705.372629767904 is not greater than -5705.372612111542. Delta is -1.765636170603102e-05
+Model is not converging.  Current: -3512.768321510287 is not greater than -3512.7679789897006. Delta is -0.00034252058640049654
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -2087.1423432308807 is not greater than -2087.142326005827. Delta is -1.722505385259865e-05
+Model is not converging.  Current: -4098.530452333277 is not greater than -4098.530361435222. Delta is -9.08980546228122e-05
+Model is not converging.  Current: -5310.061653413074 is not greater than -5310.061645234442. Delta is -8.178632015187759e-06
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -7269.7094268835435 is not greater than -7269.709418387627. Delta is -8.495916517858859e-06
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -6837.055124390259 is not greater than -6837.055092965638. Delta is -3.142462082905695e-05
+Model is not converging.  Current: -4288.943469642746 is not greater than -4288.943431834785. Delta is -3.7807961234648246e-05
+  [Window 11/13] ✓
+  [Window 7/13] ✓
+  [Window 2/13] ✓
+  [Window 13/13] ✓
+  [Window 4/13] ✓
+  [Window 1/13] ✓
+  [Window 12/13] ✓
+  [Window 6/13] ✓
+  [Window 8/13] ✓
+  [Window 9/13] ✓
+  [Window 5/13] ✓
+  [Window 3/13] ✓
+  [Window 10/13] ✓
+
+[Window 1/13]
+
+======================================================================
+  Window : 2010-01-01 → 2012-01-01 | OOS 2012-01-01 → 2013-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : -1.02%  cagr=-0.51%  sharpe=-0.459  calmar=-0.101  maxdd=5.06%  (3.1s)
+  Baseline OOS return : -0.58%  cagr=-0.58%  sharpe=-0.716  calmar=-0.309  maxdd=1.88%  (6.9s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=-0.26%  this=-0.26%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=-0.26%  this=-1.24%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=-0.26%  this=-0.49%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=-0.26%  this=-0.81%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+0.96%  this=+0.96%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+0.96%  this=-1.75%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+0.96%  this=-0.49%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+0.96%  this=+0.14%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+0.96%  this=-0.46%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+0.96%  this=+0.49%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+0.96%  this=+0.56%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+0.96%  this=+0.70%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+1.23%  this=+1.23%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+1.48%  this=+1.48%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+1.48%  this=+1.24%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+1.48%  this=-1.16%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+1.48%  this=+1.37%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+1.48%  this=+0.02%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+1.48%  this=-0.89%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+1.48%  this=+0.87%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+1.48%  this=+0.78%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+1.48%  this=+1.40%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+1.48%  this=+0.66%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+1.48%  this=-0.13%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+1.48%  this=+0.24%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+1.66%  this=+1.66%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+1.66%  this=-0.12%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+1.66%  this=+1.12%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+1.66%  this=-0.08%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+1.66%  this=+0.18%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+1.66%  this=-0.30%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+1.66%  this=+1.40%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+1.66%  this=+1.27%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+1.66%  this=+1.45%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+1.66%  this=-0.31%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+1.66%  this=-0.63%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+1.66%  this=-0.76%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+1.66%  this=-0.43%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+1.66%  this=+1.16%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+1.66%  this=-0.82%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+1.66%  this=-0.68%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+1.66%  this=+1.18%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+1.66%  this=+1.04%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+1.66%  this=+0.81%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+1.66%  this=+1.05%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+1.66%  this=-0.06%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+1.66%  this=-0.98%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+1.66%  this=-0.47%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+1.66%  this=-0.29%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+1.66%  this=-0.32%
+  Best IS return  : +1.66%  (Δ vs baseline: +2.68%)
+  OOS HMM  return : -0.95%  cagr=-0.95%  sharpe=-1.065  calmar=-0.478  maxdd=1.98%  (1.1s)
+  OOS Δ return    : -0.37%  ✗ DEGRADATION
+
+[Window 2/13]
+
+======================================================================
+  Window : 2011-01-01 → 2013-01-01 | OOS 2013-01-01 → 2014-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : -1.54%  cagr=-0.77%  sharpe=-0.541  calmar=-0.143  maxdd=5.40%  (8.2s)
+  Baseline OOS return : +0.47%  cagr=+0.47%  sharpe=-0.244  calmar=0.273  maxdd=1.71%  (12.0s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+0.39%  this=+0.39%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+0.39%  this=-1.44%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+0.39%  this=-1.28%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+0.39%  this=-0.27%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+0.86%  this=+0.86%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+0.86%  this=-1.71%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+0.86%  this=-1.23%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+0.86%  this=-1.12%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+0.86%  this=-0.55%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+0.86%  this=-1.01%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+0.86%  this=-0.15%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+0.86%  this=-0.98%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+0.86%  this=-0.63%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+0.86%  this=-1.57%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+0.86%  this=-0.26%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+0.86%  this=-0.86%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+0.86%  this=-1.03%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+0.86%  this=-0.89%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+0.86%  this=-0.66%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+0.86%  this=-0.99%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+0.86%  this=-1.27%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+0.86%  this=-0.16%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+0.86%  this=+0.05%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+0.86%  this=+0.26%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+0.86%  this=-0.05%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+0.86%  this=-0.85%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+0.86%  this=-0.95%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+0.86%  this=-0.21%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+0.86%  this=-0.57%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+0.86%  this=-1.55%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+0.86%  this=-1.09%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+0.86%  this=-0.41%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+0.86%  this=-0.70%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+0.86%  this=-0.32%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+0.86%  this=+0.41%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+0.86%  this=-0.18%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+0.86%  this=-1.03%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+0.86%  this=-0.51%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+0.86%  this=-0.12%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+0.86%  this=-1.41%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+0.86%  this=-0.44%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+0.86%  this=-0.88%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+0.86%  this=-0.34%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+0.86%  this=-0.33%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+0.86%  this=-0.44%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+0.86%  this=-0.63%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+0.86%  this=-1.62%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+0.86%  this=-1.05%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+0.86%  this=-1.16%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+0.86%  this=-0.41%
+  Best IS return  : +0.86%  (Δ vs baseline: +2.40%)
+  OOS HMM  return : -0.32%  cagr=-0.32%  sharpe=-0.896  calmar=-0.232  maxdd=1.40%  (1.0s)
+  OOS Δ return    : -0.79%  ✗ DEGRADATION
+
+[Window 3/13]
+
+======================================================================
+  Window : 2012-01-01 → 2014-01-01 | OOS 2014-01-01 → 2015-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +1.73%  cagr=+0.86%  sharpe=-0.044  calmar=0.458  maxdd=1.88%  (7.8s)
+  Baseline OOS return : +0.55%  cagr=+0.55%  sharpe=-0.176  calmar=0.258  maxdd=2.13%  (6.4s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+1.98%  this=+1.98%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+1.98%  this=+1.93%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+1.98%  this=+1.39%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+2.21%  this=+2.21%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+2.90%  this=+2.90%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+2.90%  this=+2.04%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+2.90%  this=+1.75%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+2.90%  this=+2.44%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+2.90%  this=-0.12%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+2.90%  this=+2.67%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+2.90%  this=+1.02%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+2.90%  this=+1.82%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+2.90%  this=+1.55%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+2.90%  this=+2.16%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+2.90%  this=+1.39%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+2.90%  this=+2.22%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+2.90%  this=+1.12%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+2.90%  this=+2.31%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+2.90%  this=+1.82%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+2.90%  this=+1.71%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+2.90%  this=+1.11%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+2.90%  this=+2.43%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+2.90%  this=+1.92%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+2.90%  this=+2.88%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+2.90%  this=+2.75%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+2.90%  this=+2.76%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+2.90%  this=+2.11%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+2.90%  this=+2.90%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+2.90%  this=+1.69%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+2.90%  this=+1.80%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+2.90%  this=+2.78%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+2.90%  this=+2.78%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+2.90%  this=+2.71%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+2.95%  this=+2.95%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+2.95%  this=+1.91%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+2.95%  this=+2.06%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+2.95%  this=+2.32%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+2.95%  this=+2.61%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+2.95%  this=+1.89%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+2.95%  this=+0.09%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+2.95%  this=+1.60%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+2.95%  this=+2.81%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+2.95%  this=+2.82%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+2.95%  this=+2.79%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+2.95%  this=+2.25%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+2.99%  this=+2.99%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+2.99%  this=+2.20%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+2.99%  this=+2.36%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+2.99%  this=+2.75%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+2.99%  this=+2.14%
+  Best IS return  : +2.99%  (Δ vs baseline: +1.25%)
+  OOS HMM  return : +1.78%  cagr=+1.78%  sharpe=0.575  calmar=2.050  maxdd=0.87%  (0.5s)
+  OOS Δ return    : +1.23%  ✓ IMPROVEMENT
+
+[Window 4/13]
+
+======================================================================
+  Window : 2013-01-01 → 2015-01-01 | OOS 2015-01-01 → 2016-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +2.63%  cagr=+1.31%  sharpe=0.132  calmar=0.590  maxdd=2.21%  (11.4s)
+  Baseline OOS return : +0.62%  cagr=+0.62%  sharpe=-0.089  calmar=0.232  maxdd=2.67%  (8.4s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+2.63%  this=+1.46%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+2.67%  this=+2.67%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+3.06%  this=+3.06%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+3.06%  this=+1.11%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+3.24%  this=+3.24%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+3.24%  this=+2.69%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+3.24%  this=+2.82%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+3.24%  this=+2.80%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+3.24%  this=+1.05%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+3.24%  this=+2.25%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+3.24%  this=-0.04%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+3.24%  this=+2.03%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+3.26%  this=+3.26%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+3.26%  this=+2.70%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+3.26%  this=+3.19%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+3.26%  this=+2.92%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+3.26%  this=+3.20%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+3.26%  this=+1.72%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+3.26%  this=+2.76%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+3.26%  this=+1.78%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+3.26%  this=+1.56%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+3.26%  this=+3.20%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+3.40%  this=+3.40%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+3.40%  this=+2.97%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+3.49%  this=+3.49%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+3.62%  this=+3.62%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+3.62%  this=+1.87%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+3.62%  this=+3.37%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+3.72%  this=+3.72%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+3.72%  this=+2.13%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+3.72%  this=+3.39%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+3.74%  this=+3.74%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+3.74%  this=+2.89%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+3.74%  this=+2.92%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+3.74%  this=+2.53%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+3.74%  this=+3.01%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+3.74%  this=+2.88%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+3.74%  this=+3.27%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+3.74%  this=+2.86%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+3.74%  this=+2.84%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+3.74%  this=+3.02%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+3.74%  this=+3.46%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+3.74%  this=+3.48%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+3.74%  this=+3.42%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+3.74%  this=+3.13%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+3.74%  this=+2.39%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+3.74%  this=+2.68%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+3.74%  this=+2.13%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+3.74%  this=+2.01%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+3.74%  this=+2.17%
+  Best IS return  : +3.74%  (Δ vs baseline: +1.11%)
+  OOS HMM  return : +0.63%  cagr=+0.63%  sharpe=-0.126  calmar=0.335  maxdd=1.87%  (0.6s)
+  OOS Δ return    : +0.01%  ✓ IMPROVEMENT
+
+[Window 5/13]
+
+======================================================================
+  Window : 2014-01-01 → 2016-01-01 | OOS 2016-01-01 → 2017-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +0.50%  cagr=+0.25%  sharpe=-0.223  calmar=0.081  maxdd=3.10%  (3.7s)
+  Baseline OOS return : +2.51%  cagr=+2.50%  sharpe=0.488  calmar=1.229  maxdd=2.03%  (3.5s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+1.52%  this=+1.52%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+1.52%  this=+0.96%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+2.27%  this=+2.27%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+2.48%  this=+2.48%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+2.48%  this=+0.35%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+2.48%  this=+0.77%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+2.48%  this=+1.18%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+2.48%  this=+0.42%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+2.48%  this=+1.56%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+2.48%  this=+0.35%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+2.48%  this=+1.29%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+3.12%  this=+3.12%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+3.12%  this=+2.57%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+3.12%  this=+2.22%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+3.12%  this=+2.13%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+3.12%  this=+1.98%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+3.12%  this=+0.99%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+3.16%  this=+3.16%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+3.16%  this=+0.63%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+3.16%  this=+2.90%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+3.16%  this=+2.53%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+3.16%  this=+2.42%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+3.16%  this=+2.27%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+3.40%  this=+3.40%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+3.61%  this=+3.61%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+3.61%  this=+3.61%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+3.61%  this=+1.90%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+3.61%  this=+3.61%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+3.61%  this=+1.91%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+3.61%  this=-0.70%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+3.61%  this=+1.99%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+3.61%  this=+3.54%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+3.61%  this=+3.54%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+3.80%  this=+3.80%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+3.80%  this=+3.59%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+3.80%  this=-0.51%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+3.80%  this=+2.06%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+3.80%  this=+1.70%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+3.80%  this=+2.72%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+3.80%  this=+1.64%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+3.80%  this=+1.30%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+3.80%  this=+3.59%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+3.80%  this=+3.47%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+3.80%  this=+3.46%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+3.80%  this=+1.63%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+3.80%  this=+2.15%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+3.80%  this=+3.41%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+3.80%  this=+2.73%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+3.80%  this=+2.08%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+3.80%  this=+0.74%
+  Best IS return  : +3.80%  (Δ vs baseline: +3.29%)
+  OOS HMM  return : +0.85%  cagr=+0.85%  sharpe=-0.088  calmar=0.510  maxdd=1.66%  (0.6s)
+  OOS Δ return    : -1.66%  ✗ DEGRADATION
+
+[Window 6/13]
+
+======================================================================
+  Window : 2015-01-01 → 2017-01-01 | OOS 2017-01-01 → 2018-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +5.53%  cagr=+2.72%  sharpe=0.463  calmar=0.640  maxdd=4.26%  (4.1s)
+  Baseline OOS return : +2.80%  cagr=+2.80%  sharpe=0.525  calmar=1.208  maxdd=2.32%  (3.2s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+5.53%  this=+1.07%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+5.53%  this=+3.94%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+5.53%  this=+1.69%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+5.53%  this=+1.17%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+5.53%  this=+0.42%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+5.53%  this=+5.16%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+5.53%  this=+1.72%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+5.53%  this=+1.33%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+5.53%  this=+0.97%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+5.53%  this=+2.24%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+5.53%  this=+3.23%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+5.53%  this=+4.60%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+5.53%  this=+4.60%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+5.53%  this=+3.08%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+5.53%  this=+5.45%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+5.53%  this=+0.97%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+5.53%  this=+5.10%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+5.53%  this=+2.53%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+5.53%  this=+2.91%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+5.53%  this=+5.21%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+5.53%  this=+5.52%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+5.53%  this=+5.21%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+5.53%  this=+4.44%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+5.53%  this=+5.20%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+5.53%  this=+4.05%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+5.53%  this=+4.12%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+5.53%  this=+4.38%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+5.53%  this=+5.15%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+5.53%  this=+4.38%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+5.53%  this=+1.91%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+5.53%  this=+5.47%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+5.53%  this=+5.24%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+5.53%  this=+5.24%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+5.53%  this=+4.95%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+5.53%  this=+4.59%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+5.53%  this=+5.47%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+5.53%  this=+3.79%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+5.53%  this=+3.16%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+5.53%  this=+3.33%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+5.53%  this=+4.88%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+5.53%  this=+4.93%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+5.53%  this=+5.46%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+5.53%  this=+5.46%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+5.53%  this=+5.14%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+5.53%  this=+3.88%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+5.53%  this=+3.55%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+5.53%  this=+3.12%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+5.53%  this=+4.79%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+5.53%  this=+5.30%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+5.53%  this=+4.32%
+  Best IS return  : +5.52%  (Δ vs baseline: -0.01%)
+  OOS HMM  return : +2.44%  cagr=+2.44%  sharpe=0.446  calmar=1.055  maxdd=2.32%  (0.7s)
+  OOS Δ return    : -0.36%  ✗ DEGRADATION
+
+[Window 7/13]
+
+======================================================================
+  Window : 2016-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +7.83%  cagr=+3.84%  sharpe=0.846  calmar=1.739  maxdd=2.21%  (7.6s)
+  Baseline OOS return : -6.37%  cagr=-6.37%  sharpe=-1.495  calmar=-0.684  maxdd=9.31%  (4.3s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+7.83%  this=+2.40%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+7.83%  this=+7.60%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+7.83%  this=+3.94%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+7.83%  this=+4.97%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+7.83%  this=+3.64%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+7.83%  this=+7.73%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+7.98%  this=+7.98%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+7.98%  this=+3.64%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+7.98%  this=+3.16%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+7.98%  this=+5.05%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+7.98%  this=+7.58%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+7.98%  this=+4.16%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+7.98%  this=+7.41%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+7.98%  this=+6.82%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+7.98%  this=+7.29%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+7.98%  this=+5.93%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+7.98%  this=+5.90%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+7.98%  this=+7.27%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+7.98%  this=+5.54%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+7.98%  this=+6.73%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+7.98%  this=+5.39%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+7.98%  this=+7.61%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+7.98%  this=+7.56%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+7.98%  this=+7.97%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+7.98%  this=+7.97%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+7.98%  this=+6.89%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+7.98%  this=+5.76%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+7.98%  this=+5.88%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+7.98%  this=+6.75%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+7.98%  this=+5.56%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+7.98%  this=+7.92%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+7.98%  this=+7.92%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+7.98%  this=+7.95%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+7.98%  this=+7.97%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+7.98%  this=+7.30%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+7.98%  this=+6.87%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+7.98%  this=+5.46%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+7.98%  this=+7.57%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+7.98%  this=+7.19%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+7.98%  this=+7.14%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+7.98%  this=+6.51%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+7.98%  this=+7.94%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+7.98%  this=+7.92%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+7.98%  this=+7.98%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+7.98%  this=+7.97%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+7.98%  this=+7.46%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+7.98%  this=+4.20%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+7.98%  this=+5.68%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+7.98%  this=+4.45%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+7.98%  this=+3.98%
+  Best IS return  : +7.98%  (Δ vs baseline: +0.15%)
+  OOS HMM  return : -4.58%  cagr=-4.58%  sharpe=-1.360  calmar=-0.644  maxdd=7.11%  (1.2s)
+  OOS Δ return    : +1.79%  ✓ IMPROVEMENT
+
+[Window 8/13]
+
+======================================================================
+  Window : 2017-01-01 → 2019-01-01 | OOS 2019-01-01 → 2020-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : -10.43%  cagr=-5.36%  sharpe=-1.257  calmar=-0.387  maxdd=13.86%  (6.1s)
+  Baseline OOS return : +5.01%  cagr=+5.02%  sharpe=0.875  calmar=1.434  maxdd=3.50%  (6.7s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=-3.25%  this=-3.25%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=-3.25%  this=-6.32%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=-3.25%  this=-5.00%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=-3.25%  this=-7.34%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=-1.39%  this=-1.39%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=-1.39%  this=-4.20%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=-1.39%  this=-11.04%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=-1.39%  this=-4.24%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=-1.39%  this=-3.56%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=-1.39%  this=-4.18%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=-1.39%  this=-2.52%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=-1.39%  this=-4.94%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=-0.64%  this=-0.64%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=-0.64%  this=-1.39%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=-0.64%  this=-2.35%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=-0.64%  this=-2.47%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=-0.64%  this=-5.91%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=-0.64%  this=-2.02%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=-0.64%  this=-2.42%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=-0.64%  this=-1.29%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=-0.64%  this=-1.23%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=-0.64%  this=-1.39%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=-0.64%  this=-4.74%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+0.32%  this=+0.32%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+0.32%  this=-0.05%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+0.32%  this=-4.44%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+0.32%  this=-7.56%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+0.44%  this=+0.44%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+0.44%  this=-4.08%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+0.44%  this=-4.05%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+0.44%  this=-1.42%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+0.44%  this=-1.03%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+0.44%  this=-1.10%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+0.44%  this=-0.24%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+0.44%  this=-4.91%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+0.44%  this=-4.81%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+0.44%  this=-3.63%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+2.21%  this=+2.21%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+2.21%  this=-9.32%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+2.21%  this=-7.38%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+2.21%  this=-8.99%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+2.21%  this=-0.63%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+2.21%  this=-0.61%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+2.21%  this=+0.19%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+2.21%  this=-0.16%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+2.21%  this=-4.88%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+2.21%  this=-0.86%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+2.21%  this=-4.94%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+2.21%  this=-0.84%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+2.21%  this=-1.75%
+  Best IS return  : +2.21%  (Δ vs baseline: +12.64%)
+  OOS HMM  return : -0.41%  cagr=-0.41%  sharpe=-0.517  calmar=-0.128  maxdd=3.22%  (0.6s)
+  OOS Δ return    : -5.42%  ✗ DEGRADATION
+
+[Window 9/13]
+
+======================================================================
+  Window : 2018-01-01 → 2020-01-01 | OOS 2020-01-01 → 2021-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +2.49%  cagr=+1.24%  sharpe=0.071  calmar=0.118  maxdd=10.50%  (5.1s)
+  Baseline OOS return : +13.82%  cagr=+13.79%  sharpe=1.244  calmar=2.194  maxdd=6.28%  (5.0s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+2.49%  this=+1.63%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+2.49%  this=+1.55%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+3.45%  this=+3.45%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+4.29%  this=+4.29%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+4.74%  this=+4.74%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+4.74%  this=+2.48%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+4.74%  this=+2.39%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+4.74%  this=+3.27%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+4.74%  this=+1.82%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+4.74%  this=+4.11%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+4.74%  this=+3.69%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+4.74%  this=+3.54%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+5.31%  this=+5.31%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+6.96%  this=+6.96%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+6.96%  this=+5.86%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+6.96%  this=+5.47%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+6.96%  this=+5.80%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+6.96%  this=+4.99%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+6.96%  this=+4.25%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+6.96%  this=+4.44%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+6.96%  this=+6.01%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+6.96%  this=+6.01%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+6.96%  this=+5.67%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+6.96%  this=+6.35%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+6.96%  this=+5.33%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+6.96%  this=+6.12%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+6.96%  this=-1.15%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+6.96%  this=+5.77%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+6.96%  this=+4.67%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+6.96%  this=-1.89%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+6.96%  this=+3.70%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+6.96%  this=+6.35%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+6.96%  this=+6.40%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+6.96%  this=+5.77%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+6.96%  this=+4.12%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+6.96%  this=+4.51%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+6.96%  this=+4.85%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+6.96%  this=+2.85%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+6.96%  this=+4.46%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+6.96%  this=+3.96%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+6.96%  this=+4.22%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+6.96%  this=+6.73%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+6.96%  this=+6.68%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+6.96%  this=+5.26%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+6.96%  this=+6.62%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+6.96%  this=+2.09%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+6.96%  this=+5.79%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+6.96%  this=+5.97%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+6.96%  this=-0.59%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+7.19%  this=+7.19%
+  Best IS return  : +7.19%  (Δ vs baseline: +4.71%)
+  OOS HMM  return : +2.99%  cagr=+2.99%  sharpe=0.799  calmar=2.436  maxdd=1.23%  (0.6s)
+  OOS Δ return    : -10.82%  ✗ DEGRADATION
+
+[Window 10/13]
+
+======================================================================
+  Window : 2019-01-01 → 2021-01-01 | OOS 2021-01-01 → 2022-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +18.77%  cagr=+8.97%  sharpe=0.972  calmar=1.374  maxdd=6.53%  (8.4s)
+  Baseline OOS return : +16.04%  cagr=+16.05%  sharpe=2.053  calmar=3.488  maxdd=4.60%  (9.5s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+18.77%  this=+7.73%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+18.77%  this=+12.12%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+18.77%  this=+14.28%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+18.77%  this=+7.36%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+18.77%  this=+4.87%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+18.77%  this=+15.22%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+18.77%  this=+10.98%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+18.77%  this=+7.04%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+18.77%  this=+6.36%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+18.77%  this=+9.58%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+18.77%  this=+13.18%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+18.77%  this=+9.92%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+18.77%  this=+13.32%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+18.77%  this=+8.90%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+18.77%  this=+10.55%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+18.77%  this=+10.26%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+18.77%  this=+8.64%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+18.77%  this=+13.25%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+18.77%  this=+3.86%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+18.77%  this=+10.77%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+18.77%  this=+14.04%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+18.77%  this=+13.59%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+18.77%  this=+11.27%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+18.77%  this=+14.15%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+18.77%  this=+14.31%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+18.77%  this=+8.66%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+18.77%  this=+10.42%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+18.77%  this=+10.97%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+18.77%  this=+7.99%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+18.77%  this=+7.95%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+18.77%  this=+14.65%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+18.77%  this=+14.65%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+18.77%  this=+14.25%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+18.77%  this=+14.10%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+18.77%  this=+9.72%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+18.77%  this=+14.96%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+18.77%  this=+17.48%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+18.77%  this=+11.02%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+18.77%  this=+11.00%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+18.77%  this=+17.11%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+18.77%  this=+14.26%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+18.77%  this=+16.12%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+18.77%  this=+16.17%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+18.77%  this=+14.16%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+18.77%  this=+16.31%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+18.77%  this=+16.31%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+18.77%  this=+11.87%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+18.77%  this=+17.11%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+18.77%  this=+18.21%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+18.77%  this=+18.27%
+  Best IS return  : +18.27%  (Δ vs baseline: -0.50%)
+  OOS HMM  return : +15.00%  cagr=+15.01%  sharpe=1.980  calmar=3.289  maxdd=4.56%  (0.5s)
+  OOS Δ return    : -1.04%  ✗ DEGRADATION
+
+[Window 11/13]
+
+======================================================================
+  Window : 2020-01-01 → 2022-01-01 | OOS 2022-01-01 → 2023-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +34.40%  cagr=+15.92%  sharpe=1.557  calmar=2.533  maxdd=6.28%  (5.9s)
+  Baseline OOS return : -2.94%  cagr=-2.94%  sharpe=-0.228  calmar=-0.230  maxdd=12.76%  (4.8s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+34.40%  this=+15.54%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+34.40%  this=+27.01%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+34.40%  this=+20.51%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+34.40%  this=+17.72%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+34.40%  this=+7.43%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+34.40%  this=+25.52%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+34.40%  this=+26.03%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+34.40%  this=+15.99%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+34.40%  this=+19.12%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+34.40%  this=+18.03%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+34.40%  this=+27.71%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+34.40%  this=+27.69%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+34.40%  this=+28.20%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+34.40%  this=+28.83%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+34.40%  this=+28.85%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+34.40%  this=+28.62%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+34.40%  this=+29.34%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+34.40%  this=+29.55%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+34.40%  this=+28.62%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+34.40%  this=+29.02%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+34.40%  this=+29.58%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+34.40%  this=+29.58%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+34.40%  this=+29.58%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+34.40%  this=+29.58%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+34.40%  this=+29.24%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+34.40%  this=+28.93%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+34.40%  this=+18.32%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+34.40%  this=+29.63%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+34.40%  this=+29.63%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+34.40%  this=+29.02%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+34.40%  this=+26.74%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+34.40%  this=+29.74%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+34.40%  this=+29.65%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+34.40%  this=+29.74%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+34.40%  this=+23.17%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+34.40%  this=+26.65%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+34.40%  this=+24.22%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+34.40%  this=+16.90%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+34.40%  this=+25.62%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+34.40%  this=+14.69%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+34.40%  this=+25.81%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+34.40%  this=+29.73%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+34.40%  this=+29.55%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+34.40%  this=+29.01%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+34.40%  this=+29.84%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+34.40%  this=+25.40%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+34.40%  this=+16.91%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+34.40%  this=+25.13%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+34.40%  this=+25.54%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+34.40%  this=+21.12%
+  Best IS return  : +29.84%  (Δ vs baseline: -4.56%)
+  OOS HMM  return : -3.36%  cagr=-3.36%  sharpe=-0.348  calmar=-0.331  maxdd=10.17%  (1.2s)
+  OOS Δ return    : -0.43%  ✗ DEGRADATION
+
+[Window 12/13]
+
+======================================================================
+  Window : 2021-01-01 → 2023-01-01 | OOS 2023-01-01 → 2024-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +11.34%  cagr=+5.52%  sharpe=0.440  calmar=0.358  maxdd=15.44%  (9.0s)
+  Baseline OOS return : -4.02%  cagr=-4.02%  sharpe=-0.551  calmar=-0.393  maxdd=10.24%  (11.3s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+11.34%  this=+2.38%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+11.34%  this=+6.51%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+11.34%  this=+10.45%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+11.34%  this=+4.97%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+11.34%  this=-1.24%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+11.34%  this=+8.23%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+11.34%  this=+9.00%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+11.34%  this=+6.78%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+11.34%  this=+4.82%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+12.65%  this=+12.65%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+12.65%  this=+8.65%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+12.65%  this=+7.70%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+12.65%  this=+9.24%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+12.65%  this=+5.78%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+12.65%  this=+7.25%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+12.65%  this=+8.93%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+12.65%  this=+5.20%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+12.65%  this=+7.27%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+12.65%  this=+10.67%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+12.65%  this=+11.46%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+13.08%  this=+13.08%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+13.08%  this=+11.84%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+14.01%  this=+14.01%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+14.01%  this=+11.04%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+14.01%  this=+11.05%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+14.01%  this=+11.47%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+14.01%  this=+8.18%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+14.01%  this=+12.73%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+14.01%  this=+10.68%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+14.01%  this=+8.38%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+14.01%  this=+9.87%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+14.01%  this=+12.70%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+14.01%  this=+12.70%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+14.01%  this=+13.07%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+14.01%  this=+10.37%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+14.01%  this=+9.50%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+14.01%  this=+13.42%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+14.01%  this=+12.18%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+14.01%  this=+8.72%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+14.01%  this=+12.30%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+14.01%  this=+8.23%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+14.01%  this=+12.71%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+14.35%  this=+14.35%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+14.75%  this=+14.75%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+14.75%  this=+14.22%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+14.75%  this=+3.89%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+14.75%  this=+13.76%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+14.75%  this=+4.65%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+14.75%  this=+6.97%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+14.75%  this=+14.56%
+  Best IS return  : +14.75%  (Δ vs baseline: +3.41%)
+  OOS HMM  return : +2.32%  cagr=+2.32%  sharpe=0.217  calmar=0.291  maxdd=7.99%  (0.6s)
+  OOS Δ return    : +6.34%  ✓ IMPROVEMENT
+
+[Window 13/13]
+
+======================================================================
+  Window : 2022-01-01 → 2024-01-01 | OOS 2024-01-01 → 2025-01-01
+  Trials : 50
+======================================================================
+  Baseline IS  return : +8.17%  cagr=+4.01%  sharpe=0.308  calmar=0.314  maxdd=12.76%  (5.0s)
+  Baseline OOS return : +5.24%  cagr=+5.23%  sharpe=0.448  calmar=0.562  maxdd=9.30%  (15.9s)
+
+  Optimising on IS period (50 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   2.0%  trial=  1/50  best=+8.17%  this=+6.01%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   4.0%  trial=  2/50  best=+8.17%  this=+6.75%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.0%  trial=  3/50  best=+10.48%  this=+10.48%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]   8.0%  trial=  4/50  best=+10.48%  this=+2.55%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  5/50  best=+10.48%  this=-5.05%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  12.0%  trial=  6/50  best=+10.48%  this=+4.17%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  14.0%  trial=  7/50  best=+10.48%  this=+7.06%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.0%  trial=  8/50  best=+10.48%  this=-3.04%
+  [████░░░░░░░░░░░░░░░░░░░░░]  18.0%  trial=  9/50  best=+10.48%  this=+5.05%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial= 10/50  best=+10.48%  this=+7.24%
+  [█████░░░░░░░░░░░░░░░░░░░░]  22.0%  trial= 11/50  best=+10.48%  this=+3.63%
+  [██████░░░░░░░░░░░░░░░░░░░]  24.0%  trial= 12/50  best=+10.48%  this=+8.84%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.0%  trial= 13/50  best=+10.48%  this=+1.26%
+  [███████░░░░░░░░░░░░░░░░░░]  28.0%  trial= 14/50  best=+10.48%  this=+4.74%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial= 15/50  best=+10.48%  this=+3.24%
+  [████████░░░░░░░░░░░░░░░░░]  32.0%  trial= 16/50  best=+10.48%  this=+7.12%
+  [████████░░░░░░░░░░░░░░░░░]  34.0%  trial= 17/50  best=+10.48%  this=+0.02%
+  [█████████░░░░░░░░░░░░░░░░]  36.0%  trial= 18/50  best=+10.48%  this=+8.42%
+  [█████████░░░░░░░░░░░░░░░░]  38.0%  trial= 19/50  best=+10.48%  this=+8.67%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 20/50  best=+10.48%  this=+6.01%
+  [██████████░░░░░░░░░░░░░░░]  42.0%  trial= 21/50  best=+14.05%  this=+14.05%
+  [███████████░░░░░░░░░░░░░░]  44.0%  trial= 22/50  best=+14.05%  this=+11.98%
+  [███████████░░░░░░░░░░░░░░]  46.0%  trial= 23/50  best=+14.05%  this=+13.85%
+  [████████████░░░░░░░░░░░░░]  48.0%  trial= 24/50  best=+14.05%  this=+13.85%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 25/50  best=+14.05%  this=+11.87%
+  [█████████████░░░░░░░░░░░░]  52.0%  trial= 26/50  best=+14.05%  this=+13.85%
+  [█████████████░░░░░░░░░░░░]  54.0%  trial= 27/50  best=+14.05%  this=+9.67%
+  [██████████████░░░░░░░░░░░]  56.0%  trial= 28/50  best=+14.05%  this=-4.96%
+  [██████████████░░░░░░░░░░░]  58.0%  trial= 29/50  best=+14.05%  this=+14.01%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 30/50  best=+14.05%  this=+4.76%
+  [███████████████░░░░░░░░░░]  62.0%  trial= 31/50  best=+14.05%  this=+5.80%
+  [████████████████░░░░░░░░░]  64.0%  trial= 32/50  best=+14.05%  this=+12.03%
+  [████████████████░░░░░░░░░]  66.0%  trial= 33/50  best=+14.05%  this=+13.90%
+  [█████████████████░░░░░░░░]  68.0%  trial= 34/50  best=+14.05%  this=+14.05%
+  [█████████████████░░░░░░░░]  70.0%  trial= 35/50  best=+14.05%  this=+0.46%
+  [██████████████████░░░░░░░]  72.0%  trial= 36/50  best=+14.05%  this=-3.56%
+  [██████████████████░░░░░░░]  74.0%  trial= 37/50  best=+14.05%  this=+6.27%
+  [███████████████████░░░░░░]  76.0%  trial= 38/50  best=+14.05%  this=+6.19%
+  [███████████████████░░░░░░]  78.0%  trial= 39/50  best=+14.05%  this=+4.28%
+  [████████████████████░░░░░]  80.0%  trial= 40/50  best=+14.05%  this=+6.49%
+  [████████████████████░░░░░]  82.0%  trial= 41/50  best=+14.05%  this=+9.48%
+  [█████████████████████░░░░]  84.0%  trial= 42/50  best=+14.05%  this=+13.90%
+  [█████████████████████░░░░]  86.0%  trial= 43/50  best=+14.05%  this=+13.45%
+  [██████████████████████░░░]  88.0%  trial= 44/50  best=+14.05%  this=+7.70%
+  [██████████████████████░░░]  90.0%  trial= 45/50  best=+14.05%  this=+6.47%
+  [███████████████████████░░]  92.0%  trial= 46/50  best=+14.05%  this=+8.90%
+  [███████████████████████░░]  94.0%  trial= 47/50  best=+14.05%  this=+14.05%
+  [████████████████████████░]  96.0%  trial= 48/50  best=+14.05%  this=+6.31%
+  [████████████████████████░]  98.0%  trial= 49/50  best=+14.05%  this=+4.67%
+  [█████████████████████████] 100.0%  trial= 50/50  best=+14.05%  this=+11.08%
+  Best IS return  : +14.05%  (Δ vs baseline: +5.88%)
+  OOS HMM  return : +0.81%  cagr=+0.80%  sharpe=0.014  calmar=0.124  maxdd=6.50%  (1.3s)
+  OOS Δ return    : -4.43%  ✗ DEGRADATION
+
+  Total walk-forward time: 3917.5s
+
+
+==================================================================================================================================
+  WALK-FORWARD SUMMARY REPORT
+==================================================================================================================================
+
+IS Start      OOS Start        Δ Ret%    Δ CAGR%   Δ Sharpe   Δ Calmar   Δ MaxDD%    Result
+----------------------------------------------------------------------------------------------------------------------------------
+2010-01-01    2012-01-01        -0.37      -0.36     -0.349     -0.169      +0.10    ✗ LOSS
+2011-01-01    2013-01-01        -0.79      -0.79     -0.652     -0.505      -0.31    ✗ LOSS
+2012-01-01    2014-01-01        +1.23      +1.23     +0.751     +1.791      -1.26     ✓ WIN
+2013-01-01    2015-01-01        +0.01      +0.01     -0.037     +0.103      -0.80     ✓ WIN
+2014-01-01    2016-01-01        -1.66      -1.65     -0.576     -0.719      -0.37    ✗ LOSS
+2015-01-01    2017-01-01        -0.36      -0.36     -0.080     -0.153      -0.00    ✗ LOSS
+2016-01-01    2018-01-01        +1.79      +1.79     +0.135     +0.040      -2.20     ✓ WIN
+2017-01-01    2019-01-01        -5.42      -5.43     -1.391     -1.562      -0.28    ✗ LOSS
+2018-01-01    2020-01-01       -10.82     -10.80     -0.445     +0.242      -5.06    ✗ LOSS
+2019-01-01    2021-01-01        -1.04      -1.04     -0.073     -0.199      -0.04    ✗ LOSS
+2020-01-01    2022-01-01        -0.43      -0.43     -0.120     -0.101      -2.59    ✗ LOSS
+2021-01-01    2023-01-01        +6.34      +6.35     +0.767     +0.684      -2.24     ✓ WIN
+2022-01-01    2024-01-01        -4.43      -4.42     -0.434     -0.438      -2.79    ✗ LOSS
+
+==================================================================================================================================
+  Total windows     : 13
+  HMM wins (OOS)    : 4 / 13  (30.8%)  [based on total return]
+  Mean Δ return     : -1.23%  per window
+  Best  window      : 2021-01-01 → 2024-01-01  Δ=+6.34%
+  Worst window      : 2018-01-01 → 2021-01-01  Δ=-10.82%
+
+  OOS METRIC COMPARISON  (mean across 13 windows)
+  Metric                      Baseline           HMM    Δ (mean)   Improved?        IR
+  ----------------------  ------------  ------------  ----------  ----------  --------
+  Total Return (%)               +2.55         +1.32       -1.23        ✗ NO    -0.303
+  CAGR (%)                       +2.55         +1.32       -1.22        ✗ NO    -0.303
+  Sharpe                         0.164        -0.029      -0.193        ✗ NO    -0.337
+  Calmar                         0.712         0.637      -0.076        ✗ NO    -0.098
+  Max DrawDown (%)                5.29          3.91       -1.37       ✓ YES    +0.899
+  Time (s)                         7.5           0.8        -6.7      (info)    (info)
+
+  Metrics improved by HMM : 1 / 5  →  Max DrawDown (%)
+
+  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  |  IR < 0 = HMM consistently hurts  |  n/a = single window
+==================================================================================================================================
+
+  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:
+    hmm_components        : 6×6  3×4  5×2
+    hmm_gate              : threshold×13
+    hmm_threshold         : mean=0.644  min=0.344  max=0.988
+    hmm_score_threshold   : mean=1.679  min=0.593  max=2.481
+
+  Full results saved → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/walkforward-results.csv
+==================================================================================================================================

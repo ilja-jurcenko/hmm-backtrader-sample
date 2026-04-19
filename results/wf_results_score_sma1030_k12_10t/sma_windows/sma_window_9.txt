@@ -1,0 +1,26 @@
+
+[Window 9/14]
+
+======================================================================
+  Window : 2018-01-01 → 2020-01-01 | OOS 2020-01-01 → 2021-01-01
+  Trials : 10
+======================================================================
+  Baseline IS  return : +1.69%  cagr=+0.84%  sharpe=-0.059  calmar=0.362  maxdd=2.33%  (0.3s)
+  Baseline OOS return : +5.79%  cagr=+5.78%  sharpe=1.078  calmar=1.501  maxdd=3.85%  (0.2s)
+
+  Optimising on IS period (10 trials) …
+[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  1/10  best=+0.36%  this=+0.10%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  2/10  best=+0.59%  this=+0.59%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  3/10  best=+0.66%  this=+0.66%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial=  4/10  best=+0.66%  this=+0.20%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [████████████░░░░░░░░░░░░░]  50.0%  trial=  5/10  best=+0.66%  this=+0.32%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [███████████████░░░░░░░░░░]  60.0%  trial=  6/10  best=+0.82%  this=+0.82%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [█████████████████░░░░░░░░]  70.0%  trial=  7/10  best=+0.82%  this=+0.31%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [████████████████████░░░░░]  80.0%  trial=  8/10  best=+0.82%  this=+0.45%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [██████████████████████░░░]  90.0%  trial=  9/10  best=+0.82%  this=+0.22%[HMM] PCA: 13 features → 4 components (86.3% variance explained)
+  [█████████████████████████] 100.0%  trial= 10/10  best=+0.82%  this=+0.40%
+  Best IS calmar  : +0.8223  (Δ vs baseline: +0.4606)
+[HMM] PCA: 13 features → 4 components (88.4% variance explained)
+  OOS HMM  return : +3.96%  cagr=+3.95%  sharpe=0.913  calmar=1.319  maxdd=2.99%  (0.1s)
+  OOS Δ return    : -1.83%  ✗ DEGRADATION

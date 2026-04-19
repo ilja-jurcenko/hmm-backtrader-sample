@@ -1,0 +1,1004 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  SPY
+  Overall   : 2010-01-01  →  2026-01-01
+  IS window : 3 yr   OOS window : 2 yr   Step : 1 yr
+  Windows   : 12   Trials/window : 30   Workers : 12
+======================================================================
+
+  Launching 12 parallel window workers …
+  Per-window logs → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/wf_results_score_sma510_3yIS_2yOOS_k6_pca4_30t/sma_windows/
+    Window 1: sma_window_1.txt
+    Window 2: sma_window_2.txt
+    Window 3: sma_window_3.txt
+    Window 4: sma_window_4.txt
+    Window 5: sma_window_5.txt
+    Window 6: sma_window_6.txt
+    Window 7: sma_window_7.txt
+    Window 8: sma_window_8.txt
+    Window 9: sma_window_9.txt
+    Window 10: sma_window_10.txt
+    Window 11: sma_window_11.txt
+    Window 12: sma_window_12.txt
+
+Model is not converging.  Current: -1392.0842838147819 is not greater than -1392.083687749824. Delta is -0.0005960649577900767
+Model is not converging.  Current: -1085.305581009823 is not greater than -1085.3053955379032. Delta is -0.0001854719198490784
+Model is not converging.  Current: -3533.708568540024 is not greater than -3533.7079834044457. Delta is -0.0005851355781487655
+Model is not converging.  Current: -3755.769672237209 is not greater than -3755.769652176429. Delta is -2.0060779661434935e-05
+  [Window 11/12] ✓
+  [Window 8/12] ✓
+  [Window 10/12] ✓
+  [Window 9/12] ✓
+  [Window 5/12] ✓
+  [Window 3/12] ✓
+  [Window 4/12] ✓
+  [Window 2/12] ✓
+  [Window 12/12] ✓
+  [Window 1/12] ✓
+  [Window 7/12] ✓
+  [Window 6/12] ✓
+
+[Window 1/12]
+
+======================================================================
+  Window : 2010-01-01 → 2013-01-01 | OOS 2013-01-01 → 2015-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -1.03%  cagr=-0.35%  sharpe=-1.238  calmar=-0.135  maxdd=2.56%  trades=37  (0.5s)
+  Baseline OOS return : +1.07%  cagr=+0.53%  sharpe=-0.446  calmar=0.606  maxdd=0.88%  trades=25  (1.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=-0.14%  this=-0.24%[HMM] PCA: 6 features → 4 components (98.3% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=-0.14%  this=-0.29%[HMM] PCA: 9 features → 4 components (94.4% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=-0.14%  this=-0.30%[HMM] PCA: 7 features → 4 components (93.3% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=-0.14%  this=-0.17%[HMM] PCA: 7 features → 4 components (95.8% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=-0.14%  this=-0.25%[HMM] PCA: 9 features → 4 components (94.9% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=-0.14%  this=-0.30%[HMM] PCA: 7 features → 4 components (96.1% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=-0.09%  this=-0.09%[HMM] PCA: 6 features → 4 components (99.2% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=-0.09%  this=-0.22%[HMM] PCA: 8 features → 4 components (93.7% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=-0.09%  this=-0.24%[HMM] PCA: 7 features → 4 components (97.9% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=-0.09%  this=-0.14%[HMM] PCA: 6 features → 4 components (98.0% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=-0.09%  this=-0.18%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=-0.09%  this=-0.20%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=-0.09%  this=-0.21%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=-0.09%  this=-0.15%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=-0.09%  this=-0.22%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=-0.09%  this=-0.13%[HMM] PCA: 6 features → 4 components (97.6% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=-0.09%  this=-0.15%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=-0.09%  this=-0.27%[HMM] PCA: 6 features → 4 components (97.3% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=-0.09%  this=-0.23%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=-0.09%  this=-0.28%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=-0.09%  this=-0.29%[HMM] PCA: 7 features → 4 components (97.9% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=-0.09%  this=-0.16%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=-0.09%  this=-0.16%[HMM] PCA: 7 features → 4 components (97.9% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=-0.09%  this=-0.14%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=-0.09%  this=-0.10%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=-0.09%  this=-0.10%[HMM] PCA: 6 features → 4 components (96.8% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=-0.09%  this=-0.16%[HMM] PCA: 5 features → 4 components (99.6% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=-0.09%  this=-0.11%[HMM] PCA: 7 features → 4 components (96.1% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=-0.09%  this=-0.10%[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=-0.07%  this=-0.07%
+  Best IS calmar  : -0.0730  (Δ vs baseline: +0.0620)
+[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+  OOS HMM  return : +1.50%  cagr=+0.75%  sharpe=-0.425  calmar=1.569  maxdd=0.48%  trades=23  (0.2s)
+  OOS Δ return    : +0.43%  ✓ IMPROVEMENT
+
+[Window 2/12]
+
+======================================================================
+  Window : 2011-01-01 → 2014-01-01 | OOS 2014-01-01 → 2016-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -0.05%  cagr=-0.02%  sharpe=-0.907  calmar=-0.006  maxdd=2.58%  trades=41  (0.5s)
+  Baseline OOS return : -1.39%  cagr=-0.70%  sharpe=-1.265  calmar=-0.261  maxdd=2.69%  trades=30  (0.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=-0.01%  this=-0.18%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=-0.01%  this=-0.05%[HMM] PCA: 9 features → 4 components (93.8% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=-0.01%  this=-0.04%[HMM] PCA: 7 features → 4 components (92.5% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.08%  this=+0.08%[HMM] PCA: 7 features → 4 components (95.5% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.08%  this=+0.06%[HMM] PCA: 9 features → 4 components (94.5% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.13%  this=+0.13%[HMM] PCA: 7 features → 4 components (95.8% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.13%  this=-0.03%[HMM] PCA: 6 features → 4 components (99.1% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.13%  this=-0.00%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.13%  this=-0.01%[HMM] PCA: 7 features → 4 components (97.6% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.13%  this=-0.19%[HMM] PCA: 5 features → 4 components (99.4% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.13%  this=+0.01%[HMM] PCA: 8 features → 4 components (94.0% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.13%  this=-0.11%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.14%  this=+0.14%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.14%  this=+0.11%[HMM] PCA: 8 features → 4 components (94.8% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.14%  this=+0.08%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.14%  this=-0.13%[HMM] PCA: 8 features → 4 components (94.5% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.14%  this=+0.10%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.41%  this=+0.41%[HMM] PCA: 6 features → 4 components (98.8% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.41%  this=+0.06%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.41%  this=-0.12%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.41%  this=-0.11%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.42%  this=+0.42%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.45%  this=+0.45%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.45%  this=+0.44%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.45%  this=+0.44%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.45%  this=+0.39%[HMM] PCA: 5 features → 4 components (99.1% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.45%  this=+0.02%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.45%  this=+0.37%[HMM] PCA: 8 features → 4 components (94.9% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.45%  this=+0.43%[HMM] PCA: 6 features → 4 components (98.7% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.45%  this=-0.03%
+  Best IS calmar  : +0.4459  (Δ vs baseline: +0.4518)
+[HMM] PCA: 8 features → 4 components (91.8% variance explained)
+  OOS HMM  return : -0.30%  cagr=-0.15%  sharpe=-2.048  calmar=-0.185  maxdd=0.82%  trades=27  (0.2s)
+  OOS Δ return    : +1.09%  ✓ IMPROVEMENT
+
+[Window 3/12]
+
+======================================================================
+  Window : 2012-01-01 → 2015-01-01 | OOS 2015-01-01 → 2017-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -0.08%  cagr=-0.03%  sharpe=-0.979  calmar=-0.013  maxdd=2.03%  trades=40  (1.5s)
+  Baseline OOS return : -1.53%  cagr=-0.77%  sharpe=-1.149  calmar=-0.345  maxdd=2.23%  trades=31  (0.6s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.08%  this=+0.08%[HMM] PCA: 6 features → 4 components (98.1% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.08%  this=-0.01%[HMM] PCA: 9 features → 4 components (93.2% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.08%  this=-0.07%[HMM] PCA: 7 features → 4 components (91.6% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.08%  this=-0.12%[HMM] PCA: 7 features → 4 components (95.2% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.08%  this=-0.01%[HMM] PCA: 9 features → 4 components (94.1% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.08%  this=-0.03%[HMM] PCA: 7 features → 4 components (95.4% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.08%  this=-0.10%[HMM] PCA: 6 features → 4 components (99.0% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.08%  this=+0.00%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.08%  this=+0.02%[HMM] PCA: 7 features → 4 components (97.3% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.29%  this=+0.29%[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.29%  this=-0.21%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.29%  this=-0.12%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.29%  this=-0.12%[HMM] PCA: 7 features → 4 components (98.2% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.43%  this=+0.43%[HMM] PCA: 7 features → 4 components (95.0% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.43%  this=+0.04%[HMM] PCA: 6 features → 4 components (99.4% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.43%  this=+0.30%[HMM] PCA: 6 features → 4 components (99.4% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.43%  this=+0.12%[HMM] PCA: 7 features → 4 components (98.2% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.43%  this=+0.23%[HMM] PCA: 5 features → 4 components (99.3% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.43%  this=+0.33%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.66%  this=+0.66%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.66%  this=+0.63%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.66%  this=+0.62%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.66%  this=+0.60%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.66%  this=+0.54%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.66%  this=+0.65%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.66%  this=+0.05%[HMM] PCA: 7 features → 4 components (96.5% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.66%  this=+0.17%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.66%  this=+0.49%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.66%  this=+0.53%[HMM] PCA: 6 features → 4 components (97.4% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.66%  this=+0.48%
+  Best IS calmar  : +0.6569  (Δ vs baseline: +0.6701)
+[HMM] PCA: 6 features → 4 components (96.2% variance explained)
+  OOS HMM  return : -0.70%  cagr=-0.35%  sharpe=-1.244  calmar=-0.212  maxdd=1.66%  trades=28  (0.2s)
+  OOS Δ return    : +0.83%  ✓ IMPROVEMENT
+
+[Window 4/12]
+
+======================================================================
+  Window : 2013-01-01 → 2016-01-01 | OOS 2016-01-01 → 2018-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -0.57%  cagr=-0.19%  sharpe=-0.956  calmar=-0.071  maxdd=2.66%  trades=43  (0.4s)
+  Baseline OOS return : +1.80%  cagr=+0.89%  sharpe=-0.073  calmar=0.695  maxdd=1.29%  trades=26  (0.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=-0.07%  this=-0.17%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=-0.07%  this=-0.13%[HMM] PCA: 9 features → 4 components (93.6% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=-0.04%  this=-0.04%[HMM] PCA: 7 features → 4 components (92.0% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=-0.01%  this=-0.01%[HMM] PCA: 7 features → 4 components (95.3% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.12%  this=+0.12%[HMM] PCA: 9 features → 4 components (94.3% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.12%  this=-0.11%[HMM] PCA: 7 features → 4 components (95.6% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.12%  this=-0.13%[HMM] PCA: 6 features → 4 components (99.1% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.12%  this=-0.11%[HMM] PCA: 8 features → 4 components (93.4% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.12%  this=-0.07%[HMM] PCA: 7 features → 4 components (97.5% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.12%  this=+0.05%[HMM] PCA: 5 features → 4 components (98.5% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.12%  this=-0.29%[HMM] PCA: 7 features → 4 components (97.5% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.12%  this=+0.08%[HMM] PCA: 6 features → 4 components (98.4% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.12%  this=-0.01%[HMM] PCA: 8 features → 4 components (96.2% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.12%  this=-0.01%[HMM] PCA: 5 features → 4 components (96.9% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.12%  this=-0.25%[HMM] PCA: 8 features → 4 components (96.2% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.12%  this=-0.03%[HMM] PCA: 7 features → 4 components (95.5% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.12%  this=-0.12%[HMM] PCA: 7 features → 4 components (97.3% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.12%  this=-0.15%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.12%  this=+0.06%[HMM] PCA: 6 features → 4 components (98.4% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.12%  this=-0.19%[HMM] PCA: 7 features → 4 components (97.3% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.12%  this=-0.14%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.12%  this=+0.06%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.12%  this=+0.03%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.19%  this=+0.19%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.21%  this=+0.21%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.21%  this=+0.21%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.21%  this=+0.17%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.21%  this=+0.13%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.21%  this=+0.17%[HMM] PCA: 7 features → 4 components (96.0% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.21%  this=-0.00%
+  Best IS calmar  : +0.2121  (Δ vs baseline: +0.2834)
+[HMM] PCA: 6 features → 4 components (97.6% variance explained)
+  OOS HMM  return : +0.24%  cagr=+0.12%  sharpe=-3.137  calmar=0.341  maxdd=0.35%  trades=24  (0.2s)
+  OOS Δ return    : -1.56%  ✗ DEGRADATION
+
+[Window 5/12]
+
+======================================================================
+  Window : 2014-01-01 → 2017-01-01 | OOS 2017-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -1.86%  cagr=-0.62%  sharpe=-1.146  calmar=-0.190  maxdd=3.28%  trades=44  (0.9s)
+  Baseline OOS return : +0.64%  cagr=+0.32%  sharpe=-0.364  calmar=0.102  maxdd=3.15%  trades=24  (0.6s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=-0.19%  this=-0.28%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=-0.19%  this=-0.20%[HMM] PCA: 9 features → 4 components (90.1% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=-0.19%  this=-0.26%[HMM] PCA: 7 features → 4 components (88.0% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=-0.19%  this=-0.22%[HMM] PCA: 7 features → 4 components (93.2% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=-0.19%  this=-0.25%[HMM] PCA: 9 features → 4 components (92.2% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=-0.15%  this=-0.15%[HMM] PCA: 7 features → 4 components (93.4% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.13%  this=+0.13%[HMM] PCA: 6 features → 4 components (98.7% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.13%  this=-0.22%[HMM] PCA: 8 features → 4 components (92.1% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.13%  this=-0.14%[HMM] PCA: 7 features → 4 components (95.8% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.13%  this=+0.13%[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.13%  this=-0.05%[HMM] PCA: 5 features → 4 components (99.5% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.13%  this=-0.08%[HMM] PCA: 5 features → 4 components (99.5% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.13%  this=-0.25%[HMM] PCA: 7 features → 4 components (93.4% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.13%  this=-0.13%[HMM] PCA: 8 features → 4 components (87.6% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.13%  this=-0.26%[HMM] PCA: 5 features → 4 components (99.5% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.13%  this=-0.24%[HMM] PCA: 9 features → 4 components (91.1% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.13%  this=-0.26%[HMM] PCA: 5 features → 4 components (97.3% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.13%  this=-0.21%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.13%  this=-0.01%[HMM] PCA: 6 features → 4 components (97.7% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.13%  this=-0.24%[HMM] PCA: 6 features → 4 components (96.4% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.13%  this=-0.24%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.13%  this=+0.01%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.13%  this=+0.02%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.13%  this=-0.03%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.13%  this=-0.03%[HMM] PCA: 8 features → 4 components (96.1% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.13%  this=-0.17%[HMM] PCA: 8 features → 4 components (92.7% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.13%  this=-0.04%[HMM] PCA: 8 features → 4 components (90.7% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.13%  this=-0.20%[HMM] PCA: 6 features → 4 components (91.6% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.13%  this=+0.05%[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.13%  this=+0.00%
+  Best IS calmar  : +0.1329  (Δ vs baseline: +0.3228)
+[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+  OOS HMM  return : +1.77%  cagr=+0.88%  sharpe=-0.139  calmar=0.981  maxdd=0.90%  trades=20  (0.2s)
+  OOS Δ return    : +1.12%  ✓ IMPROVEMENT
+
+[Window 6/12]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2020-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.25%  cagr=+0.08%  sharpe=-0.641  calmar=0.037  maxdd=2.23%  trades=43  (1.5s)
+  Baseline OOS return : +3.28%  cagr=+1.63%  sharpe=0.295  calmar=0.629  maxdd=2.58%  trades=25  (1.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.12%  this=+0.12%[HMM] PCA: 6 features → 4 components (97.8% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.19%  this=+0.19%[HMM] PCA: 9 features → 4 components (90.7% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.19%  this=-0.06%[HMM] PCA: 7 features → 4 components (88.4% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.19%  this=-0.18%[HMM] PCA: 7 features → 4 components (94.0% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.87%  this=+0.87%[HMM] PCA: 9 features → 4 components (92.6% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.87%  this=-0.07%[HMM] PCA: 7 features → 4 components (94.0% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.87%  this=+0.43%[HMM] PCA: 6 features → 4 components (98.7% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.87%  this=+0.08%[HMM] PCA: 8 features → 4 components (92.9% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.87%  this=+0.02%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.87%  this=+0.43%[HMM] PCA: 5 features → 4 components (98.5% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.87%  this=+0.09%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.87%  this=+0.60%[HMM] PCA: 6 features → 4 components (97.2% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.87%  this=+0.22%[HMM] PCA: 8 features → 4 components (94.3% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.87%  this=+0.09%[HMM] PCA: 5 features → 4 components (95.3% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.87%  this=-0.01%[HMM] PCA: 8 features → 4 components (94.3% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.87%  this=+0.29%[HMM] PCA: 7 features → 4 components (94.7% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.87%  this=+0.29%[HMM] PCA: 7 features → 4 components (96.0% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.87%  this=+0.19%[HMM] PCA: 6 features → 4 components (97.7% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.87%  this=-0.08%[HMM] PCA: 6 features → 4 components (97.2% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.87%  this=+0.08%[HMM] PCA: 7 features → 4 components (96.0% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.87%  this=+0.21%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.87%  this=+0.44%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.87%  this=+0.27%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.87%  this=+0.43%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.87%  this=+0.17%[HMM] PCA: 7 features → 4 components (95.7% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.87%  this=+0.35%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.87%  this=+0.56%[HMM] PCA: 5 features → 4 components (99.3% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.87%  this=+0.37%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.87%  this=+0.85%[HMM] PCA: 6 features → 4 components (98.2% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.87%  this=-0.06%
+  Best IS calmar  : +0.8698  (Δ vs baseline: +0.8331)
+[HMM] PCA: 7 features → 4 components (94.6% variance explained)
+  OOS HMM  return : +1.37%  cagr=+0.68%  sharpe=-0.345  calmar=0.704  maxdd=0.97%  trades=23  (0.1s)
+  OOS Δ return    : -1.90%  ✗ DEGRADATION
+
+[Window 7/12]
+
+======================================================================
+  Window : 2016-01-01 → 2019-01-01 | OOS 2019-01-01 → 2021-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.61%  cagr=+0.20%  sharpe=-0.457  calmar=0.064  maxdd=3.16%  trades=39  (0.6s)
+  Baseline OOS return : +7.93%  cagr=+3.89%  sharpe=0.805  calmar=1.798  maxdd=2.16%  trades=25  (1.1s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.21%  this=+0.21%[HMM] PCA: 6 features → 4 components (97.7% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.21%  this=-0.12%[HMM] PCA: 9 features → 4 components (91.1% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.21%  this=+0.21%[HMM] PCA: 7 features → 4 components (89.1% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.21%  this=-0.09%[HMM] PCA: 7 features → 4 components (94.0% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.21%  this=+0.03%[HMM] PCA: 9 features → 4 components (92.5% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.21%  this=+0.17%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.21%  this=+0.17%[HMM] PCA: 6 features → 4 components (98.6% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.21%  this=+0.08%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.21%  this=-0.02%[HMM] PCA: 7 features → 4 components (95.6% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.21%  this=-0.17%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.21%  this=+0.14%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.21%  this=-0.02%[HMM] PCA: 6 features → 4 components (98.9% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.21%  this=-0.06%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.21%  this=-0.06%[HMM] PCA: 7 features → 4 components (91.8% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.21%  this=+0.10%[HMM] PCA: 6 features → 4 components (98.9% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.21%  this=-0.05%[HMM] PCA: 7 features → 4 components (97.4% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.21%  this=-0.08%[HMM] PCA: 7 features → 4 components (96.6% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.21%  this=+0.02%[HMM] PCA: 6 features → 4 components (94.1% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.21%  this=-0.06%[HMM] PCA: 7 features → 4 components (96.6% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.21%  this=-0.06%[HMM] PCA: 7 features → 4 components (96.2% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.21%  this=-0.10%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.22%  this=+0.22%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.24%  this=+0.24%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.24%  this=+0.24%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.24%  this=+0.24%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.24%  this=+0.24%[HMM] PCA: 7 features → 4 components (92.5% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.27%  this=+0.27%[HMM] PCA: 7 features → 4 components (92.5% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.27%  this=+0.21%[HMM] PCA: 7 features → 4 components (92.5% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.27%  this=+0.18%[HMM] PCA: 7 features → 4 components (92.5% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.27%  this=+0.27%
+  Best IS calmar  : +0.2740  (Δ vs baseline: +0.2101)
+[HMM] PCA: 7 features → 4 components (92.9% variance explained)
+  OOS HMM  return : +1.98%  cagr=+0.99%  sharpe=-0.009  calmar=1.235  maxdd=0.80%  trades=23  (0.1s)
+  OOS Δ return    : -5.95%  ✗ DEGRADATION
+
+[Window 8/12]
+
+======================================================================
+  Window : 2017-01-01 → 2020-01-01 | OOS 2020-01-01 → 2022-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +5.66%  cagr=+1.85%  sharpe=0.451  calmar=0.581  maxdd=3.19%  trades=36  (0.7s)
+  Baseline OOS return : +4.48%  cagr=+2.21%  sharpe=0.303  calmar=0.866  maxdd=2.55%  trades=28  (0.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.58%  this=+0.26%[HMM] PCA: 6 features → 4 components (97.1% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.58%  this=+0.41%[HMM] PCA: 9 features → 4 components (88.6% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.58%  this=+0.51%[HMM] PCA: 7 features → 4 components (85.6% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.58%  this=+0.46%[HMM] PCA: 7 features → 4 components (94.9% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.58%  this=+0.42%[HMM] PCA: 9 features → 4 components (90.9% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.58%  this=+0.56%[HMM] PCA: 7 features → 4 components (92.2% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.66%  this=+0.66%[HMM] PCA: 6 features → 4 components (98.8% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.66%  this=+0.60%[HMM] PCA: 8 features → 4 components (91.9% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.66%  this=+0.48%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.17%  this=+1.17%[HMM] PCA: 4 features → 4 components (100.0% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.17%  this=+0.52%[HMM] PCA: 5 features → 4 components (99.1% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.17%  this=+0.59%[HMM] PCA: 5 features → 4 components (99.1% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.17%  this=+0.46%[HMM] PCA: 7 features → 4 components (92.2% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.17%  this=+0.24%[HMM] PCA: 8 features → 4 components (86.2% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.17%  this=+0.57%[HMM] PCA: 5 features → 4 components (99.1% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.17%  this=+0.47%[HMM] PCA: 9 features → 4 components (90.4% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.17%  this=+0.83%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.17%  this=+1.03%[HMM] PCA: 7 features → 4 components (93.4% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.17%  this=+0.44%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.38%  this=+1.38%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.48%  this=+1.48%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.48%  this=+1.48%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.53%  this=+1.53%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.53%  this=+1.42%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.53%  this=+1.26%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.53%  this=+1.13%[HMM] PCA: 7 features → 4 components (94.2% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.53%  this=+0.47%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.53%  this=+1.18%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.53%  this=+1.21%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.53%  this=+0.78%
+  Best IS calmar  : +1.5263  (Δ vs baseline: +0.9456)
+[HMM] PCA: 7 features → 4 components (95.2% variance explained)
+  OOS HMM  return : +3.04%  cagr=+1.51%  sharpe=0.209  calmar=0.584  maxdd=2.58%  trades=26  (0.2s)
+  OOS Δ return    : -1.44%  ✗ DEGRADATION
+
+[Window 9/12]
+
+======================================================================
+  Window : 2018-01-01 → 2021-01-01 | OOS 2021-01-01 → 2023-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +8.36%  cagr=+2.71%  sharpe=0.530  calmar=1.049  maxdd=2.58%  trades=39  (1.6s)
+  Baseline OOS return : -7.02%  cagr=-3.58%  sharpe=-1.024  calmar=-0.353  maxdd=10.13%  trades=25  (1.2s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.05%  this=+0.97%[HMM] PCA: 6 features → 4 components (97.3% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.40%  this=+1.40%[HMM] PCA: 9 features → 4 components (89.1% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.40%  this=+1.19%[HMM] PCA: 7 features → 4 components (87.2% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.40%  this=+0.86%[HMM] PCA: 7 features → 4 components (94.6% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.40%  this=+0.68%[HMM] PCA: 9 features → 4 components (91.7% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.40%  this=+0.61%[HMM] PCA: 7 features → 4 components (93.0% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.40%  this=+0.65%[HMM] PCA: 6 features → 4 components (98.7% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.40%  this=+0.80%[HMM] PCA: 8 features → 4 components (92.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.40%  this=+0.99%[HMM] PCA: 7 features → 4 components (94.5% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.40%  this=+0.89%[HMM] PCA: 6 features → 4 components (98.0% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.40%  this=+0.99%[HMM] PCA: 6 features → 4 components (98.8% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.40%  this=+0.12%[HMM] PCA: 6 features → 4 components (98.8% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.40%  this=-0.05%[HMM] PCA: 8 features → 4 components (97.1% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.40%  this=+1.21%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.40%  this=+1.02%[HMM] PCA: 7 features → 4 components (98.4% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.40%  this=+1.03%[HMM] PCA: 7 features → 4 components (97.7% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.40%  this=+1.16%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.40%  this=+1.22%[HMM] PCA: 5 features → 4 components (98.1% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.40%  this=+1.22%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.40%  this=+1.17%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.40%  this=+1.39%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.41%  this=+1.41%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.41%  this=+1.37%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.41%  this=+1.37%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.46%  this=+1.46%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.46%  this=+1.45%[HMM] PCA: 5 features → 4 components (98.9% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.46%  this=+1.13%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.46%  this=+1.42%[HMM] PCA: 7 features → 4 components (96.7% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.46%  this=+1.29%[HMM] PCA: 5 features → 4 components (99.1% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.46%  this=+1.00%
+  Best IS calmar  : +1.4557  (Δ vs baseline: +0.4067)
+[HMM] PCA: 7 features → 4 components (98.0% variance explained)
+  OOS HMM  return : -0.88%  cagr=-0.44%  sharpe=-0.884  calmar=-0.224  maxdd=1.98%  trades=22  (0.2s)
+  OOS Δ return    : +6.14%  ✓ IMPROVEMENT
+
+[Window 10/12]
+
+======================================================================
+  Window : 2019-01-01 → 2022-01-01 | OOS 2022-01-01 → 2024-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +7.90%  cagr=+2.56%  sharpe=0.454  calmar=1.037  maxdd=2.47%  trades=39  (0.9s)
+  Baseline OOS return : -2.30%  cagr=-1.16%  sharpe=-0.422  calmar=-0.137  maxdd=8.43%  trades=24  (0.3s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.04%  this=+0.14%[HMM] PCA: 6 features → 4 components (97.5% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.04%  this=+0.58%[HMM] PCA: 9 features → 4 components (91.2% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.04%  this=+0.43%[HMM] PCA: 7 features → 4 components (89.3% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.04%  this=+0.90%[HMM] PCA: 7 features → 4 components (95.4% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.04%  this=+0.43%[HMM] PCA: 9 features → 4 components (92.9% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.04%  this=-0.00%[HMM] PCA: 7 features → 4 components (94.0% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.04%  this=+0.31%[HMM] PCA: 6 features → 4 components (98.6% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.04%  this=+0.42%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.04%  this=+0.96%[HMM] PCA: 7 features → 4 components (95.1% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.04%  this=+0.48%[HMM] PCA: 6 features → 4 components (93.7% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.04%  this=+0.84%[HMM] PCA: 9 features → 4 components (90.9% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.04%  this=+0.58%[HMM] PCA: 7 features → 4 components (93.5% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.04%  this=+0.83%[HMM] PCA: 8 features → 4 components (89.9% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.05%  this=+1.05%[HMM] PCA: 7 features → 4 components (90.7% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.05%  this=+0.77%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.20%  this=+1.20%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.20%  this=+1.20%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.20%  this=+1.20%[HMM] PCA: 5 features → 4 components (99.2% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.20%  this=+1.04%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.20%  this=+1.17%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.20%  this=+1.05%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.20%  this=+1.09%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.20%  this=+1.20%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.20%  this=+1.12%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.20%  this=+1.20%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.20%  this=+1.19%[HMM] PCA: 5 features → 4 components (99.2% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.20%  this=+0.94%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.20%  this=+1.12%[HMM] PCA: 8 features → 4 components (93.2% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.20%  this=+1.18%[HMM] PCA: 6 features → 4 components (99.4% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.20%  this=+1.18%
+  Best IS calmar  : +1.2048  (Δ vs baseline: +0.1682)
+[HMM] PCA: 8 features → 4 components (96.3% variance explained)
+  OOS HMM  return : -1.06%  cagr=-0.53%  sharpe=-0.552  calmar=-0.123  maxdd=4.32%  trades=21  (0.2s)
+  OOS Δ return    : +1.24%  ✓ IMPROVEMENT
+
+[Window 11/12]
+
+======================================================================
+  Window : 2020-01-01 → 2023-01-01 | OOS 2023-01-01 → 2025-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -2.56%  cagr=-0.86%  sharpe=-0.386  calmar=-0.089  maxdd=9.71%  trades=39  (0.6s)
+  Baseline OOS return : +9.25%  cagr=+4.52%  sharpe=0.886  calmar=1.131  maxdd=4.00%  trades=22  (0.5s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=-0.09%  this=-0.13%[HMM] PCA: 6 features → 4 components (97.5% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=-0.09%  this=-0.21%[HMM] PCA: 9 features → 4 components (91.2% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=-0.09%  this=-0.21%[HMM] PCA: 7 features → 4 components (89.6% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=-0.09%  this=-0.21%[HMM] PCA: 7 features → 4 components (95.4% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=-0.09%  this=-0.18%[HMM] PCA: 9 features → 4 components (92.9% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.20%  this=+0.20%[HMM] PCA: 7 features → 4 components (94.3% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.20%  this=-0.03%[HMM] PCA: 6 features → 4 components (98.7% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.20%  this=-0.07%[HMM] PCA: 8 features → 4 components (93.3% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.20%  this=-0.11%[HMM] PCA: 7 features → 4 components (95.2% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.20%  this=-0.17%[HMM] PCA: 5 features → 4 components (99.3% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.20%  this=-0.06%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.56%  this=+0.56%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.56%  this=+0.29%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.56%  this=+0.33%[HMM] PCA: 6 features → 4 components (94.5% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.56%  this=-0.01%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.56%  this=+0.16%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.56%  this=+0.23%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.56%  this=+0.41%[HMM] PCA: 5 features → 4 components (99.3% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.56%  this=-0.11%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.56%  this=-0.09%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.56%  this=+0.08%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.56%  this=+0.18%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.56%  this=+0.55%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.56%  this=+0.46%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.56%  this=+0.38%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.56%  this=+0.23%[HMM] PCA: 5 features → 4 components (98.2% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.56%  this=+0.23%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.56%  this=+0.15%[HMM] PCA: 7 features → 4 components (91.2% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.59%  this=+0.59%[HMM] PCA: 5 features → 4 components (97.4% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.59%  this=-0.08%
+  Best IS calmar  : +0.5921  (Δ vs baseline: +0.6806)
+[HMM] PCA: 7 features → 4 components (93.4% variance explained)
+  OOS HMM  return : +7.09%  cagr=+3.48%  sharpe=0.889  calmar=1.642  maxdd=2.12%  trades=18  (0.2s)
+  OOS Δ return    : -2.16%  ✗ DEGRADATION
+
+[Window 12/12]
+
+======================================================================
+  Window : 2021-01-01 → 2024-01-01 | OOS 2024-01-01 → 2026-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -2.99%  cagr=-1.01%  sharpe=-0.430  calmar=-0.094  maxdd=10.67%  trades=38  (0.6s)
+  Baseline OOS return : +7.74%  cagr=+3.79%  sharpe=0.595  calmar=0.861  maxdd=4.41%  trades=24  (0.6s)
+
+  Optimising on IS period (30 trials) …
+[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.02%  this=+0.02%[HMM] PCA: 6 features → 4 components (98.0% variance explained)
+
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.02%  this=-0.22%[HMM] PCA: 9 features → 4 components (94.9% variance explained)
+
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.20%  this=+0.20%[HMM] PCA: 7 features → 4 components (94.4% variance explained)
+
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.20%  this=-0.22%[HMM] PCA: 7 features → 4 components (96.1% variance explained)
+
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.20%  this=-0.03%[HMM] PCA: 9 features → 4 components (95.3% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.20%  this=+0.09%[HMM] PCA: 7 features → 4 components (96.8% variance explained)
+
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.20%  this=-0.16%[HMM] PCA: 6 features → 4 components (99.0% variance explained)
+
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.20%  this=-0.10%[HMM] PCA: 8 features → 4 components (94.6% variance explained)
+
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.20%  this=-0.13%[HMM] PCA: 7 features → 4 components (97.6% variance explained)
+
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.20%  this=+0.03%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.20%  this=+0.15%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.20%  this=+0.17%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.20%  this=+0.10%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.20%  this=+0.01%[HMM] PCA: 8 features → 4 components (97.3% variance explained)
+
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.20%  this=-0.09%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.20%  this=+0.10%[HMM] PCA: 7 features → 4 components (97.8% variance explained)
+
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.20%  this=-0.12%[HMM] PCA: 9 features → 4 components (92.4% variance explained)
+
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.20%  this=-0.22%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.20%  this=-0.11%[HMM] PCA: 9 features → 4 components (92.4% variance explained)
+
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.20%  this=-0.10%[HMM] PCA: 7 features → 4 components (97.8% variance explained)
+
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.20%  this=+0.03%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.20%  this=+0.14%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.20%  this=+0.10%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.20%  this=-0.13%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.20%  this=+0.09%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.20%  this=+0.13%[HMM] PCA: 7 features → 4 components (97.0% variance explained)
+
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.20%  this=+0.03%[HMM] PCA: 7 features → 4 components (96.3% variance explained)
+
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.20%  this=+0.02%[HMM] PCA: 9 features → 4 components (94.9% variance explained)
+
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.20%  this=+0.02%[HMM] PCA: 5 features → 4 components (100.0% variance explained)
+
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.20%  this=-0.14%
+  Best IS calmar  : +0.1982  (Δ vs baseline: +0.2926)
+[HMM] PCA: 9 features → 4 components (93.7% variance explained)
+  OOS HMM  return : +4.03%  cagr=+1.99%  sharpe=0.468  calmar=0.987  maxdd=2.02%  trades=23  (0.2s)
+  OOS Δ return    : -3.71%  ✗ DEGRADATION
+
+  Total walk-forward time: 349.6s
+
+
+==================================================================================================================================
+  WALK-FORWARD SUMMARY REPORT
+==================================================================================================================================
+
+IS Start      OOS Start        Δ Ret%    Δ CAGR%   Δ Sharpe   Δ Calmar   Δ MaxDD%   BL Trd  HMM Trd    Result
+----------------------------------------------------------------------------------------------------------------------------------
+2010-01-01    2013-01-01        +0.43      +0.22     +0.021     +0.963      -0.40       25       23     ✓ WIN
+2011-01-01    2014-01-01        +1.09      +0.55     -0.783     +0.076      -1.86       30       27     ✓ WIN
+2012-01-01    2015-01-01        +0.83      +0.42     -0.094     +0.133      -0.57       31       28     ✓ WIN
+2013-01-01    2016-01-01        -1.56      -0.77     -3.064     -0.353      -0.94       26       24    ✗ LOSS
+2014-01-01    2017-01-01        +1.12      +0.56     +0.225     +0.880      -2.26       24       20     ✓ WIN
+2015-01-01    2018-01-01        -1.90      -0.94     -0.640     +0.075      -1.61       25       23    ✗ LOSS
+2016-01-01    2019-01-01        -5.95      -2.90     -0.814     -0.563      -1.36       25       23    ✗ LOSS
+2017-01-01    2020-01-01        -1.44      -0.71     -0.093     -0.283      +0.03       28       26    ✗ LOSS
+2018-01-01    2021-01-01        +6.14      +3.13     +0.140     +0.129      -8.15       25       22     ✓ WIN
+2019-01-01    2022-01-01        +1.24      +0.62     -0.130     +0.014      -4.11       24       21     ✓ WIN
+2020-01-01    2023-01-01        -2.16      -1.04     +0.003     +0.511      -1.88       22       18    ✗ LOSS
+2021-01-01    2024-01-01        -3.71      -1.80     -0.127     +0.126      -2.39       24       23    ✗ LOSS
+
+==================================================================================================================================
+  Total windows     : 12
+  HMM wins (OOS)    : 6 / 12  (50.0%)  [based on total return]
+  Mean Δ return     : -0.49%  per window
+  Best  window      : 2018-01-01 → 2023-01-01  Δ=+6.14%
+  Worst window      : 2016-01-01 → 2021-01-01  Δ=-5.95%
+
+  OOS METRIC COMPARISON  (mean across 12 windows)
+  Metric                      Baseline           HMM    Δ (mean)   Improved?        IR
+  ----------------------  ------------  ------------  ----------  ----------  --------
+  Total Return (%)               +2.00         +1.51       -0.49        ✗ NO    -0.161
+  CAGR (%)                       +0.97         +0.74       -0.22        ✗ NO    -0.147
+  Sharpe                        -0.155        -0.601      -0.446        ✗ NO    -0.499
+  Calmar                         0.466         0.608      +0.142       ✓ YES    +0.311
+  Max DrawDown (%)                3.71          1.58       -2.13       ✓ YES    +0.971
+  Trades                            26            23          -3      (info)    (info)
+  Time (s)                         0.8           0.2        -0.6      (info)    (info)
+
+  Metrics improved by HMM : 2 / 6  →  Calmar | Max DrawDown (%)
+
+  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  |  IR < 0 = HMM consistently hurts  |  n/a = single window
+==================================================================================================================================
+
+  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:
+    hmm_components        : 6 (fixed)
+    hmm_gate              : threshold×12
+    hmm_threshold         : mean=0.674  min=0.409  max=0.981
+    hmm_score_threshold   : mean=1.413  min=0.649  max=2.494
+
+  Full results saved → /scratch/lustre/home/ilju3280/hmm-backtrader-sample/walkforward-results.csv
+==================================================================================================================================
