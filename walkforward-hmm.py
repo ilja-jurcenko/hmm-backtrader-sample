@@ -124,6 +124,11 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         macd_slow      = getattr(cfg, 'macd_slow',          26),
         macd_signal    = getattr(cfg, 'macd_signal',         9),
         hmm_mr_z_threshold = getattr(cfg, 'hmm_mr_z_threshold', 0.0),
+        hmm_features   = getattr(cfg, 'hmm_features', None),
+        hmm_pca        = getattr(cfg, 'hmm_pca', None),
+        regime_mode    = getattr(cfg, 'regime_mode', 'strict'),
+        unfav_fraction = getattr(cfg, 'unfav_fraction', 0.25),
+        state_positions = getattr(cfg, 'state_positions', None),
         stake          = cfg.stake,
         cash           = cfg.cash,
         commission     = cfg.commission,
@@ -137,12 +142,14 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
           f'sharpe={bl_is["sharpe"]:.3f}  '
           f'calmar={bl_is["calmar"]:.3f}  '
           f'maxdd={bl_is["max_drawdown"]:.2f}%  '
+          f'trades={bl_is.get("trade_count", 0)}  '
           f'({bl_is["time_taken"]:.1f}s)')
     print(f'  Baseline OOS return : {bl_oos["total_return"]:+.2f}%  '
           f'cagr={bl_oos["annual_return"]:+.2f}%  '
           f'sharpe={bl_oos["sharpe"]:.3f}  '
           f'calmar={bl_oos["calmar"]:.3f}  '
           f'maxdd={bl_oos["max_drawdown"]:.2f}%  '
+          f'trades={bl_oos.get("trade_count", 0)}  '
           f'({bl_oos["time_taken"]:.1f}s)')
 
     # IS optimisation --------------------------------------------------------
@@ -150,6 +157,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
     sampler  = optuna.samplers.TPESampler(seed=cfg.seed)
     study    = optuna.create_study(direction='maximize', sampler=sampler)
     fixed_st = getattr(cfg, 'hmm_score_threshold', None)
+    fixed_hc = getattr(cfg, 'hmm_components', None)
     objective = opt.make_objective(tickers, IS_FROM, IS_TO, cfg.fast, cfg.slow,
                                    strategy           = getattr(cfg, 'strategy', 'sma'),
                                    rsi_period         = getattr(cfg, 'rsi_period',         14),
@@ -159,10 +167,19 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    macd_slow          = getattr(cfg, 'macd_slow',          26),
                                    macd_signal        = getattr(cfg, 'macd_signal',         9),
                                    hmm_mr_z_threshold = getattr(cfg, 'hmm_mr_z_threshold', 0.0),
-                                   fixed_score_threshold=fixed_st)
+                                   hmm_features       = getattr(cfg, 'hmm_features', None),
+                                   hmm_pca            = getattr(cfg, 'hmm_pca', None),
+                                   regime_mode        = getattr(cfg, 'regime_mode', 'strict'),
+                                   unfav_fraction     = getattr(cfg, 'unfav_fraction', 0.25),
+                                   fixed_score_threshold=fixed_st,
+                                   fixed_hmm_components=fixed_hc,
+                                   objective_metric=getattr(cfg, 'objective_metric', 'total_return'),
+                                   state_positions    = getattr(cfg, 'state_positions', None),
+                                   search_state_positions = getattr(cfg, 'search_state_positions', False))
 
+    obj_metric = getattr(cfg, 'objective_metric', 'total_return')
     completed = [0]
-    best_box  = [bl_is['total_return']]
+    best_box  = [bl_is[obj_metric]]
 
     def _cb(study, trial):
         completed[0] += 1
@@ -182,25 +199,57 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
     best_params    = study.best_trial.params
     best_is_return = study.best_trial.value
 
-    print(f'  Best IS return  : {best_is_return:+.2f}%  '
-          f'(Δ vs baseline: {best_is_return - bl_is["total_return"]:+.2f}%)')
+    print(f'  Best IS {obj_metric}  : {best_is_return:+.4f}  '
+          f'(Δ vs baseline: {best_is_return - bl_is[obj_metric]:+.4f})')
 
     # OOS validation ---------------------------------------------------------
     best_score_threshold = (
         fixed_st if fixed_st is not None
         else best_params['hmm_score_threshold']
     )
+    best_hmm_components = (
+        fixed_hc if fixed_hc is not None
+        else best_params['hmm_components']
+    )
+    # Extract best feature subset from trial params (feat_* keys)
+    best_features = [k[5:] for k, v in best_params.items()
+                     if k.startswith('feat_') and v is True]
+    if not best_features:
+        best_features = getattr(cfg, 'hmm_features', None)
+    # Extract best unfav_fraction if optimised (regime_mode=size)
+    best_unfav_fraction = best_params.get(
+        'unfav_fraction', getattr(cfg, 'unfav_fraction', None) or 0.25)
+    # Extract best state_positions if searched by Optuna
+    cfg_state_positions = getattr(cfg, 'state_positions', None)
+    if cfg_state_positions is not None:
+        best_state_positions = cfg_state_positions
+        best_regime_mode = 'score'
+    elif getattr(cfg, 'search_state_positions', False):
+        best_state_positions = [
+            best_params[f'state_pos_{i}'] for i in range(best_hmm_components)
+        ]
+        best_regime_mode = 'score'
+    else:
+        best_state_positions = getattr(cfg, 'state_positions', None)
+        best_regime_mode = getattr(cfg, 'regime_mode', 'strict')
+    oos_common = {k: v for k, v in common.items()
+                  if k not in ('hmm_features', 'unfav_fraction',
+                               'state_positions', 'regime_mode')}
     hmm_oos = opt.backtest(
         fromdate            = OOS_FROM,
         todate              = OOS_TO,
         hmm                 = True,
-        hmm_components      = best_params['hmm_components'],
+        hmm_components      = best_hmm_components,
         hmm_score_threshold = best_score_threshold,
         hmm_threshold       = best_params['hmm_threshold'],
         hmm_gate            = best_params['hmm_gate'],
         hmm_train_years     = best_params['hmm_train_years'],
         hmm_find_best_rs    = True,
-        **common,
+        hmm_features        = best_features,
+        unfav_fraction      = best_unfav_fraction,
+        regime_mode         = best_regime_mode,
+        state_positions     = best_state_positions,
+        **oos_common,
     )
 
     oos_delta = hmm_oos['total_return'] - bl_oos['total_return']
@@ -210,6 +259,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
           f'sharpe={hmm_oos["sharpe"]:.3f}  '
           f'calmar={hmm_oos["calmar"]:.3f}  '
           f'maxdd={hmm_oos["max_drawdown"]:.2f}%  '
+          f'trades={hmm_oos.get("trade_count", 0)}  '
           f'({hmm_oos["time_taken"]:.1f}s)')
     print(f'  OOS Δ return    : {oos_delta:+.2f}%  {verdict}')
 
@@ -229,6 +279,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         bl_oos_dd       = bl_oos['max_drawdown'],
         bl_oos_calmar   = bl_oos['calmar'],
         bl_oos_time     = bl_oos['time_taken'],
+        bl_oos_trades   = bl_oos.get('trade_count', 0),
         # OOS – HMM
         hmm_oos_return  = hmm_oos['total_return'],
         hmm_oos_annual  = hmm_oos['annual_return'],
@@ -236,6 +287,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         hmm_oos_dd      = hmm_oos['max_drawdown'],
         hmm_oos_calmar  = hmm_oos['calmar'],
         hmm_oos_time    = hmm_oos['time_taken'],
+        hmm_oos_trades  = hmm_oos.get('trade_count', 0),
         # Deltas
         oos_delta       = oos_delta,
         improved        = oos_delta > 0,
@@ -257,6 +309,7 @@ _METRICS = [
     ('sharpe', 'Sharpe',           '.3f',  True),
     ('calmar', 'Calmar',           '.3f',  True),
     ('dd',     'Max DrawDown (%)', '.2f',  False),   # lower is better
+    ('trades', 'Trades',           '.0f',  False),   # informational
     ('time',   'Time (s)',         '.1f',  False),   # lower is better (informational)
 ]
 
@@ -296,10 +349,11 @@ def print_report(results: list[dict], cfg):
     # Per-window delta table
     # Columns: IS Start | OOS Start | ΔRet% | ΔCAGR% | ΔSharpe | ΔCalmar | ΔMaxDD% | Result
     # ------------------------------------------------------------------
-    col_fmt = '{:<12}  {:<12}  {:>9}  {:>9}  {:>9}  {:>9}  {:>9}  {:>8}'
+    col_fmt = '{:<12}  {:<12}  {:>9}  {:>9}  {:>9}  {:>9}  {:>9}  {:>7}  {:>7}  {:>8}'
     hdr = col_fmt.format(
         'IS Start', 'OOS Start',
-        'Δ Ret%', 'Δ CAGR%', 'Δ Sharpe', 'Δ Calmar', 'Δ MaxDD%', 'Result')
+        'Δ Ret%', 'Δ CAGR%', 'Δ Sharpe', 'Δ Calmar', 'Δ MaxDD%',
+        'BL Trd', 'HMM Trd', 'Result')
     print(f'\n{hdr}')
     print('-' * W)
 
@@ -310,6 +364,8 @@ def print_report(results: list[dict], cfg):
         d_sharpe   = r['hmm_oos_sharpe'] - r['bl_oos_sharpe']
         d_calmar   = r['hmm_oos_calmar'] - r['bl_oos_calmar']
         d_dd       = r['hmm_oos_dd']     - r['bl_oos_dd']      # positive = worse DD
+        bl_trades  = r.get('bl_oos_trades', 0)
+        hmm_trades = r.get('hmm_oos_trades', 0)
         print(col_fmt.format(
             r['win_from'], r['split'],
             f'{d_return:+.2f}',
@@ -317,6 +373,8 @@ def print_report(results: list[dict], cfg):
             f'{d_sharpe:+.3f}',
             f'{d_calmar:+.3f}',
             f'{d_dd:+.2f}',
+            f'{bl_trades}',
+            f'{hmm_trades}',
             verdict,
         ))
 
@@ -359,7 +417,7 @@ def print_report(results: list[dict], cfg):
         mean_hmm = sum(hmm_vals) / n
         mean_d   = sum(deltas)   / n
 
-        if key == 'time':
+        if key in ('time', 'trades'):
             improved_flag = '(info)'
             improved      = None
             ir_str        = '(info)'
@@ -391,7 +449,12 @@ def print_report(results: list[dict], cfg):
     # Best params frequency --------------------------------------------------
     print('\n  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:')
     from collections import Counter
+    fixed_hc = getattr(cfg, 'hmm_components', None)
     for key in ['hmm_components', 'hmm_gate']:
+        fixed_val = {'hmm_components': fixed_hc}.get(key)
+        if fixed_val is not None:
+            print(f'    {key:<22}: {fixed_val} (fixed)')
+            continue
         vals = [r['best_params'].get(key) for r in results if r['best_params']]
         cnt  = Counter(vals).most_common(3)
         print(f'    {key:<22}: ' + '  '.join(f'{v}×{c}' for v, c in cnt))
@@ -459,6 +522,17 @@ def parse_args():
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')
     p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0, dest='hmm_mr_z_threshold',
         help='HMM-MR: std-devs below state mean required before entry (0=any dip)')
+    p.add_argument('--hmm-features', nargs='+', default=None, dest='hmm_features',
+        metavar='FEAT',
+        help='HMM input features (e.g. log_ret vol_short vol_long atr_norm)')
+    p.add_argument('--hmm-pca', type=int, default=None, dest='hmm_pca',
+        metavar='N',
+        help='Apply PCA after scaling, reducing features to N components (omit to skip)')
+    p.add_argument('--regime-mode', default='strict', dest='regime_mode',
+        choices=['strict', 'size', 'score', 'linear'],
+        help='strict = block trades in unfav regime; size = reduce position; score = score-weighted')
+    p.add_argument('--unfav-fraction', type=float, default=None, dest='unfav_fraction',
+        help='Fraction of stake in unfavourable regime (regime_mode=size); omit to let Optuna search')
     p.add_argument('--stake',     type=int, default=100)
     p.add_argument('--cash',      type=float, default=100_000.0)
     p.add_argument('--commission',type=float, default=0.001)
@@ -468,12 +542,30 @@ def parse_args():
         metavar='SCORE',
         help='Fix hmm_score_threshold instead of letting Optuna search it '
              '(range [0, 3] with default weights); omit to include in search')
+    p.add_argument('--hmm-components', type=int, default=None,
+        dest='hmm_components',
+        metavar='K',
+        help='Fix number of HMM hidden states instead of letting Optuna search '
+             '(range 3-6); omit to include in search')
+    p.add_argument('--objective-metric', default='total_return',
+        dest='objective_metric',
+        choices=['total_return', 'sharpe', 'calmar'],
+        help='Metric that Optuna maximises during IS optimisation')
     p.add_argument('--max-workers', type=int, default=0, dest='max_workers',
         help='Max parallel window workers (0 = auto = number of windows, '
              '1 = sequential)')
     p.add_argument('--window-log-dir', default=None, dest='window_log_dir',
         help='Directory for per-window progress log files '
              '(default: auto-created alongside output)')
+    p.add_argument('--state-positions', type=float, nargs='+', default=None,
+        dest='state_positions',
+        metavar='POS',
+        help='Fixed position sizes per HMM state (score-ranked, best\u2192worst). '
+             'Number of values should match hmm_components (K)')
+    p.add_argument('--search-state-positions', action='store_true', default=False,
+        dest='search_state_positions',
+        help='Let Optuna search for optimal per-state position sizes [0,1]. '
+             'Forces regime_mode=score. Ignored if --state-positions is provided.')
 
     return p.parse_args()
 

@@ -36,13 +36,15 @@ class RsiStrategy(BaseRegimeStrategy):
     """
 
     params = dict(
-        rsi_period  = 14,     # RSI look-back window
-        oversold    = 30,     # buy signal level
-        overbought  = 70,     # sell signal level
-        midline     = 50,     # secondary exit level
-        stake       = 100,
-        printlog    = True,
-        use_hmm     = False,
+        rsi_period     = 14,
+        oversold       = 30,
+        overbought     = 70,
+        midline        = 50,
+        stake          = 100,
+        printlog       = True,
+        use_hmm        = False,
+        regime_mode    = 'strict',
+        unfav_fraction = 0.25,
     )
 
     def _init_indicators(self, d):
@@ -76,3 +78,4 @@ class RsiStrategy(BaseRegimeStrategy):
             f'overbought={self.p.overbought}  '
             f'Ending value: {self.broker.getvalue():.2f}',
             dt=self.datas[0].datetime.datetime(0))
+        super().stop()

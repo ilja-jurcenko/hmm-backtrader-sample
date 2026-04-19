@@ -34,43 +34,51 @@ __all__ = [
 
 def _sma_kwargs(args) -> dict:
     return dict(
-        fast     = args.fast,
-        slow     = args.slow,
-        stake    = args.stake,
-        printlog = args.printlog,
-        use_hmm  = args.hmm,
+        fast           = args.fast,
+        slow           = args.slow,
+        stake          = args.stake,
+        printlog       = args.printlog,
+        use_hmm        = args.hmm,
+        regime_mode    = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction = getattr(args, 'unfav_fraction', 0.25) or 0.25,
     )
 
 
 def _dema_kwargs(args) -> dict:
     return dict(
-        fast     = args.fast,
-        slow     = args.slow,
-        stake    = args.stake,
-        printlog = args.printlog,
-        use_hmm  = args.hmm,
+        fast           = args.fast,
+        slow           = args.slow,
+        stake          = args.stake,
+        printlog       = args.printlog,
+        use_hmm        = args.hmm,
+        regime_mode    = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction = getattr(args, 'unfav_fraction', 0.25) or 0.25,
     )
 
 
 def _rsi_kwargs(args) -> dict:
     return dict(
-        rsi_period  = args.rsi_period,
-        oversold    = args.rsi_oversold,
-        overbought  = args.rsi_overbought,
-        stake       = args.stake,
-        printlog    = args.printlog,
-        use_hmm     = args.hmm,
+        rsi_period     = args.rsi_period,
+        oversold       = args.rsi_oversold,
+        overbought     = args.rsi_overbought,
+        stake          = args.stake,
+        printlog       = args.printlog,
+        use_hmm        = args.hmm,
+        regime_mode    = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction = getattr(args, 'unfav_fraction', 0.25) or 0.25,
     )
 
 
 def _macd_kwargs(args) -> dict:
     return dict(
-        macd_fast   = args.macd_fast,
-        macd_slow   = args.macd_slow,
-        macd_signal = args.macd_signal,
-        stake       = args.stake,
-        printlog    = args.printlog,
-        use_hmm     = args.hmm,
+        macd_fast      = args.macd_fast,
+        macd_slow      = args.macd_slow,
+        macd_signal    = args.macd_signal,
+        stake          = args.stake,
+        printlog       = args.printlog,
+        use_hmm        = args.hmm,
+        regime_mode    = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction = getattr(args, 'unfav_fraction', 0.25) or 0.25,
     )
 
 

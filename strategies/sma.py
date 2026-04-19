@@ -25,11 +25,13 @@ class SmaCrossOver(BaseRegimeStrategy):
     """
 
     params = dict(
-        fast     = 10,    # fast SMA period
-        slow     = 30,    # slow SMA period
-        stake    = 100,
-        printlog = True,
-        use_hmm  = False,
+        fast           = 10,
+        slow           = 30,
+        stake          = 100,
+        printlog       = True,
+        use_hmm        = False,
+        regime_mode    = 'strict',
+        unfav_fraction = 0.25,
     )
 
     def _init_indicators(self, d):
@@ -50,3 +52,4 @@ class SmaCrossOver(BaseRegimeStrategy):
             f'SMA({self.p.fast}/{self.p.slow})  '
             f'Ending value: {self.broker.getvalue():.2f}',
             dt=self.datas[0].datetime.datetime(0))
+        super().stop()

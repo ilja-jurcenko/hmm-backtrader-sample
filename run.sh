@@ -4,7 +4,11 @@
 
 .venv/bin/python walkforward-compare.py \
     --ticker AAPL MSFT NVDA AMZN BRK-B XOM UNH WMT BA KO \
-    --wf-start 2010-01-01 --wf-end 2025-01-01 \
-    --is-years 2 --oos-years 1 --step 1 --n-trials 30 \
+    --wf-start 2010-01-01 --wf-end 2026-04-10 \
+    --is-years 2 --oos-years 1 --step 1 --n-trials 20 \
     --strategies sma dema rsi macd \
-    --out-dir ./3_wf_results_2010_2025_AAPL_MSFT_NVDA_AMZN_BRK-B_XOM_UNH_WMT_BA_KO
+    --out-dir ./wf_results_pca3 \
+    --regime-mode size \
+    --hmm-features Returns Range r5 r20 vol log_ret vol_short vol_long atr_norm vol_of_vol vol_lag1 downside_vol vol_z \
+    --hmm-pca 4 \
+    --objective-metric sharpe

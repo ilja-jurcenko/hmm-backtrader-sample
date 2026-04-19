@@ -207,9 +207,32 @@ def parse_args():
     p.add_argument('--seed',       type=int,   default=42)
     p.add_argument('--hmm-score-threshold', type=float, default=None,
         dest='hmm_score_threshold')
+    p.add_argument('--hmm-components', type=int, default=None,
+        dest='hmm_components',
+        metavar='K',
+        help='Fix number of HMM hidden states (omit to let Optuna search)')
     p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0,
         dest='hmm_mr_z_threshold',
         help='HMM-MR: std-devs below state mean required before entry')
+    p.add_argument('--hmm-features', nargs='+', default=None,
+        dest='hmm_features', metavar='FEAT',
+        help='HMM input features (e.g. log_ret vol_short vol_long atr_norm)')
+    p.add_argument('--hmm-pca', type=int, default=None, dest='hmm_pca',
+        metavar='N',
+        help='Apply PCA after scaling, reducing features to N components (omit to skip)')
+    p.add_argument('--regime-mode', default='strict', dest='regime_mode',
+        choices=['strict', 'size', 'score', 'linear'],
+        help='strict = block trades in unfav regime; size = reduce position; score = score-weighted')
+    p.add_argument('--unfav-fraction', type=float, default=None, dest='unfav_fraction',
+        help='Fraction of stake in unfavourable regime (regime_mode=size); omit to let Optuna search')
+    p.add_argument('--search-state-positions', action='store_true', default=False,
+        dest='search_state_positions',
+        help='Let Optuna search for optimal per-state position sizes [0,1]. '
+             'Forces regime_mode=score.')
+    p.add_argument('--objective-metric', default='total_return',
+        dest='objective_metric',
+        choices=['total_return', 'sharpe', 'calmar'],
+        help='Metric that Optuna maximises during IS optimisation')
     p.add_argument('--wf-max-workers', type=int, default=0,
         dest='wf_max_workers',
         help='Max parallel window workers inside each strategy '
@@ -242,7 +265,19 @@ def _build_passthrough(cfg) -> list[str]:
     args += ['--seed',       str(cfg.seed)]
     if cfg.hmm_score_threshold is not None:
         args += ['--hmm-score-threshold', str(cfg.hmm_score_threshold)]
+    if cfg.hmm_components is not None:
+        args += ['--hmm-components', str(cfg.hmm_components)]
     args += ['--hmm-mr-z-threshold', str(cfg.hmm_mr_z_threshold)]
+    if cfg.hmm_features:
+        args += ['--hmm-features'] + cfg.hmm_features
+    if cfg.hmm_pca is not None:
+        args += ['--hmm-pca', str(cfg.hmm_pca)]
+    args += ['--regime-mode',    cfg.regime_mode]
+    if cfg.unfav_fraction is not None:
+        args += ['--unfav-fraction', str(cfg.unfav_fraction)]
+    args += ['--objective-metric', cfg.objective_metric]
+    if cfg.search_state_positions:
+        args += ['--search-state-positions']
     args += ['--max-workers', str(cfg.wf_max_workers)]
     return args
 

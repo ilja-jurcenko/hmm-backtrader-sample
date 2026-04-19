@@ -36,12 +36,14 @@ class MacdStrategy(BaseRegimeStrategy):
     """
 
     params = dict(
-        macd_fast   = 12,     # fast EMA period for MACD
-        macd_slow   = 26,     # slow EMA period for MACD
-        macd_signal = 9,      # signal (smoothing) EMA period
-        stake       = 100,
-        printlog    = True,
-        use_hmm     = False,
+        macd_fast      = 12,
+        macd_slow      = 26,
+        macd_signal    = 9,
+        stake          = 100,
+        printlog       = True,
+        use_hmm        = False,
+        regime_mode    = 'strict',
+        unfav_fraction = 0.25,
     )
 
     def _init_indicators(self, d):
@@ -70,3 +72,4 @@ class MacdStrategy(BaseRegimeStrategy):
             f'MACD({self.p.macd_fast}/{self.p.macd_slow}/{self.p.macd_signal})  '
             f'Ending value: {self.broker.getvalue():.2f}',
             dt=self.datas[0].datetime.datetime(0))
+        super().stop()

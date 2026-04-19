@@ -51,16 +51,36 @@ from strategies import REGISTRY  # noqa: E402
 # HMM helper functions  (ported from hmm_test_with_posterior_prob.py)
 # ---------------------------------------------------------------------------
 
+# All features computed by prepare_hmm_features()
+ALL_HMM_FEATURES = [
+    'Returns', 'Range', 'r5', 'r20', 'vol',
+    'log_ret', 'vol_short', 'vol_long', 'atr_norm',
+    'vol_of_vol', 'vol_lag1', 'downside_vol', 'vol_z',
+]
+
+# Default feature subset used when --hmm-features is not specified
+DEFAULT_HMM_FEATURES = [
+    'log_ret', 'r5', 'r20', 'vol_short', 'atr_norm',
+]
+
 def prepare_hmm_features(df: pd.DataFrame) -> pd.DataFrame:
     """
     Compute HMM input features from a raw OHLCV DataFrame.
 
     Features:
-        Returns  – daily pct change of Close
-        Range    – (High / Low) - 1   (intraday range proxy)
-        r5       – 5-day log return
-        r20      – 20-day log return
-        vol20    – 20-day rolling realised volatility (std of Returns)
+        Returns       – daily pct change of Close
+        Range         – (High / Low) - 1   (intraday range proxy)
+        r5            – 5-day log return
+        r20           – 20-day log return
+        vol           – normalised intraday range
+        log_ret       – daily log return
+        vol_short     – 5-day rolling volatility (std of log returns)
+        vol_long      – 20-day rolling volatility
+        atr_norm      – 14-day normalised Average True Range
+        vol_of_vol    – 20-day rolling std of vol_short (vol-of-vol)
+        vol_lag1      – lagged vol_short by 1 day
+        downside_vol  – 20-day rolling downside volatility (std of negative log returns)
+        vol_z         – z-scored vol_short relative to its 60-day rolling mean/std
 
     The DataFrame is returned with NaN rows dropped.
     """
@@ -71,6 +91,36 @@ def prepare_hmm_features(df: pd.DataFrame) -> pd.DataFrame:
     df['r5']   = log_close.diff(5)
     df['r20']  = log_close.diff(20)
     df['vol'] = (df['High'] - df['Low']) / df['Close']
+
+    # --- Volatility features -------------------------------------------------
+    df['log_ret'] = log_close.diff(1)
+
+    # Rolling volatility (short / long)
+    df['vol_short'] = df['log_ret'].rolling(5).std()
+    df['vol_long']  = df['log_ret'].rolling(20).std()
+
+    # Normalised ATR (14-day)
+    high_low   = df['High'] - df['Low']
+    high_close = (df['High'] - df['Close'].shift(1)).abs()
+    low_close  = (df['Low']  - df['Close'].shift(1)).abs()
+    true_range = pd.concat([high_low, high_close, low_close], axis=1).max(axis=1)
+    df['atr_norm'] = true_range.rolling(14).mean() / df['Close']
+
+    # Vol-of-vol: rolling std of short-term volatility
+    df['vol_of_vol'] = df['vol_short'].rolling(20).std()
+
+    # Lagged volatility
+    df['vol_lag1'] = df['vol_short'].shift(1)
+
+    # Downside volatility: std of negative log returns only (20-day)
+    neg_ret = df['log_ret'].clip(upper=0)
+    df['downside_vol'] = neg_ret.rolling(20).std()
+
+    # Z-scored volatility (vol_short vs its 60-day rolling stats)
+    vol_roll_mean = df['vol_short'].rolling(60).mean()
+    vol_roll_std  = df['vol_short'].rolling(60).std()
+    df['vol_z'] = (df['vol_short'] - vol_roll_mean) / vol_roll_std.replace(0, np.nan)
+
     df.dropna(inplace=True)
     return df
 
@@ -83,9 +133,11 @@ def get_favourable_states(
         mean_weight: float = 1.0,
         vol_weight: float = 1.0,
         up_ratio_weight: float = 1.0,
+        state_positions: list[float] | None = None,
         min_mean=None,
         max_volatility=None,
         min_up_ratio=None,
+        regime_mode: str = 'strict',
         verbose: bool = True) -> list:
     """
     Rank HMM hidden states by a composite score of mean return, low
@@ -160,21 +212,61 @@ def get_favourable_states(
 
     for i, s in enumerate(filtered):
         s['score']      = round(float(combined[i]), 4)
+        s['sc_mean']    = round(float(mean_scores[i]), 4)
+        s['sc_vol']     = round(float(vol_scores[i]), 4)
+        s['sc_upratio'] = round(float(up_ratio_scores[i]), 4)
         s['mean']       = round(s['mean'],       6)
         s['volatility'] = round(s['volatility'], 6)
         s['up_ratio']   = round(s['up_ratio'],   3)
 
     filtered.sort(key=lambda s: s['score'], reverse=True)
 
+    # Compute position size per state
+    if regime_mode == 'linear':
+        # Linear rank-based sizing: best state → 1.0, worst → 0.0
+        K = len(filtered)
+        for i, s in enumerate(filtered):
+            s['pos_size'] = round(1.0 - i / max(K - 1, 1), 4)
+    elif state_positions is not None:
+        # User-supplied fixed position sizes (score-ranked order, best→worst)
+        if len(state_positions) != len(filtered):
+            if verbose:
+                print(f'[HMM] WARNING: --state-positions has {len(state_positions)} '
+                      f'values but model has {len(filtered)} states. '
+                      f'Padding/truncating to match.')
+            # Pad with last value or truncate
+            if len(state_positions) < len(filtered):
+                pad_val = state_positions[-1] if state_positions else 0.1
+                state_positions = list(state_positions) + [pad_val] * (len(filtered) - len(state_positions))
+            else:
+                state_positions = list(state_positions[:len(filtered)])
+        for i, s in enumerate(filtered):
+            s['pos_size'] = round(float(state_positions[i]), 4)
+    else:
+        min_score = min(s['score'] for s in filtered) if filtered else 0.0
+        MIN_POS = 0.1   # floor for the worst state
+        for s in filtered:
+            if s['score'] >= score_threshold:
+                s['pos_size'] = 1.0
+            else:
+                denom = score_threshold - min_score
+                if denom < 1e-8:
+                    s['pos_size'] = MIN_POS
+                else:
+                    ratio = (s['score'] - min_score) / denom
+                    s['pos_size'] = round(MIN_POS + (1.0 - MIN_POS) * ratio, 4)
+
     if verbose:
-        hdr = (f"{'State':>6} {'Mean':>10} {'Volatility':>12} {'Up Days':>9} "
-               f"{'Down Days':>10} {'Up Ratio':>10} {'Score':>8} {'Count':>7}")
+        hdr = (f"{'State':>6} {'Mean':>10} {'Volatility':>12} {'Up Ratio':>10} "
+               f"{'SC_Mean':>8} {'SC_Vol':>8} {'SC_UpR':>8} "
+               f"{'Score':>8} {'Pos Size':>10} {'Count':>7}")
         print(hdr)
-        print('-' * 80)
+        print('-' * 105)
         for s in filtered:
             print(f"{s['state']:>6} {s['mean']:>10.6f} {s['volatility']:>12.6f} "
-                  f"{s['up_days']:>9} {s['down_days']:>10} {s['up_ratio']:>10.3f} "
-                  f"{s['score']:>8.4f} {s['count']:>7}")
+                  f"{s['up_ratio']:>10.3f} "
+                  f"{s['sc_mean']:>8.4f} {s['sc_vol']:>8.4f} {s['sc_upratio']:>8.4f} "
+                  f"{s['score']:>8.4f} {s['pos_size']:>10.4f} {s['count']:>7}")
 
     # Select states whose composite score meets the threshold
     above = [s for s in filtered if s['score'] >= score_threshold]
@@ -189,9 +281,15 @@ def get_favourable_states(
         above = above[:n_favourable]
 
     favourable = [s['state'] for s in above]
+
+    # Build state → pos_size mapping for all states
+    state_pos_sizes = {s['state']: s['pos_size'] for s in filtered}
+    # Build state → composite score mapping
+    state_scores = {s['state']: s['score'] for s in filtered}
+
     if verbose:
         print(f'\n[HMM] Favourable states (score ≥ {score_threshold:.3f}): {favourable}')
-    return favourable
+    return favourable, state_pos_sizes, state_scores
 
 
 def regime_gate(p: np.ndarray, gate_type: str = 'threshold',
@@ -342,6 +440,13 @@ def train_hmm_and_get_signals(
         gate_type: str = 'threshold',
         find_best_rs: bool = True,
         n_random_states: int = 10,
+        hmm_features: list[str] | None = None,
+        hmm_pca: int | None = None,
+        regime_mode: str = 'strict',
+        mean_weight: float = 1.0,
+        vol_weight: float = 1.0,
+        up_ratio_weight: float = 1.0,
+        state_positions: list[float] | None = None,
         verbose: bool = True,
         plot: bool = False,
         plot_ticker: str = '',
@@ -365,9 +470,7 @@ def train_hmm_and_get_signals(
     """
     from sklearn.preprocessing import StandardScaler
 
-    HMM_FEATURES = ['Returns','Range', 'r5', 'r20']
-
-    #HMM_FEATURES = ['Range', 'r20', 'vol']
+    HMM_FEATURES = list(hmm_features or DEFAULT_HMM_FEATURES)
 
     # Prepare features
     feat_train = prepare_hmm_features(df_train)[HMM_FEATURES]
@@ -378,6 +481,17 @@ def train_hmm_and_get_signals(
     scaler = StandardScaler()
     X_train = scaler.fit_transform(feat_train.values)
     X_test  = scaler.transform(feat_test.values)
+
+    # Optional PCA dimensionality reduction
+    if hmm_pca is not None and hmm_pca > 0:
+        from sklearn.decomposition import PCA
+        n_components_pca = min(hmm_pca, X_train.shape[1])
+        pca = PCA(n_components=n_components_pca)
+        X_train = pca.fit_transform(X_train)
+        X_test  = pca.transform(X_test)
+        explained = pca.explained_variance_ratio_.sum() * 100
+        print(f'[HMM] PCA: {feat_train.shape[1]} features → {n_components_pca} components '
+            f'({explained:.1f}% variance explained)')
 
     # Find best random state if requested
     rs = random_state
@@ -399,32 +513,63 @@ def train_hmm_and_get_signals(
 
     # Derive favourable states from training predictions
     train_states = model.predict(X_train)
-    favourable   = get_favourable_states(
+    favourable, state_pos_sizes, state_scores = get_favourable_states(
         train_states, feat_returns.values,
         n_favourable=n_favourable,
         score_threshold=score_threshold,
+        mean_weight=mean_weight,
+        vol_weight=vol_weight,
+        up_ratio_weight=up_ratio_weight,
+        state_positions=state_positions,
+        regime_mode=regime_mode,
         verbose=verbose)
+
+    # Predict dominant state for every test bar
+    test_states = model.predict(X_test)
+
+    # Build per-bar composite score from dominant state
+    test_scores = np.array([state_scores.get(s, 0.0) for s in test_states])
 
     if not favourable:
         if verbose:
             print('[HMM] Warning: no favourable states found – disabling filter.')
         # Return all-ones (no filtering) aligned to test feature index
-        signals = np.ones(len(feat_test), dtype=int)
+        signals = np.ones(len(feat_test), dtype=float)
+    elif regime_mode in ('score', 'linear'):
+        # Continuous sizing: per-bar pos_size = Σ P(state_k) * pos_size_k
+        state_proba = model.predict_proba(X_test)
+        n_states = state_proba.shape[1]
+        pos_size_vec = np.array([state_pos_sizes.get(k, 0.0) for k in range(n_states)])
+        signals = state_proba @ pos_size_vec  # shape (n_bars,), values in [0, 1]
+        if verbose:
+            mean_ps = signals.mean()
+            label = 'Linear' if regime_mode == 'linear' else 'Score-based'
+            print(f'[HMM] {label} sizing: mean pos_size={mean_ps:.3f}  '
+                  f'min={signals.min():.3f}  max={signals.max():.3f}')
     else:
-        # Soft gate via posterior probabilities
+        # Binary gate via posterior probabilities (strict / size modes)
         state_proba = model.predict_proba(X_test)
         p_fav = state_proba[:, favourable].sum(axis=1)
         signals = regime_gate(p_fav, gate_type=gate_type, tau=threshold)
 
-    if verbose:
-        active = signals.sum()
-        print(f'[HMM] Gate: {gate_type}  τ={threshold}  '
-              f'Active bars: {active}/{len(signals)} '
-              f'({100*active/max(len(signals),1):.1f}%)')
+    if regime_mode not in ('score', 'linear'):
+        if verbose:
+            active = signals.sum()
+            print(f'[HMM] Gate: {gate_type}  τ={threshold}  '
+                  f'Active bars: {active}/{len(signals)} '
+                  f'({100*active/max(len(signals),1):.1f}%)')
 
-    # Build a Series aligned to df_test's index (NaN rows before feature prep → 0)
-    signal_series = pd.Series(0, index=df_test.index, dtype=int)
+    # Build a Series aligned to df_test's index (0 for rows outside feature prep)
+    signal_series = pd.Series(0.0, index=df_test.index, dtype=float)
     signal_series.loc[feat_test.index] = signals
+
+    # Build predicted-state series (-1 for rows outside feature prep)
+    state_series = pd.Series(-1, index=df_test.index, dtype=int)
+    state_series.loc[feat_test.index] = test_states
+
+    # Build per-bar composite score series (0.0 for rows outside feature prep)
+    score_series = pd.Series(0.0, index=df_test.index, dtype=float)
+    score_series.loc[feat_test.index] = test_scores
 
     # ---- Optional debug plot -----------------------------------------------
     if plot:
@@ -436,9 +581,14 @@ def train_hmm_and_get_signals(
 
         # Test p_fav series (NaN outside feature-prep rows)
         p_fav_plot: pd.Series | None = None
-        if favourable:
+        if favourable and regime_mode not in ('score', 'linear'):
             p_fav_full = pd.Series(np.nan, index=df_test.index, dtype=float)
             p_fav_full.loc[feat_test.index] = p_fav
+            p_fav_plot = p_fav_full
+        elif favourable and regime_mode in ('score', 'linear'):
+            # Use the continuous score signal as the probability plot
+            p_fav_full = pd.Series(np.nan, index=df_test.index, dtype=float)
+            p_fav_full.loc[feat_test.index] = signals
             p_fav_plot = p_fav_full
 
         plot_hmm_regimes(
@@ -453,7 +603,7 @@ def train_hmm_and_get_signals(
             save_path     = plot_save_path,
         )
 
-    return signal_series
+    return signal_series, state_series, score_series
 
 
 def train_hmm_price_model(
@@ -670,14 +820,16 @@ def plot_hmm_regimes(
 
 class HMMRegimeFeed(bt.feeds.PandasData):
     """
-    Extends PandasData with an extra 'regime' line that carries the
-    pre-computed binary HMM regime signal (0 = unfavourable, 1 = favourable).
-
-    The strategy accesses it as ``data.regime[0]``.
+    Extends PandasData with extra lines:
+      regime    – pre-computed regime signal (0/1 or float for score mode)
+      hmm_state – dominant HMM component index at each bar
+      hmm_score – composite score of the dominant state
     """
-    lines = ('regime',)
+    lines = ('regime', 'hmm_state', 'hmm_score',)
     params = (
-        ('regime', -1),   # -1 → auto-detect column named 'regime'
+        ('regime', -1),      # -1 → auto-detect column named 'regime'
+        ('hmm_state', -1),   # -1 → auto-detect column named 'hmm_state'
+        ('hmm_score', -1),   # -1 → auto-detect column named 'hmm_score'
     )
 
 
@@ -798,6 +950,8 @@ def run(args=None, quiet=False):
 
     # ---- HMM regime pre-computation (per ticker) ----------------------------
     hmm_signals:  dict = {}   # ticker → pd.Series of 0/1 (regime filter)
+    hmm_states:   dict = {}   # ticker → pd.Series of int (dominant HMM state)
+    hmm_scores:   dict = {}   # ticker → pd.Series of float (composite score)
     hmm_mr_state: dict = {}   # ticker → DataFrame(state_mean, state_std)
 
     if args.hmm and strategy_key != 'hmm_mr':
@@ -818,11 +972,13 @@ def run(args=None, quiet=False):
                 _p(f'[HMM] WARNING: No training data for {ticker} – '
                    f'regime filter disabled for this ticker.')
                 hmm_signals[ticker] = pd.Series(1, index=df_test_all.index)
+                hmm_states[ticker]  = pd.Series(-1, index=df_test_all.index)
+                hmm_scores[ticker]  = pd.Series(0.0, index=df_test_all.index)
                 continue
 
             hmm_plot      = getattr(args, 'hmm_plot', False)
             hmm_plot_save = getattr(args, 'hmm_plot_save', None)
-            signals = train_hmm_and_get_signals(
+            signals, states, scores = train_hmm_and_get_signals(
                 df_train=df_train_all,
                 df_test=df_test_all,
                 n_components=args.hmm_components,
@@ -835,6 +991,13 @@ def run(args=None, quiet=False):
                 gate_type=args.hmm_gate,
                 find_best_rs=args.hmm_find_best_rs,
                 n_random_states=10,
+                hmm_features=getattr(args, 'hmm_features', None),
+                hmm_pca=getattr(args, 'hmm_pca', None),
+                regime_mode=getattr(args, 'regime_mode', 'strict'),
+                mean_weight=getattr(args, 'score_mean_weight', 1.0),
+                vol_weight=getattr(args, 'score_vol_weight', 1.0),
+                up_ratio_weight=getattr(args, 'score_upratio_weight', 1.0),
+                state_positions=getattr(args, 'state_positions', None),
                 verbose=not quiet,
                 plot=hmm_plot and not quiet,
                 plot_ticker=ticker,
@@ -845,6 +1008,8 @@ def run(args=None, quiet=False):
                 plot_show=hmm_plot,
             )
             hmm_signals[ticker] = signals
+            hmm_states[ticker]  = states
+            hmm_scores[ticker]  = scores
 
     # ---- HMM price model for the Mean-Reversion strategy --------------------
     if strategy_key == 'hmm_mr':
@@ -904,11 +1069,19 @@ def run(args=None, quiet=False):
             )
             cerebro.adddata(data, name=ticker)
     elif args.hmm:
-        # Use HMMRegimeFeed (PandasData + regime line) for each ticker
+        # Use HMMRegimeFeed (PandasData + regime + hmm_state lines) for each ticker
         for ticker in tickers:
             df_raw = load_csv_as_dataframe(csv_paths[ticker], fromdate, todate)
-            df_raw['regime'] = hmm_signals[ticker].reindex(df_raw.index).fillna(0).astype(int)
-            df_bt = df_raw[['Open', 'High', 'Low', 'Close', 'Volume', 'regime']].copy()
+            regime_vals = hmm_signals[ticker].reindex(df_raw.index).fillna(0.0)
+            if getattr(args, 'regime_mode', 'strict') != 'score':
+                regime_vals = regime_vals.astype(int)
+            df_raw['regime'] = regime_vals
+            state_vals = hmm_states[ticker].reindex(df_raw.index).fillna(-1).astype(int)
+            df_raw['hmm_state'] = state_vals
+            score_vals = hmm_scores[ticker].reindex(df_raw.index).fillna(0.0)
+            df_raw['hmm_score'] = score_vals
+            df_bt = df_raw[['Open', 'High', 'Low', 'Close', 'Volume',
+                            'regime', 'hmm_state', 'hmm_score']].copy()
             data = HMMRegimeFeed(
                 dataname=df_bt,
                 fromdate=fromdate,
@@ -920,6 +1093,8 @@ def run(args=None, quiet=False):
                 volume='Volume',
                 openinterest=-1,
                 regime='regime',
+                hmm_state='hmm_state',
+                hmm_score='hmm_score',
             )
             cerebro.adddata(data, name=ticker)
     else:
@@ -1048,9 +1223,21 @@ def run(args=None, quiet=False):
             _p(f'[WARN] QuantStats skipped: {qs_err}')
 
     # ---- Optional plot (skipped in quiet mode) -------------------------------
-    if args.plot and not quiet:
-        cerebro.plot(style='candle', barup='green', bardown='red',
-                     volume=True, numfigs=1)
+    plot_save = getattr(args, 'plot_save', None)
+    if (args.plot or plot_save) and not quiet:
+        import matplotlib
+        if plot_save:
+            matplotlib.use('Agg')
+        figs = cerebro.plot(style='candle', barup='green', bardown='red',
+                            volume=True, numfigs=1)
+        if plot_save and figs:
+            for i, fig_list in enumerate(figs):
+                for j, fig in enumerate(fig_list):
+                    path = plot_save if (i == 0 and j == 0) else (
+                        f'{os.path.splitext(plot_save)[0]}_{i}_{j}'
+                        f'{os.path.splitext(plot_save)[1]}')
+                    fig.savefig(path, dpi=150, bbox_inches='tight')
+                    _p(f'[INFO] Backtrader plot saved → {path}')
 
     return {
         'total_return':  total_return,
@@ -1060,6 +1247,7 @@ def run(args=None, quiet=False):
         'annual_return': float(cagr),
         'calmar':        float(calmar),
         'time_taken':    float(time_taken),
+        'trade_count':   int(total_t.get('total', 0)),
     }
 
 
@@ -1137,12 +1325,32 @@ def parse_args(pargs=None):
     parser.add_argument('--riskfreerate', type=float, default=0.01,
         help='Annual risk-free rate for Sharpe calculation')
 
+    # Regime filter mode
+    parser.add_argument('--regime-mode', default='strict',
+        dest='regime_mode',
+        choices=['strict', 'size', 'score', 'linear'],
+        help='HMM regime filter mode: strict = block trades in unfavourable '
+             'regime; size = reduce position size by unfav-fraction; '
+             'score = continuous position sizing based on HMM state scores; '
+             'linear = rank-based linear position sizing (no search needed)')
+
+    parser.add_argument('--unfav-fraction', type=float, default=None,
+        dest='unfav_fraction',
+        help='Fraction of stake used during unfavourable regime '
+             '(only used when --regime-mode=size, e.g. 0.25 = 25%% of stake; omit to let Optuna search)')
+
     # Output
     parser.add_argument('--printlog', action='store_true', default=False,
         help='Print trade log to stdout')
 
     parser.add_argument('--plot', '-p', action='store_true', default=False,
         help='Plot the result')
+
+    parser.add_argument('--plot-save', type=str, default=None,
+        dest='plot_save',
+        metavar='PATH',
+        help='Save the backtrader plot to a PNG file (e.g. bt-plot.png). '
+             'Implies --plot.')
 
     # HMM regime filter
     parser.add_argument('--hmm', action='store_true', default=False,
@@ -1152,7 +1360,7 @@ def parse_args(pargs=None):
         dest='hmm_train_years',
         help='Years of history before --fromdate used to train the HMM')
 
-    parser.add_argument('--hmm-components', type=int, default=6,
+    parser.add_argument('--hmm-components', type=int, default=7,
         dest='hmm_components',
         help='Number of hidden states in the HMM (K)')
 
@@ -1161,6 +1369,22 @@ def parse_args(pargs=None):
         metavar='N',
         help='Hard cap on the number of favourable states (default: no cap, '
              'use --hmm-score-threshold instead)')
+
+    parser.add_argument('--score-mean-weight', type=float, default=1.0,
+        dest='score_mean_weight',
+        help='Weight for the mean-return component in the composite score (0 to disable)')
+    parser.add_argument('--score-vol-weight', type=float, default=1.0,
+        dest='score_vol_weight',
+        help='Weight for the low-volatility component in the composite score (0 to disable)')
+    parser.add_argument('--score-upratio-weight', type=float, default=0.0,
+        dest='score_upratio_weight',
+        help='Weight for the up-ratio component in the composite score (0 to disable)')
+    parser.add_argument('--state-positions', type=float, nargs='+', default=None,
+        dest='state_positions',
+        metavar='POS',
+        help='Fixed position sizes per state in score-ranked order (best to worst). '
+             'Overrides the linear scoring formula. Number of values must match '
+             '--hmm-components (e.g. --state-positions 1.0 1.0 0.6 0.5 0.1 0.1)')
 
     parser.add_argument('--hmm-score-threshold', type=float, default=1.0,
         dest='hmm_score_threshold',
@@ -1180,6 +1404,19 @@ def parse_args(pargs=None):
     parser.add_argument('--hmm-find-best-rs', action='store_true', default=False,
         dest='hmm_find_best_rs',
         help='Search multiple random seeds and pick the best HMM initialisation')
+
+    parser.add_argument('--hmm-features', nargs='+', default=None,
+        dest='hmm_features',
+        metavar='FEAT',
+        help='HMM input features (choose from: %(choices)s). '
+             'Default: ' + ' '.join(DEFAULT_HMM_FEATURES),
+        choices=ALL_HMM_FEATURES)
+
+    parser.add_argument('--hmm-pca', type=int, default=None,
+        dest='hmm_pca',
+        metavar='N',
+        help='Apply PCA after scaling, reducing features to N components. '
+             'Omit or 0 to skip PCA.')
 
     parser.add_argument('--hmm-plot', action='store_true', default=False,
         dest='hmm_plot',
