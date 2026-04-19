@@ -73,10 +73,19 @@ class BaseRegimeStrategy(bt.Strategy):
         self._regime_entries = []   # (regime_value, size, dname, hmm_state, hmm_score)
         self._regime_bars    = []   # list of regime values for every bar
         self._all_state_scores = {} # state_id → list of scores (from every bar)
+        # Per-component profitability tracking
+        self._entry_state = {}      # dname → hmm_state at entry
+        self._entry_price = {}      # dname → close price at entry
+        self._entry_size  = {}      # dname → position size at entry
+        self._regime_pnl  = {}      # hmm_state → list of (pnlcomm, return_pct)
+        # Collect state_pos_sizes from data feeds (set by ma-quantstats.py)
+        self._state_pos_sizes = {}  # state_id → pos_size fraction
         for d in self.datas:
             self.orders[d] = None
             self.inds[d]   = {}
             self._init_indicators(d)
+            if hasattr(d, 'state_pos_sizes'):
+                self._state_pos_sizes.update(d.state_pos_sizes)
 
     def _init_indicators(self, d):
         """Populate self.inds[d].  Must be overridden by sub-classes."""
@@ -117,6 +126,12 @@ class BaseRegimeStrategy(bt.Strategy):
             self.log(
                 f'[{dname}] TRADE CLOSED  gross={trade.pnl:.2f}  '
                 f'net={trade.pnlcomm:.2f}')
+            # Record PnL by HMM component
+            st = self._entry_state.pop(dname, -1)
+            entry_px = self._entry_price.pop(dname, None)
+            entry_sz = self._entry_size.pop(dname, 0)
+            ret_pct = (trade.pnl / (entry_px * entry_sz) * 100) if entry_px and entry_sz else 0.0
+            self._regime_pnl.setdefault(st, []).append((trade.pnlcomm, ret_pct))
 
     # ------------------------------------------------------------------ core
 
@@ -156,6 +171,9 @@ class BaseRegimeStrategy(bt.Strategy):
                              f'regime={regime:.2f}  size={size}')
                     self.orders[d] = self.buy(data=d, size=size)
                     self._regime_entries.append((regime, size, dname, hmm_st, hmm_sc))
+                    self._entry_state[dname] = hmm_st
+                    self._entry_price[dname] = d.close[0]
+                    self._entry_size[dname]  = size
             else:
                 if self.p.regime_mode in ('score', 'linear') and sig > 0:
                     # Score mode: resize position to match current regime score
@@ -220,6 +238,28 @@ class BaseRegimeStrategy(bt.Strategy):
 
         n_active = sum(1 for s in all_states if by_state[s]['count'] > 0)
 
+        # Compute profitability per state
+        state_profit = {}  # st → (net_pnl, avg_pnl, win_rate, avg_ret)
+        total_net_pnl = 0.0
+        total_trades_closed = 0
+        total_wins = 0
+        total_ret_sum = 0.0
+        for st in all_states:
+            pnl_list = self._regime_pnl.get(st, [])
+            if pnl_list:
+                net_pnl  = sum(p for p, _ in pnl_list)
+                avg_pnl  = net_pnl / len(pnl_list)
+                wins     = sum(1 for p, _ in pnl_list if p > 0)
+                win_rate = 100 * wins / len(pnl_list)
+                avg_ret  = sum(r for _, r in pnl_list) / len(pnl_list)
+                total_net_pnl += net_pnl
+                total_trades_closed += len(pnl_list)
+                total_wins += wins
+                total_ret_sum += sum(r for _, r in pnl_list)
+            else:
+                net_pnl = avg_pnl = win_rate = avg_ret = 0.0
+            state_profit[st] = (net_pnl, avg_pnl, win_rate, avg_ret)
+
         # Build rows
         rows = []
         for rank, st in enumerate(all_states, 1):
@@ -232,35 +272,120 @@ class BaseRegimeStrategy(bt.Strategy):
             bar_len = max(1, int(pct / 2)) if cnt > 0 else 0
             bar = '█' * bar_len
             label = f'S{st}' if st >= 0 else 'N/A'
-            rows.append((f'#{rank}', label, avg_score, cnt, pct, avg_size, avg_regime, bar))
+            net_pnl, avg_pnl, win_rate, avg_ret = state_profit[st]
+            rows.append((f'#{rank}', label, avg_score, cnt, pct, avg_size, avg_regime,
+                         net_pnl, avg_pnl, win_rate, avg_ret, bar))
 
         avg_all = sum(r for r, _, _, _, _ in entries) / n if n > 0 else 0
         avg_sz  = sum(s for _, s, _, _, _ in entries) / n if n > 0 else 0
         avg_sc  = sum(sc for _, _, _, _, sc in entries) / n if n > 0 else 0
+        tot_avg_pnl = total_net_pnl / total_trades_closed if total_trades_closed else 0
+        tot_win_rate = 100 * total_wins / total_trades_closed if total_trades_closed else 0
+        tot_avg_ret = total_ret_sum / total_trades_closed if total_trades_closed else 0
 
-        W = 80
-        print(f'\n┌{"─" * (W-2)}┐')
-        print(f'│{"REGIME TRADE ANALYSIS":^{W-2}}│')
-        print(f'│{f"{n} entries · {len(all_states)} states ({n_active} active)":^{W-2}}│')
-        print(f'├{"─" * (W-2)}┤')
-        print(f'│  {"Rank":>4}  {"State":>5}  {"Score":>6}  '
-              f'{"Entries":>6}  {"%":>6}  {"AvgSz":>6}  {"PosSz":>6}  '
-              f'{"Distribution":<22} │')
-        print(f'│  {"────":>4}  {"─────":>5}  {"──────":>6}  '
-              f'{"──────":>6}  {"──────":>6}  {"──────":>6}  {"──────":>6}  '
-              f'{"─" * 22} │')
+        # ── table formatting helpers ──
+        import unicodedata
 
-        for rank_s, label, avg_score, cnt, pct, avg_size, avg_regime, bar in rows:
-            entries_s = str(cnt) if cnt > 0 else '—'
-            pct_s = f'{pct:5.1f}%' if cnt > 0 else '    —'
-            sz_s = f'{avg_size:6.0f}' if cnt > 0 else '     —'
-            ps_s = f'{avg_regime:6.3f}' if cnt > 0 else '     —'
-            print(f'│  {rank_s:>4}  {label:>5}  {avg_score:>6.2f}  '
-                  f'{entries_s:>6}  {pct_s:>6}  {sz_s:>6}  {ps_s:>6}  '
-                  f'{bar:<22} │')
+        def _dw(s):
+            """Display width of string (accounts for wide/fullwidth chars)."""
+            return sum(2 if unicodedata.east_asian_width(c) in ('F', 'W') else 1
+                       for c in s)
 
-        print(f'├{"─" * (W-2)}┤')
-        print(f'│  {"":>4}  {"Total":>5}  {avg_sc:>6.2f}  '
-              f'{n:>6}  {"100%":>6}  {avg_sz:>6.0f}  {avg_all:>6.3f}  '
-              f'{"":22} │')
-        print(f'└{"─" * (W-2)}┘')
+        def _rpad(s, w):
+            """Left-align s in w display-columns."""
+            return s + ' ' * (w - _dw(s))
+
+        def _lpad(s, w):
+            """Right-align s in w display-columns."""
+            return ' ' * (w - _dw(s)) + s
+
+        COL = [
+            # (header,        width, align)
+            ('Rank',            4, '>'),
+            ('Comp',            4, '>'),
+            ('Score',           5, '>'),
+            ('CompSz',          6, '>'),
+            ('Entries',         7, '>'),
+            ('%',               6, '>'),
+            ('PosSz',           5, '>'),
+            ('Net PnL',        10, '>'),
+            ('Avg PnL',         9, '>'),
+            ('Win%',            5, '>'),
+            ('AvgRet%',         7, '>'),
+            ('Distribution',   20, '<'),
+        ]
+        GAP = '  '
+
+        def _row(cells):
+            parts = []
+            for (_, w, align), val in zip(COL, cells):
+                s = str(val)
+                parts.append(_lpad(s, w) if align == '>' else _rpad(s, w))
+            return GAP.join(parts)
+
+        hdr_line = _row([h for h, _, _ in COL])
+        sep_line = _row(['-' * w for _, w, _ in COL])
+        table_w = _dw(hdr_line) + 6   # "│  " + content + "  │"
+
+        def _hline(l, r):
+            return l + '─' * (table_w - 2) + r
+
+        def _print_row(content):
+            pad = table_w - 2 - _dw(content) - 4  # 4 = leading + trailing spaces
+            print(f'│  {content}{" " * max(pad, 0)}  │')
+
+        subtitle = (f"{n} entries | {len(all_states)} components "
+                    f"({n_active} active) | {total_trades_closed} closed trades")
+
+        print(f'\n{_hline("┌", "┐")}')
+        title_pad = table_w - 2 - len('REGIME TRADE ANALYSIS')
+        lp = title_pad // 2
+        rp = title_pad - lp
+        print(f'│{" " * lp}REGIME TRADE ANALYSIS{" " * rp}│')
+        sub_pad = table_w - 2 - len(subtitle)
+        lp2 = sub_pad // 2
+        rp2 = sub_pad - lp2
+        print(f'│{" " * lp2}{subtitle}{" " * rp2}│')
+        print(f'{_hline("├", "┤")}')
+        _print_row(hdr_line)
+        _print_row(sep_line)
+
+        for (rank_s, label, avg_score, cnt, pct, avg_size, avg_regime,
+             net_pnl, avg_pnl, win_rate, avg_ret, bar) in rows:
+            st_key = int(label[1:]) if label != 'N/A' else -1
+            has_pnl = bool(self._regime_pnl.get(st_key, []))
+            has_trades = cnt > 0
+
+            cells = [
+                rank_s,
+                label,
+                f'{avg_score:.2f}',
+                f'{self._state_pos_sizes.get(st_key, 0):.3f}' if st_key in self._state_pos_sizes else '-',
+                str(cnt) if has_trades else '-',
+                f'{pct:.1f}%' if has_trades else '-',
+                f'{avg_regime:.3f}' if has_trades else '-',
+                f'{net_pnl:+,.1f}' if has_pnl else '-',
+                f'{avg_pnl:+,.1f}' if has_pnl else '-',
+                f'{win_rate:.0f}%' if has_pnl else '-',
+                f'{avg_ret:+.2f}%' if has_pnl else '-',
+                bar,
+            ]
+            _print_row(_row(cells))
+
+        print(f'{_hline("├", "┤")}')
+        tot_cells = [
+            '',
+            'ALL',
+            f'{avg_sc:.2f}',
+            '',
+            str(n),
+            '',
+            f'{avg_all:.3f}',
+            f'{total_net_pnl:+,.1f}',
+            f'{tot_avg_pnl:+,.1f}',
+            f'{tot_win_rate:.0f}%',
+            f'{tot_avg_ret:+.2f}%',
+            '',
+        ]
+        _print_row(_row(tot_cells))
+        print(f'{_hline("└", "┘")}')

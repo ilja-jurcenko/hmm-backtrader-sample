@@ -603,7 +603,7 @@ def train_hmm_and_get_signals(
             save_path     = plot_save_path,
         )
 
-    return signal_series, state_series, score_series
+    return signal_series, state_series, score_series, state_pos_sizes
 
 
 def train_hmm_price_model(
@@ -952,6 +952,7 @@ def run(args=None, quiet=False):
     hmm_signals:  dict = {}   # ticker → pd.Series of 0/1 (regime filter)
     hmm_states:   dict = {}   # ticker → pd.Series of int (dominant HMM state)
     hmm_scores:   dict = {}   # ticker → pd.Series of float (composite score)
+    hmm_pos_sizes: dict = {}  # ticker → dict {state_id: pos_size}
     hmm_mr_state: dict = {}   # ticker → DataFrame(state_mean, state_std)
 
     if args.hmm and strategy_key != 'hmm_mr':
@@ -974,11 +975,12 @@ def run(args=None, quiet=False):
                 hmm_signals[ticker] = pd.Series(1, index=df_test_all.index)
                 hmm_states[ticker]  = pd.Series(-1, index=df_test_all.index)
                 hmm_scores[ticker]  = pd.Series(0.0, index=df_test_all.index)
+                hmm_pos_sizes[ticker] = {}
                 continue
 
             hmm_plot      = getattr(args, 'hmm_plot', False)
             hmm_plot_save = getattr(args, 'hmm_plot_save', None)
-            signals, states, scores = train_hmm_and_get_signals(
+            signals, states, scores, sps = train_hmm_and_get_signals(
                 df_train=df_train_all,
                 df_test=df_test_all,
                 n_components=args.hmm_components,
@@ -1010,6 +1012,7 @@ def run(args=None, quiet=False):
             hmm_signals[ticker] = signals
             hmm_states[ticker]  = states
             hmm_scores[ticker]  = scores
+            hmm_pos_sizes[ticker] = sps
 
     # ---- HMM price model for the Mean-Reversion strategy --------------------
     if strategy_key == 'hmm_mr':
@@ -1096,6 +1099,7 @@ def run(args=None, quiet=False):
                 hmm_state='hmm_state',
                 hmm_score='hmm_score',
             )
+            data.state_pos_sizes = hmm_pos_sizes.get(ticker, {})
             cerebro.adddata(data, name=ticker)
     else:
         # Standard CSV feed (no HMM)
