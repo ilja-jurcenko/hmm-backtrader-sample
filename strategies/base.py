@@ -189,6 +189,12 @@ class BaseRegimeStrategy(bt.Strategy):
                                  f'regime={regime:.2f}  close={d.close[0]:.2f}')
                         self.orders[d] = self.sell(data=d, size=trim)
                         continue
+                    elif pos.size < target:
+                        add = target - pos.size
+                        self.log(f'[{dname}] EXPAND position ({pos.size}→{target})  '
+                                 f'regime={regime:.2f}  close={d.close[0]:.2f}')
+                        self.orders[d] = self.buy(data=d, size=add)
+                        continue
                 elif self.p.regime_mode == 'size' and regime == 0 and sig > 0:
                     # Regime turned unfavourable while in position – resize
                     target = max(1, int(self.p.stake * self.p.unfav_fraction))

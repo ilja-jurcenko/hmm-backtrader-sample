@@ -134,6 +134,8 @@ def get_favourable_states(
         vol_weight: float = 1.0,
         up_ratio_weight: float = 1.0,
         state_positions: list[float] | None = None,
+        max_pos_size: float = 2.0,
+        min_pos_size: float = 0.01,
         min_mean=None,
         max_volatility=None,
         min_up_ratio=None,
@@ -223,10 +225,11 @@ def get_favourable_states(
 
     # Compute position size per state
     if regime_mode == 'linear':
-        # Linear rank-based sizing: best state → 1.0, worst → 0.0
+        # Linear rank-based sizing: best state → max_pos_size, worst → min_pos_size
         K = len(filtered)
         for i, s in enumerate(filtered):
-            s['pos_size'] = round(1.0 - i / max(K - 1, 1), 4)
+            frac = 1.0 - i / max(K - 1, 1)   # 1.0 → 0.0
+            s['pos_size'] = round(min_pos_size + (max_pos_size - min_pos_size) * frac, 4)
     elif state_positions is not None:
         # User-supplied fixed position sizes (score-ranked order, best→worst)
         if len(state_positions) != len(filtered):
@@ -244,17 +247,16 @@ def get_favourable_states(
             s['pos_size'] = round(float(state_positions[i]), 4)
     else:
         min_score = min(s['score'] for s in filtered) if filtered else 0.0
-        MIN_POS = 0.1   # floor for the worst state
         for s in filtered:
             if s['score'] >= score_threshold:
-                s['pos_size'] = 1.0
+                s['pos_size'] = round(max_pos_size, 4)
             else:
                 denom = score_threshold - min_score
                 if denom < 1e-8:
-                    s['pos_size'] = MIN_POS
+                    s['pos_size'] = round(min_pos_size, 4)
                 else:
                     ratio = (s['score'] - min_score) / denom
-                    s['pos_size'] = round(MIN_POS + (1.0 - MIN_POS) * ratio, 4)
+                    s['pos_size'] = round(min_pos_size + (max_pos_size - min_pos_size) * ratio, 4)
 
     if verbose:
         hdr = (f"{'State':>6} {'Mean':>10} {'Volatility':>12} {'Up Ratio':>10} "
@@ -284,6 +286,13 @@ def get_favourable_states(
 
     # Build state → pos_size mapping for all states
     state_pos_sizes = {s['state']: s['pos_size'] for s in filtered}
+
+    # When n_favourable is set, block states outside the top-N (pos_size → 0)
+    if n_favourable is not None:
+        fav_set = set(favourable)
+        for state_id in list(state_pos_sizes):
+            if state_id not in fav_set:
+                state_pos_sizes[state_id] = 0.0
     # Build state → composite score mapping
     state_scores = {s['state']: s['score'] for s in filtered}
 
@@ -447,6 +456,8 @@ def train_hmm_and_get_signals(
         vol_weight: float = 1.0,
         up_ratio_weight: float = 1.0,
         state_positions: list[float] | None = None,
+        max_pos_size: float = 2.0,
+        min_pos_size: float = 0.01,
         dynamic_scoring: bool = False,
         dynamic_window: int = 0,
         verbose: bool = True,
@@ -523,6 +534,8 @@ def train_hmm_and_get_signals(
         vol_weight=vol_weight,
         up_ratio_weight=up_ratio_weight,
         state_positions=state_positions,
+        max_pos_size=max_pos_size,
+        min_pos_size=min_pos_size,
         regime_mode=regime_mode,
         verbose=verbose)
 
@@ -576,6 +589,8 @@ def train_hmm_and_get_signals(
                         score_threshold=score_threshold,
                         regime_mode=regime_mode,
                         state_positions=state_positions,
+                        max_pos_size=max_pos_size,
+                        min_pos_size=min_pos_size,
                         verbose=False)
                     pos_size_vec_t = np.array(
                         [dyn_pos_sizes.get(k, 0.0) for k in range(n_states)])
@@ -1044,6 +1059,8 @@ def run(args=None, quiet=False):
                 vol_weight=getattr(args, 'score_vol_weight', 1.0),
                 up_ratio_weight=getattr(args, 'score_upratio_weight', 1.0),
                 state_positions=getattr(args, 'state_positions', None),
+                max_pos_size=getattr(args, 'hmm_max_pos_size', 2.0),
+                min_pos_size=getattr(args, 'hmm_min_pos_size', 0.01),
                 dynamic_scoring=getattr(args, 'hmm_dynamic_scoring', False),
                 dynamic_window=getattr(args, 'hmm_dynamic_window', 0),
                 verbose=not quiet,
@@ -1435,6 +1452,18 @@ def parse_args(pargs=None):
         help='Fixed position sizes per state in score-ranked order (best to worst). '
              'Overrides the linear scoring formula. Number of values must match '
              '--hmm-components (e.g. --state-positions 1.0 1.0 0.6 0.5 0.1 0.1)')
+    parser.add_argument('--hmm-max-pos-size', type=float, default=2.0,
+        dest='hmm_max_pos_size',
+        metavar='MULT',
+        help='Position size multiplier for the best-scored HMM states. '
+             '1.0 = normal stake, 2.0 = double stake for top states. '
+             'Has no effect when --state-positions is used.')
+    parser.add_argument('--hmm-min-pos-size', type=float, default=0.01,
+        dest='hmm_min_pos_size',
+        metavar='MULT',
+        help='Position size multiplier for the worst-scored HMM states. '
+             '0.01 = near-zero exposure, 0.5 = half stake for bottom states. '
+             'Has no effect when --state-positions is used.')
 
     parser.add_argument('--hmm-score-threshold', type=float, default=1.0,
         dest='hmm_score_threshold',

@@ -132,6 +132,11 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         stake          = cfg.stake,
         cash           = cfg.cash,
         commission     = cfg.commission,
+        hmm_favourable      = getattr(cfg, 'hmm_favourable', None),
+        hmm_max_pos_size    = getattr(cfg, 'hmm_max_pos_size', 2.0),
+        hmm_min_pos_size    = getattr(cfg, 'hmm_min_pos_size', 0.0),
+        hmm_dynamic_scoring = getattr(cfg, 'hmm_dynamic_scoring', False),
+        hmm_dynamic_window  = getattr(cfg, 'hmm_dynamic_window', 0),
     )
 
     # Baselines --------------------------------------------------------------
@@ -175,7 +180,12 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    fixed_hmm_components=fixed_hc,
                                    objective_metric=getattr(cfg, 'objective_metric', 'total_return'),
                                    state_positions    = getattr(cfg, 'state_positions', None),
-                                   search_state_positions = getattr(cfg, 'search_state_positions', False))
+                                   search_state_positions = getattr(cfg, 'search_state_positions', False),
+                                   hmm_favourable      = getattr(cfg, 'hmm_favourable', None),
+                                   hmm_max_pos_size    = getattr(cfg, 'hmm_max_pos_size', 2.0),
+                                   hmm_min_pos_size    = getattr(cfg, 'hmm_min_pos_size', 0.0),
+                                   hmm_dynamic_scoring = getattr(cfg, 'hmm_dynamic_scoring', False),
+                                   hmm_dynamic_window  = getattr(cfg, 'hmm_dynamic_window', 0))
 
     obj_metric = getattr(cfg, 'objective_metric', 'total_return')
     completed = [0]
@@ -566,6 +576,17 @@ def parse_args():
         dest='search_state_positions',
         help='Let Optuna search for optimal per-state position sizes [0,1]. '
              'Forces regime_mode=score. Ignored if --state-positions is provided.')
+    p.add_argument('--hmm-favourable', type=int, default=None, dest='hmm_favourable',
+        help='Only trade in the top-N best HMM states; others get pos_size=0.')
+    p.add_argument('--hmm-max-pos-size', type=float, default=2.0, dest='hmm_max_pos_size',
+        help='Position size multiplier for top states (default 2.0)')
+    p.add_argument('--hmm-min-pos-size', type=float, default=0.0, dest='hmm_min_pos_size',
+        help='Position size multiplier for worst states (default 0.0 = blocked)')
+    p.add_argument('--hmm-dynamic-scoring', action='store_true', default=False,
+        dest='hmm_dynamic_scoring',
+        help='Re-score HMM states bar-by-bar using expanding window')
+    p.add_argument('--hmm-dynamic-window', type=int, default=0, dest='hmm_dynamic_window',
+        help='Window size for dynamic scoring (0 = expanding)')
 
     return p.parse_args()
 

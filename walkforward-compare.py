@@ -229,6 +229,17 @@ def parse_args():
         dest='search_state_positions',
         help='Let Optuna search for optimal per-state position sizes [0,1]. '
              'Forces regime_mode=score.')
+    p.add_argument('--hmm-favourable', type=int, default=None, dest='hmm_favourable',
+        help='Only trade in the top-N best HMM states; others get pos_size=0.')
+    p.add_argument('--hmm-max-pos-size', type=float, default=2.0, dest='hmm_max_pos_size',
+        help='Position size multiplier for top states (default 2.0)')
+    p.add_argument('--hmm-min-pos-size', type=float, default=0.0, dest='hmm_min_pos_size',
+        help='Position size multiplier for worst states (default 0.0)')
+    p.add_argument('--hmm-dynamic-scoring', action='store_true', default=False,
+        dest='hmm_dynamic_scoring',
+        help='Re-score HMM states bar-by-bar using expanding window')
+    p.add_argument('--hmm-dynamic-window', type=int, default=0, dest='hmm_dynamic_window',
+        help='Window size for dynamic scoring (0 = expanding)')
     p.add_argument('--objective-metric', default='total_return',
         dest='objective_metric',
         choices=['total_return', 'sharpe', 'calmar'],
@@ -278,6 +289,13 @@ def _build_passthrough(cfg) -> list[str]:
     args += ['--objective-metric', cfg.objective_metric]
     if cfg.search_state_positions:
         args += ['--search-state-positions']
+    if cfg.hmm_favourable is not None:
+        args += ['--hmm-favourable', str(cfg.hmm_favourable)]
+    args += ['--hmm-max-pos-size', str(cfg.hmm_max_pos_size)]
+    args += ['--hmm-min-pos-size', str(cfg.hmm_min_pos_size)]
+    if cfg.hmm_dynamic_scoring:
+        args += ['--hmm-dynamic-scoring']
+    args += ['--hmm-dynamic-window', str(cfg.hmm_dynamic_window)]
     args += ['--max-workers', str(cfg.wf_max_workers)]
     return args
 

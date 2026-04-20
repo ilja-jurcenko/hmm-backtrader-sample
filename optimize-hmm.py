@@ -104,6 +104,11 @@ def make_args(**kwargs) -> types.SimpleNamespace:
         regime_mode    = 'strict',
         unfav_fraction = None,
         state_positions = None,
+        # HMM position sizing extensions
+        hmm_max_pos_size    = 2.0,
+        hmm_min_pos_size    = 0.0,
+        hmm_dynamic_scoring = False,
+        hmm_dynamic_window  = 0,
     )
     defaults.update(kwargs)
     return types.SimpleNamespace(**defaults)
@@ -142,7 +147,12 @@ def make_objective(tickers, fromdate, todate, fast, slow,
                    fixed_hmm_components=None,
                    objective_metric='total_return',
                    state_positions=None,
-                   search_state_positions=False):
+                   search_state_positions=False,
+                   hmm_favourable=None,
+                   hmm_max_pos_size=2.0,
+                   hmm_min_pos_size=0.0,
+                   hmm_dynamic_scoring=False,
+                   hmm_dynamic_window=0):
     """Return a closure that Optuna can call as an objective.
 
     Strategy params are FIXED so the search only measures the HMM's
@@ -238,6 +248,11 @@ def make_objective(tickers, fromdate, todate, fast, slow,
             regime_mode         = trial_regime_mode,
             unfav_fraction      = trial_unfav_fraction,
             state_positions     = trial_state_positions,
+            hmm_favourable      = hmm_favourable,
+            hmm_max_pos_size    = hmm_max_pos_size,
+            hmm_min_pos_size    = hmm_min_pos_size,
+            hmm_dynamic_scoring = hmm_dynamic_scoring,
+            hmm_dynamic_window  = hmm_dynamic_window,
         )
         return res[objective_metric]
 
