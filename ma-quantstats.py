@@ -447,6 +447,8 @@ def train_hmm_and_get_signals(
         vol_weight: float = 1.0,
         up_ratio_weight: float = 1.0,
         state_positions: list[float] | None = None,
+        dynamic_scoring: bool = False,
+        dynamic_window: int = 0,
         verbose: bool = True,
         plot: bool = False,
         plot_ticker: str = '',
@@ -540,11 +542,53 @@ def train_hmm_and_get_signals(
         state_proba = model.predict_proba(X_test)
         n_states = state_proba.shape[1]
         pos_size_vec = np.array([state_pos_sizes.get(k, 0.0) for k in range(n_states)])
-        signals = state_proba @ pos_size_vec  # shape (n_bars,), values in [0, 1]
+
+        if dynamic_scoring:
+            # Re-score states bar-by-bar using an expanding (or rolling) window
+            # that incorporates each observed test return before it is used.
+            test_ret_vals = (
+                prepare_hmm_features(df_test)['Returns']
+                .reindex(feat_test.index)
+                .fillna(0.0)
+                .values
+            )
+            base_states  = train_states          # training-period Viterbi labels
+            base_returns = feat_returns.values   # training-period returns
+
+            signals = np.zeros(len(feat_test))
+            _win_label = dynamic_window if dynamic_window > 0 else 'expanding'
+            if verbose:
+                print(f'[HMM] Dynamic scoring enabled  window={_win_label}')
+            for t in range(len(feat_test)):
+                # Combine training history with all test bars seen *before* bar t
+                comb_states  = np.concatenate([base_states,  test_states[:t]])
+                comb_returns = np.concatenate([base_returns, test_ret_vals[:t]])
+                if dynamic_window > 0 and len(comb_states) > dynamic_window:
+                    comb_states  = comb_states[-dynamic_window:]
+                    comb_returns = comb_returns[-dynamic_window:]
+
+                if len(comb_states) < 20:
+                    # Too few observations – fall back to static training scores
+                    pos_size_vec_t = pos_size_vec
+                else:
+                    _, dyn_pos_sizes, _ = get_favourable_states(
+                        comb_states, comb_returns,
+                        score_threshold=score_threshold,
+                        regime_mode=regime_mode,
+                        state_positions=state_positions,
+                        verbose=False)
+                    pos_size_vec_t = np.array(
+                        [dyn_pos_sizes.get(k, 0.0) for k in range(n_states)])
+
+                signals[t] = state_proba[t] @ pos_size_vec_t
+        else:
+            signals = state_proba @ pos_size_vec  # shape (n_bars,), values in [0, 1]
+
         if verbose:
             mean_ps = signals.mean()
             label = 'Linear' if regime_mode == 'linear' else 'Score-based'
-            print(f'[HMM] {label} sizing: mean pos_size={mean_ps:.3f}  '
+            dyn_tag = f' dynamic(w={dynamic_window or "exp"})' if dynamic_scoring else ''
+            print(f'[HMM] {label} sizing{dyn_tag}: mean pos_size={mean_ps:.3f}  '
                   f'min={signals.min():.3f}  max={signals.max():.3f}')
     else:
         # Binary gate via posterior probabilities (strict / size modes)
@@ -1000,6 +1044,8 @@ def run(args=None, quiet=False):
                 vol_weight=getattr(args, 'score_vol_weight', 1.0),
                 up_ratio_weight=getattr(args, 'score_upratio_weight', 1.0),
                 state_positions=getattr(args, 'state_positions', None),
+                dynamic_scoring=getattr(args, 'hmm_dynamic_scoring', False),
+                dynamic_window=getattr(args, 'hmm_dynamic_window', 0),
                 verbose=not quiet,
                 plot=hmm_plot and not quiet,
                 plot_ticker=ticker,
@@ -1421,6 +1467,17 @@ def parse_args(pargs=None):
         metavar='N',
         help='Apply PCA after scaling, reducing features to N components. '
              'Omit or 0 to skip PCA.')
+
+    parser.add_argument('--hmm-dynamic-scoring', action='store_true', default=False,
+        dest='hmm_dynamic_scoring',
+        help='Re-score HMM states bar-by-bar using observed test returns '
+             '(expanding or rolling window) instead of fixed training scores')
+
+    parser.add_argument('--hmm-dynamic-window', type=int, default=0,
+        dest='hmm_dynamic_window',
+        metavar='N',
+        help='Number of bars for the dynamic-scoring rolling window. '
+             '0 (default) = expanding window from training start')
 
     parser.add_argument('--hmm-plot', action='store_true', default=False,
         dest='hmm_plot',
