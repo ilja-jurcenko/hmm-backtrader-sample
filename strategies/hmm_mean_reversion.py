@@ -56,9 +56,11 @@ class HmmMeanReversionStrategy(bt.Strategy):
     """
 
     params = dict(
-        z_threshold = 0.0,   # std-dev threshold for entry
-        stake       = 100,
-        printlog    = True,
+        z_threshold      = 0.0,   # std-dev threshold for entry
+        stake            = 100,
+        printlog         = True,
+        stop_loss_perc   = 0.02,  # stop-loss  as fraction (0 = disabled)
+        take_profit_perc = 0.10,  # take-profit as fraction (0 = disabled)
     )
 
     # ------------------------------------------------------------------ helpers
@@ -72,6 +74,8 @@ class HmmMeanReversionStrategy(bt.Strategy):
 
     def __init__(self):
         self.orders = {d: None for d in self.datas}
+        self._bracket_children = {d: [] for d in self.datas}
+        self._bracket_roles    = {}   # id(order) → 'STOP-LOSS' | 'TAKE-PROFIT'
         # Verify feeds have the required custom lines
         for d in self.datas:
             if not hasattr(d, 'state_mean'):
@@ -89,6 +93,21 @@ class HmmMeanReversionStrategy(bt.Strategy):
         if order.status in [order.Submitted, order.Accepted]:
             return
         dname = order.data._name or order.data._dataname
+
+        # ── bracket child (stop-loss / take-profit) ──
+        for d, children in self._bracket_children.items():
+            if order in children:
+                children.remove(order)
+                if order.status == order.Completed:
+                    tag = self._bracket_roles.get(order.ref, 'EXIT')
+                    self.log(
+                        f'[{dname}] {tag} hit  '
+                        f'price={order.executed.price:.2f}  '
+                        f'comm={order.executed.comm:.2f}')
+                self._bracket_roles.pop(order.ref, None)
+                self.orders[d] = None
+                return
+
         if order.status == order.Completed:
             verb = 'BUY ' if order.isbuy() else 'SELL'
             self.log(
@@ -128,13 +147,37 @@ class HmmMeanReversionStrategy(bt.Strategy):
                         f'state_mean={mu:.2f}  '
                         f'entry_level={entry_lvl:.2f}  '
                         f'z={(mu - close) / max(sigma, 1e-9):.2f}σ')
-                    self.orders[d] = self.buy(data=d, size=self.p.stake)
+                    use_bracket = (self.p.stop_loss_perc > 0
+                                   or self.p.take_profit_perc > 0)
+                    if use_bracket:
+                        kw = dict(data=d, size=self.p.stake,
+                                  exectype=bt.Order.Market)
+                        if self.p.stop_loss_perc > 0:
+                            kw['stopprice'] = close * (1.0 - self.p.stop_loss_perc)
+                        if self.p.take_profit_perc > 0:
+                            kw['limitprice'] = close * (1.0 + self.p.take_profit_perc)
+                        bracket = self.buy_bracket(**kw)
+                        self.orders[d] = bracket[0]
+                        self._bracket_children[d] = [bracket[1], bracket[2]]
+                        self._bracket_roles[bracket[1].ref] = 'STOP-LOSS'
+                        self._bracket_roles[bracket[2].ref] = 'TAKE-PROFIT'
+                        sl_s = (f'  SL={kw["stopprice"]:.2f}'
+                                if self.p.stop_loss_perc > 0 else '')
+                        tp_s = (f'  TP={kw["limitprice"]:.2f}'
+                                if self.p.take_profit_perc > 0 else '')
+                        self.log(f'[{dname}] BRACKET placed{sl_s}{tp_s}')
+                    else:
+                        self.orders[d] = self.buy(data=d, size=self.p.stake)
             else:
                 # Exit when price has reverted to (or above) the state mean
                 if close >= mu:
                     self.log(
                         f'[{dname}] SELL  close={close:.2f}  '
                         f'state_mean={mu:.2f}  (mean reached)')
+                    # Cancel any live bracket children before manual exit
+                    for child in list(self._bracket_children.get(d, [])):
+                        self.cancel(child)
+                    self._bracket_children[d] = []
                     self.orders[d] = self.sell(data=d, size=self.p.stake)
 
     # ------------------------------------------------------------------ summary

@@ -1339,7 +1339,9 @@ def parse_args(pargs=None):
     # Strategy selector
     parser.add_argument('--strategy', default='sma',
         choices=list(REGISTRY),
-        help='Trading strategy to run: sma | dema | rsi | macd')
+        help='Trading strategy to run: sma | dema | rsi | macd | adx_dm | '
+             'channel_breakout | donchian | ichimoku | parabolic_sar | '
+             'tsmom | turtle | vol_adj')
 
     # SMA / DEMA params (shared)
     parser.add_argument('--fast', type=int, default=10,
@@ -1380,8 +1382,100 @@ def parse_args(pargs=None):
         dest='macd_signal',
         help='MACD signal (smoothing) EMA period')
 
+    # ADX + Directional Movement params
+    parser.add_argument('--adx-period', type=int, default=14,
+        dest='adx_period',
+        help='ADX / DI period')
+
+    parser.add_argument('--adx-threshold', type=float, default=25.0,
+        dest='adx_threshold',
+        help='Minimum ADX value required to enter a trade (trend strength filter)')
+
+    # Channel Breakout params
+    parser.add_argument('--channel-period', type=int, default=20,
+        dest='channel_period',
+        help='Channel Breakout: look-back period for highest/lowest channel')
+
+    # Donchian Channel params
+    parser.add_argument('--donchian-entry', type=int, default=20,
+        dest='donchian_entry',
+        help='Donchian: entry channel look-back (breakout high)')
+
+    parser.add_argument('--donchian-exit', type=int, default=10,
+        dest='donchian_exit',
+        help='Donchian: exit channel look-back (pullback low)')
+
+    # Ichimoku Cloud params
+    parser.add_argument('--ichimoku-tenkan', type=int, default=9,
+        dest='ichimoku_tenkan',
+        help='Ichimoku Tenkan-sen (conversion line) period')
+
+    parser.add_argument('--ichimoku-kijun', type=int, default=26,
+        dest='ichimoku_kijun',
+        help='Ichimoku Kijun-sen (base line) period')
+
+    parser.add_argument('--ichimoku-senkou', type=int, default=52,
+        dest='ichimoku_senkou',
+        help='Ichimoku Senkou Span B (cloud) period')
+
+    # Parabolic SAR params
+    parser.add_argument('--psar-af', type=float, default=0.02,
+        dest='psar_af',
+        help='Parabolic SAR acceleration factor (initial & increment)')
+
+    parser.add_argument('--psar-max-af', type=float, default=0.20,
+        dest='psar_max_af',
+        help='Parabolic SAR maximum acceleration factor')
+
+    # Time-Series Momentum params
+    parser.add_argument('--tsmom-lookback', type=int, default=252,
+        dest='tsmom_lookback',
+        help='TSMOM: total return look-back in trading days (default ≈ 12 months)')
+
+    parser.add_argument('--tsmom-skip', type=int, default=21,
+        dest='tsmom_skip',
+        help='TSMOM: most-recent bars to skip (default ≈ 1 month reversal window)')
+
+    # Turtle Trading params
+    parser.add_argument('--turtle-entry', type=int, default=20,
+        dest='turtle_entry',
+        help='Turtle: entry channel (N-day highest high)')
+
+    parser.add_argument('--turtle-exit', type=int, default=10,
+        dest='turtle_exit',
+        help='Turtle: exit channel (M-day lowest low)')
+
+    parser.add_argument('--turtle-atr', type=int, default=20,
+        dest='turtle_atr',
+        help='Turtle: ATR period for trailing stop calculation')
+
+    parser.add_argument('--turtle-atr-mult', type=float, default=2.0,
+        dest='turtle_atr_mult',
+        help='Turtle: ATR multiplier for trailing stop (0 = disabled)')
+
+    # Volatility-Adjusted (Keltner) params
+    parser.add_argument('--vol-period', type=int, default=20,
+        dest='vol_period',
+        help='VolAdj/Keltner: EMA period for midline')
+
+    parser.add_argument('--vol-atr-period', type=int, default=14,
+        dest='vol_atr_period',
+        help='VolAdj/Keltner: ATR period for band width')
+
+    parser.add_argument('--vol-atr-mult', type=float, default=1.5,
+        dest='vol_atr_mult',
+        help='VolAdj/Keltner: ATR multiplier for upper/lower bands')
+
     parser.add_argument('--stake', type=int, default=100,
         help='Shares per trade')
+
+    parser.add_argument('--stop-loss', type=float, default=0.02,
+        dest='stop_loss_perc', metavar='FRAC',
+        help='Stop-loss  as fraction of entry price (e.g. 0.02 = 2%%; 0 = disabled)')
+
+    parser.add_argument('--take-profit', type=float, default=0.10,
+        dest='take_profit_perc', metavar='FRAC',
+        help='Take-profit as fraction of entry price (e.g. 0.10 = 10%%; 0 = disabled)')
 
     parser.add_argument('--cash', type=float, default=100000.0,
         help='Starting cash')

@@ -29,13 +29,15 @@ class BaseRegimeStrategy(bt.Strategy):
     """
 
     params = dict(
-        stake         = 100,        # shares per trade per instrument
-        printlog      = True,       # print trade log to stdout
-        use_hmm       = False,      # enable HMM regime gate
-        regime_mode   = 'strict',   # 'strict' = block trades in unfav regime
-                                    # 'size'   = reduce position size instead
-        unfav_fraction = 0.25,      # fraction of stake used in unfavourable regime
-                                    # (only used when regime_mode='size')
+        stake           = 100,        # shares per trade per instrument
+        printlog        = True,       # print trade log to stdout
+        use_hmm         = False,      # enable HMM regime gate
+        regime_mode     = 'strict',   # 'strict' = block trades in unfav regime
+                                      # 'size'   = reduce position size instead
+        unfav_fraction  = 0.25,       # fraction of stake used in unfavourable regime
+                                      # (only used when regime_mode='size')
+        stop_loss_perc  = 0.02,       # stop-loss  as fraction (0 = disabled)
+        take_profit_perc = 0.10,      # take-profit as fraction (0 = disabled)
     )
 
     # ------------------------------------------------------------------ helpers
@@ -80,8 +82,11 @@ class BaseRegimeStrategy(bt.Strategy):
         self._regime_pnl  = {}      # hmm_state → list of (pnlcomm, return_pct)
         # Collect state_pos_sizes from data feeds (set by ma-quantstats.py)
         self._state_pos_sizes = {}  # state_id → pos_size fraction
+        self._bracket_children = {}   # d → [stop_order, limit_order] or []
+        self._bracket_roles    = {}   # order_ref → 'STOP-LOSS' | 'TAKE-PROFIT'
         for d in self.datas:
             self.orders[d] = None
+            self._bracket_children[d] = []
             self.inds[d]   = {}
             self._init_indicators(d)
             if hasattr(d, 'state_pos_sizes'):
@@ -102,6 +107,21 @@ class BaseRegimeStrategy(bt.Strategy):
             return
 
         dname = order.data._name or order.data._dataname
+
+        # ── bracket child (stop-loss / take-profit) ──
+        for d, children in self._bracket_children.items():
+            if order in children:
+                children.remove(order)
+                if order.status == order.Completed:
+                    tag = self._bracket_roles.get(order.ref, 'EXIT')
+                    self.log(
+                        f'[{dname}] {tag} hit  '
+                        f'price={order.executed.price:.2f}  '
+                        f'comm={order.executed.comm:.2f}')
+                # Canceled means its sibling already closed the position — ignore
+                self._bracket_roles.pop(order.ref, None)
+                self.orders[d] = None
+                return
 
         if order.status == order.Completed:
             if order.isbuy():
@@ -169,7 +189,26 @@ class BaseRegimeStrategy(bt.Strategy):
                 if sig > 0 and size > 0:
                     self.log(f'[{dname}] BUY  signal  close={d.close[0]:.2f}  '
                              f'regime={regime:.2f}  size={size}')
-                    self.orders[d] = self.buy(data=d, size=size)
+                    use_bracket = (self.p.stop_loss_perc > 0
+                                   or self.p.take_profit_perc > 0)
+                    if use_bracket:
+                        kw = dict(data=d, size=size, exectype=bt.Order.Market)
+                        if self.p.stop_loss_perc > 0:
+                            kw['stopprice'] = d.close[0] * (1.0 - self.p.stop_loss_perc)
+                        if self.p.take_profit_perc > 0:
+                            kw['limitprice'] = d.close[0] * (1.0 + self.p.take_profit_perc)
+                        bracket = self.buy_bracket(**kw)
+                        self.orders[d] = bracket[0]
+                        self._bracket_children[d] = [bracket[1], bracket[2]]
+                        self._bracket_roles[bracket[1].ref] = 'STOP-LOSS'
+                        self._bracket_roles[bracket[2].ref] = 'TAKE-PROFIT'
+                        sl_s = (f'  SL={kw["stopprice"]:.2f}'
+                                if self.p.stop_loss_perc > 0 else '')
+                        tp_s = (f'  TP={kw["limitprice"]:.2f}'
+                                if self.p.take_profit_perc > 0 else '')
+                        self.log(f'[{dname}] BRACKET placed{sl_s}{tp_s}')
+                    else:
+                        self.orders[d] = self.buy(data=d, size=size)
                     self._regime_entries.append((regime, size, dname, hmm_st, hmm_sc))
                     self._entry_state[dname] = hmm_st
                     self._entry_price[dname] = d.close[0]
@@ -208,6 +247,10 @@ class BaseRegimeStrategy(bt.Strategy):
                         or (self.p.regime_mode in ('score', 'linear') and regime < 1e-6):
                     reason = 'signal' if sig < 0 else 'regime=0'
                     self.log(f'[{dname}] SELL signal ({reason})  close={d.close[0]:.2f}')
+                    # Cancel any live bracket children before issuing manual exit
+                    for child in list(self._bracket_children.get(d, [])):
+                        self.cancel(child)
+                    self._bracket_children[d] = []
                     self.orders[d] = self.sell(data=d, size=pos.size)
 
     def stop(self):
