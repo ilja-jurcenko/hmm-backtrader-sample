@@ -180,7 +180,9 @@ def parse_args():
 
     p.add_argument('--strategies', nargs='+',
         default=['sma', 'dema', 'rsi', 'macd'],
-        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr'],
+        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr',
+                 'adx_dm', 'channel_breakout', 'donchian', 'ichimoku',
+                 'parabolic_sar', 'tsmom', 'turtle', 'vol_adj'],
         help='Strategies to compare (run in parallel)')
     p.add_argument('--out-dir', default='./wf_results', dest='out_dir',
         help='Directory for output .txt files')
@@ -201,6 +203,28 @@ def parse_args():
     p.add_argument('--macd-fast',   type=int, default=12, dest='macd_fast')
     p.add_argument('--macd-slow',   type=int, default=26, dest='macd_slow')
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')
+    p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0,
+        dest='hmm_mr_z_threshold',
+        help='HMM-MR: std-devs below state mean required before entry')
+    p.add_argument('--adx-period',    type=int,   default=14,   dest='adx_period')
+    p.add_argument('--adx-threshold', type=float, default=25.0, dest='adx_threshold')
+    p.add_argument('--channel-period',  type=int, default=20, dest='channel_period')
+    p.add_argument('--donchian-entry',  type=int, default=20, dest='donchian_entry')
+    p.add_argument('--donchian-exit',   type=int, default=10, dest='donchian_exit')
+    p.add_argument('--ichimoku-tenkan', type=int, default=9,  dest='ichimoku_tenkan')
+    p.add_argument('--ichimoku-kijun',  type=int, default=26, dest='ichimoku_kijun')
+    p.add_argument('--ichimoku-senkou', type=int, default=52, dest='ichimoku_senkou')
+    p.add_argument('--psar-af',     type=float, default=0.02, dest='psar_af')
+    p.add_argument('--psar-max-af', type=float, default=0.20, dest='psar_max_af')
+    p.add_argument('--tsmom-lookback', type=int, default=252, dest='tsmom_lookback')
+    p.add_argument('--tsmom-skip',     type=int, default=21,  dest='tsmom_skip')
+    p.add_argument('--turtle-entry',    type=int,   default=20,  dest='turtle_entry')
+    p.add_argument('--turtle-exit',     type=int,   default=10,  dest='turtle_exit')
+    p.add_argument('--turtle-atr',      type=int,   default=20,  dest='turtle_atr')
+    p.add_argument('--turtle-atr-mult', type=float, default=2.0, dest='turtle_atr_mult')
+    p.add_argument('--vol-period',      type=int,   default=20,  dest='vol_period')
+    p.add_argument('--vol-atr-period',  type=int,   default=14,  dest='vol_atr_period')
+    p.add_argument('--vol-atr-mult',    type=float, default=1.5, dest='vol_atr_mult')
     p.add_argument('--stake',      type=int,   default=100)
     p.add_argument('--cash',       type=float, default=100_000.0)
     p.add_argument('--commission', type=float, default=0.001)
@@ -211,9 +235,6 @@ def parse_args():
         dest='hmm_components',
         metavar='K',
         help='Fix number of HMM hidden states (omit to let Optuna search)')
-    p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0,
-        dest='hmm_mr_z_threshold',
-        help='HMM-MR: std-devs below state mean required before entry')
     p.add_argument('--hmm-features', nargs='+', default=None,
         dest='hmm_features', metavar='FEAT',
         help='HMM input features (e.g. log_ret vol_short vol_long atr_norm)')
@@ -240,6 +261,12 @@ def parse_args():
         help='Re-score HMM states bar-by-bar using expanding window')
     p.add_argument('--hmm-dynamic-window', type=int, default=0, dest='hmm_dynamic_window',
         help='Window size for dynamic scoring (0 = expanding)')
+    p.add_argument('--stop-loss', type=float, default=0.02,
+        dest='stop_loss_perc', metavar='FRAC',
+        help='Stop-loss as fraction of entry price (e.g. 0.02 = 2%%; 0 = disabled)')
+    p.add_argument('--take-profit', type=float, default=0.10,
+        dest='take_profit_perc', metavar='FRAC',
+        help='Take-profit as fraction of entry price (e.g. 0.10 = 10%%; 0 = disabled)')
     p.add_argument('--objective-metric', default='total_return',
         dest='objective_metric',
         choices=['total_return', 'sharpe', 'calmar'],
@@ -274,11 +301,30 @@ def _build_passthrough(cfg) -> list[str]:
     args += ['--cash',       str(cfg.cash)]
     args += ['--commission', str(cfg.commission)]
     args += ['--seed',       str(cfg.seed)]
+    args += ['--hmm-mr-z-threshold', str(cfg.hmm_mr_z_threshold)]
+    args += ['--adx-period',    str(cfg.adx_period)]
+    args += ['--adx-threshold', str(cfg.adx_threshold)]
+    args += ['--channel-period',  str(cfg.channel_period)]
+    args += ['--donchian-entry',  str(cfg.donchian_entry)]
+    args += ['--donchian-exit',   str(cfg.donchian_exit)]
+    args += ['--ichimoku-tenkan', str(cfg.ichimoku_tenkan)]
+    args += ['--ichimoku-kijun',  str(cfg.ichimoku_kijun)]
+    args += ['--ichimoku-senkou', str(cfg.ichimoku_senkou)]
+    args += ['--psar-af',     str(cfg.psar_af)]
+    args += ['--psar-max-af', str(cfg.psar_max_af)]
+    args += ['--tsmom-lookback', str(cfg.tsmom_lookback)]
+    args += ['--tsmom-skip',     str(cfg.tsmom_skip)]
+    args += ['--turtle-entry',    str(cfg.turtle_entry)]
+    args += ['--turtle-exit',     str(cfg.turtle_exit)]
+    args += ['--turtle-atr',      str(cfg.turtle_atr)]
+    args += ['--turtle-atr-mult', str(cfg.turtle_atr_mult)]
+    args += ['--vol-period',      str(cfg.vol_period)]
+    args += ['--vol-atr-period',  str(cfg.vol_atr_period)]
+    args += ['--vol-atr-mult',    str(cfg.vol_atr_mult)]
     if cfg.hmm_score_threshold is not None:
         args += ['--hmm-score-threshold', str(cfg.hmm_score_threshold)]
     if cfg.hmm_components is not None:
         args += ['--hmm-components', str(cfg.hmm_components)]
-    args += ['--hmm-mr-z-threshold', str(cfg.hmm_mr_z_threshold)]
     if cfg.hmm_features:
         args += ['--hmm-features'] + cfg.hmm_features
     if cfg.hmm_pca is not None:
@@ -296,6 +342,8 @@ def _build_passthrough(cfg) -> list[str]:
     if cfg.hmm_dynamic_scoring:
         args += ['--hmm-dynamic-scoring']
     args += ['--hmm-dynamic-window', str(cfg.hmm_dynamic_window)]
+    args += ['--stop-loss',    str(cfg.stop_loss_perc)]
+    args += ['--take-profit',  str(cfg.take_profit_perc)]
     args += ['--max-workers', str(cfg.wf_max_workers)]
     return args
 

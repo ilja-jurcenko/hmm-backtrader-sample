@@ -124,6 +124,25 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         macd_slow      = getattr(cfg, 'macd_slow',          26),
         macd_signal    = getattr(cfg, 'macd_signal',         9),
         hmm_mr_z_threshold = getattr(cfg, 'hmm_mr_z_threshold', 0.0),
+        adx_period     = getattr(cfg, 'adx_period',     14),
+        adx_threshold  = getattr(cfg, 'adx_threshold',  25.0),
+        channel_period = getattr(cfg, 'channel_period', 20),
+        donchian_entry = getattr(cfg, 'donchian_entry', 20),
+        donchian_exit  = getattr(cfg, 'donchian_exit',  10),
+        ichimoku_tenkan = getattr(cfg, 'ichimoku_tenkan', 9),
+        ichimoku_kijun  = getattr(cfg, 'ichimoku_kijun',  26),
+        ichimoku_senkou = getattr(cfg, 'ichimoku_senkou', 52),
+        psar_af        = getattr(cfg, 'psar_af',        0.02),
+        psar_max_af    = getattr(cfg, 'psar_max_af',    0.20),
+        tsmom_lookback = getattr(cfg, 'tsmom_lookback', 252),
+        tsmom_skip     = getattr(cfg, 'tsmom_skip',     21),
+        turtle_entry   = getattr(cfg, 'turtle_entry',   20),
+        turtle_exit    = getattr(cfg, 'turtle_exit',    10),
+        turtle_atr     = getattr(cfg, 'turtle_atr',     20),
+        turtle_atr_mult= getattr(cfg, 'turtle_atr_mult',2.0),
+        vol_period     = getattr(cfg, 'vol_period',     20),
+        vol_atr_period = getattr(cfg, 'vol_atr_period', 14),
+        vol_atr_mult   = getattr(cfg, 'vol_atr_mult',   1.5),
         hmm_features   = getattr(cfg, 'hmm_features', None),
         hmm_pca        = getattr(cfg, 'hmm_pca', None),
         regime_mode    = getattr(cfg, 'regime_mode', 'strict'),
@@ -137,6 +156,8 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         hmm_min_pos_size    = getattr(cfg, 'hmm_min_pos_size', 0.0),
         hmm_dynamic_scoring = getattr(cfg, 'hmm_dynamic_scoring', False),
         hmm_dynamic_window  = getattr(cfg, 'hmm_dynamic_window', 0),
+        stop_loss_perc      = getattr(cfg, 'stop_loss_perc',   0.0),
+        take_profit_perc    = getattr(cfg, 'take_profit_perc', 0.0),
     )
 
     # Baselines --------------------------------------------------------------
@@ -172,6 +193,25 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    macd_slow          = getattr(cfg, 'macd_slow',          26),
                                    macd_signal        = getattr(cfg, 'macd_signal',         9),
                                    hmm_mr_z_threshold = getattr(cfg, 'hmm_mr_z_threshold', 0.0),
+                                   adx_period         = getattr(cfg, 'adx_period',     14),
+                                   adx_threshold      = getattr(cfg, 'adx_threshold',  25.0),
+                                   channel_period     = getattr(cfg, 'channel_period', 20),
+                                   donchian_entry     = getattr(cfg, 'donchian_entry', 20),
+                                   donchian_exit      = getattr(cfg, 'donchian_exit',  10),
+                                   ichimoku_tenkan    = getattr(cfg, 'ichimoku_tenkan', 9),
+                                   ichimoku_kijun     = getattr(cfg, 'ichimoku_kijun',  26),
+                                   ichimoku_senkou    = getattr(cfg, 'ichimoku_senkou', 52),
+                                   psar_af            = getattr(cfg, 'psar_af',        0.02),
+                                   psar_max_af        = getattr(cfg, 'psar_max_af',    0.20),
+                                   tsmom_lookback     = getattr(cfg, 'tsmom_lookback', 252),
+                                   tsmom_skip         = getattr(cfg, 'tsmom_skip',     21),
+                                   turtle_entry       = getattr(cfg, 'turtle_entry',   20),
+                                   turtle_exit        = getattr(cfg, 'turtle_exit',    10),
+                                   turtle_atr         = getattr(cfg, 'turtle_atr',     20),
+                                   turtle_atr_mult    = getattr(cfg, 'turtle_atr_mult',2.0),
+                                   vol_period         = getattr(cfg, 'vol_period',     20),
+                                   vol_atr_period     = getattr(cfg, 'vol_atr_period', 14),
+                                   vol_atr_mult       = getattr(cfg, 'vol_atr_mult',   1.5),
                                    hmm_features       = getattr(cfg, 'hmm_features', None),
                                    hmm_pca            = getattr(cfg, 'hmm_pca', None),
                                    regime_mode        = getattr(cfg, 'regime_mode', 'strict'),
@@ -185,7 +225,9 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    hmm_max_pos_size    = getattr(cfg, 'hmm_max_pos_size', 2.0),
                                    hmm_min_pos_size    = getattr(cfg, 'hmm_min_pos_size', 0.0),
                                    hmm_dynamic_scoring = getattr(cfg, 'hmm_dynamic_scoring', False),
-                                   hmm_dynamic_window  = getattr(cfg, 'hmm_dynamic_window', 0))
+                                   hmm_dynamic_window  = getattr(cfg, 'hmm_dynamic_window', 0),
+                                   stop_loss_perc      = getattr(cfg, 'stop_loss_perc',   0.0),
+                                   take_profit_perc    = getattr(cfg, 'take_profit_perc', 0.0))
 
     obj_metric = getattr(cfg, 'objective_metric', 'total_return')
     completed = [0]
@@ -520,7 +562,9 @@ def parse_args():
     p.add_argument('--n-trials',  type=int, default=40, dest='n_trials',
         help='Optuna trials per window')
     p.add_argument('--strategy', default='sma',
-        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr'],
+        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr',
+                 'adx_dm', 'channel_breakout', 'donchian', 'ichimoku',
+                 'parabolic_sar', 'tsmom', 'turtle', 'vol_adj'],
         help='Strategy to use for all windows')
     p.add_argument('--fast',      type=int, default=10)
     p.add_argument('--slow',      type=int, default=30)
@@ -532,6 +576,25 @@ def parse_args():
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')
     p.add_argument('--hmm-mr-z-threshold', type=float, default=0.0, dest='hmm_mr_z_threshold',
         help='HMM-MR: std-devs below state mean required before entry (0=any dip)')
+    p.add_argument('--adx-period',    type=int,   default=14,   dest='adx_period')
+    p.add_argument('--adx-threshold', type=float, default=25.0, dest='adx_threshold')
+    p.add_argument('--channel-period',  type=int, default=20, dest='channel_period')
+    p.add_argument('--donchian-entry',  type=int, default=20, dest='donchian_entry')
+    p.add_argument('--donchian-exit',   type=int, default=10, dest='donchian_exit')
+    p.add_argument('--ichimoku-tenkan', type=int, default=9,  dest='ichimoku_tenkan')
+    p.add_argument('--ichimoku-kijun',  type=int, default=26, dest='ichimoku_kijun')
+    p.add_argument('--ichimoku-senkou', type=int, default=52, dest='ichimoku_senkou')
+    p.add_argument('--psar-af',     type=float, default=0.02, dest='psar_af')
+    p.add_argument('--psar-max-af', type=float, default=0.20, dest='psar_max_af')
+    p.add_argument('--tsmom-lookback', type=int, default=252, dest='tsmom_lookback')
+    p.add_argument('--tsmom-skip',     type=int, default=21,  dest='tsmom_skip')
+    p.add_argument('--turtle-entry',    type=int,   default=20,  dest='turtle_entry')
+    p.add_argument('--turtle-exit',     type=int,   default=10,  dest='turtle_exit')
+    p.add_argument('--turtle-atr',      type=int,   default=20,  dest='turtle_atr')
+    p.add_argument('--turtle-atr-mult', type=float, default=2.0, dest='turtle_atr_mult')
+    p.add_argument('--vol-period',      type=int,   default=20,  dest='vol_period')
+    p.add_argument('--vol-atr-period',  type=int,   default=14,  dest='vol_atr_period')
+    p.add_argument('--vol-atr-mult',    type=float, default=1.5, dest='vol_atr_mult')
     p.add_argument('--hmm-features', nargs='+', default=None, dest='hmm_features',
         metavar='FEAT',
         help='HMM input features (e.g. log_ret vol_short vol_long atr_norm)')
@@ -547,6 +610,12 @@ def parse_args():
     p.add_argument('--cash',      type=float, default=100_000.0)
     p.add_argument('--commission',type=float, default=0.001)
     p.add_argument('--seed',      type=int,   default=42)
+    p.add_argument('--stop-loss', type=float, default=0.02,
+        dest='stop_loss_perc', metavar='FRAC',
+        help='Stop-loss  as fraction of entry price (e.g. 0.02 = 2%%; 0 = disabled)')
+    p.add_argument('--take-profit', type=float, default=0.10,
+        dest='take_profit_perc', metavar='FRAC',
+        help='Take-profit as fraction of entry price (e.g. 0.10 = 10%%; 0 = disabled)')
     p.add_argument('--hmm-score-threshold', type=float, default=None,
         dest='hmm_score_threshold',
         metavar='SCORE',

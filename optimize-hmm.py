@@ -89,6 +89,33 @@ def make_args(**kwargs) -> types.SimpleNamespace:
         macd_signal    = 9,
         # HMM Mean-Reversion strategy params
         hmm_mr_z_threshold = 0.0,
+        # ADX + Directional Movement
+        adx_period     = 14,
+        adx_threshold  = 25.0,
+        # Channel Breakout
+        channel_period = 20,
+        # Donchian Channel
+        donchian_entry = 20,
+        donchian_exit  = 10,
+        # Ichimoku Cloud
+        ichimoku_tenkan = 9,
+        ichimoku_kijun  = 26,
+        ichimoku_senkou = 52,
+        # Parabolic SAR
+        psar_af        = 0.02,
+        psar_max_af    = 0.20,
+        # Time-Series Momentum
+        tsmom_lookback = 252,
+        tsmom_skip     = 21,
+        # Turtle
+        turtle_entry   = 20,
+        turtle_exit    = 10,
+        turtle_atr     = 20,
+        turtle_atr_mult= 2.0,
+        # Volatility-Adjusted (Keltner)
+        vol_period     = 20,
+        vol_atr_period = 14,
+        vol_atr_mult   = 1.5,
         # HMM
         hmm            = False,
         hmm_train_years= 5.0,
@@ -109,6 +136,9 @@ def make_args(**kwargs) -> types.SimpleNamespace:
         hmm_min_pos_size    = 0.0,
         hmm_dynamic_scoring = False,
         hmm_dynamic_window  = 0,
+        # Risk management
+        stop_loss_perc   = 0.02,
+        take_profit_perc = 0.10,
     )
     defaults.update(kwargs)
     return types.SimpleNamespace(**defaults)
@@ -139,6 +169,14 @@ def make_objective(tickers, fromdate, todate, fast, slow,
                    rsi_period=14, rsi_oversold=30, rsi_overbought=70,
                    macd_fast=12, macd_slow=26, macd_signal=9,
                    hmm_mr_z_threshold=0.0,
+                   adx_period=14, adx_threshold=25.0,
+                   channel_period=20,
+                   donchian_entry=20, donchian_exit=10,
+                   ichimoku_tenkan=9, ichimoku_kijun=26, ichimoku_senkou=52,
+                   psar_af=0.02, psar_max_af=0.20,
+                   tsmom_lookback=252, tsmom_skip=21,
+                   turtle_entry=20, turtle_exit=10, turtle_atr=20, turtle_atr_mult=2.0,
+                   vol_period=20, vol_atr_period=14, vol_atr_mult=1.5,
                    hmm_features=None,
                    hmm_pca=None,
                    regime_mode='strict',
@@ -152,7 +190,9 @@ def make_objective(tickers, fromdate, todate, fast, slow,
                    hmm_max_pos_size=2.0,
                    hmm_min_pos_size=0.0,
                    hmm_dynamic_scoring=False,
-                   hmm_dynamic_window=0):
+                   hmm_dynamic_window=0,
+                   stop_loss_perc=0.0,
+                   take_profit_perc=0.0):
     """Return a closure that Optuna can call as an objective.
 
     Strategy params are FIXED so the search only measures the HMM's
@@ -236,6 +276,25 @@ def make_objective(tickers, fromdate, todate, fast, slow,
             macd_slow           = macd_slow,
             macd_signal         = macd_signal,
             hmm_mr_z_threshold  = hmm_mr_z_threshold,
+            adx_period          = adx_period,
+            adx_threshold       = adx_threshold,
+            channel_period      = channel_period,
+            donchian_entry      = donchian_entry,
+            donchian_exit       = donchian_exit,
+            ichimoku_tenkan     = ichimoku_tenkan,
+            ichimoku_kijun      = ichimoku_kijun,
+            ichimoku_senkou     = ichimoku_senkou,
+            psar_af             = psar_af,
+            psar_max_af         = psar_max_af,
+            tsmom_lookback      = tsmom_lookback,
+            tsmom_skip          = tsmom_skip,
+            turtle_entry        = turtle_entry,
+            turtle_exit         = turtle_exit,
+            turtle_atr          = turtle_atr,
+            turtle_atr_mult     = turtle_atr_mult,
+            vol_period          = vol_period,
+            vol_atr_period      = vol_atr_period,
+            vol_atr_mult        = vol_atr_mult,
             hmm                 = True,
             hmm_components      = hmm_components,
             hmm_score_threshold = hmm_score_threshold,
@@ -253,6 +312,8 @@ def make_objective(tickers, fromdate, todate, fast, slow,
             hmm_min_pos_size    = hmm_min_pos_size,
             hmm_dynamic_scoring = hmm_dynamic_scoring,
             hmm_dynamic_window  = hmm_dynamic_window,
+            stop_loss_perc      = stop_loss_perc,
+            take_profit_perc    = take_profit_perc,
         )
         return res[objective_metric]
 
@@ -317,7 +378,9 @@ def parse_args():
     p.add_argument('--slow',        type=int, default=30,
         help='Baseline SMA slow period (no-HMM run)')
     p.add_argument('--strategy',    default='sma',
-        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr'],
+        choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr',
+                 'adx_dm', 'channel_breakout', 'donchian', 'ichimoku',
+                 'parabolic_sar', 'tsmom', 'turtle', 'vol_adj'],
         help='Trading strategy to use')
     p.add_argument('--rsi-period',     type=int, default=14, dest='rsi_period')
     p.add_argument('--rsi-oversold',   type=int, default=30, dest='rsi_oversold')
@@ -325,6 +388,25 @@ def parse_args():
     p.add_argument('--macd-fast',   type=int, default=12, dest='macd_fast')
     p.add_argument('--macd-slow',   type=int, default=26, dest='macd_slow')
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')
+    p.add_argument('--adx-period',    type=int,   default=14,   dest='adx_period')
+    p.add_argument('--adx-threshold', type=float, default=25.0, dest='adx_threshold')
+    p.add_argument('--channel-period',  type=int, default=20, dest='channel_period')
+    p.add_argument('--donchian-entry',  type=int, default=20, dest='donchian_entry')
+    p.add_argument('--donchian-exit',   type=int, default=10, dest='donchian_exit')
+    p.add_argument('--ichimoku-tenkan', type=int, default=9,  dest='ichimoku_tenkan')
+    p.add_argument('--ichimoku-kijun',  type=int, default=26, dest='ichimoku_kijun')
+    p.add_argument('--ichimoku-senkou', type=int, default=52, dest='ichimoku_senkou')
+    p.add_argument('--psar-af',     type=float, default=0.02, dest='psar_af')
+    p.add_argument('--psar-max-af', type=float, default=0.20, dest='psar_max_af')
+    p.add_argument('--tsmom-lookback', type=int, default=252, dest='tsmom_lookback')
+    p.add_argument('--tsmom-skip',     type=int, default=21,  dest='tsmom_skip')
+    p.add_argument('--turtle-entry',    type=int,   default=20,  dest='turtle_entry')
+    p.add_argument('--turtle-exit',     type=int,   default=10,  dest='turtle_exit')
+    p.add_argument('--turtle-atr',      type=int,   default=20,  dest='turtle_atr')
+    p.add_argument('--turtle-atr-mult', type=float, default=2.0, dest='turtle_atr_mult')
+    p.add_argument('--vol-period',      type=int,   default=20,  dest='vol_period')
+    p.add_argument('--vol-atr-period',  type=int,   default=14,  dest='vol_atr_period')
+    p.add_argument('--vol-atr-mult',    type=float, default=1.5, dest='vol_atr_mult')
     p.add_argument('--stake',       type=int, default=100)
     p.add_argument('--cash',        type=float, default=100_000.0)
     p.add_argument('--commission',  type=float, default=0.001)
@@ -364,6 +446,12 @@ def parse_args():
         dest='hmm_pca', metavar='N',
         help='Number of PCA components for HMM features. '
              'Omit to skip PCA.')
+    p.add_argument('--stop-loss', type=float, default=0.02,
+        dest='stop_loss_perc', metavar='FRAC',
+        help='Stop-loss as a fraction of entry price (e.g. 0.02 = 2%%; 0 = disabled)')
+    p.add_argument('--take-profit', type=float, default=0.10,
+        dest='take_profit_perc', metavar='FRAC',
+        help='Take-profit as a fraction of entry price (e.g. 0.10 = 10%%; 0 = disabled)')
 
     return p.parse_args()
 
@@ -400,9 +488,30 @@ def main():
         macd_fast      = cfg.macd_fast,
         macd_slow      = cfg.macd_slow,
         macd_signal    = cfg.macd_signal,
+        adx_period     = getattr(cfg, 'adx_period',     14),
+        adx_threshold  = getattr(cfg, 'adx_threshold',  25.0),
+        channel_period = getattr(cfg, 'channel_period', 20),
+        donchian_entry = getattr(cfg, 'donchian_entry', 20),
+        donchian_exit  = getattr(cfg, 'donchian_exit',  10),
+        ichimoku_tenkan = getattr(cfg, 'ichimoku_tenkan', 9),
+        ichimoku_kijun  = getattr(cfg, 'ichimoku_kijun',  26),
+        ichimoku_senkou = getattr(cfg, 'ichimoku_senkou', 52),
+        psar_af        = getattr(cfg, 'psar_af',        0.02),
+        psar_max_af    = getattr(cfg, 'psar_max_af',    0.20),
+        tsmom_lookback = getattr(cfg, 'tsmom_lookback', 252),
+        tsmom_skip     = getattr(cfg, 'tsmom_skip',     21),
+        turtle_entry   = getattr(cfg, 'turtle_entry',   20),
+        turtle_exit    = getattr(cfg, 'turtle_exit',    10),
+        turtle_atr     = getattr(cfg, 'turtle_atr',     20),
+        turtle_atr_mult= getattr(cfg, 'turtle_atr_mult',2.0),
+        vol_period     = getattr(cfg, 'vol_period',     20),
+        vol_atr_period = getattr(cfg, 'vol_atr_period', 14),
+        vol_atr_mult   = getattr(cfg, 'vol_atr_mult',   1.5),
         stake      = cfg.stake,
         cash       = cfg.cash,
         commission = cfg.commission,
+        stop_loss_perc   = getattr(cfg, 'stop_loss_perc',   0.0),
+        take_profit_perc = getattr(cfg, 'take_profit_perc', 0.0),
     )
 
     print('=' * 70)
@@ -443,6 +552,25 @@ def main():
                                macd_fast=cfg.macd_fast,
                                macd_slow=cfg.macd_slow,
                                macd_signal=cfg.macd_signal,
+                               adx_period=getattr(cfg, 'adx_period', 14),
+                               adx_threshold=getattr(cfg, 'adx_threshold', 25.0),
+                               channel_period=getattr(cfg, 'channel_period', 20),
+                               donchian_entry=getattr(cfg, 'donchian_entry', 20),
+                               donchian_exit=getattr(cfg, 'donchian_exit', 10),
+                               ichimoku_tenkan=getattr(cfg, 'ichimoku_tenkan', 9),
+                               ichimoku_kijun=getattr(cfg, 'ichimoku_kijun', 26),
+                               ichimoku_senkou=getattr(cfg, 'ichimoku_senkou', 52),
+                               psar_af=getattr(cfg, 'psar_af', 0.02),
+                               psar_max_af=getattr(cfg, 'psar_max_af', 0.20),
+                               tsmom_lookback=getattr(cfg, 'tsmom_lookback', 252),
+                               tsmom_skip=getattr(cfg, 'tsmom_skip', 21),
+                               turtle_entry=getattr(cfg, 'turtle_entry', 20),
+                               turtle_exit=getattr(cfg, 'turtle_exit', 10),
+                               turtle_atr=getattr(cfg, 'turtle_atr', 20),
+                               turtle_atr_mult=getattr(cfg, 'turtle_atr_mult', 2.0),
+                               vol_period=getattr(cfg, 'vol_period', 20),
+                               vol_atr_period=getattr(cfg, 'vol_atr_period', 14),
+                               vol_atr_mult=getattr(cfg, 'vol_atr_mult', 1.5),
                                fixed_score_threshold=cfg.hmm_score_threshold,
                                state_positions=cfg.state_positions,
                                search_state_positions=getattr(cfg, 'search_state_positions', False),
@@ -450,7 +578,9 @@ def main():
                                hmm_features=cfg.hmm_features,
                                hmm_pca=cfg.hmm_pca,
                                objective_metric=cfg.objective_metric,
-                               fixed_hmm_components=cfg.hmm_components)
+                               fixed_hmm_components=cfg.hmm_components,
+                               stop_loss_perc=getattr(cfg, 'stop_loss_perc', 0.0),
+                               take_profit_perc=getattr(cfg, 'take_profit_perc', 0.0))
 
     completed = [0]
     best_box  = [bl_is[cfg.objective_metric]]   # track improvement
