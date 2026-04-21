@@ -1,0 +1,699 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  QQQ
+  Overall   : 2010-01-01  →  2025-01-01
+  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 12   Trials/window : 30   Workers : 12
+======================================================================
+
+  Launching 12 parallel window workers …
+  Per-window logs → /Users/user/Dev/hmm-backtrader-sample/wf_results_calmar_qqq/sma_windows/
+    Window 1: sma_window_1.txt
+    Window 2: sma_window_2.txt
+    Window 3: sma_window_3.txt
+    Window 4: sma_window_4.txt
+    Window 5: sma_window_5.txt
+    Window 6: sma_window_6.txt
+    Window 7: sma_window_7.txt
+    Window 8: sma_window_8.txt
+    Window 9: sma_window_9.txt
+    Window 10: sma_window_10.txt
+    Window 11: sma_window_11.txt
+    Window 12: sma_window_12.txt
+
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Model is not converging.  Current: -2845.4229850771153 is not greater than -2845.422972296925. Delta is -1.2780190445482731e-05
+Model is not converging.  Current: -2613.0969663054334 is not greater than -2613.0969343367688. Delta is -3.196866464350023e-05
+Model is not converging.  Current: -4766.363165231411 is not greater than -4766.363135078043. Delta is -3.0153367333696224e-05
+Model is not converging.  Current: -7825.527859907032 is not greater than -7825.527844439529. Delta is -1.5467502635146957e-05
+Model is not converging.  Current: -6048.5618468649545 is not greater than -6048.5617818914. Delta is -6.497355479950784e-05
+Model is not converging.  Current: -8133.339007915016 is not greater than -8133.338995377427. Delta is -1.2537589100247715e-05
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -3274.70643222582 is not greater than -3274.7064272239386. Delta is -5.001881618227344e-06
+Model is not converging.  Current: -4592.222378130636 is not greater than -4592.222323585436. Delta is -5.454519941849867e-05
+Model is not converging.  Current: -3167.956162552111 is not greater than -3167.9561586776376. Delta is -3.874473350151675e-06
+Model is not converging.  Current: -4457.449939309851 is not greater than -4457.449818158182. Delta is -0.00012115166919102194
+Model is not converging.  Current: -2616.7408968630507 is not greater than -2616.7406124090967. Delta is -0.0002844539540092228
+  [Window 1/12] ✓
+  [Window 4/12] ✓
+  [Window 10/12] ✓
+  [Window 3/12] ✓
+  [Window 7/12] ✓
+  [Window 2/12] ✓
+  [Window 12/12] ✓
+  [Window 8/12] ✓
+  [Window 11/12] ✓
+  [Window 6/12] ✓
+  [Window 9/12] ✓
+  [Window 5/12] ✓
+
+[Window 1/12]
+
+======================================================================
+  Window : 2010-01-01 → 2013-01-01 | OOS 2013-01-01 → 2014-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.10%  cagr=+0.37%  sharpe=-1.025  calmar=0.443  maxdd=0.83%  trades=19  (0.4s)
+  Baseline OOS return : +0.82%  cagr=+0.82%  sharpe=-0.292  calmar=2.550  maxdd=0.32%  trades=8  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.44%  this=+0.40%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.58%  this=+0.58%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.58%  this=+0.52%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.58%  this=+0.35%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.58%  this=+0.43%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.58%  this=+0.40%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.58%  this=+0.34%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.58%  this=+0.39%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.58%  this=+0.33%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.58%  this=+0.52%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.58%  this=+0.54%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.58%  this=+0.53%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.58%  this=+0.54%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.58%  this=+0.52%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.58%  this=+0.33%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.58%  this=+0.54%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.58%  this=+0.52%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.58%  this=+0.52%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.58%  this=+0.57%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.72%  this=+0.72%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.75%  this=+0.75%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.76%  this=+0.76%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.76%  this=+0.75%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.76%  this=+0.76%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.78%  this=+0.78%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.78%  this=+0.78%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.78%  this=+0.55%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.81%  this=+0.81%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.81%  this=+0.81%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.81%  this=+0.40%
+  Best IS calmar  : +0.8146  (Δ vs baseline: +0.3720)
+  OOS HMM  return : +1.68%  cagr=+1.68%  sharpe=0.689  calmar=3.106  maxdd=0.54%  trades=5  (0.1s)
+  OOS Δ return    : +0.87%  ✓ IMPROVEMENT
+
+[Window 2/12]
+
+======================================================================
+  Window : 2011-01-01 → 2014-01-01 | OOS 2014-01-01 → 2015-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.45%  cagr=+0.48%  sharpe=-0.782  calmar=0.579  maxdd=0.83%  trades=23  (0.3s)
+  Baseline OOS return : +0.89%  cagr=+0.89%  sharpe=-0.167  calmar=2.186  maxdd=0.41%  trades=6  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.64%  this=+0.64%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.00%  this=+1.00%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.00%  this=+0.93%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.00%  this=+0.64%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.00%  this=+0.64%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.00%  this=+0.81%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.00%  this=+0.91%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.00%  this=+0.95%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.00%  this=+0.64%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.03%  this=+1.03%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.03%  this=+1.01%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.03%  this=+1.01%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.03%  this=+0.99%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.18%  this=+1.18%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.18%  this=+0.94%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.18%  this=+1.18%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.18%  this=+1.18%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.18%  this=+1.13%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.18%  this=+0.68%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.18%  this=+1.18%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.18%  this=+1.17%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.19%  this=+1.19%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.19%  this=+1.19%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.19%  this=+1.06%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.19%  this=+1.08%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.19%  this=+1.19%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.19%  this=+0.64%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.19%  this=+1.09%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.19%  this=+0.94%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.19%  this=+0.88%
+  Best IS calmar  : +1.1940  (Δ vs baseline: +0.6151)
+  OOS HMM  return : +1.38%  cagr=+1.38%  sharpe=0.365  calmar=2.372  maxdd=0.58%  trades=5  (0.1s)
+  OOS Δ return    : +0.50%  ✓ IMPROVEMENT
+
+[Window 3/12]
+
+======================================================================
+  Window : 2012-01-01 → 2015-01-01 | OOS 2015-01-01 → 2016-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.87%  cagr=+0.62%  sharpe=-0.584  calmar=1.535  maxdd=0.40%  trades=21  (0.4s)
+  Baseline OOS return : -1.34%  cagr=-1.34%  sharpe=-2.254  calmar=-0.899  maxdd=1.49%  trades=8  (0.2s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.56%  this=+1.56%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.56%  this=+1.56%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.56%  this=+1.56%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.56%  this=+1.49%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.56%  this=+1.28%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.56%  this=+0.91%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.56%  this=+1.56%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.56%  this=+1.56%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.56%  this=+1.44%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.56%  this=+1.56%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.56%  this=+1.56%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.56%  this=+1.56%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.56%  this=+1.56%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.56%  this=+1.56%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.56%  this=+1.56%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.56%  this=+1.56%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.56%  this=+1.56%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.56%  this=+1.56%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.56%  this=+1.55%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.56%  this=+1.56%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.56%  this=+1.25%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.56%  this=+1.56%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.56%  this=+1.56%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.56%  this=+1.56%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.56%  this=+1.56%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.56%  this=+1.56%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.56%  this=+1.56%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.56%  this=+1.56%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.57%  this=+1.57%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.57%  this=+1.56%
+  Best IS calmar  : +1.5664  (Δ vs baseline: +0.0315)
+  OOS HMM  return : -1.23%  cagr=-1.23%  sharpe=-1.205  calmar=-0.580  maxdd=2.12%  trades=7  (0.1s)
+  OOS Δ return    : +0.11%  ✓ IMPROVEMENT
+
+[Window 4/12]
+
+======================================================================
+  Window : 2013-01-01 → 2016-01-01 | OOS 2016-01-01 → 2017-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.34%  cagr=+0.11%  sharpe=-1.019  calmar=0.060  maxdd=1.86%  trades=24  (0.5s)
+  Baseline OOS return : +0.43%  cagr=+0.43%  sharpe=-0.663  calmar=0.498  maxdd=0.86%  trades=7  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.06%  this=+0.04%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.06%  this=+0.06%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.07%  this=+0.07%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.07%  this=+0.04%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.07%  this=+0.01%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.07%  this=+0.01%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.07%  this=+0.07%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.07%  this=+0.07%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.07%  this=+0.07%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.08%  this=+0.08%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.08%  this=+0.07%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.08%  this=+0.07%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.08%  this=+0.07%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.08%  this=+0.07%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.09%  this=+0.09%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.09%  this=+0.09%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.09%  this=+0.07%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.09%  this=+0.09%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.09%  this=+0.08%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.09%  this=+0.07%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.09%  this=+0.07%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.09%  this=+0.09%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.09%  this=+0.09%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.09%  this=+0.09%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.09%  this=+0.09%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.09%  this=+0.09%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.09%  this=+0.07%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.09%  this=+0.07%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.09%  this=+0.09%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.09%  this=+0.07%
+  Best IS calmar  : +0.0916  (Δ vs baseline: +0.0313)
+  OOS HMM  return : -0.94%  cagr=-0.94%  sharpe=-2.157  calmar=-0.579  maxdd=1.62%  trades=5  (0.1s)
+  OOS Δ return    : -1.37%  ✗ DEGRADATION
+
+[Window 5/12]
+
+======================================================================
+  Window : 2014-01-01 → 2017-01-01 | OOS 2017-01-01 → 2018-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -0.18%  cagr=-0.06%  sharpe=-1.140  calmar=-0.029  maxdd=2.07%  trades=23  (0.5s)
+  Baseline OOS return : +0.48%  cagr=+0.48%  sharpe=-0.509  calmar=0.721  maxdd=0.67%  trades=6  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.08%  this=+0.08%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.08%  this=-0.03%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.08%  this=-0.04%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.08%  this=-0.14%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.08%  this=-0.16%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.08%  this=-0.19%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.08%  this=-0.03%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.08%  this=-0.17%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.08%  this=-0.07%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.08%  this=-0.10%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.08%  this=-0.01%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.08%  this=-0.01%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.08%  this=+0.00%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.08%  this=+0.01%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.08%  this=-0.02%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.08%  this=-0.02%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.08%  this=+0.00%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.08%  this=+0.03%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.08%  this=-0.03%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.08%  this=+0.03%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.08%  this=+0.08%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.08%  this=+0.08%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.08%  this=+0.08%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.08%  this=+0.07%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.08%  this=+0.08%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.08%  this=-0.10%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.08%  this=-0.24%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.08%  this=+0.03%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.08%  this=-0.11%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.08%  this=+0.07%
+  Best IS calmar  : +0.0816  (Δ vs baseline: +0.1110)
+  OOS HMM  return : +1.28%  cagr=+1.28%  sharpe=0.155  calmar=0.971  maxdd=1.32%  trades=5  (0.0s)
+  OOS Δ return    : +0.80%  ✓ IMPROVEMENT
+
+[Window 6/12]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.48%  cagr=+0.16%  sharpe=-0.819  calmar=0.096  maxdd=1.69%  trades=22  (0.5s)
+  Baseline OOS return : -2.49%  cagr=-2.50%  sharpe=-1.752  calmar=-0.778  maxdd=3.21%  trades=9  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.10%  this=+0.02%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.27%  this=+0.27%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.27%  this=+0.26%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.27%  this=+0.16%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.27%  this=+0.16%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.27%  this=+0.02%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.27%  this=+0.16%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.27%  this=+0.04%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.48%  this=+0.48%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.48%  this=+0.27%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.48%  this=+0.35%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.48%  this=+0.35%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.48%  this=+0.43%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.48%  this=+0.42%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.48%  this=+0.39%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.48%  this=+0.35%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.56%  this=+0.56%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.56%  this=+0.39%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.56%  this=+0.21%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.56%  this=+0.08%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.56%  this=+0.49%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.56%  this=+0.49%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.56%  this=+0.48%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.56%  this=+0.40%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.56%  this=+0.49%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.56%  this=+0.37%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.56%  this=+0.30%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.56%  this=+0.49%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.56%  this=+0.33%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.56%  this=+0.10%
+  Best IS calmar  : +0.5569  (Δ vs baseline: +0.4612)
+  OOS HMM  return : -0.52%  cagr=-0.52%  sharpe=-0.648  calmar=-0.197  maxdd=2.65%  trades=5  (0.1s)
+  OOS Δ return    : +1.97%  ✓ IMPROVEMENT
+
+[Window 7/12]
+
+======================================================================
+  Window : 2016-01-01 → 2019-01-01 | OOS 2019-01-01 → 2020-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.12%  cagr=+0.04%  sharpe=-0.634  calmar=0.012  maxdd=3.37%  trades=22  (0.5s)
+  Baseline OOS return : +1.50%  cagr=+1.50%  sharpe=0.367  calmar=0.946  maxdd=1.59%  trades=5  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.01%  this=-0.06%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.10%  this=+0.10%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.10%  this=-0.06%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.10%  this=-0.06%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.10%  this=+0.08%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.10%  this=-0.04%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.10%  this=-0.06%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.10%  this=-0.04%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.10%  this=-0.00%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.10%  this=-0.00%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.10%  this=-0.06%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.10%  this=-0.06%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.10%  this=+0.04%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.10%  this=-0.05%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.10%  this=+0.08%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.10%  this=+0.01%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.10%  this=-0.06%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.20%  this=+0.20%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.20%  this=-0.08%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.20%  this=+0.13%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.20%  this=+0.13%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.20%  this=+0.13%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.20%  this=+0.13%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.20%  this=+0.13%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.20%  this=+0.13%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.20%  this=+0.13%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.20%  this=+0.16%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.20%  this=+0.16%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.20%  this=+0.16%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.20%  this=+0.16%
+  Best IS calmar  : +0.1966  (Δ vs baseline: +0.1845)
+  OOS HMM  return : +3.00%  cagr=+3.00%  sharpe=0.732  calmar=0.957  maxdd=3.14%  trades=5  (0.1s)
+  OOS Δ return    : +1.50%  ✓ IMPROVEMENT
+
+[Window 8/12]
+
+======================================================================
+  Window : 2017-01-01 → 2020-01-01 | OOS 2020-01-01 → 2021-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +2.28%  cagr=+0.75%  sharpe=-0.127  calmar=0.217  maxdd=3.47%  trades=21  (0.4s)
+  Baseline OOS return : +11.31%  cagr=+11.29%  sharpe=2.180  calmar=3.955  maxdd=2.85%  trades=4  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.24%  this=+0.24%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.33%  this=+0.33%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.33%  this=+0.24%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.33%  this=+0.24%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.35%  this=+0.35%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.35%  this=+0.19%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.35%  this=+0.24%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.35%  this=+0.25%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.35%  this=+0.24%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.35%  this=+0.28%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.35%  this=+0.24%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.35%  this=+0.24%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.35%  this=+0.23%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.35%  this=+0.26%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.35%  this=+0.31%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.35%  this=+0.22%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.35%  this=+0.24%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.35%  this=+0.27%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.35%  this=+0.17%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.35%  this=+0.27%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.35%  this=+0.24%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.35%  this=+0.30%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.35%  this=+0.27%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.37%  this=+0.37%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.37%  this=+0.37%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.37%  this=+0.36%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.37%  this=+0.27%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.37%  this=+0.21%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.37%  this=+0.36%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.37%  this=+0.27%
+  Best IS calmar  : +0.3726  (Δ vs baseline: +0.1552)
+  OOS HMM  return : +5.65%  cagr=+5.64%  sharpe=1.029  calmar=1.679  maxdd=3.36%  trades=3  (0.1s)
+  OOS Δ return    : -5.66%  ✗ DEGRADATION
+
+[Window 9/12]
+
+======================================================================
+  Window : 2018-01-01 → 2021-01-01 | OOS 2021-01-01 → 2022-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +12.47%  cagr=+4.00%  sharpe=0.932  calmar=1.227  maxdd=3.25%  trades=19  (0.4s)
+  Baseline OOS return : +5.28%  cagr=+5.29%  sharpe=1.259  calmar=2.917  maxdd=1.81%  trades=7  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.43%  this=+1.43%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.43%  this=+1.42%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.43%  this=+1.42%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.43%  this=+1.43%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.43%  this=+1.17%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.43%  this=+0.65%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.43%  this=+1.42%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.43%  this=+1.26%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.43%  this=+1.43%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.43%  this=+1.17%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.43%  this=+0.28%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.43%  this=+0.39%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.43%  this=+1.43%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.43%  this=+1.09%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.43%  this=+0.02%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.43%  this=+0.80%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.44%  this=+1.44%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.44%  this=+1.43%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.44%  this=+0.12%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.44%  this=+1.09%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.44%  this=+1.38%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+1.44%  this=+1.42%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+1.44%  this=+1.29%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+1.44%  this=+1.42%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+1.44%  this=+0.89%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+1.44%  this=+1.43%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+1.44%  this=+1.42%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+1.44%  this=+1.43%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+1.44%  this=+1.42%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+1.44%  this=+1.43%
+  Best IS calmar  : +1.4426  (Δ vs baseline: +0.2151)
+  OOS HMM  return : +6.53%  cagr=+6.54%  sharpe=1.009  calmar=1.828  maxdd=3.58%  trades=6  (0.0s)
+  OOS Δ return    : +1.25%  ✓ IMPROVEMENT
+
+[Window 10/12]
+
+======================================================================
+  Window : 2019-01-01 → 2022-01-01 | OOS 2022-01-01 → 2023-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +18.08%  cagr=+5.70%  sharpe=1.282  calmar=2.020  maxdd=2.82%  trades=16  (0.5s)
+  Baseline OOS return : -2.97%  cagr=-2.97%  sharpe=-0.719  calmar=-0.515  maxdd=5.77%  trades=6  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+2.02%  this=+1.62%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+2.02%  this=+0.87%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+2.81%  this=+2.81%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+2.81%  this=+0.89%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+2.81%  this=+1.27%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+2.81%  this=+1.14%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+2.81%  this=+2.14%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+2.81%  this=+0.60%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+2.81%  this=+1.60%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+2.81%  this=+1.32%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+2.81%  this=+0.85%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+2.81%  this=+1.21%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+2.81%  this=+2.12%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+2.81%  this=+1.62%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+2.81%  this=+0.40%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+2.81%  this=+2.13%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+2.81%  this=+2.17%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+2.81%  this=+2.69%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+2.81%  this=+0.95%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+2.81%  this=+2.62%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+2.81%  this=+2.81%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+2.81%  this=+2.80%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+2.81%  this=+2.80%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+2.81%  this=+2.81%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+2.81%  this=+2.81%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+2.81%  this=+2.81%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+2.81%  this=+0.51%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+2.81%  this=+2.81%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+2.81%  this=+2.81%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+2.81%  this=+2.14%
+  Best IS calmar  : +2.8081  (Δ vs baseline: +0.7886)
+  OOS HMM  return : -0.68%  cagr=-0.68%  sharpe=-0.145  calmar=-0.091  maxdd=7.43%  trades=4  (0.1s)
+  OOS Δ return    : +2.29%  ✓ IMPROVEMENT
+
+[Window 11/12]
+
+======================================================================
+  Window : 2020-01-01 → 2023-01-01 | OOS 2023-01-01 → 2024-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +11.96%  cagr=+3.84%  sharpe=0.651  calmar=0.489  maxdd=7.84%  trades=17  (0.5s)
+  Baseline OOS return : +7.88%  cagr=+7.89%  sharpe=1.663  calmar=1.823  maxdd=4.33%  trades=5  (0.5s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.49%  this=+0.16%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.49%  this=+0.03%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.49%  this=+0.27%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.49%  this=+0.08%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.49%  this=+0.19%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.49%  this=+0.16%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.49%  this=+0.16%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.49%  this=+0.22%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.49%  this=+0.06%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.49%  this=+0.17%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.49%  this=+0.15%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.49%  this=+0.29%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.49%  this=+0.32%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.49%  this=+0.28%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.49%  this=+0.26%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.49%  this=+0.34%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.49%  this=+0.34%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.49%  this=+0.34%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.49%  this=+0.03%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.49%  this=+0.33%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.49%  this=+0.33%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.49%  this=+0.34%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.49%  this=+0.32%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.49%  this=+0.33%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.49%  this=+0.33%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.49%  this=+0.34%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.49%  this=+0.15%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.49%  this=+0.32%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.49%  this=+0.33%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.57%  this=+0.57%
+  Best IS calmar  : +0.5693  (Δ vs baseline: +0.0802)
+  OOS HMM  return : +7.64%  cagr=+7.65%  sharpe=1.435  calmar=2.098  maxdd=3.64%  trades=4  (0.0s)
+  OOS Δ return    : -0.24%  ✗ DEGRADATION
+
+[Window 12/12]
+
+======================================================================
+  Window : 2021-01-01 → 2024-01-01 | OOS 2024-01-01 → 2025-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +10.41%  cagr=+3.36%  sharpe=0.534  calmar=0.387  maxdd=8.68%  trades=19  (0.6s)
+  Baseline OOS return : +1.30%  cagr=+1.30%  sharpe=0.083  calmar=0.299  maxdd=4.35%  trades=6  (0.5s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.39%  this=+0.20%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.55%  this=+0.55%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.55%  this=+0.32%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.77%  this=+0.77%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.77%  this=+0.72%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.77%  this=+0.34%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.77%  this=+0.32%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.80%  this=+0.80%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.80%  this=+0.30%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.80%  this=+0.32%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.86%  this=+0.86%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.86%  this=+0.86%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.86%  this=+0.86%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.86%  this=+0.83%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.86%  this=+0.86%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.87%  this=+0.87%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.87%  this=+0.87%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.89%  this=+0.89%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.89%  this=+0.61%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.90%  this=+0.90%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.90%  this=+0.90%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.90%  this=+0.90%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.90%  this=+0.90%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.90%  this=+0.52%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.90%  this=+0.89%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.90%  this=+0.90%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.90%  this=+0.56%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.90%  this=+0.87%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.90%  this=+0.90%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.90%  this=+0.32%
+  Best IS calmar  : +0.9003  (Δ vs baseline: +0.5136)
+  OOS HMM  return : +4.40%  cagr=+4.39%  sharpe=0.381  calmar=0.541  maxdd=8.13%  trades=5  (0.1s)
+  OOS Δ return    : +3.10%  ✓ IMPROVEMENT
+
+  Total walk-forward time: 121.2s
+
+
+==================================================================================================================================
+  WALK-FORWARD SUMMARY REPORT
+==================================================================================================================================
+
+IS Start      OOS Start        Δ Ret%    Δ CAGR%   Δ Sharpe   Δ Calmar   Δ MaxDD%   BL Trd  HMM Trd    Result
+----------------------------------------------------------------------------------------------------------------------------------
+2010-01-01    2013-01-01        +0.87      +0.87     +0.981     +0.556      +0.22        8        5     ✓ WIN
+2011-01-01    2014-01-01        +0.50      +0.50     +0.532     +0.186      +0.18        6        5     ✓ WIN
+2012-01-01    2015-01-01        +0.11      +0.11     +1.049     +0.319      +0.62        8        7     ✓ WIN
+2013-01-01    2016-01-01        -1.37      -1.37     -1.494     -1.077      +0.76        7        5    ✗ LOSS
+2014-01-01    2017-01-01        +0.80      +0.80     +0.663     +0.250      +0.65        6        5     ✓ WIN
+2015-01-01    2018-01-01        +1.97      +1.97     +1.104     +0.581      -0.56        9        5     ✓ WIN
+2016-01-01    2019-01-01        +1.50      +1.50     +0.364     +0.011      +1.55        5        5     ✓ WIN
+2017-01-01    2020-01-01        -5.66      -5.65     -1.152     -2.276      +0.51        4        3    ✗ LOSS
+2018-01-01    2021-01-01        +1.25      +1.25     -0.249     -1.089      +1.76        7        6     ✓ WIN
+2019-01-01    2022-01-01        +2.29      +2.29     +0.574     +0.423      +1.66        6        4     ✓ WIN
+2020-01-01    2023-01-01        -0.24      -0.24     -0.228     +0.275      -0.68        5        4    ✗ LOSS
+2021-01-01    2024-01-01        +3.10      +3.09     +0.299     +0.242      +3.78        6        5     ✓ WIN
+
+==================================================================================================================================
+  Total windows     : 12
+  HMM wins (OOS)    : 9 / 12  (75.0%)  [based on total return]
+  Mean Δ return     : +0.43%  per window
+  Best  window      : 2021-01-01 → 2025-01-01  Δ=+3.10%
+  Worst window      : 2017-01-01 → 2021-01-01  Δ=-5.66%
+
+  OOS METRIC COMPARISON  (mean across 12 windows)
+  Metric                      Baseline           HMM    Δ (mean)   Improved?        IR
+  ----------------------  ------------  ------------  ----------  ----------  --------
+  Total Return (%)               +1.92         +2.35      ++0.43       ✓ YES    +0.189
+  CAGR (%)                       +1.92         +2.35      ++0.43       ✓ YES    +0.190
+  Sharpe                        -0.067         0.137      +0.204       ✓ YES    +0.243
+  Calmar                         1.142         1.009      -0.133        ✗ NO    -0.152
+  Max DrawDown (%)                2.31          3.18       +0.87        ✗ NO    -0.723
+  Trades                             6             5          -2      (info)    (info)
+  Time (s)                         0.3           0.1        -0.3      (info)    (info)
+
+  Metrics improved by HMM : 3 / 6  →  Total Return (%) | CAGR (%) | Sharpe
+
+  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  |  IR < 0 = HMM consistently hurts  |  n/a = single window
+==================================================================================================================================
+
+  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:
+    hmm_components        : 6 (fixed)
+    hmm_gate              : threshold×12
+    hmm_threshold         : mean=0.670  min=0.302  max=0.989
+    hmm_score_threshold   : mean=1.539  min=0.677  max=2.491
+
+  Full results saved → /Users/user/Dev/hmm-backtrader-sample/walkforward-results.csv
+==================================================================================================================================

@@ -1,0 +1,1028 @@
+======================================================================
+  Walk-Forward HMM Optimisation  –  QQQ
+  Overall   : 2010-01-01  →  2025-01-01
+  IS window : 3 yr   OOS window : 1 yr   Step : 1 yr
+  Windows   : 12   Trials/window : 30   Workers : 12
+======================================================================
+
+  Launching 12 parallel window workers …
+  Per-window logs → /Users/user/Dev/hmm-backtrader-sample/wf_results_qqq/sma_windows/
+    Window 1: sma_window_1.txt
+    Window 2: sma_window_2.txt
+    Window 3: sma_window_3.txt
+    Window 4: sma_window_4.txt
+    Window 5: sma_window_5.txt
+    Window 6: sma_window_6.txt
+    Window 7: sma_window_7.txt
+    Window 8: sma_window_8.txt
+    Window 9: sma_window_9.txt
+    Window 10: sma_window_10.txt
+    Window 11: sma_window_11.txt
+    Window 12: sma_window_12.txt
+
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Model is not converging.  Current: -2845.4229850771153 is not greater than -2845.422972296925. Delta is -1.2780190445482731e-05
+Model is not converging.  Current: -2613.0969663054334 is not greater than -2613.0969343367688. Delta is -3.196866464350023e-05
+Model is not converging.  Current: -4766.363165231411 is not greater than -4766.363135078043. Delta is -3.0153367333696224e-05
+Model is not converging.  Current: -3243.8565525592235 is not greater than -3243.8565336461256. Delta is -1.8913097846962046e-05
+Model is not converging.  Current: -3276.6398438790784 is not greater than -3276.6396899247. Delta is -0.00015395437822007807
+Model is not converging.  Current: -4459.225265645916 is not greater than -4459.2251976525595. Delta is -6.79933564242674e-05
+Model is not converging.  Current: -3293.3828002814744 is not greater than -3293.3827941213444. Delta is -6.160129942145431e-06
+Model is not converging.  Current: -4834.858905647782 is not greater than -4834.858903635925. Delta is -2.0118568500038236e-06
+Model is not converging.  Current: -6200.462860804691 is not greater than -6200.462830860821. Delta is -2.994387068611104e-05
+Model is not converging.  Current: -6048.5618468649545 is not greater than -6048.5617818914. Delta is -6.497355479950784e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -4313.925186602135 is not greater than -4313.925112056227. Delta is -7.454590831912355e-05
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -3012.045975693012 is not greater than -3012.045968421714. Delta is -7.271298272826243e-06
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -3012.045975693012 is not greater than -3012.045968421714. Delta is -7.271298272826243e-06
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Model is not converging.  Current: -5755.793650589637 is not greater than -5755.793621430097. Delta is -2.91595397357014e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Model is not converging.  Current: -1740.0823976108957 is not greater than -1740.0820394577706. Delta is -0.0003581531250347325
+Model is not converging.  Current: -3274.769269873015 is not greater than -3274.769247428365. Delta is -2.2444650312536396e-05
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+Some rows of transmat_ have zero sum because no transition from the state was ever observed.
+  [Window 2/12] ✓
+  [Window 4/12] ✓
+  [Window 12/12] ✓
+  [Window 1/12] ✓
+  [Window 11/12] ✓
+  [Window 7/12] ✓
+  [Window 3/12] ✓
+  [Window 10/12] ✓
+  [Window 9/12] ✓
+  [Window 6/12] ✓
+  [Window 8/12] ✓
+  [Window 5/12] ✓
+
+[Window 1/12]
+
+======================================================================
+  Window : 2010-01-01 → 2013-01-01 | OOS 2013-01-01 → 2014-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.10%  cagr=+0.37%  sharpe=-1.025  calmar=0.443  maxdd=0.83%  trades=19  (0.5s)
+  Baseline OOS return : +0.82%  cagr=+0.82%  sharpe=-0.292  calmar=2.550  maxdd=0.32%  trades=8  (0.2s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+1.82%  this=+1.82%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+2.13%  this=+2.13%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+2.13%  this=+2.03%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+2.13%  this=+1.69%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+2.13%  this=+1.92%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+2.13%  this=+1.54%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+2.13%  this=+1.66%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+2.13%  this=+1.79%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+2.13%  this=+1.66%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+2.13%  this=+2.02%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+2.13%  this=+2.06%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+2.13%  this=+2.06%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+2.13%  this=+2.09%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+2.13%  this=+2.03%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+2.13%  this=+1.66%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+2.13%  this=+1.98%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+2.13%  this=+1.99%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+2.13%  this=+2.02%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+2.13%  this=+2.04%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+2.13%  this=+2.13%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+2.38%  this=+2.38%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+2.40%  this=+2.40%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+2.42%  this=+2.42%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+2.52%  this=+2.52%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+2.52%  this=+2.45%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+2.52%  this=+2.50%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+2.52%  this=+1.61%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+2.52%  this=+2.52%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+2.52%  this=+2.52%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+2.52%  this=+1.58%
+  Best IS total_return  : +2.5198  (Δ vs baseline: +1.4196)
+  OOS HMM  return : +1.62%  cagr=+1.62%  sharpe=0.658  calmar=3.185  maxdd=0.51%  trades=5  (0.1s)
+  OOS Δ return    : +0.81%  ✓ IMPROVEMENT
+
+[Window 2/12]
+
+======================================================================
+  Window : 2011-01-01 → 2014-01-01 | OOS 2014-01-01 → 2015-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.45%  cagr=+0.48%  sharpe=-0.782  calmar=0.579  maxdd=0.83%  trades=23  (0.4s)
+  Baseline OOS return : +0.89%  cagr=+0.89%  sharpe=-0.167  calmar=2.186  maxdd=0.41%  trades=6  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+2.93%  this=+2.93%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+3.32%  this=+3.32%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+3.32%  this=+3.30%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+3.32%  this=+2.94%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+3.32%  this=+2.68%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+3.32%  this=+2.75%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+3.32%  this=+3.28%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+3.32%  this=+3.31%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+3.32%  this=+2.96%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+3.36%  this=+3.36%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+3.36%  this=+2.71%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+3.36%  this=+3.31%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+3.36%  this=+3.31%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+3.37%  this=+3.37%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+3.37%  this=+3.36%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+3.38%  this=+3.38%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+3.38%  this=+3.37%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+3.38%  this=+3.37%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+3.38%  this=+3.30%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+3.38%  this=+3.14%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+3.38%  this=+3.38%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+3.38%  this=+3.38%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+3.38%  this=+3.38%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+3.38%  this=+3.38%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+3.38%  this=+3.35%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+3.38%  this=+3.37%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+3.38%  this=+2.99%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+3.38%  this=+3.15%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+3.38%  this=+3.36%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+3.38%  this=+3.17%
+  Best IS total_return  : +3.3849  (Δ vs baseline: +1.9352)
+  OOS HMM  return : +1.48%  cagr=+1.48%  sharpe=0.442  calmar=2.181  maxdd=0.68%  trades=5  (0.1s)
+  OOS Δ return    : +0.59%  ✓ IMPROVEMENT
+
+[Window 3/12]
+
+======================================================================
+  Window : 2012-01-01 → 2015-01-01 | OOS 2015-01-01 → 2016-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +1.87%  cagr=+0.62%  sharpe=-0.584  calmar=1.535  maxdd=0.40%  trades=21  (0.4s)
+  Baseline OOS return : -1.34%  cagr=-1.34%  sharpe=-2.254  calmar=-0.899  maxdd=1.49%  trades=8  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+3.71%  this=+3.71%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+3.72%  this=+3.72%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+3.72%  this=+3.72%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+3.72%  this=+3.56%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+3.72%  this=+2.99%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+3.72%  this=+2.18%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+3.73%  this=+3.73%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+3.73%  this=+3.73%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+3.73%  this=+3.44%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+3.73%  this=+3.72%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+3.73%  this=+3.72%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+3.73%  this=+3.72%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+3.73%  this=+3.72%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+3.73%  this=+3.72%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+3.73%  this=+3.72%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+3.73%  this=+3.72%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+3.73%  this=+3.71%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+3.73%  this=+3.71%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+3.73%  this=+3.71%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+3.73%  this=+3.71%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+3.73%  this=+3.73%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+3.73%  this=+3.73%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+3.73%  this=+3.73%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+3.73%  this=+3.73%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+3.73%  this=+3.73%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+3.73%  this=+3.73%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+3.73%  this=+3.73%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+3.73%  this=+3.73%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+3.73%  this=+3.73%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+3.73%  this=+3.67%
+  Best IS total_return  : +3.7286  (Δ vs baseline: +1.8630)
+  OOS HMM  return : -2.09%  cagr=-2.09%  sharpe=-1.551  calmar=-0.715  maxdd=2.92%  trades=7  (0.1s)
+  OOS Δ return    : -0.75%  ✗ DEGRADATION
+
+[Window 4/12]
+
+======================================================================
+  Window : 2013-01-01 → 2016-01-01 | OOS 2016-01-01 → 2017-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.34%  cagr=+0.11%  sharpe=-1.019  calmar=0.060  maxdd=1.86%  trades=24  (0.4s)
+  Baseline OOS return : +0.43%  cagr=+0.43%  sharpe=-0.663  calmar=0.498  maxdd=0.86%  trades=7  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.46%  this=+0.46%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.65%  this=+0.65%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.79%  this=+0.79%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.79%  this=+0.47%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.79%  this=+0.05%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.79%  this=+0.10%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.79%  this=+0.78%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.79%  this=+0.78%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.79%  this=+0.79%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.83%  this=+0.83%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.83%  this=+0.76%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.83%  this=+0.77%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.83%  this=+0.77%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.83%  this=+0.79%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.83%  this=+0.78%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.83%  this=+0.79%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.86%  this=+0.86%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.86%  this=+0.85%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.86%  this=+0.77%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.86%  this=+0.78%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.86%  this=+0.81%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.86%  this=+0.85%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.86%  this=+0.86%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.86%  this=+0.79%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.86%  this=+0.86%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.86%  this=+0.80%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.86%  this=+0.79%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.88%  this=+0.88%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.89%  this=+0.89%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.89%  this=+0.85%
+  Best IS total_return  : +0.8913  (Δ vs baseline: +0.5544)
+  OOS HMM  return : -0.96%  cagr=-0.96%  sharpe=-1.859  calmar=-0.599  maxdd=1.60%  trades=6  (0.1s)
+  OOS Δ return    : -1.39%  ✗ DEGRADATION
+
+[Window 5/12]
+
+======================================================================
+  Window : 2014-01-01 → 2017-01-01 | OOS 2017-01-01 → 2018-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : -0.18%  cagr=-0.06%  sharpe=-1.140  calmar=-0.029  maxdd=2.07%  trades=23  (0.4s)
+  Baseline OOS return : +0.48%  cagr=+0.48%  sharpe=-0.509  calmar=0.721  maxdd=0.67%  trades=6  (0.3s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.77%  this=+0.77%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.77%  this=-0.33%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.77%  this=-0.45%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.77%  this=-1.98%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+0.77%  this=-1.54%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+0.77%  this=-2.26%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+0.77%  this=-0.38%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+0.77%  this=-1.66%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+0.77%  this=-0.60%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+0.77%  this=-0.90%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+0.77%  this=-0.13%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+0.77%  this=-0.12%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+0.77%  this=+0.03%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+0.77%  this=+0.08%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+0.77%  this=-0.24%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+0.77%  this=-0.23%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+0.77%  this=+0.01%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+0.77%  this=+0.30%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+0.77%  this=-0.38%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+0.77%  this=+0.30%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+0.77%  this=+0.76%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+0.77%  this=+0.77%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+0.87%  this=+0.87%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+0.87%  this=+0.01%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+0.87%  this=+0.83%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+0.87%  this=+0.83%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+0.87%  this=-3.20%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+0.87%  this=+0.83%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+0.87%  this=-0.40%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+0.87%  this=-0.40%
+  Best IS total_return  : +0.8747  (Δ vs baseline: +1.0564)
+  OOS HMM  return : +1.29%  cagr=+1.29%  sharpe=0.159  calmar=0.975  maxdd=1.32%  trades=5  (0.0s)
+  OOS Δ return    : +0.81%  ✓ IMPROVEMENT
+
+[Window 6/12]
+
+======================================================================
+  Window : 2015-01-01 → 2018-01-01 | OOS 2018-01-01 → 2019-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.48%  cagr=+0.16%  sharpe=-0.819  calmar=0.096  maxdd=1.69%  trades=22  (0.5s)
+  Baseline OOS return : -2.49%  cagr=-2.50%  sharpe=-1.752  calmar=-0.778  maxdd=3.21%  trades=9  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.48%  this=+0.20%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+1.88%  this=+1.88%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+1.88%  this=+1.84%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+1.88%  this=+1.40%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.88%  this=+1.26%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.88%  this=+0.21%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.88%  this=+1.56%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.88%  this=+0.45%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+3.06%  this=+3.06%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+3.06%  this=+1.82%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+3.06%  this=+2.49%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+3.06%  this=+2.49%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+3.06%  this=+2.75%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+3.06%  this=+2.69%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+3.06%  this=+2.51%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+3.06%  this=+2.49%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+3.17%  this=+3.17%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+3.17%  this=+2.36%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+3.17%  this=+1.60%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+3.17%  this=+0.60%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+3.17%  this=+3.13%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+3.17%  this=+3.13%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+3.17%  this=+3.05%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+3.17%  this=+2.55%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+3.17%  this=+3.15%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+3.17%  this=+2.19%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+3.17%  this=+2.10%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+3.17%  this=+3.12%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+3.17%  this=+2.41%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+3.17%  this=+0.79%
+  Best IS total_return  : +3.1658  (Δ vs baseline: +2.6811)
+  OOS HMM  return : -0.52%  cagr=-0.52%  sharpe=-0.648  calmar=-0.197  maxdd=2.65%  trades=5  (0.1s)
+  OOS Δ return    : +1.97%  ✓ IMPROVEMENT
+
+[Window 7/12]
+
+======================================================================
+  Window : 2016-01-01 → 2019-01-01 | OOS 2019-01-01 → 2020-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +0.12%  cagr=+0.04%  sharpe=-0.634  calmar=0.012  maxdd=3.37%  trades=22  (0.5s)
+  Baseline OOS return : +1.50%  cagr=+1.50%  sharpe=0.367  calmar=0.946  maxdd=1.59%  trades=5  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+0.12%  this=-1.13%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+0.99%  this=+0.99%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+0.99%  this=-1.12%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+0.99%  this=-1.13%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+1.04%  this=+1.04%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+1.04%  this=-0.54%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+1.04%  this=-1.17%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+1.04%  this=-0.67%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+1.04%  this=-0.05%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+1.04%  this=-0.00%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+1.04%  this=-1.15%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+1.04%  this=-1.11%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+1.04%  this=+0.57%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+1.04%  this=-0.97%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+1.04%  this=+0.41%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+1.04%  this=+0.16%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+1.04%  this=-1.14%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+1.94%  this=+1.94%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+1.94%  this=-1.15%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+1.94%  this=-1.16%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+1.94%  this=-1.12%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+2.07%  this=+2.07%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+2.07%  this=+2.07%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+2.07%  this=+2.07%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+2.07%  this=+2.07%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+2.08%  this=+2.08%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+2.08%  this=+1.85%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+2.09%  this=+2.09%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+2.14%  this=+2.14%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+2.14%  this=+2.00%
+  Best IS total_return  : +2.1373  (Δ vs baseline: +2.0153)
+  OOS HMM  return : +3.00%  cagr=+3.00%  sharpe=0.732  calmar=0.957  maxdd=3.14%  trades=5  (0.1s)
+  OOS Δ return    : +1.50%  ✓ IMPROVEMENT
+
+[Window 8/12]
+
+======================================================================
+  Window : 2017-01-01 → 2020-01-01 | OOS 2020-01-01 → 2021-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +2.28%  cagr=+0.75%  sharpe=-0.127  calmar=0.217  maxdd=3.47%  trades=21  (0.4s)
+  Baseline OOS return : +11.31%  cagr=+11.29%  sharpe=2.180  calmar=3.955  maxdd=2.85%  trades=4  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+4.87%  this=+4.87%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+5.75%  this=+5.75%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+5.75%  this=+4.86%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+5.75%  this=+4.89%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+5.75%  this=+4.57%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+5.75%  this=+2.70%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+5.75%  this=+4.87%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+5.75%  this=+4.76%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+5.75%  this=+4.88%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+5.75%  this=+4.70%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+5.75%  this=+4.88%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+5.75%  this=+4.39%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+5.75%  this=+4.87%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+5.75%  this=+4.30%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+5.75%  this=+4.86%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+5.75%  this=+4.35%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+5.75%  this=+4.42%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+5.75%  this=+4.85%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+5.75%  this=+4.73%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+5.75%  this=+4.96%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+5.75%  this=+5.71%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+5.76%  this=+5.76%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+5.76%  this=+5.55%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+5.78%  this=+5.78%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+5.93%  this=+5.93%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+5.99%  this=+5.99%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+5.99%  this=+2.56%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+5.99%  this=+5.95%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+5.99%  this=+5.92%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+5.99%  this=+3.61%
+  Best IS total_return  : +5.9896  (Δ vs baseline: +3.7129)
+  OOS HMM  return : +2.83%  cagr=+2.83%  sharpe=0.469  calmar=0.889  maxdd=3.18%  trades=3  (0.0s)
+  OOS Δ return    : -8.48%  ✗ DEGRADATION
+
+[Window 9/12]
+
+======================================================================
+  Window : 2018-01-01 → 2021-01-01 | OOS 2021-01-01 → 2022-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +12.47%  cagr=+4.00%  sharpe=0.932  calmar=1.227  maxdd=3.25%  trades=19  (0.6s)
+  Baseline OOS return : +5.28%  cagr=+5.29%  sharpe=1.259  calmar=2.917  maxdd=1.81%  trades=7  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+25.79%  this=+25.79%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+25.79%  this=+25.79%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+25.79%  this=+25.78%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+25.79%  this=+25.79%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+25.79%  this=+13.97%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+25.79%  this=+11.24%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+25.79%  this=+25.79%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+25.79%  this=+20.90%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+25.79%  this=+25.79%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+25.79%  this=+17.39%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+25.79%  this=+5.68%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+25.79%  this=+15.92%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+25.80%  this=+25.80%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+25.80%  this=+25.79%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+25.80%  this=+25.79%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+25.80%  this=+25.79%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+25.80%  this=+25.80%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+25.80%  this=+14.82%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+25.80%  this=+5.65%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+25.80%  this=+10.45%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+25.80%  this=+25.80%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+25.80%  this=+25.80%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+25.80%  this=+25.80%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+25.80%  this=+25.79%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+25.80%  this=+23.13%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+25.80%  this=+25.80%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+25.80%  this=+18.07%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+25.80%  this=+25.80%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+25.80%  this=+25.79%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+25.80%  this=+25.80%
+  Best IS total_return  : +25.8016  (Δ vs baseline: +13.3279)
+  OOS HMM  return : +5.47%  cagr=+5.48%  sharpe=0.947  calmar=1.406  maxdd=3.90%  trades=5  (0.1s)
+  OOS Δ return    : +0.19%  ✓ IMPROVEMENT
+
+[Window 10/12]
+
+======================================================================
+  Window : 2019-01-01 → 2022-01-01 | OOS 2022-01-01 → 2023-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +18.08%  cagr=+5.70%  sharpe=1.282  calmar=2.020  maxdd=2.82%  trades=16  (0.4s)
+  Baseline OOS return : -2.97%  cagr=-2.97%  sharpe=-0.719  calmar=-0.515  maxdd=5.77%  trades=6  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+27.30%  this=+27.30%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+27.30%  this=+12.86%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+36.33%  this=+36.33%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+36.33%  this=+16.13%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+36.33%  this=+22.25%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+36.33%  this=+20.00%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+36.33%  this=+36.09%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+36.33%  this=+5.34%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+36.33%  this=+20.04%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+36.33%  this=+23.36%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+36.33%  this=+15.40%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+36.33%  this=+14.09%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+36.33%  this=+36.00%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+36.33%  this=+17.10%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+36.33%  this=+6.44%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+36.33%  this=+36.09%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+36.33%  this=+26.74%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+36.33%  this=+36.14%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+36.33%  this=+10.43%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+36.33%  this=+33.29%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+36.33%  this=+36.14%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+36.33%  this=+36.14%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+36.33%  this=+30.75%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+36.33%  this=+36.14%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+36.33%  this=+36.14%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+36.33%  this=+36.14%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+36.33%  this=+9.21%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+36.33%  this=+36.14%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+36.33%  this=+34.14%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+36.33%  this=+36.10%
+  Best IS total_return  : +36.3271  (Δ vs baseline: +18.2446)
+  OOS HMM  return : -0.68%  cagr=-0.68%  sharpe=-0.145  calmar=-0.091  maxdd=7.43%  trades=4  (0.1s)
+  OOS Δ return    : +2.29%  ✓ IMPROVEMENT
+
+[Window 11/12]
+
+======================================================================
+  Window : 2020-01-01 → 2023-01-01 | OOS 2023-01-01 → 2024-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +11.96%  cagr=+3.84%  sharpe=0.651  calmar=0.489  maxdd=7.84%  trades=17  (0.6s)
+  Baseline OOS return : +7.88%  cagr=+7.89%  sharpe=1.663  calmar=1.823  maxdd=4.33%  trades=5  (0.4s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+11.96%  this=+7.53%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+11.96%  this=+1.01%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+11.96%  this=+6.84%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+11.96%  this=+3.44%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+11.96%  this=+6.43%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+11.96%  this=+5.14%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+11.96%  this=+7.56%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+11.96%  this=+9.46%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+11.96%  this=+3.03%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+11.96%  this=+6.43%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+11.96%  this=+3.36%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+11.96%  this=+5.73%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+11.96%  this=+6.73%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+11.96%  this=+5.76%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+11.96%  this=+5.87%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+11.96%  this=+7.52%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+11.96%  this=+8.18%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+11.96%  this=+9.62%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+11.96%  this=+5.93%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+11.96%  this=+9.62%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+11.96%  this=+9.62%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+11.96%  this=+9.62%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+11.96%  this=+9.62%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+11.96%  this=+9.62%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+11.96%  this=+9.62%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+11.96%  this=+9.62%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+11.96%  this=+8.52%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+11.96%  this=+9.62%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+11.96%  this=+9.62%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+11.96%  this=+7.55%
+  Best IS total_return  : +9.6151  (Δ vs baseline: -2.3455)
+  OOS HMM  return : +12.06%  cagr=+12.07%  sharpe=1.499  calmar=1.464  maxdd=8.24%  trades=4  (0.2s)
+  OOS Δ return    : +4.17%  ✓ IMPROVEMENT
+
+[Window 12/12]
+
+======================================================================
+  Window : 2021-01-01 → 2024-01-01 | OOS 2024-01-01 → 2025-01-01
+  Trials : 30
+======================================================================
+  Baseline IS  return : +10.41%  cagr=+3.36%  sharpe=0.534  calmar=0.387  maxdd=8.68%  trades=19  (0.5s)
+  Baseline OOS return : +1.30%  cagr=+1.30%  sharpe=0.083  calmar=0.299  maxdd=4.35%  trades=6  (0.5s)
+
+  Optimising on IS period (30 trials) …
+
+  [░░░░░░░░░░░░░░░░░░░░░░░░░]   3.3%  trial=  1/30  best=+10.41%  this=+10.21%
+  [█░░░░░░░░░░░░░░░░░░░░░░░░]   6.7%  trial=  2/30  best=+15.33%  this=+15.33%
+  [██░░░░░░░░░░░░░░░░░░░░░░░]  10.0%  trial=  3/30  best=+16.90%  this=+16.90%
+  [███░░░░░░░░░░░░░░░░░░░░░░]  13.3%  trial=  4/30  best=+22.62%  this=+22.62%
+  [████░░░░░░░░░░░░░░░░░░░░░]  16.7%  trial=  5/30  best=+22.62%  this=+18.68%
+  [█████░░░░░░░░░░░░░░░░░░░░]  20.0%  trial=  6/30  best=+22.62%  this=+14.39%
+  [█████░░░░░░░░░░░░░░░░░░░░]  23.3%  trial=  7/30  best=+22.62%  this=+16.93%
+  [██████░░░░░░░░░░░░░░░░░░░]  26.7%  trial=  8/30  best=+22.62%  this=+19.11%
+  [███████░░░░░░░░░░░░░░░░░░]  30.0%  trial=  9/30  best=+22.62%  this=+15.04%
+  [████████░░░░░░░░░░░░░░░░░]  33.3%  trial= 10/30  best=+22.62%  this=+14.07%
+  [█████████░░░░░░░░░░░░░░░░]  36.7%  trial= 11/30  best=+22.62%  this=+10.68%
+  [██████████░░░░░░░░░░░░░░░]  40.0%  trial= 12/30  best=+22.62%  this=+20.88%
+  [██████████░░░░░░░░░░░░░░░]  43.3%  trial= 13/30  best=+22.62%  this=+15.30%
+  [███████████░░░░░░░░░░░░░░]  46.7%  trial= 14/30  best=+22.62%  this=+19.84%
+  [████████████░░░░░░░░░░░░░]  50.0%  trial= 15/30  best=+22.62%  this=+16.17%
+  [█████████████░░░░░░░░░░░░]  53.3%  trial= 16/30  best=+22.62%  this=+17.00%
+  [██████████████░░░░░░░░░░░]  56.7%  trial= 17/30  best=+22.62%  this=+16.86%
+  [███████████████░░░░░░░░░░]  60.0%  trial= 18/30  best=+22.62%  this=+19.75%
+  [███████████████░░░░░░░░░░]  63.3%  trial= 19/30  best=+22.62%  this=+18.38%
+  [████████████████░░░░░░░░░]  66.7%  trial= 20/30  best=+22.62%  this=+17.61%
+  [█████████████████░░░░░░░░]  70.0%  trial= 21/30  best=+22.62%  this=+7.09%
+  [██████████████████░░░░░░░]  73.3%  trial= 22/30  best=+22.62%  this=+19.29%
+  [███████████████████░░░░░░]  76.7%  trial= 23/30  best=+22.62%  this=+19.93%
+  [████████████████████░░░░░]  80.0%  trial= 24/30  best=+22.62%  this=+20.15%
+  [████████████████████░░░░░]  83.3%  trial= 25/30  best=+22.62%  this=+18.69%
+  [█████████████████████░░░░]  86.7%  trial= 26/30  best=+22.62%  this=+20.29%
+  [██████████████████████░░░]  90.0%  trial= 27/30  best=+25.11%  this=+25.11%
+  [███████████████████████░░]  93.3%  trial= 28/30  best=+25.57%  this=+25.57%
+  [████████████████████████░]  96.7%  trial= 29/30  best=+25.57%  this=+16.82%
+  [█████████████████████████] 100.0%  trial= 30/30  best=+25.57%  this=+16.85%
+  Best IS total_return  : +25.5727  (Δ vs baseline: +15.1612)
+  OOS HMM  return : +4.44%  cagr=+4.43%  sharpe=0.388  calmar=0.565  maxdd=7.84%  trades=5  (0.1s)
+  OOS Δ return    : +3.14%  ✓ IMPROVEMENT
+
+  Total walk-forward time: 117.8s
+
+
+==================================================================================================================================
+  WALK-FORWARD SUMMARY REPORT
+==================================================================================================================================
+
+IS Start      OOS Start        Δ Ret%    Δ CAGR%   Δ Sharpe   Δ Calmar   Δ MaxDD%   BL Trd  HMM Trd    Result
+----------------------------------------------------------------------------------------------------------------------------------
+2010-01-01    2013-01-01        +0.81      +0.81     +0.950     +0.635      +0.19        8        5     ✓ WIN
+2011-01-01    2014-01-01        +0.59      +0.59     +0.609     -0.006      +0.27        6        5     ✓ WIN
+2012-01-01    2015-01-01        -0.75      -0.75     +0.703     +0.185      +1.43        8        7    ✗ LOSS
+2013-01-01    2016-01-01        -1.39      -1.39     -1.195     -1.098      +0.74        7        6    ✗ LOSS
+2014-01-01    2017-01-01        +0.81      +0.81     +0.668     +0.254      +0.65        6        5     ✓ WIN
+2015-01-01    2018-01-01        +1.97      +1.97     +1.104     +0.581      -0.56        9        5     ✓ WIN
+2016-01-01    2019-01-01        +1.50      +1.50     +0.364     +0.011      +1.55        5        5     ✓ WIN
+2017-01-01    2020-01-01        -8.48      -8.46     -1.711     -3.066      +0.33        4        3    ✗ LOSS
+2018-01-01    2021-01-01        +0.19      +0.19     -0.312     -1.512      +2.08        7        5     ✓ WIN
+2019-01-01    2022-01-01        +2.29      +2.29     +0.574     +0.423      +1.66        6        4     ✓ WIN
+2020-01-01    2023-01-01        +4.17      +4.18     -0.163     -0.359      +3.91        5        4     ✓ WIN
+2021-01-01    2024-01-01        +3.14      +3.13     +0.305     +0.266      +3.49        6        5     ✓ WIN
+
+==================================================================================================================================
+  Total windows     : 12
+  HMM wins (OOS)    : 9 / 12  (75.0%)  [based on total return]
+  Mean Δ return     : +0.40%  per window
+  Best  window      : 2020-01-01 → 2024-01-01  Δ=+4.17%
+  Worst window      : 2017-01-01 → 2021-01-01  Δ=-8.48%
+
+  OOS METRIC COMPARISON  (mean across 12 windows)
+  Metric                      Baseline           HMM    Δ (mean)   Improved?        IR
+  ----------------------  ------------  ------------  ----------  ----------  --------
+  Total Return (%)               +1.92         +2.33      ++0.40       ✓ YES    +0.126
+  CAGR (%)                       +1.92         +2.33      ++0.41       ✓ YES    +0.127
+  Sharpe                        -0.067         0.091      +0.158       ✓ YES    +0.183
+  Calmar                         1.142         0.835      -0.307        ✗ NO    -0.283
+  Max DrawDown (%)                2.31          3.62       +1.31        ✗ NO    -0.976
+  Trades                             6             5          -2      (info)    (info)
+  Time (s)                         0.3           0.1        -0.3      (info)    (info)
+
+  Metrics improved by HMM : 3 / 6  →  Total Return (%) | CAGR (%) | Sharpe
+
+  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  |  IR < 0 = HMM consistently hurts  |  n/a = single window
+==================================================================================================================================
+
+  MOST COMMON BEST-HMM PARAMS ACROSS WINDOWS:
+    hmm_components        : 6 (fixed)
+    hmm_gate              : threshold×12
+    hmm_threshold         : mean=0.666  min=0.302  max=0.979
+    hmm_score_threshold   : mean=1.598  min=0.582  max=2.497
+
+  Full results saved → /Users/user/Dev/hmm-backtrader-sample/walkforward-results.csv
+==================================================================================================================================
