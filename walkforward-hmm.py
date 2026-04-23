@@ -532,7 +532,9 @@ def print_report(results: list[dict], cfg):
             row[f'param_{k}'] = v
         rows.append(row)
     df = pd.DataFrame(rows)
-    out_path = os.path.join(_HERE, 'walkforward-results.csv')
+    out_path = (getattr(cfg, 'results_csv', None)
+                or os.path.join(_HERE, 'walkforward-results.csv'))
+    os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     df.to_csv(out_path, index=False)
     print(f'\n  Full results saved → {out_path}')
     print('=' * W)
@@ -636,6 +638,9 @@ def parse_args():
     p.add_argument('--window-log-dir', default=None, dest='window_log_dir',
         help='Directory for per-window progress log files '
              '(default: auto-created alongside output)')
+    p.add_argument('--results-csv', default=None, dest='results_csv',
+        help='Path for the output CSV '
+             '(default: walkforward-results.csv next to this script)')
     p.add_argument('--state-positions', type=float, nargs='+', default=None,
         dest='state_positions',
         metavar='POS',

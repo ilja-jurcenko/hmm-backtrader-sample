@@ -1,0 +1,41 @@
+# Shared defaults forwarded to walkforward-compare.py for all experiment groups.
+# Override any value in groups.yaml per group if needed.
+
+wf_start: "2010-01-01"
+wf_end: "2026-04-10"
+n_trials: 20
+objective_metric: sharpe   # total_return | sharpe | calmar
+seed: 42
+step: 1                    # years between walk-forward windows
+stake: 100
+cash: 100000
+commission: 0.001
+stop_loss: 0.0
+take_profit: 0.0
+cpus_per_task: 16          # --cpus-per-task in the sbatch header
+wf_max_workers: 16         # --wf-max-workers forwarded to walkforward-compare.py
+
+# Default timeframes; override per group if needed.
+timeframes:
+  - id: is2_oos1
+    is_years: 2
+    oos_years: 1
+  - id: is3_oos1
+    is_years: 3
+    oos_years: 1
+
+# All 13 available strategies
+strategies:
+  - sma
+  - dema
+  - rsi
+  - macd
+  - adx_dm
+  - channel_breakout
+  - donchian
+  - ichimoku
+  - parabolic_sar
+  - tsmom
+  - turtle
+  - vol_adj
+  - hmm_mr

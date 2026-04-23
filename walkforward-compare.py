@@ -38,10 +38,11 @@ PYTHON = sys.executable
 
 
 def _run_strategy(strategy: str, base_args: list[str], out_path: str,
-                  window_log_dir: str) -> tuple[str, float, int]:
+                  window_log_dir: str, results_csv: str) -> tuple[str, float, int]:
     """Run walkforward-hmm.py for one strategy, write output to out_path."""
     cmd = [PYTHON, WF_SCRIPT, '--strategy', strategy,
-           '--window-log-dir', window_log_dir] + base_args
+           '--window-log-dir', window_log_dir,
+           '--results-csv', results_csv] + base_args
     t0 = time.perf_counter()
     with open(out_path, 'w') as fh:
         result = subprocess.run(cmd, stdout=fh, stderr=subprocess.STDOUT, text=True)
@@ -378,7 +379,8 @@ def main():
     with ProcessPoolExecutor(max_workers=len(strategies)) as pool:
         futures = {
             pool.submit(_run_strategy, s, base_args, out_paths[s],
-                        os.path.join(cfg.out_dir, f'{s}_windows')): s
+                        os.path.join(cfg.out_dir, f'{s}_windows'),
+                        os.path.join(cfg.out_dir, f'{s}_results.csv')): s
             for s in strategies
         }
         for fut in as_completed(futures):

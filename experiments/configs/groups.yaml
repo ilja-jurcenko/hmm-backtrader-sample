@@ -1,0 +1,198 @@
+# Experiment groups defining HMM configurations to benchmark.
+#
+# Each group maps to a set of sbatch jobs: one per (group × ticker_set × timeframe).
+# The hmm_args list is appended verbatim to the walkforward-compare.py command.
+#
+# Phases run sequentially — aggregate results between phases to fill in {best_*}
+# placeholders before generating the next phase's jobs.
+#
+# Phase 1  — Regime mode sweep (baseline: HMM always on, compare modes)
+# Phase 2  — K sweep (best regime mode from Phase 1, update {best_mode} below)
+# Phase 3  — PCA sweep (best mode + best K from Phase 2)
+# Phase 4  — Feature set sweep (best mode + best K + best PCA)
+# Phase 5  — Multi-asset validation with the winning config from Phase 4
+#
+# ticker_sets: list of keys from ticker_sets.yaml to run for this group.
+#   Phase 1–4 use [spy_qqq] only; Phase 5 uses both sets.
+
+groups:
+
+  # ---------------------------------------------------------------------------
+  # Phase 1 — Regime mode sweep
+  # ---------------------------------------------------------------------------
+
+  - id: "01_strict"
+    phase: 1
+    description: "HMM strict mode (block trades in unfavourable states)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "strict"
+
+  - id: "02_size"
+    phase: 1
+    description: "HMM size mode (reduce position in unfavourable states)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+
+  - id: "03_score"
+    phase: 1
+    description: "HMM score mode (per-state position sizes)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "score"
+
+  - id: "04_linear"
+    phase: 1
+    description: "HMM linear mode (linearly scaled position by state score)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "linear"
+
+  # ---------------------------------------------------------------------------
+  # Phase 2 — K (number of hidden states) sweep
+  # Update --regime-mode below to the best mode found in Phase 1 before running.
+  # ---------------------------------------------------------------------------
+
+  - id: "05_k2"
+    phase: 2
+    description: "K=2 hidden states"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"          # TODO: replace with best Phase 1 regime mode
+      - "--hmm-components"
+      - "2"
+
+  - id: "06_k3"
+    phase: 2
+    description: "K=3 hidden states"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "3"
+
+  - id: "07_k4"
+    phase: 2
+    description: "K=4 hidden states"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "4"
+
+  - id: "08_k6"
+    phase: 2
+    description: "K=6 hidden states"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "6"
+
+  # ---------------------------------------------------------------------------
+  # Phase 3 — PCA sweep
+  # Update --regime-mode and --hmm-components to Phase 2 winners before running.
+  # ---------------------------------------------------------------------------
+
+  - id: "09_pca_none"
+    phase: 3
+    description: "No PCA (raw features)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"          # TODO: best mode from Phase 1
+      - "--hmm-components"
+      - "3"             # TODO: best K from Phase 2
+
+  - id: "10_pca3"
+    phase: 3
+    description: "PCA=3 components"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "3"
+      - "--hmm-pca"
+      - "3"
+
+  - id: "11_pca4"
+    phase: 3
+    description: "PCA=4 components"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "3"
+      - "--hmm-pca"
+      - "4"
+
+  # ---------------------------------------------------------------------------
+  # Phase 4 — Feature set sweep
+  # Update all placeholders to Phase 3 winners before running.
+  # ---------------------------------------------------------------------------
+
+  - id: "12_feat_compact"
+    phase: 4
+    description: "Compact feature set: Returns, Range, vol, log_ret"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "3"
+      - "--hmm-features"
+      - "Returns"
+      - "Range"
+      - "vol"
+      - "log_ret"
+
+  - id: "13_feat_full"
+    phase: 4
+    description: "Full feature set (all 13 features)"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "size"
+      - "--hmm-components"
+      - "3"
+      - "--hmm-features"
+      - "Returns"
+      - "Range"
+      - "r5"
+      - "r20"
+      - "vol"
+      - "log_ret"
+      - "vol_short"
+      - "vol_long"
+      - "atr_norm"
+      - "vol_of_vol"
+      - "vol_lag1"
+      - "downside_vol"
+      - "vol_z"
+
+  # ---------------------------------------------------------------------------
+  # Phase 5 — Multi-asset validation
+  # Copy the winning hmm_args from Phase 4 here before running.
+  # Runs on both ticker sets.
+  # ---------------------------------------------------------------------------
+
+  - id: "14_best_multiasset"
+    phase: 5
+    description: "Best HMM config from Phases 1-4, validated on multiple assets"
+    ticker_sets: [spy_qqq, sp500_10]
+    hmm_args:
+      - "--regime-mode"
+      - "size"          # TODO: fill in best config after Phases 1-4
+      - "--hmm-components"
+      - "3"

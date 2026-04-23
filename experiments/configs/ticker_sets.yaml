@@ -1,0 +1,10 @@
+# Named ticker sets used across experiment groups.
+# Each set is passed as --ticker to walkforward-compare.py.
+
+spy_qqq:
+  tickers: [SPY, QQQ]
+  description: "SPY and QQQ — primary benchmark pair"
+
+sp500_10:
+  tickers: [AAPL, MSFT, NVDA, AMZN, JPM, XOM, UNH, WMT, BAC, KO]
+  description: "10 S&P 500 stocks across diverse sectors"
