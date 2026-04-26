@@ -88,6 +88,9 @@ def _rsi_kwargs(args) -> dict:
         unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
         stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
         take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+        # invert_regime defaults to True inside RsiStrategy.params; allow
+        # explicit override from args (e.g. ablation experiments).
+        invert_regime    = getattr(args, 'rsi_invert_regime', True),
     )
 
 

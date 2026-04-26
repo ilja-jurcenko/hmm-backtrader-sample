@@ -42,6 +42,14 @@ SBATCH_TEMPLATE = """\
 cd "{root}"
 source .venv/bin/activate
 
+# Prevent OpenBLAS/MKL/OMP from spawning extra threads per worker process.
+# Without this, each of the 16 parallel workers tries to create 16 BLAS threads,
+# quickly exhausting RLIMIT_NPROC (1000) and causing KeyboardInterrupt in threadpoolctl.
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
 # --- run ---
 python walkforward-compare.py \\
     --strategies {strategies} \\
@@ -108,7 +116,7 @@ def gen_jobs(dry_run: bool = False):
                 oos_years= tf['oos_years']
 
                 job_name = f'{gid}__{ts_key}__{tf_id}'
-                out_dir  = os.path.join(ROOT, 'results', gid, ts_key, tf_id)
+                out_dir  = os.path.join(ROOT, 'results', f'phase_{phase}', gid, ts_key, tf_id)
                 log_dir  = os.path.join(ROOT, 'logs')
                 log_path = os.path.join(log_dir, f'{job_name}_%j.out')
 

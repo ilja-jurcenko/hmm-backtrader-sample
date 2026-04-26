@@ -1007,6 +1007,25 @@ def run(args=None, quiet=False):
     # ---- Strategy key – determined early so HMM wiring can branch on it -----
     strategy_key = getattr(args, 'strategy', 'sma')
 
+    # ---- TSMOM warm-up extension --------------------------------------------
+    # TSMOM needs (tsmom_lookback + tsmom_skip) bars before the first signal.
+    # When a short OOS window is shorter than that threshold, the strategy
+    # stays in warm-up for the entire period and never trades.  We prepend
+    # extra historical bars so the indicator can compute, then let backtrader
+    # handle the full window naturally (warm-up bars are all-cash; they
+    # slightly dilute annualised metrics but are required for any trades).
+    data_fromdate = fromdate   # actual data start (may be extended for warmup)
+    if strategy_key == 'tsmom':
+        tsmom_lookback = getattr(args, 'tsmom_lookback', 252)
+        tsmom_skip     = getattr(args, 'tsmom_skip',     21)
+        warmup_bars    = tsmom_lookback + tsmom_skip
+        # Convert trading-day count to calendar days with ~30% buffer for
+        # weekends/holidays (252 td ≈ 365 cd → multiply by 365/252 ≈ 1.45).
+        warmup_calendar = int(warmup_bars * 1.5) + 30
+        data_fromdate = fromdate - datetime.timedelta(days=warmup_calendar)
+        _p(f'[TSMOM] Prepending {warmup_bars}-bar warm-up; '
+           f'data starts {data_fromdate.date()} (perf measured from {fromdate.date()})')
+
     # ---- HMM regime pre-computation (per ticker) ----------------------------
     hmm_signals:  dict = {}   # ticker → pd.Series of 0/1 (regime filter)
     hmm_states:   dict = {}   # ticker → pd.Series of int (dominant HMM state)
@@ -1114,7 +1133,7 @@ def run(args=None, quiet=False):
     if strategy_key == 'hmm_mr':
         # Use HMMStateFeed: OHLCV + state_mean + state_std lines
         for ticker in tickers:
-            df_raw = load_csv_as_dataframe(csv_paths[ticker], fromdate, todate)
+            df_raw = load_csv_as_dataframe(csv_paths[ticker], data_fromdate, todate)
             mr_df  = hmm_mr_state[ticker].reindex(df_raw.index)
             df_raw['state_mean'] = mr_df['state_mean'].ffill().fillna(df_raw['Close'])
             df_raw['state_std']  = mr_df['state_std'].ffill().fillna(df_raw['Close'].std())
@@ -1137,7 +1156,7 @@ def run(args=None, quiet=False):
     elif args.hmm:
         # Use HMMRegimeFeed (PandasData + regime + hmm_state lines) for each ticker
         for ticker in tickers:
-            df_raw = load_csv_as_dataframe(csv_paths[ticker], fromdate, todate)
+            df_raw = load_csv_as_dataframe(csv_paths[ticker], data_fromdate, todate)
             regime_vals = hmm_signals[ticker].reindex(df_raw.index).fillna(0.0)
             if getattr(args, 'regime_mode', 'strict') != 'score':
                 regime_vals = regime_vals.astype(int)
@@ -1168,7 +1187,7 @@ def run(args=None, quiet=False):
         # Standard CSV feed (no HMM)
         # yfinance CSV columns: Date(0), Close(1), High(2), Low(3), Open(4), Volume(5)
         csv_kwargs = dict(
-            fromdate=fromdate,
+            fromdate=data_fromdate,
             todate=todate,
             dtformat='%Y-%m-%d',
             datetime=0,
@@ -1368,6 +1387,12 @@ def parse_args(pargs=None):
     parser.add_argument('--rsi-overbought', type=int, default=70,
         dest='rsi_overbought',
         help='RSI level that triggers a sell signal (overbought threshold)')
+
+    parser.add_argument('--rsi-invert-regime',
+        type=lambda x: x.lower() != 'false',
+        default=True, dest='rsi_invert_regime',
+        metavar='BOOL',
+        help='Invert HMM gate for RSI so high-vol states allow trading (default: True)')
 
     # MACD params
     parser.add_argument('--macd-fast', type=int, default=12,

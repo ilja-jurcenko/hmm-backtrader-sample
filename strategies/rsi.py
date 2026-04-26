@@ -45,6 +45,8 @@ class RsiStrategy(BaseRegimeStrategy):
         use_hmm        = False,
         regime_mode    = 'strict',
         unfav_fraction = 0.25,
+        invert_regime  = True,   # RSI signals fire in high-vol regimes;
+                                  # invert HMM gate so unfav = entry window.
     )
 
     def _init_indicators(self, d):

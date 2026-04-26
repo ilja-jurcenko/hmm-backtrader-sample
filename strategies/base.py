@@ -38,6 +38,9 @@ class BaseRegimeStrategy(bt.Strategy):
                                       # (only used when regime_mode='size')
         stop_loss_perc  = 0.02,       # stop-loss  as fraction (0 = disabled)
         take_profit_perc = 0.10,      # take-profit as fraction (0 = disabled)
+        invert_regime   = False,      # invert the HMM gate: trade in 'unfavourable'
+                                      # (high-vol/choppy) states instead of trending ones.
+                                      # Set True for mean-reversion strategies.
     )
 
     # ------------------------------------------------------------------ helpers
@@ -49,9 +52,24 @@ class BaseRegimeStrategy(bt.Strategy):
 
     def _get_regime(self, d) -> float:
         """Return regime value: 1.0 (fully allowed), 0.0 (suppressed),
-        or a float in [0,1] for score-based sizing."""
+        or a float in [0,1] for score-based sizing.
+
+        When invert_regime=True the signal is flipped so that states the HMM
+        labels 'unfavourable' (high-vol / choppy) become the entry window.
+        This is appropriate for mean-reversion strategies: their signals
+        (e.g. RSI oversold) fire almost exclusively in volatile regimes, not
+        in the low-vol trending regimes the HMM normally favours.
+
+        Inversion formula: max(0.0, 1.0 - raw_regime)
+          strict/size mode (raw ∈ {0,1}): 0→1, 1→0  — clean binary flip.
+          score/linear mode (raw ∈ [0, max_pos_size]): low-score unfav states
+            become high-score entry windows; scores above 1.0 collapse to 0.
+        """
         if self.p.use_hmm and hasattr(d, 'regime'):
-            return float(d.regime[0])
+            val = float(d.regime[0])
+            if self.p.invert_regime:
+                val = max(0.0, 1.0 - val)
+            return val
         return 1.0
 
     def _get_hmm_state(self, d) -> int:

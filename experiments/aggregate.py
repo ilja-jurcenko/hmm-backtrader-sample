@@ -6,7 +6,7 @@ Aggregate all *_results.csv files produced by cluster jobs into a single
 master comparison table.
 
 Results are expected at:
-    results/{group_id}/{ticker_set}/{timeframe}/{strategy}_results.csv
+    results/phase_{N}/{group_id}/{ticker_set}/{timeframe}/{strategy}_results.csv
 
 Usage:
     python experiments/aggregate.py [--phase N] [--out master_results.csv]
@@ -40,8 +40,11 @@ def load_group_phases() -> dict[str, int]:
     return {g['id']: g['phase'] for g in cfg['groups']}
 
 
-def _mean(vals):
+def _mean(vals, clip=None):
+    """Mean of non-null values.  If clip is set, winsorise to ±clip first."""
     valid = [v for v in vals if v is not None and not (isinstance(v, float) and math.isnan(v))]
+    if clip is not None:
+        valid = [max(-clip, min(clip, v)) for v in valid]
     return sum(valid) / len(valid) if valid else float('nan')
 
 
@@ -64,7 +67,7 @@ METRICS = [
 def aggregate(phase_filter: Optional[int], out_path: str, sort_by: str):
     group_phases = load_group_phases()
 
-    pattern = os.path.join(ROOT, 'results', '*', '*', '*', '*_results.csv')
+    pattern = os.path.join(ROOT, 'results', 'phase_*', '*', '*', '*', '*_results.csv')
     csv_files = glob.glob(pattern)
 
     if not csv_files:
@@ -74,7 +77,7 @@ def aggregate(phase_filter: Optional[int], out_path: str, sort_by: str):
     rows = []
     missing = []
     for path in sorted(csv_files):
-        # results/{group_id}/{ticker_set}/{timeframe}/{strategy}_results.csv
+        # results/phase_{N}/{group_id}/{ticker_set}/{timeframe}/{strategy}_results.csv
         parts = os.path.normpath(path).split(os.sep)
         try:
             strategy  = os.path.splitext(parts[-1])[0].replace('_results', '')
@@ -109,11 +112,17 @@ def aggregate(phase_filter: Optional[int], out_path: str, sort_by: str):
             'win_rate':   _win_rate(df.get('improved', [])),
         }
 
+        # Sharpe values are winsorised at ±10 before averaging across windows.
+        # A single extreme Sharpe (e.g. −57 from a 1-trade OOS window with
+        # near-zero daily-return variance) would otherwise dominate the mean.
+        SHARPE_CLIP = 10.0
+
         for col_suffix, _, _ in METRICS:
             for prefix in ('bl_oos', 'hmm_oos'):
                 col = f'{prefix}_{col_suffix}'
                 if col in df.columns:
-                    agg[f'{col}_mean'] = _mean(df[col])
+                    clip = SHARPE_CLIP if col_suffix == 'sharpe' else None
+                    agg[f'{col}_mean'] = _mean(df[col], clip=clip)
 
         # delta = hmm - baseline
         for col_suffix, _, _ in METRICS:

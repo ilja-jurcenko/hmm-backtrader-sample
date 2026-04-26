@@ -83,6 +83,7 @@ def make_args(**kwargs) -> types.SimpleNamespace:
         rsi_period     = 14,
         rsi_oversold   = 30,
         rsi_overbought = 70,
+        rsi_invert_regime = True,   # invert HMM gate for mean-reversion
         # MACD strategy params
         macd_fast      = 12,
         macd_slow      = 26,
@@ -167,6 +168,7 @@ def backtest(quiet=True, **kwargs) -> dict:
 def make_objective(tickers, fromdate, todate, fast, slow,
                    strategy='sma',
                    rsi_period=14, rsi_oversold=30, rsi_overbought=70,
+                   rsi_invert_regime=True,
                    macd_fast=12, macd_slow=26, macd_signal=9,
                    hmm_mr_z_threshold=0.0,
                    adx_period=14, adx_threshold=25.0,
@@ -272,6 +274,7 @@ def make_objective(tickers, fromdate, todate, fast, slow,
             rsi_period          = rsi_period,
             rsi_oversold        = rsi_oversold,
             rsi_overbought      = rsi_overbought,
+            rsi_invert_regime   = rsi_invert_regime,
             macd_fast           = macd_fast,
             macd_slow           = macd_slow,
             macd_signal         = macd_signal,
@@ -385,6 +388,10 @@ def parse_args():
     p.add_argument('--rsi-period',     type=int, default=14, dest='rsi_period')
     p.add_argument('--rsi-oversold',   type=int, default=30, dest='rsi_oversold')
     p.add_argument('--rsi-overbought', type=int, default=70, dest='rsi_overbought')
+    p.add_argument('--rsi-invert-regime', type=lambda x: x.lower() != 'false',
+        default=True, dest='rsi_invert_regime',
+        metavar='BOOL',
+        help='Invert HMM regime gate for RSI (default: True — favour high-vol states)')
     p.add_argument('--macd-fast',   type=int, default=12, dest='macd_fast')
     p.add_argument('--macd-slow',   type=int, default=26, dest='macd_slow')
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')

@@ -120,6 +120,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         rsi_period     = getattr(cfg, 'rsi_period',         14),
         rsi_oversold   = getattr(cfg, 'rsi_oversold',       30),
         rsi_overbought = getattr(cfg, 'rsi_overbought',     70),
+        rsi_invert_regime = getattr(cfg, 'rsi_invert_regime', True),
         macd_fast      = getattr(cfg, 'macd_fast',          12),
         macd_slow      = getattr(cfg, 'macd_slow',          26),
         macd_signal    = getattr(cfg, 'macd_signal',         9),
@@ -189,6 +190,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    rsi_period         = getattr(cfg, 'rsi_period',         14),
                                    rsi_oversold       = getattr(cfg, 'rsi_oversold',       30),
                                    rsi_overbought     = getattr(cfg, 'rsi_overbought',     70),
+                                   rsi_invert_regime  = getattr(cfg, 'rsi_invert_regime',  True),
                                    macd_fast          = getattr(cfg, 'macd_fast',          12),
                                    macd_slow          = getattr(cfg, 'macd_slow',          26),
                                    macd_signal        = getattr(cfg, 'macd_signal',         9),
@@ -460,10 +462,20 @@ def print_report(results: list[dict], cfg):
           f'{"Improved?":>10}  {"IR":>8}')
     print(f'  {"-"*22}  {"-"*12}  {"-"*12}  {"-"*10}  {"-"*10}  {"-"*8}')
 
+    # Sharpe values are winsorised at ±10 before averaging across windows.
+    # A single extreme value (e.g. −57 from 1-trade windows with near-zero
+    # variance) would otherwise dominate the mean and give a false signal.
+    SHARPE_CLIP = 10.0
+
     improvements = []
     for key, label, fmt, higher_better in _METRICS:
         bl_vals  = [r[f'bl_oos_{key}']  for r in results]
         hmm_vals = [r[f'hmm_oos_{key}'] for r in results]
+
+        if key == 'sharpe':
+            bl_vals  = [max(-SHARPE_CLIP, min(SHARPE_CLIP, v)) for v in bl_vals]
+            hmm_vals = [max(-SHARPE_CLIP, min(SHARPE_CLIP, v)) for v in hmm_vals]
+
         deltas   = [h - b for h, b in zip(hmm_vals, bl_vals)]
         mean_bl  = sum(bl_vals)  / n
         mean_hmm = sum(hmm_vals) / n
@@ -573,6 +585,10 @@ def parse_args():
     p.add_argument('--rsi-period',     type=int, default=14,  dest='rsi_period')
     p.add_argument('--rsi-oversold',   type=int, default=30,  dest='rsi_oversold')
     p.add_argument('--rsi-overbought', type=int, default=70,  dest='rsi_overbought')
+    p.add_argument('--rsi-invert-regime', type=lambda x: x.lower() != 'false',
+        default=True, dest='rsi_invert_regime',
+        metavar='BOOL',
+        help='Invert HMM gate for RSI: favour high-vol states (default: True)')
     p.add_argument('--macd-fast',   type=int, default=12, dest='macd_fast')
     p.add_argument('--macd-slow',   type=int, default=26, dest='macd_slow')
     p.add_argument('--macd-signal', type=int, default=9,  dest='macd_signal')

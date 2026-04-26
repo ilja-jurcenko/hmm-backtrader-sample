@@ -6,6 +6,91 @@ Each experiment runs all 13 strategies in parallel via `walkforward-compare.py`,
 
 ---
 
+## Pipeline Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     HMM EXPERIMENT PIPELINE                             │
+│                  SPY + QQQ  │  2010–2026  │  13 strategies              │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────┐
+│  PHASE 1 — Regime Mode Sweep         │  8 jobs
+│                                      │
+│  Fixed:  K=default, no PCA           │
+│  Sweep:  strict │ size │ score │ linear │
+│                                      │
+│  Question: How should HMM control    │
+│            position sizing?          │
+└──────────────────┬───────────────────┘
+                   │  Winner: score ✓
+                   ▼
+┌──────────────────────────────────────┐
+│  PHASE 2 — K (Hidden States) Sweep   │  8 jobs
+│                                      │
+│  Fixed:  mode=score                  │
+│  Sweep:  K=2 │ K=3 │ K=4 │ K=6      │
+│                                      │
+│  Question: How many market regimes   │
+│            should the HMM model?     │
+└──────────────────┬───────────────────┘
+                   │  Winner: best_K
+                   ▼
+┌──────────────────────────────────────┐
+│  PHASE 3 — PCA Sweep                 │  6 jobs
+│                                      │
+│  Fixed:  mode=score, K=best_K        │
+│  Sweep:  no PCA │ PCA=3 │ PCA=4      │
+│                                      │
+│  Question: Should features be        │
+│            dimensionality-reduced?   │
+└──────────────────┬───────────────────┘
+                   │  Winner: best_PCA
+                   ▼
+┌──────────────────────────────────────┐
+│  PHASE 4 — Feature Set Sweep         │  4 jobs
+│                                      │
+│  Fixed:  mode=score, K=best_K,       │
+│          PCA=best_PCA                │
+│  Sweep:  compact (4 feat) │ full (13)│
+│                                      │
+│  Question: Which input features best │
+│            capture market regimes?   │
+└──────────────────┬───────────────────┘
+                   │  Winner: best_features
+                   ▼
+┌──────────────────────────────────────┐
+│  PHASE 5 — Multi-Asset Validation    │  4 jobs
+│                                      │
+│  Fixed:  full winning config         │
+│  Sweep:  spy_qqq │ sp500_10          │
+│          (AAPL MSFT NVDA AMZN JPM    │
+│           XOM UNH WMT BAC KO)        │
+│                                      │
+│  Question: Does the winning config   │
+│            generalise beyond SPY/QQQ?│
+└──────────────────┬───────────────────┘
+                   │
+                   ▼
+┌──────────────────────────────────────┐
+│  FINAL OUTPUT                        │
+│                                      │
+│  results/master_results.csv          │
+│                                      │
+│  Best HMM config:                    │
+│    regime_mode  = score              │
+│    K            = ?  (Phase 2)       │
+│    PCA          = ?  (Phase 3)       │
+│    features     = ?  (Phase 4)       │
+│                                      │
+│  Validated across 12 assets,         │
+│  2 timeframes, 13 strategies,        │
+│  30 total jobs                       │
+└──────────────────────────────────────┘
+```
+
+---
+
 ## Directory Structure
 
 ```

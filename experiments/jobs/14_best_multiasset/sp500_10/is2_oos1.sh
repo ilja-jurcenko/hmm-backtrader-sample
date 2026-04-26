@@ -1,13 +1,21 @@
 #!/bin/bash
 #SBATCH --job-name=14_best_multiasset__sp500_10__is2_oos1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
-#SBATCH --output=/Users/user/Dev/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
-#SBATCH --error=/Users/user/Dev/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
+#SBATCH --cpus-per-task=48
+#SBATCH --output=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
+#SBATCH --error=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
 
 # --- environment ---
-cd "/Users/user/Dev/hmm-backtrader-sample"
+cd "/scratch/lustre/home/ilju3280/hmm-backtrader-sample"
 source .venv/bin/activate
+
+# Prevent OpenBLAS/MKL/OMP from spawning extra threads per worker process.
+# Without this, each of the 52 parallel workers (13 strategies × 4 windows) tries to
+# create 48 BLAS threads, exhausting RLIMIT_NPROC (1000) and crashing threadpoolctl.
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
 
 # --- run ---
 python walkforward-compare.py \
@@ -24,9 +32,10 @@ python walkforward-compare.py \
     --stake 100 \
     --cash 100000 \
     --commission 0.001 \
-    --stop-loss 0.0 \
-    --take-profit 0.0 \
-    --wf-max-workers 16 \
-    --out-dir "/Users/user/Dev/hmm-backtrader-sample/results/14_best_multiasset/sp500_10/is2_oos1" \
-    --regime-mode size \
-    --hmm-components 3
+    --stop-loss 0.05 \
+    --take-profit 0.1 \
+    --wf-max-workers 4 \
+    --out-dir "/scratch/lustre/home/ilju3280/hmm-backtrader-sample/results/phase_5/14_best_multiasset/sp500_10/is2_oos1" \
+    --regime-mode score \
+    --hmm-components 4 \
+    --hmm-features Returns Range r5 r20 vol log_ret vol_short vol_long atr_norm vol_of_vol vol_lag1 downside_vol vol_z

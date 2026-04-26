@@ -10,8 +10,8 @@ step: 1                    # years between walk-forward windows
 stake: 100
 cash: 100000
 commission: 0.001
-stop_loss: 0.0
-take_profit: 0.0
+stop_loss: 0.05
+take_profit: 0.10
 cpus_per_task: 16          # --cpus-per-task in the sbatch header
 wf_max_workers: 16         # --wf-max-workers forwarded to walkforward-compare.py
 
