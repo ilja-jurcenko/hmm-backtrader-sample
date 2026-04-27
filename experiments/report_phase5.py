@@ -28,9 +28,9 @@ TICKER_SETS = {
 }
 
 STRATEGIES = [
-    "adx_dm", "channel_breakout", "dema", "donchian", "hmm_mr",
-    "ichimoku", "macd", "parabolic_sar", "rsi", "sma",
-    "tsmom", "turtle", "vol_adj",
+    "adx_dm", "bollinger", "channel_breakout", "composite_trend", "dema", "donchian",
+    "false_breakout", "ichimoku", "kama", "macd", "parabolic_sar", "rsi", "sma",
+    "tsmom", "tsmom_fast", "turtle", "vol_adj",
 ]
 
 TIMEFRAMES = ["is2_oos1", "is3_oos1"]

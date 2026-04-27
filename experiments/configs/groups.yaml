@@ -99,51 +99,13 @@ groups:
       - "6"
 
   # ---------------------------------------------------------------------------
-  # Phase 3 — PCA sweep
+  # Phase 3 — Feature set sweep
+  # Run this before PCA so the best feature set is known first.
   # Update --regime-mode and --hmm-components to Phase 2 winners before running.
   # ---------------------------------------------------------------------------
 
-  - id: "09_pca_none"
+  - id: "09_feat_compact"
     phase: 3
-    description: "No PCA (raw features)"
-    ticker_sets: [spy_qqq]
-    hmm_args:
-      - "--regime-mode"
-      - "score"         # Phase 1 winner
-      - "--hmm-components"
-      - "4"             # Phase 2 winner
-
-  - id: "10_pca3"
-    phase: 3
-    description: "PCA=3 components"
-    ticker_sets: [spy_qqq]
-    hmm_args:
-      - "--regime-mode"
-      - "score"         # Phase 1 winner
-      - "--hmm-components"
-      - "4"             # Phase 2 winner
-      - "--hmm-pca"
-      - "3"
-
-  - id: "11_pca4"
-    phase: 3
-    description: "PCA=4 components"
-    ticker_sets: [spy_qqq]
-    hmm_args:
-      - "--regime-mode"
-      - "score"         # Phase 1 winner
-      - "--hmm-components"
-      - "4"             # Phase 2 winner
-      - "--hmm-pca"
-      - "4"
-
-  # ---------------------------------------------------------------------------
-  # Phase 4 — Feature set sweep
-  # Update all placeholders to Phase 3 winners before running.
-  # ---------------------------------------------------------------------------
-
-  - id: "12_feat_compact"
-    phase: 4
     description: "Compact feature set: Returns, Range, vol, log_ret"
     ticker_sets: [spy_qqq]
     hmm_args:
@@ -157,8 +119,8 @@ groups:
       - "vol"
       - "log_ret"
 
-  - id: "13_feat_full"
-    phase: 4
+  - id: "10_feat_full"
+    phase: 3
     description: "Full feature set (all 13 features)"
     ticker_sets: [spy_qqq]
     hmm_args:
@@ -182,21 +144,20 @@ groups:
       - "vol_z"
 
   # ---------------------------------------------------------------------------
-  # Phase 5 — Multi-asset validation
-  # Copy the winning hmm_args from Phase 4 here before running.
-  # Runs on both ticker sets.
+  # Phase 4 — PCA sweep
+  # Update --hmm-features to the Phase 3 winner before running.
+  # Update --regime-mode and --hmm-components to Phase 1/2 winners before running.
   # ---------------------------------------------------------------------------
 
-  - id: "14_best_multiasset"
-    phase: 5
-    description: "Best HMM config from Phases 1-4, validated on multiple assets"
-    ticker_sets: [spy_qqq, sp500_10]
+  - id: "11_pca_none"
+    phase: 4
+    description: "No PCA (raw features)"
+    ticker_sets: [spy_qqq]
     hmm_args:
       - "--regime-mode"
       - "score"         # Phase 1 winner
       - "--hmm-components"
       - "4"             # Phase 2 winner
-      # no --hmm-pca    # Phase 3 winner (raw features)
       - "--hmm-features"
       - "Returns"
       - "Range"
@@ -210,4 +171,87 @@ groups:
       - "vol_of_vol"
       - "vol_lag1"
       - "downside_vol"
-      - "vol_z"         # Phase 4 winner (full 13 features)
+      - "vol_z"         # Phase 3 winner — update before running Phase 4
+
+  - id: "12_pca3"
+    phase: 4
+    description: "PCA=3 components"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "score"         # Phase 1 winner
+      - "--hmm-components"
+      - "4"             # Phase 2 winner
+      - "--hmm-features"
+      - "Returns"
+      - "Range"
+      - "r5"
+      - "r20"
+      - "vol"
+      - "log_ret"
+      - "vol_short"
+      - "vol_long"
+      - "atr_norm"
+      - "vol_of_vol"
+      - "vol_lag1"
+      - "downside_vol"
+      - "vol_z"         # Phase 3 winner — update before running Phase 4
+      - "--hmm-pca"
+      - "3"
+
+  - id: "13_pca4"
+    phase: 4
+    description: "PCA=4 components"
+    ticker_sets: [spy_qqq]
+    hmm_args:
+      - "--regime-mode"
+      - "score"         # Phase 1 winner
+      - "--hmm-components"
+      - "4"             # Phase 2 winner
+      - "--hmm-features"
+      - "Returns"
+      - "Range"
+      - "r5"
+      - "r20"
+      - "vol"
+      - "log_ret"
+      - "vol_short"
+      - "vol_long"
+      - "atr_norm"
+      - "vol_of_vol"
+      - "vol_lag1"
+      - "downside_vol"
+      - "vol_z"         # Phase 3 winner — update before running Phase 4
+      - "--hmm-pca"
+      - "4"
+
+  # ---------------------------------------------------------------------------
+  # Phase 5 — Multi-asset validation
+  # Copy the winning hmm_args from Phase 4 (PCA) here before running.
+  # Runs on both ticker sets.
+  # ---------------------------------------------------------------------------
+
+  - id: "14_best_multiasset"
+    phase: 5
+    description: "Best HMM config from Phases 1-4, validated on multiple assets"
+    ticker_sets: [spy_qqq, sp500_10]
+    hmm_args:
+      - "--regime-mode"
+      - "score"         # Phase 1 winner
+      - "--hmm-components"
+      - "4"             # Phase 2 winner
+      # no --hmm-pca    # Phase 4 winner (raw features)
+      - "--hmm-features"
+      - "Returns"
+      - "Range"
+      - "r5"
+      - "r20"
+      - "vol"
+      - "log_ret"
+      - "vol_short"
+      - "vol_long"
+      - "atr_norm"
+      - "vol_of_vol"
+      - "vol_lag1"
+      - "downside_vol"
+      - "vol_z"         # Phase 3 winner (full 13 features)

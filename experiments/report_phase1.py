@@ -27,9 +27,9 @@ MODES = {
 }
 
 STRATEGIES = [
-    "adx_dm", "channel_breakout", "dema", "donchian", "hmm_mr",
-    "ichimoku", "macd", "parabolic_sar", "rsi", "sma",
-    "tsmom", "turtle", "vol_adj",
+    "adx_dm", "bollinger", "channel_breakout", "composite_trend", "dema", "donchian",
+    "false_breakout", "ichimoku", "kama", "macd", "parabolic_sar", "rsi", "sma",
+    "tsmom", "tsmom_fast", "turtle", "vol_adj",
 ]
 
 TIMEFRAMES = ["is2_oos1", "is3_oos1"]
@@ -56,6 +56,10 @@ def _color(val, higher_better=True):
 def load_master(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     df = df[df["phase"] == 1].copy()
+    # derived: per-trade win rate %
+    df["bl_trade_win_pct"]  = (df["bl_oos_won_trades_mean"]  / df["bl_oos_trades_mean"].replace(0, float("nan"))  * 100)
+    df["hmm_trade_win_pct"] = (df["hmm_oos_won_trades_mean"] / df["hmm_oos_trades_mean"].replace(0, float("nan")) * 100)
+    df["delta_trade_win_pct"] = df["hmm_trade_win_pct"] - df["bl_trade_win_pct"]
     return df
 
 
@@ -85,20 +89,28 @@ def mode_summary_table(df: pd.DataFrame) -> str:
         bl_calmar      = sub["bl_oos_calmar_mean"].mean()
         hmm_calmar     = sub["hmm_oos_calmar_mean"].mean()
         delta_calmar   = sub["delta_calmar"].mean()
-        bl_trades      = sub["bl_oos_trades_mean"].mean()
-        hmm_trades     = sub["hmm_oos_trades_mean"].mean()
-        delta_trades   = sub["delta_trades"].mean()
-        n_strategies   = len(sub)
+        bl_trades          = sub["bl_oos_trades_mean"].mean()
+        hmm_trades         = sub["hmm_oos_trades_mean"].mean()
+        delta_trades       = sub["delta_trades"].mean()
+        bl_won             = sub["bl_oos_won_trades_mean"].mean()
+        hmm_won            = sub["hmm_oos_won_trades_mean"].mean()
+        delta_won          = sub["delta_won_trades"].mean()
+        bl_tw_pct          = sub["bl_trade_win_pct"].mean()
+        hmm_tw_pct         = sub["hmm_trade_win_pct"].mean()
+        delta_tw_pct       = sub["delta_trade_win_pct"].mean()
+        n_strategies       = len(sub)
         summary_rows.append((gid, label, n_strategies, win_rate, bl_sharpe, hmm_sharpe,
                               delta_sharpe, bl_cagr, hmm_cagr, delta_cagr, bl_dd, hmm_dd, delta_dd,
-                              bl_calmar, hmm_calmar, delta_calmar, bl_trades, hmm_trades, delta_trades))
+                              bl_calmar, hmm_calmar, delta_calmar, bl_trades, hmm_trades, delta_trades,
+                              bl_won, hmm_won, delta_won, bl_tw_pct, hmm_tw_pct, delta_tw_pct))
         if hmm_sharpe > best_sharpe:
             best_sharpe = hmm_sharpe
             best_mode = gid
 
     for (gid, label, n_strats, win_rate, bl_sharpe, hmm_sharpe,
          delta_sharpe, bl_cagr, hmm_cagr, delta_cagr, bl_dd, hmm_dd, delta_dd,
-         bl_calmar, hmm_calmar, delta_calmar, bl_trades, hmm_trades, delta_trades) in summary_rows:
+         bl_calmar, hmm_calmar, delta_calmar, bl_trades, hmm_trades, delta_trades,
+         bl_won, hmm_won, delta_won, bl_tw_pct, hmm_tw_pct, delta_tw_pct) in summary_rows:
         highlight = ' style="background:#fffde7"' if gid == best_mode else ""
         rows_html += f"""
         <tr{highlight}>
@@ -120,6 +132,12 @@ def mode_summary_table(df: pd.DataFrame) -> str:
           <td>{_fmt(bl_trades, 1)}</td>
           <td>{_fmt(hmm_trades, 1)}</td>
           <td style="{_color(delta_trades, higher_better=None)}">{_fmt(delta_trades, 1)}</td>
+          <td>{_fmt(bl_won, 1)}</td>
+          <td>{_fmt(hmm_won, 1)}</td>
+          <td style="{_color(delta_won, higher_better=None)}">{_fmt(delta_won, 1)}</td>
+          <td>{_fmt(bl_tw_pct, 1)}%</td>
+          <td style="{_color(delta_tw_pct)}">{_fmt(hmm_tw_pct, 1)}%</td>
+          <td style="{_color(delta_tw_pct)}">{_fmt(delta_tw_pct, 1)}%</td>
         </tr>"""
 
     return f"""
@@ -133,12 +151,14 @@ def mode_summary_table(df: pd.DataFrame) -> str:
           <th>BL MaxDD%</th><th>HMM MaxDD%</th><th>Δ MaxDD%</th>
           <th>BL Calmar</th><th>HMM Calmar</th><th>Δ Calmar</th>
           <th>BL Trades</th><th>HMM Trades</th><th>Δ Trades</th>
+          <th>BL Won</th><th>HMM Won</th><th>Δ Won</th>
+          <th>BL Win%</th><th>HMM Win%</th><th>Δ Win%</th>
         </tr>
       </thead>
       <tbody>{rows_html}
       </tbody>
     </table>
-    <p class="note">⭐ = best mean HMM Sharpe &nbsp;|&nbsp; Δ = HMM − Baseline &nbsp;|&nbsp; Win% = % of OOS time windows where HMM beat baseline</p>
+    <p class="note">⭐ = best mean HMM Sharpe &nbsp;|&nbsp; Won = avg winning trades per window &nbsp;|&nbsp; Win% = per-trade win rate (won/total) &nbsp;|&nbsp; Δ = HMM − Baseline &nbsp;|&nbsp; Win% = % of OOS time windows where HMM beat baseline</p>
     """
 
 
@@ -252,6 +272,10 @@ def top_configs_table(df: pd.DataFrame, n: int = 15) -> str:
           <td style="{_color(r['delta_calmar'])}">{_fmt(r['hmm_oos_calmar_mean'])}</td>
           <td>{_fmt(r['bl_oos_trades_mean'], 1)}</td>
           <td>{_fmt(r['hmm_oos_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_oos_won_trades_mean'], 1)}</td>
+          <td style="{_color(r['delta_won_trades'], higher_better=None)}">{_fmt(r['hmm_oos_won_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_trade_win_pct'], 1)}%</td>
+          <td style="{_color(r['delta_trade_win_pct'])}">{_fmt(r['hmm_trade_win_pct'], 1)}%</td>
         </tr>"""
     return f"""
     <h2>4. Top {n} Configurations by HMM OOS Sharpe</h2>
@@ -265,6 +289,8 @@ def top_configs_table(df: pd.DataFrame, n: int = 15) -> str:
           <th>BL MaxDD%</th><th>HMM MaxDD%</th>
           <th>BL Calmar</th><th>HMM Calmar</th>
           <th>BL Trades</th><th>HMM Trades</th>
+          <th>BL Won</th><th>HMM Won</th>
+          <th>BL Win%</th><th>HMM Win%</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -355,7 +381,9 @@ def build_report(master_path: str, out_path: str):
     cagr_heat    = strategy_heatmap(df, "delta_annual",  "Δ OOS CAGR % (HMM − Baseline)",       higher_better=True,  decimals=2)
     calmar_heat  = strategy_heatmap(df, "delta_calmar",  "Δ OOS Calmar Ratio (HMM − Baseline)", higher_better=True,  decimals=3)
     dd_heat      = strategy_heatmap(df, "delta_dd",      "Δ OOS MaxDD % (HMM − Baseline)",      higher_better=False, decimals=2)
-    trades_heat  = strategy_heatmap(df, "delta_trades",  "Δ OOS Trades (HMM − Baseline)",       higher_better=None,  decimals=1)
+    trades_heat  = strategy_heatmap(df, "delta_trades",     "Δ OOS Trades (HMM − Baseline)",          higher_better=None,  decimals=1)
+    won_heat     = strategy_heatmap(df, "delta_won_trades",  "Δ OOS Won Trades (HMM − Baseline)",      higher_better=None,  decimals=1)
+    tw_pct_heat  = strategy_heatmap(df, "delta_trade_win_pct", "Δ Per-Trade Win% (HMM − Baseline)",   higher_better=True,  decimals=1)
     wr_table     = win_rate_table(df)
     top_table    = top_configs_table(df, n=15)
     findings     = findings_section(df)
@@ -372,7 +400,7 @@ def build_report(master_path: str, out_path: str):
   <div class="header">
     <h1>Phase 1 Report &mdash; Regime Mode Sweep</h1>
     <p>SPY &amp; QQQ &nbsp;|&nbsp; 2010–2026 &nbsp;|&nbsp; 13 strategies &nbsp;|&nbsp;
-       IS 2yr&amp;3yr / OOS 1yr walk-forward &nbsp;|&nbsp; Modes: Strict, Size, Score, Linear</p>
+       IS 2yr&amp;3yr / OOS 1yr walk-forward &nbsp;|&nbsp; 17 strategies &nbsp;|&nbsp; Modes: Strict, Size, Score, Linear</p>
     <p style="opacity:0.7;font-size:0.85em">
       <strong>Win rate</strong> = % of OOS <em>time windows</em> where HMM OOS Sharpe &gt; baseline
       (not per-trade win rate — per-trade profitability is not captured in the current results).
@@ -386,6 +414,8 @@ def build_report(master_path: str, out_path: str):
     {calmar_heat}
     {dd_heat}
     {trades_heat}
+    {won_heat}
+    {tw_pct_heat}
     {wr_table}
     {top_table}
     {findings}

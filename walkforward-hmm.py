@@ -144,6 +144,23 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         vol_period     = getattr(cfg, 'vol_period',     20),
         vol_atr_period = getattr(cfg, 'vol_atr_period', 14),
         vol_atr_mult   = getattr(cfg, 'vol_atr_mult',   1.5),
+        bb_period      = getattr(cfg, 'bb_period',      20),
+        bb_devfactor   = getattr(cfg, 'bb_devfactor',   2.0),
+        kama_period    = getattr(cfg, 'kama_period',    10),
+        fb_period      = getattr(cfg, 'fb_period',      20),
+        ct_ema_fast    = getattr(cfg, 'ct_ema_fast',    10),
+        ct_ema_slow    = getattr(cfg, 'ct_ema_slow',    30),
+        ct_rsi_period  = getattr(cfg, 'ct_rsi_period',   7),
+        ct_rsi_buy_low = getattr(cfg, 'ct_rsi_buy_low', 25),
+        ct_rsi_buy_high= getattr(cfg, 'ct_rsi_buy_high',45),
+        ct_rsi_sell_low= getattr(cfg, 'ct_rsi_sell_low',55),
+        ct_rsi_sell_high=getattr(cfg, 'ct_rsi_sell_high',75),
+        ct_signal_window=getattr(cfg, 'ct_signal_window',10),
+        ct_adx_period  = getattr(cfg, 'ct_adx_period',   7),
+        ct_adx_threshold=getattr(cfg, 'ct_adx_threshold',20.0),
+        ct_macd_fast   = getattr(cfg, 'ct_macd_fast',    5),
+        ct_macd_slow   = getattr(cfg, 'ct_macd_slow',   13),
+        ct_macd_signal = getattr(cfg, 'ct_macd_signal',  4),
         hmm_features   = getattr(cfg, 'hmm_features', None),
         hmm_pca        = getattr(cfg, 'hmm_pca', None),
         regime_mode    = getattr(cfg, 'regime_mode', 'strict'),
@@ -214,6 +231,23 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
                                    vol_period         = getattr(cfg, 'vol_period',     20),
                                    vol_atr_period     = getattr(cfg, 'vol_atr_period', 14),
                                    vol_atr_mult       = getattr(cfg, 'vol_atr_mult',   1.5),
+                                   bb_period          = getattr(cfg, 'bb_period',      20),
+                                   bb_devfactor       = getattr(cfg, 'bb_devfactor',   2.0),
+                                   kama_period        = getattr(cfg, 'kama_period',    10),
+                                   fb_period          = getattr(cfg, 'fb_period',      20),
+                                   ct_ema_fast        = getattr(cfg, 'ct_ema_fast',    10),
+                                   ct_ema_slow        = getattr(cfg, 'ct_ema_slow',    30),
+                                   ct_rsi_period      = getattr(cfg, 'ct_rsi_period',   7),
+                                   ct_rsi_buy_low     = getattr(cfg, 'ct_rsi_buy_low', 25),
+                                   ct_rsi_buy_high    = getattr(cfg, 'ct_rsi_buy_high',45),
+                                   ct_rsi_sell_low    = getattr(cfg, 'ct_rsi_sell_low',55),
+                                   ct_rsi_sell_high   = getattr(cfg, 'ct_rsi_sell_high',75),
+                                   ct_signal_window   = getattr(cfg, 'ct_signal_window',10),
+                                   ct_adx_period      = getattr(cfg, 'ct_adx_period',   7),
+                                   ct_adx_threshold   = getattr(cfg, 'ct_adx_threshold',20.0),
+                                   ct_macd_fast       = getattr(cfg, 'ct_macd_fast',    5),
+                                   ct_macd_slow       = getattr(cfg, 'ct_macd_slow',   13),
+                                   ct_macd_signal     = getattr(cfg, 'ct_macd_signal',  4),
                                    hmm_features       = getattr(cfg, 'hmm_features', None),
                                    hmm_pca            = getattr(cfg, 'hmm_pca', None),
                                    regime_mode        = getattr(cfg, 'regime_mode', 'strict'),
@@ -314,6 +348,7 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
           f'calmar={hmm_oos["calmar"]:.3f}  '
           f'maxdd={hmm_oos["max_drawdown"]:.2f}%  '
           f'trades={hmm_oos.get("trade_count", 0)}  '
+          f'won={hmm_oos.get("won_trades", 0)}  '
           f'({hmm_oos["time_taken"]:.1f}s)')
     print(f'  OOS Δ return    : {oos_delta:+.2f}%  {verdict}')
 
@@ -333,7 +368,8 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         bl_oos_dd       = bl_oos['max_drawdown'],
         bl_oos_calmar   = bl_oos['calmar'],
         bl_oos_time     = bl_oos['time_taken'],
-        bl_oos_trades   = bl_oos.get('trade_count', 0),
+        bl_oos_trades     = bl_oos.get('trade_count', 0),
+        bl_oos_won_trades = bl_oos.get('won_trades',   0),
         # OOS – HMM
         hmm_oos_return  = hmm_oos['total_return'],
         hmm_oos_annual  = hmm_oos['annual_return'],
@@ -341,7 +377,8 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
         hmm_oos_dd      = hmm_oos['max_drawdown'],
         hmm_oos_calmar  = hmm_oos['calmar'],
         hmm_oos_time    = hmm_oos['time_taken'],
-        hmm_oos_trades  = hmm_oos.get('trade_count', 0),
+        hmm_oos_trades    = hmm_oos.get('trade_count', 0),
+        hmm_oos_won_trades= hmm_oos.get('won_trades',   0),
         # Deltas
         oos_delta       = oos_delta,
         improved        = oos_delta > 0,
@@ -358,13 +395,14 @@ def run_window(window: dict, tickers: list[str], cfg) -> dict:
 # Each entry: (key_suffix, label, fmt_spec, higher_is_better)
 # key_suffix is used to build  'bl_oos_<key>'  and  'hmm_oos_<key>'.
 _METRICS = [
-    ('return', 'Total Return (%)', '+.2f', True),
-    ('annual', 'CAGR (%)',         '+.2f', True),
-    ('sharpe', 'Sharpe',           '.3f',  True),
-    ('calmar', 'Calmar',           '.3f',  True),
-    ('dd',     'Max DrawDown (%)', '.2f',  False),   # lower is better
-    ('trades', 'Trades',           '.0f',  False),   # informational
-    ('time',   'Time (s)',         '.1f',  False),   # lower is better (informational)
+    ('return',     'Total Return (%)', '+.2f', True),
+    ('annual',     'CAGR (%)',         '+.2f', True),
+    ('sharpe',     'Sharpe',           '.3f',  True),
+    ('calmar',     'Calmar',           '.3f',  True),
+    ('dd',         'Max DrawDown (%)', '.2f',  False),   # lower is better
+    ('trades',     'Trades',           '.0f',  False),   # informational
+    ('won_trades', 'Won Trades',        '.0f',  False),   # informational
+    ('time',       'Time (s)',         '.1f',  False),   # lower is better (informational)
 ]
 
 
@@ -418,8 +456,12 @@ def print_report(results: list[dict], cfg):
         d_sharpe   = r['hmm_oos_sharpe'] - r['bl_oos_sharpe']
         d_calmar   = r['hmm_oos_calmar'] - r['bl_oos_calmar']
         d_dd       = r['hmm_oos_dd']     - r['bl_oos_dd']      # positive = worse DD
-        bl_trades  = r.get('bl_oos_trades', 0)
-        hmm_trades = r.get('hmm_oos_trades', 0)
+        bl_trades      = r.get('bl_oos_trades', 0)
+        hmm_trades     = r.get('hmm_oos_trades', 0)
+        bl_won         = r.get('bl_oos_won_trades', 0)
+        hmm_won        = r.get('hmm_oos_won_trades', 0)
+        bl_win_pct     = f'{100*bl_won/bl_trades:.0f}%'  if bl_trades  else 'n/a'
+        hmm_win_pct    = f'{100*hmm_won/hmm_trades:.0f}%' if hmm_trades else 'n/a'
         print(col_fmt.format(
             r['win_from'], r['split'],
             f'{d_return:+.2f}',
@@ -427,8 +469,8 @@ def print_report(results: list[dict], cfg):
             f'{d_sharpe:+.3f}',
             f'{d_calmar:+.3f}',
             f'{d_dd:+.2f}',
-            f'{bl_trades}',
-            f'{hmm_trades}',
+            f'{bl_trades}({bl_win_pct})',
+            f'{hmm_trades}({hmm_win_pct})',
             verdict,
         ))
 
@@ -481,7 +523,7 @@ def print_report(results: list[dict], cfg):
         mean_hmm = sum(hmm_vals) / n
         mean_d   = sum(deltas)   / n
 
-        if key in ('time', 'trades'):
+        if key in ('time', 'trades', 'won_trades'):
             improved_flag = '(info)'
             improved      = None
             ir_str        = '(info)'
@@ -504,7 +546,8 @@ def print_report(results: list[dict], cfg):
         print(f'  {label:<22}  {bl_str:>12}  {hmm_str:>12}  {d_str:>10}  '
               f'{improved_flag:>10}  {ir_str:>8}')
 
-    print(f'\n  Metrics improved by HMM : {len(improvements)} / {len(_METRICS)-1}  '
+    n_scored = sum(1 for _, _, _, hb in _METRICS if hb is not None)
+    print(f'\n  Metrics improved by HMM : {len(improvements)} / {n_scored}  '
           f'→  {" | ".join(improvements) if improvements else "none"}')
     print(f'\n  IR > 0.5 = consistent edge  |  IR > 1.0 = strong edge  '
           f'|  IR < 0 = HMM consistently hurts  |  n/a = single window')
@@ -578,7 +621,8 @@ def parse_args():
     p.add_argument('--strategy', default='sma',
         choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr',
                  'adx_dm', 'channel_breakout', 'donchian', 'ichimoku',
-                 'parabolic_sar', 'tsmom', 'turtle', 'vol_adj'],
+                 'parabolic_sar', 'tsmom', 'tsmom_fast', 'turtle', 'vol_adj',
+                 'bollinger', 'kama', 'false_breakout', 'composite_trend'],
         help='Strategy to use for all windows')
     p.add_argument('--fast',      type=int, default=10)
     p.add_argument('--slow',      type=int, default=30)
@@ -613,6 +657,23 @@ def parse_args():
     p.add_argument('--vol-period',      type=int,   default=20,  dest='vol_period')
     p.add_argument('--vol-atr-period',  type=int,   default=14,  dest='vol_atr_period')
     p.add_argument('--vol-atr-mult',    type=float, default=1.5, dest='vol_atr_mult')
+    p.add_argument('--bb-period',       type=int,   default=20,  dest='bb_period')
+    p.add_argument('--bb-devfactor',    type=float, default=2.0, dest='bb_devfactor')
+    p.add_argument('--kama-period',     type=int,   default=10,  dest='kama_period')
+    p.add_argument('--fb-period',       type=int,   default=20,  dest='fb_period')
+    p.add_argument('--ct-ema-fast',     type=int,   default=10,  dest='ct_ema_fast')
+    p.add_argument('--ct-ema-slow',     type=int,   default=30,  dest='ct_ema_slow')
+    p.add_argument('--ct-rsi-period',   type=int,   default=7,   dest='ct_rsi_period')
+    p.add_argument('--ct-rsi-buy-low',  type=int,   default=25,  dest='ct_rsi_buy_low')
+    p.add_argument('--ct-rsi-buy-high', type=int,   default=40,  dest='ct_rsi_buy_high')
+    p.add_argument('--ct-rsi-sell-low', type=int,   default=60,  dest='ct_rsi_sell_low')
+    p.add_argument('--ct-rsi-sell-high',type=int,   default=70,  dest='ct_rsi_sell_high')
+    p.add_argument('--ct-signal-window',type=int,   default=10,  dest='ct_signal_window')
+    p.add_argument('--ct-adx-period',   type=int,   default=7,   dest='ct_adx_period')
+    p.add_argument('--ct-adx-threshold',type=float, default=20.0,dest='ct_adx_threshold')
+    p.add_argument('--ct-macd-fast',    type=int,   default=5,   dest='ct_macd_fast')
+    p.add_argument('--ct-macd-slow',    type=int,   default=13,  dest='ct_macd_slow')
+    p.add_argument('--ct-macd-signal',  type=int,   default=4,   dest='ct_macd_signal')
     p.add_argument('--hmm-features', nargs='+', default=None, dest='hmm_features',
         metavar='FEAT',
         help='HMM input features (e.g. log_ret vol_short vol_long atr_norm)')

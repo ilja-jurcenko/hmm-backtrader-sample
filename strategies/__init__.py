@@ -21,9 +21,13 @@ from .rsi                import RsiStrategy
 from .macd               import MacdStrategy
 from .hmm_mean_reversion import HmmMeanReversionStrategy
 from .adx_dm             import AdxDmStrategy
+from .bollinger_bands    import BollingerBandsStrategy
 from .channel_breakout   import ChannelBreakoutStrategy
+from .composite_trend    import CompositeTrendStrategy
 from .donchian           import DonchianStrategy
+from .false_breakout     import FalseBreakoutStrategy
 from .ichimoku           import IchimokuStrategy
+from .kama               import KamaStrategy
 from .parabolic_sar      import ParabolicSarStrategy
 from .tsmom              import TsmomStrategy
 from .turtle             import TurtleStrategy
@@ -37,9 +41,13 @@ __all__ = [
     'MacdStrategy',
     'HmmMeanReversionStrategy',
     'AdxDmStrategy',
+    'BollingerBandsStrategy',
     'ChannelBreakoutStrategy',
+    'CompositeTrendStrategy',
     'DonchianStrategy',
+    'FalseBreakoutStrategy',
     'IchimokuStrategy',
+    'KamaStrategy',
     'ParabolicSarStrategy',
     'TsmomStrategy',
     'TurtleStrategy',
@@ -114,6 +122,71 @@ def _hmm_mr_kwargs(args) -> dict:
         z_threshold      = getattr(args, 'hmm_mr_z_threshold', 0.0),
         stake            = args.stake,
         printlog         = args.printlog,
+        stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
+        take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+    )
+
+
+def _bollinger_kwargs(args) -> dict:
+    return dict(
+        bb_period        = getattr(args, 'bb_period', 20),
+        bb_devfactor     = getattr(args, 'bb_devfactor', 2.0),
+        stake            = args.stake,
+        printlog         = args.printlog,
+        use_hmm          = args.hmm,
+        regime_mode      = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
+        stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
+        take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+    )
+
+
+def _kama_kwargs(args) -> dict:
+    return dict(
+        kama_period      = getattr(args, 'kama_period', 10),
+        stake            = args.stake,
+        printlog         = args.printlog,
+        use_hmm          = args.hmm,
+        regime_mode      = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
+        stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
+        take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+    )
+
+
+def _false_breakout_kwargs(args) -> dict:
+    return dict(
+        fb_period        = getattr(args, 'fb_period', 20),
+        stake            = args.stake,
+        printlog         = args.printlog,
+        use_hmm          = args.hmm,
+        regime_mode      = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
+        stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
+        take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+    )
+
+
+def _composite_trend_kwargs(args) -> dict:
+    return dict(
+        ema_fast         = getattr(args, 'ct_ema_fast', 10),
+        ema_slow         = getattr(args, 'ct_ema_slow', 30),
+        rsi_period       = getattr(args, 'ct_rsi_period',   7),
+        rsi_buy_low      = getattr(args, 'ct_rsi_buy_low',  25),
+        rsi_buy_high     = getattr(args, 'ct_rsi_buy_high', 45),
+        rsi_sell_low     = getattr(args, 'ct_rsi_sell_low', 55),
+        rsi_sell_high    = getattr(args, 'ct_rsi_sell_high',75),
+        signal_window    = getattr(args, 'ct_signal_window',10),
+        adx_period       = getattr(args, 'ct_adx_period',   7),
+        adx_threshold    = getattr(args, 'ct_adx_threshold',20.0),
+        macd_fast        = getattr(args, 'ct_macd_fast', 5),
+        macd_slow        = getattr(args, 'ct_macd_slow', 13),
+        macd_signal      = getattr(args, 'ct_macd_signal', 4),
+        stake            = args.stake,
+        printlog         = args.printlog,
+        use_hmm          = args.hmm,
+        regime_mode      = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
         stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
         take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
     )
@@ -203,6 +276,22 @@ def _tsmom_kwargs(args) -> dict:
     )
 
 
+def _tsmom_fast_kwargs(args) -> dict:
+    """Short-lookback TSMOM variant (3-month / 1-week skip) designed to trade
+    in volatile HMM regimes where rapid momentum reversals are common."""
+    return dict(
+        tsmom_lookback   = 63,   # ~3 months instead of 12
+        tsmom_skip       = 5,    # ~1 week instead of 1 month
+        stake            = args.stake,
+        printlog         = args.printlog,
+        use_hmm          = args.hmm,
+        regime_mode      = getattr(args, 'regime_mode', 'strict'),
+        unfav_fraction   = getattr(args, 'unfav_fraction', 0.25) or 0.25,
+        stop_loss_perc   = getattr(args, 'stop_loss_perc', 0.0) or 0.0,
+        take_profit_perc = getattr(args, 'take_profit_perc', 0.0) or 0.0,
+    )
+
+
 def _turtle_kwargs(args) -> dict:
     return dict(
         turtle_entry     = getattr(args, 'turtle_entry', 20),
@@ -253,19 +342,15 @@ REGISTRY: dict[str, dict] = {
         'build_kwargs': _dema_kwargs,
     },
     'rsi': {
-        'cls':          RsiStrategy,
-        'label':        'RSI Mean-Reversion',
-        'build_kwargs': _rsi_kwargs,
+        'cls':           RsiStrategy,
+        'label':         'RSI Mean-Reversion',
+        'build_kwargs':  _rsi_kwargs,
+        'mean_reversion': True,
     },
     'macd': {
         'cls':          MacdStrategy,
         'label':        'MACD Crossover',
         'build_kwargs': _macd_kwargs,
-    },
-    'hmm_mr': {
-        'cls':          HmmMeanReversionStrategy,
-        'label':        'HMM Mean-Reversion',
-        'build_kwargs': _hmm_mr_kwargs,
     },
     'adx_dm': {
         'cls':          AdxDmStrategy,
@@ -297,6 +382,12 @@ REGISTRY: dict[str, dict] = {
         'label':        'Time-Series Momentum',
         'build_kwargs': _tsmom_kwargs,
     },
+    'tsmom_fast': {
+        'cls':           TsmomStrategy,
+        'label':         'Time-Series Momentum (Fast 3-month)',
+        'build_kwargs':  _tsmom_fast_kwargs,
+        'mean_reversion': True,
+    },
     'turtle': {
         'cls':          TurtleStrategy,
         'label':        'Turtle System 1',
@@ -306,5 +397,27 @@ REGISTRY: dict[str, dict] = {
         'cls':          VolatilityAdjustedStrategy,
         'label':        'Volatility-Adjusted (Keltner)',
         'build_kwargs': _vol_adj_kwargs,
+    },
+    'bollinger': {
+        'cls':           BollingerBandsStrategy,
+        'label':         'Bollinger Bands Mean-Reversion',
+        'build_kwargs':  _bollinger_kwargs,
+        'mean_reversion': True,
+    },
+    'kama': {
+        'cls':          KamaStrategy,
+        'label':        'KAMA Crossover',
+        'build_kwargs': _kama_kwargs,
+    },
+    'false_breakout': {
+        'cls':           FalseBreakoutStrategy,
+        'label':         'False Breakout (Fakeout)',
+        'build_kwargs':  _false_breakout_kwargs,
+        'mean_reversion': True,
+    },
+    'composite_trend': {
+        'cls':          CompositeTrendStrategy,
+        'label':        'Composite Trend-Pullback (EMA+ADX+RSI+MACD)',
+        'build_kwargs': _composite_trend_kwargs,
     },
 }

@@ -37,27 +37,27 @@ Each experiment runs all 13 strategies in parallel via `walkforward-compare.py`,
                    │  Winner: best_K
                    ▼
 ┌──────────────────────────────────────┐
-│  PHASE 3 — PCA Sweep                 │  6 jobs
+│  PHASE 3 — Feature Set Sweep         │  4 jobs
 │                                      │
 │  Fixed:  mode=score, K=best_K        │
-│  Sweep:  no PCA │ PCA=3 │ PCA=4      │
-│                                      │
-│  Question: Should features be        │
-│            dimensionality-reduced?   │
-└──────────────────┬───────────────────┘
-                   │  Winner: best_PCA
-                   ▼
-┌──────────────────────────────────────┐
-│  PHASE 4 — Feature Set Sweep         │  4 jobs
-│                                      │
-│  Fixed:  mode=score, K=best_K,       │
-│          PCA=best_PCA                │
 │  Sweep:  compact (4 feat) │ full (13)│
 │                                      │
 │  Question: Which input features best │
 │            capture market regimes?   │
 └──────────────────┬───────────────────┘
                    │  Winner: best_features
+                   ▼
+┌──────────────────────────────────────┐
+│  PHASE 4 — PCA Sweep                 │  6 jobs
+│                                      │
+│  Fixed:  mode=score, K=best_K,       │
+│          features=best_features      │
+│  Sweep:  no PCA │ PCA=3 │ PCA=4      │
+│                                      │
+│  Question: Should features be        │
+│            dimensionality-reduced?   │
+└──────────────────┬───────────────────┘
+                   │  Winner: best_PCA
                    ▼
 ┌──────────────────────────────────────┐
 │  PHASE 5 — Multi-Asset Validation    │  4 jobs
@@ -80,8 +80,8 @@ Each experiment runs all 13 strategies in parallel via `walkforward-compare.py`,
 │  Best HMM config:                    │
 │    regime_mode  = score              │
 │    K            = ?  (Phase 2)       │
-│    PCA          = ?  (Phase 3)       │
-│    features     = ?  (Phase 4)       │
+│    features     = ?  (Phase 3)       │
+│    PCA          = ?  (Phase 4)       │
 │                                      │
 │  Validated across 12 assets,         │
 │  2 timeframes, 13 strategies,        │
@@ -172,14 +172,15 @@ bash experiments/submit_phase_2.sh
 python experiments/aggregate.py --phase 2
 ```
 
-→ Pick the best K. Update `--hmm-components` in groups `09_pca_none` through
+→ Pick the best K. Update `--hmm-components` in groups `09_feat_compact` through
 `14_best_multiasset`.
 
 ---
 
-### Phase 3 — PCA Sweep (6 jobs)
+### Phase 3 — Feature Set Sweep (4 jobs)
 
-Tests no PCA vs. PCA=3 vs. PCA=4 components, using the best mode + K.
+Compact features (`Returns Range vol log_ret`) vs. full 13-feature set, using
+the best mode + K from Phases 1-2.
 
 ```bash
 python experiments/gen_jobs.py
@@ -187,14 +188,15 @@ bash experiments/submit_phase_3.sh
 python experiments/aggregate.py --phase 3
 ```
 
-→ Pick the best PCA setting. Update groups `12_feat_compact`, `13_feat_full`,
-and `14_best_multiasset`.
+→ Pick the winning feature set. Update `--hmm-features` in groups `11_pca_none`
+through `14_best_multiasset`.
 
 ---
 
-### Phase 4 — Feature Set Sweep (4 jobs)
+### Phase 4 — PCA Sweep (6 jobs)
 
-Compact features (`Returns Range vol log_ret`) vs. full 13-feature set.
+Tests no PCA vs. PCA=3 vs. PCA=4 components, using the best mode, K, and
+feature set from Phases 1-3.
 
 ```bash
 python experiments/gen_jobs.py
@@ -202,8 +204,7 @@ bash experiments/submit_phase_4.sh
 python experiments/aggregate.py --phase 4
 ```
 
-→ Pick the winning feature set. Copy the complete winning `hmm_args` into group
-`14_best_multiasset`.
+→ Pick the best PCA setting. Update group `14_best_multiasset`.
 
 ---
 

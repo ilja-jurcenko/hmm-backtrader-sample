@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=14_best_multiasset__sp500_10__is2_oos1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=48
+#SBATCH --cpus-per-task=16
+#SBATCH --time=12:00:00
 #SBATCH --output=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
 #SBATCH --error=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/14_best_multiasset__sp500_10__is2_oos1_%j.out
 
@@ -10,8 +11,8 @@ cd "/scratch/lustre/home/ilju3280/hmm-backtrader-sample"
 source .venv/bin/activate
 
 # Prevent OpenBLAS/MKL/OMP from spawning extra threads per worker process.
-# Without this, each of the 52 parallel workers (13 strategies × 4 windows) tries to
-# create 48 BLAS threads, exhausting RLIMIT_NPROC (1000) and crashing threadpoolctl.
+# Without this, each of the 16 parallel workers tries to create 16 BLAS threads,
+# quickly exhausting RLIMIT_NPROC (1000) and causing KeyboardInterrupt in threadpoolctl.
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1
@@ -19,7 +20,7 @@ export NUMEXPR_NUM_THREADS=1
 
 # --- run ---
 python walkforward-compare.py \
-    --strategies sma dema rsi macd adx_dm channel_breakout donchian ichimoku parabolic_sar tsmom turtle vol_adj hmm_mr \
+    --strategies sma dema rsi macd adx_dm channel_breakout donchian ichimoku parabolic_sar tsmom tsmom_fast turtle vol_adj bollinger kama false_breakout composite_trend \
     --ticker AAPL MSFT NVDA AMZN JPM XOM UNH WMT BAC KO \
     --wf-start 2010-01-01 \
     --wf-end 2026-04-10 \
@@ -34,7 +35,7 @@ python walkforward-compare.py \
     --commission 0.001 \
     --stop-loss 0.05 \
     --take-profit 0.1 \
-    --wf-max-workers 4 \
+    --wf-max-workers 1 \
     --out-dir "/scratch/lustre/home/ilju3280/hmm-backtrader-sample/results/phase_5/14_best_multiasset/sp500_10/is2_oos1" \
     --regime-mode score \
     --hmm-components 4 \

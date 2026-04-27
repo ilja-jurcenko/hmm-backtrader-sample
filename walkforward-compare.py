@@ -39,7 +39,19 @@ PYTHON = sys.executable
 
 def _run_strategy(strategy: str, base_args: list[str], out_path: str,
                   window_log_dir: str, results_csv: str) -> tuple[str, float, int]:
-    """Run walkforward-hmm.py for one strategy, write output to out_path."""
+    """Run walkforward-hmm.py for one strategy, write output to out_path.
+
+    If the output file already exists and ends with the completion marker
+    ('Full results saved'), the strategy is skipped and treated as successful.
+    This allows interrupted jobs to resume without re-running completed work.
+    """
+    COMPLETION_MARKER = 'Full results saved'
+    if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
+        with open(out_path, 'r') as fh:
+            content = fh.read()
+        if COMPLETION_MARKER in content:
+            return strategy, 0.0, 0   # already complete — skip
+
     cmd = [PYTHON, WF_SCRIPT, '--strategy', strategy,
            '--window-log-dir', window_log_dir,
            '--results-csv', results_csv] + base_args
@@ -183,7 +195,8 @@ def parse_args():
         default=['sma', 'dema', 'rsi', 'macd'],
         choices=['sma', 'dema', 'rsi', 'macd', 'hmm_mr',
                  'adx_dm', 'channel_breakout', 'donchian', 'ichimoku',
-                 'parabolic_sar', 'tsmom', 'turtle', 'vol_adj'],
+                 'parabolic_sar', 'tsmom', 'tsmom_fast', 'turtle', 'vol_adj',
+                 'bollinger', 'kama', 'false_breakout', 'composite_trend'],
         help='Strategies to compare (run in parallel)')
     p.add_argument('--out-dir', default='./wf_results', dest='out_dir',
         help='Directory for output .txt files')

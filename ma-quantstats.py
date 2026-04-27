@@ -1220,6 +1220,11 @@ def run(args=None, quiet=False):
     _strat_entry = REGISTRY[strategy_key]
     _strat_cls   = _strat_entry['cls']
     _strat_kw    = _strat_entry['build_kwargs'](args)
+    # Mean-reversion strategies trade in high-volatility / unfavourable HMM
+    # regimes. Automatically invert the HMM gate unless the kwargs builder has
+    # already set invert_regime explicitly (e.g. RSI honours --rsi-invert-regime).
+    if _strat_entry.get('mean_reversion', False):
+        _strat_kw.setdefault('invert_regime', True)
     _p(f'[INFO] Strategy          : {_strat_entry["label"]}')
     cerebro.addstrategy(_strat_cls, **_strat_kw)
 
@@ -1280,9 +1285,13 @@ def run(args=None, quiet=False):
 
     _p('\n--- Trade Analysis ---')
     total_t = ta.get('total', {})
-    _p(f"  Total trades : {total_t.get('total', 0)}")
-    _p(f"  Won          : {total_t.get('open', 0) if not ta.get('won') else ta.won.total}")
-    _p(f"  Lost         : {total_t.get('closed', 0) if not ta.get('lost') else ta.lost.total}")
+    won_t   = ta.get('won',   {}).get('total', 0) if ta.get('won')  else 0
+    lost_t  = ta.get('lost',  {}).get('total', 0) if ta.get('lost') else 0
+    total_n = int(total_t.get('total', 0))
+    win_pct = 100.0 * won_t / total_n if total_n else 0.0
+    _p(f"  Total trades : {total_n}")
+    _p(f"  Won          : {won_t}  ({win_pct:.1f}%)")
+    _p(f"  Lost         : {lost_t}")
 
     # ---- QuantStats tearsheet (skipped in quiet / optimisation mode) --------
     if not quiet:
@@ -1334,6 +1343,7 @@ def run(args=None, quiet=False):
         'calmar':        float(calmar),
         'time_taken':    float(time_taken),
         'trade_count':   int(total_t.get('total', 0)),
+        'won_trades':    int(won_t),
     }
 
 
@@ -1490,6 +1500,54 @@ def parse_args(pargs=None):
     parser.add_argument('--vol-atr-mult', type=float, default=1.5,
         dest='vol_atr_mult',
         help='VolAdj/Keltner: ATR multiplier for upper/lower bands')
+
+    # Bollinger Bands params
+    parser.add_argument('--bb-period', type=int, default=20,
+        dest='bb_period',
+        help='Bollinger Bands: look-back period for the moving average and bands')
+
+    parser.add_argument('--bb-devfactor', type=float, default=2.0,
+        dest='bb_devfactor',
+        help='Bollinger Bands: standard-deviation multiplier for the bands')
+
+    # KAMA params
+    parser.add_argument('--kama-period', type=int, default=10,
+        dest='kama_period',
+        help='KAMA: Efficiency Ratio look-back window')
+
+    # False Breakout params
+    parser.add_argument('--fb-period', type=int, default=20,
+        dest='fb_period',
+        help='False Breakout: N-bar channel look-back for support/resistance levels')
+
+    # Composite Trend-Pullback params
+    parser.add_argument('--ct-ema-fast', type=int, default=10,
+        dest='ct_ema_fast', help='CompositeTrend: fast EMA period')
+    parser.add_argument('--ct-ema-slow', type=int, default=30,
+        dest='ct_ema_slow', help='CompositeTrend: slow EMA period')
+    parser.add_argument('--ct-rsi-period', type=int, default=7,
+        dest='ct_rsi_period', help='CompositeTrend: RSI period')
+    parser.add_argument('--ct-rsi-buy-low', type=int, default=25,
+        dest='ct_rsi_buy_low', help='CompositeTrend: lower bound of RSI buy pullback zone')
+    parser.add_argument('--ct-rsi-buy-high', type=int, default=45,
+        dest='ct_rsi_buy_high', help='CompositeTrend: upper bound of RSI buy pullback zone')
+    parser.add_argument('--ct-rsi-sell-low', type=int, default=55,
+        dest='ct_rsi_sell_low', help='CompositeTrend: lower bound of RSI sell overbought zone')
+    parser.add_argument('--ct-rsi-sell-high', type=int, default=75,
+        dest='ct_rsi_sell_high', help='CompositeTrend: upper bound of RSI sell overbought zone')
+    parser.add_argument('--ct-signal-window', type=int, default=10,
+        dest='ct_signal_window',
+        help='CompositeTrend: bars to look back for the RSI pullback condition')
+    parser.add_argument('--ct-adx-period', type=int, default=7,
+        dest='ct_adx_period', help='CompositeTrend: ADX period')
+    parser.add_argument('--ct-adx-threshold', type=float, default=20.0,
+        dest='ct_adx_threshold', help='CompositeTrend: minimum ADX value required')
+    parser.add_argument('--ct-macd-fast', type=int, default=5,
+        dest='ct_macd_fast', help='CompositeTrend: MACD fast EMA period')
+    parser.add_argument('--ct-macd-slow', type=int, default=13,
+        dest='ct_macd_slow', help='CompositeTrend: MACD slow EMA period')
+    parser.add_argument('--ct-macd-signal', type=int, default=4,
+        dest='ct_macd_signal', help='CompositeTrend: MACD signal period')
 
     parser.add_argument('--stake', type=int, default=100,
         help='Shares per trade')

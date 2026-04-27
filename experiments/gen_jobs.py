@@ -35,7 +35,7 @@ SBATCH_TEMPLATE = """\
 #SBATCH --job-name={job_name}
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task={cpus}
-#SBATCH --output={log_path}
+{time_directive}#SBATCH --output={log_path}
 #SBATCH --error={log_path}
 
 # --- environment ---
@@ -123,6 +123,9 @@ def gen_jobs(dry_run: bool = False):
                 script = SBATCH_TEMPLATE.format(
                     job_name       = job_name,
                     cpus           = common['cpus_per_task'],
+                    time_directive = ('#SBATCH --time={}\n'.format(tl)
+                                     if (tl := common.get('time_limit', '0')) and tl != '0'
+                                     else ''),
                     log_path       = log_path,
                     root           = ROOT,
                     strategies     = ' '.join(common['strategies']),

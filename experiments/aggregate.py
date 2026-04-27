@@ -55,12 +55,13 @@ def _win_rate(improved_col):
 
 METRICS = [
     # (csv_col_prefix, display_label, higher_is_better)
-    ('return',  'Return (%)',   True),
-    ('annual',  'CAGR (%)',     True),
-    ('sharpe',  'Sharpe',       True),
-    ('calmar',  'Calmar',       True),
-    ('dd',      'MaxDD (%)',    False),
-    ('trades',  'Trades',       None),   # informational
+    ('return',     'Return (%)',   True),
+    ('annual',     'CAGR (%)',     True),
+    ('sharpe',     'Sharpe',       True),
+    ('calmar',     'Calmar',       True),
+    ('dd',         'MaxDD (%)',    False),
+    ('trades',     'Trades',       None),   # informational
+    ('won_trades', 'Won Trades',   None),   # informational
 ]
 
 

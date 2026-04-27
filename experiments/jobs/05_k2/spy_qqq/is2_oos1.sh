@@ -2,6 +2,7 @@
 #SBATCH --job-name=05_k2__spy_qqq__is2_oos1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
+#SBATCH --time=12:00:00
 #SBATCH --output=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/05_k2__spy_qqq__is2_oos1_%j.out
 #SBATCH --error=/scratch/lustre/home/ilju3280/hmm-backtrader-sample/logs/05_k2__spy_qqq__is2_oos1_%j.out
 
@@ -19,7 +20,7 @@ export NUMEXPR_NUM_THREADS=1
 
 # --- run ---
 python walkforward-compare.py \
-    --strategies sma dema rsi macd adx_dm channel_breakout donchian ichimoku parabolic_sar tsmom turtle vol_adj hmm_mr \
+    --strategies sma dema rsi macd adx_dm channel_breakout donchian ichimoku parabolic_sar tsmom tsmom_fast turtle vol_adj bollinger kama false_breakout composite_trend \
     --ticker SPY QQQ \
     --wf-start 2010-01-01 \
     --wf-end 2026-04-10 \
@@ -34,7 +35,7 @@ python walkforward-compare.py \
     --commission 0.001 \
     --stop-loss 0.05 \
     --take-profit 0.1 \
-    --wf-max-workers 16 \
+    --wf-max-workers 1 \
     --out-dir "/scratch/lustre/home/ilju3280/hmm-backtrader-sample/results/phase_2/05_k2/spy_qqq/is2_oos1" \
     --regime-mode score \
     --hmm-components 2

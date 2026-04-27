@@ -2,7 +2,7 @@
 """
 experiments/report_phase4.py
 ============================
-Generate an HTML report for Phase 4 (Feature Set Sweep) results.
+Generate an HTML report for Phase 4 (PCA Sweep) results.
 
 Usage:
     python experiments/report_phase4.py [--out results/phase_4_report.html]
@@ -20,19 +20,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 GROUPS = {
-    "12_feat_compact": "Compact<br><small>Returns, Range, vol, log_ret</small>",
-    "13_feat_full":    "Full<br><small>All 13 features</small>",
+    "11_pca_none": "No PCA",
+    "12_pca3":     "PCA=3",
+    "13_pca4":     "PCA=4",
 }
 
 GROUP_SHORT = {
-    "12_feat_compact": "Compact (4 feat)",
-    "13_feat_full":    "Full (13 feat)",
+    "11_pca_none": "No PCA",
+    "12_pca3":     "PCA=3",
+    "13_pca4":     "PCA=4",
 }
 
 STRATEGIES = [
-    "adx_dm", "channel_breakout", "dema", "donchian", "hmm_mr",
-    "ichimoku", "macd", "parabolic_sar", "rsi", "sma",
-    "tsmom", "turtle", "vol_adj",
+    "adx_dm", "bollinger", "channel_breakout", "composite_trend", "dema", "donchian",
+    "false_breakout", "ichimoku", "kama", "macd", "parabolic_sar", "rsi", "sma",
+    "tsmom", "tsmom_fast", "turtle", "vol_adj",
 ]
 
 TIMEFRAMES = ["is2_oos1", "is3_oos1"]

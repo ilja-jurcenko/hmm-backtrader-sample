@@ -4,6 +4,8 @@
 wf_start: "2010-01-01"
 wf_end: "2026-04-10"
 n_trials: 20
+time_limit: "12:00:00"    # SLURM --time; partition DefaultTime=2h so must always be explicit.
+                           # K=6 with 17 sequential windows needs ~4-8h; 12h gives safe headroom.
 objective_metric: sharpe   # total_return | sharpe | calmar
 seed: 42
 step: 1                    # years between walk-forward windows
@@ -13,7 +15,10 @@ commission: 0.001
 stop_loss: 0.05
 take_profit: 0.10
 cpus_per_task: 16          # --cpus-per-task in the sbatch header
-wf_max_workers: 16         # --wf-max-workers forwarded to walkforward-compare.py
+wf_max_workers: 1          # windows processed sequentially within each strategy.
+                           # walkforward-compare.py already runs all 17 strategies in parallel,
+                           # so 17*wf_max_workers processes share 16 CPUs. Setting this to 1
+                           # keeps it at 17 concurrent processes instead of 17*16=272.
 
 # Default timeframes; override per group if needed.
 timeframes:
@@ -24,7 +29,7 @@ timeframes:
     is_years: 3
     oos_years: 1
 
-# All 13 available strategies
+# All strategies in the pool (hmm_mr is experimental, excluded)
 strategies:
   - sma
   - dema
@@ -36,6 +41,10 @@ strategies:
   - ichimoku
   - parabolic_sar
   - tsmom
+  - tsmom_fast
   - turtle
   - vol_adj
-  - hmm_mr
+  - bollinger
+  - kama
+  - false_breakout
+  - composite_trend
