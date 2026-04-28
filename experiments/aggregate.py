@@ -140,6 +140,15 @@ def aggregate(phase_filter: Optional[int], out_path: str, sort_by: str):
 
     master = pd.DataFrame(rows)
 
+    # Merge with existing CSV: keep rows from other phases intact
+    if phase_filter is not None and os.path.exists(out_path):
+        try:
+            existing = pd.read_csv(out_path)
+            existing = existing[existing["phase"] != phase_filter]
+            master = pd.concat([existing, master], ignore_index=True)
+        except Exception:
+            pass  # corrupt/empty existing file — just overwrite
+
     # Save
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     master.to_csv(out_path, index=False)

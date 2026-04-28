@@ -11,6 +11,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import glob
 import math
 import os
 
@@ -59,6 +60,9 @@ def is_blown_up(val):
 def load_master(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     df = df[df["phase"] == 5].copy()
+    df["bl_trade_win_pct"]    = (df["bl_oos_won_trades_mean"]  / df["bl_oos_trades_mean"].replace(0, float("nan"))  * 100)
+    df["hmm_trade_win_pct"]   = (df["hmm_oos_won_trades_mean"] / df["hmm_oos_trades_mean"].replace(0, float("nan")) * 100)
+    df["delta_trade_win_pct"] = df["hmm_trade_win_pct"] - df["bl_trade_win_pct"]
     return df
 
 
@@ -306,6 +310,12 @@ def top_configs_table(df: pd.DataFrame, n: int = 15) -> str:
           <td style="{_color(r['delta_dd'], higher_better=False)}">{_fmt(r['hmm_oos_dd_mean'], 2)}%</td>
           <td>{_fmt(r['bl_oos_calmar_mean'])}</td>
           <td style="{_color(r['delta_calmar'])}">{_fmt(r['hmm_oos_calmar_mean'])}</td>
+          <td>{_fmt(r['bl_oos_trades_mean'], 1)}</td>
+          <td>{_fmt(r['hmm_oos_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_oos_won_trades_mean'], 1)}</td>
+          <td style="{_color(r['delta_won_trades'], higher_better=None)}">{_fmt(r['hmm_oos_won_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_trade_win_pct'], 1)}%</td>
+          <td style="{_color(r['delta_trade_win_pct'])}">{_fmt(r['hmm_trade_win_pct'], 1)}%</td>
         </tr>"""
     return f"""
     <h2>10. Top {n} Configurations by HMM OOS Sharpe</h2>
@@ -318,6 +328,59 @@ def top_configs_table(df: pd.DataFrame, n: int = 15) -> str:
           <th>BL CAGR%</th><th>HMM CAGR%</th>
           <th>BL MaxDD%</th><th>HMM MaxDD%</th>
           <th>BL Calmar</th><th>HMM Calmar</th>
+          <th>BL Trades</th><th>HMM Trades</th>
+          <th>BL Won</th><th>HMM Won</th>
+          <th>BL Win%</th><th>HMM Win%</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+    </div>
+    """
+
+
+def top_annual_table(df: pd.DataFrame, n: int = 15) -> str:
+    """Top N configurations ranked by HMM OOS Annual Return (CAGR%)."""
+    clean = df[df["hmm_oos_sharpe_mean"] > BLOWUP_THRESHOLD]
+    top = clean.nlargest(n, "hmm_oos_annual_mean")
+    rows = ""
+    for _, r in top.iterrows():
+        rows += f"""<tr>
+          <td>{TICKER_SETS.get(r['ticker_set'], r['ticker_set'])}</td>
+          <td>{r['strategy']}</td>
+          <td>{r['timeframe']}</td>
+          <td>{_fmt(r['win_rate'], 1)}%</td>
+          <td>{_fmt(r['bl_oos_sharpe_mean'])}</td>
+          <td style="{_color(r['delta_sharpe'])}">{_fmt(r['hmm_oos_sharpe_mean'])}</td>
+          <td style="{_color(r['delta_sharpe'])}">{_fmt(r['delta_sharpe'])}</td>
+          <td>{_fmt(r['bl_oos_annual_mean'], 2)}%</td>
+          <td style="{_color(r['delta_annual'])}">{_fmt(r['hmm_oos_annual_mean'], 2)}%</td>
+          <td style="{_color(r['delta_annual'])}">{_fmt(r['delta_annual'], 2)}%</td>
+          <td>{_fmt(r['bl_oos_dd_mean'], 2)}%</td>
+          <td style="{_color(r['delta_dd'], higher_better=False)}">{_fmt(r['hmm_oos_dd_mean'], 2)}%</td>
+          <td>{_fmt(r['bl_oos_calmar_mean'])}</td>
+          <td style="{_color(r['delta_calmar'])}">{_fmt(r['hmm_oos_calmar_mean'])}</td>
+          <td>{_fmt(r['bl_oos_trades_mean'], 1)}</td>
+          <td>{_fmt(r['hmm_oos_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_oos_won_trades_mean'], 1)}</td>
+          <td style="{_color(r['delta_won_trades'], higher_better=None)}">{_fmt(r['hmm_oos_won_trades_mean'], 1)}</td>
+          <td>{_fmt(r['bl_trade_win_pct'], 1)}%</td>
+          <td style="{_color(r['delta_trade_win_pct'])}">{_fmt(r['hmm_trade_win_pct'], 1)}%</td>
+        </tr>"""
+    return f"""
+    <h2>11. Top {n} Configurations by HMM OOS Annual Return (CAGR%)</h2>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Ticker Set</th><th>Strategy</th><th>Timeframe</th><th>Win%</th>
+          <th>BL Sharpe</th><th>HMM Sharpe</th><th>Δ Sharpe</th>
+          <th>BL CAGR%</th><th>HMM CAGR%</th><th>Δ CAGR%</th>
+          <th>BL MaxDD%</th><th>HMM MaxDD%</th>
+          <th>BL Calmar</th><th>HMM Calmar</th>
+          <th>BL Trades</th><th>HMM Trades</th>
+          <th>BL Won</th><th>HMM Won</th>
+          <th>BL Win%</th><th>HMM Win%</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -327,6 +390,79 @@ def top_configs_table(df: pd.DataFrame, n: int = 15) -> str:
 
 
 # ── section 11: findings ──────────────────────────────────────────────────────
+
+def load_windows() -> pd.DataFrame:
+    """Load all individual walk-forward window rows for phase 5."""
+    pattern = os.path.join(ROOT, 'results', 'phase_5', '*', '*', '*', '*_results.csv')
+    frames = []
+    for path in sorted(glob.glob(pattern)):
+        parts = os.path.normpath(path).split(os.sep)
+        try:
+            strategy   = os.path.splitext(parts[-1])[0].replace('_results', '')
+            timeframe  = parts[-2]
+            ticker_set = parts[-3]
+            group_id   = parts[-4]
+        except IndexError:
+            continue
+        try:
+            df = pd.read_csv(path)
+        except Exception:
+            continue
+        if df.empty:
+            continue
+        df = df.assign(group_id=group_id, ticker_set=ticker_set,
+                       timeframe=timeframe, strategy=strategy)
+        frames.append(df)
+    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+
+
+def best_windows_table(wins: pd.DataFrame, rank_col: str, section_num: int,
+                       section_title: str, header_col: str,
+                       group_col: str, group_map: dict, n: int = 15) -> str:
+    """Top N individual walk-forward windows ranked by rank_col."""
+    if wins.empty or rank_col not in wins.columns:
+        return f'<h2>{section_num}. {section_title}</h2><p>No window data available.</p>'
+    top = wins.nlargest(n, rank_col)
+    rows = ""
+    for _, r in top.iterrows():
+        d_sharpe = r.get('hmm_oos_sharpe', float('nan')) - r.get('bl_oos_sharpe', float('nan'))
+        d_annual = r.get('hmm_oos_annual', float('nan')) - r.get('bl_oos_annual', float('nan'))
+        period = f"{str(r.get('split', ''))[:10]} &#8594; {str(r.get('win_to', ''))[:10]}"
+        rows += f"""<tr>
+          <td>{group_map.get(r.get(group_col), r.get(group_col, ''))}</td>
+          <td>{r['strategy']}</td>
+          <td>{r['timeframe']}</td>
+          <td style="white-space:nowrap">{period}</td>
+          <td>{_fmt(r.get('bl_oos_sharpe'))}</td>
+          <td style="{_color(d_sharpe)}">{_fmt(r.get('hmm_oos_sharpe'))}</td>
+          <td style="{_color(d_sharpe)}">{_fmt(d_sharpe)}</td>
+          <td>{_fmt(r.get('bl_oos_annual'), 2)}%</td>
+          <td style="{_color(d_annual)}">{_fmt(r.get('hmm_oos_annual'), 2)}%</td>
+          <td style="{_color(d_annual)}">{_fmt(d_annual, 2)}%</td>
+          <td>{_fmt(r.get('bl_oos_dd'), 2)}%</td>
+          <td>{_fmt(r.get('hmm_oos_dd'), 2)}%</td>
+          <td>{_fmt(r.get('bl_oos_trades'), 0)}</td>
+          <td>{_fmt(r.get('hmm_oos_trades'), 0)}</td>
+        </tr>"""
+    return f"""
+    <h2>{section_num}. {section_title}</h2>
+    <p style="font-size:0.85em;color:#555">Each row is a single OOS walk-forward window &mdash; not a mean across windows.</p>
+    <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>{header_col}</th><th>Strategy</th><th>Timeframe</th><th>OOS Period</th>
+          <th>BL Sharpe</th><th>HMM Sharpe</th><th>&Delta; Sharpe</th>
+          <th>BL CAGR%</th><th>HMM CAGR%</th><th>&Delta; CAGR%</th>
+          <th>BL MaxDD%</th><th>HMM MaxDD%</th>
+          <th>BL Trades</th><th>HMM Trades</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+    </div>
+    """
+
 
 def findings_section(df: pd.DataFrame) -> str:
     spy  = df[df["ticker_set"] == "spy_qqq"]
@@ -368,7 +504,7 @@ def findings_section(df: pd.DataFrame) -> str:
     """
 
     return f"""
-    <h2>10. Key Findings &amp; Conclusions</h2>
+    <h2>14. Key Findings &amp; Conclusions</h2>
 
     <h3>10.1 SPY+QQQ — HMM generalises to held-out validation period</h3>
     <p>The winning config from Phase 4 transfers cleanly. <strong>channel_breakout</strong>
@@ -464,6 +600,14 @@ def build_report(master_path: str, out_path: str):
     sp5_table     = sp500_strategy_table(df)
     wr_table      = win_rate_table(df)
     top_table     = top_configs_table(df, n=15)
+    top_annual    = top_annual_table(df, n=15)
+    wins          = load_windows()
+    best_win_sharpe = best_windows_table(wins, 'hmm_oos_sharpe', 12,
+                         'Best 15 Windows by HMM OOS Sharpe',
+                         'Ticker Set', 'ticker_set', TICKER_SETS)
+    best_win_annual = best_windows_table(wins, 'hmm_oos_annual', 13,
+                         'Best 15 Windows by HMM OOS Annual Return (CAGR%)',
+                         'Ticker Set', 'ticker_set', TICKER_SETS)
     findings      = findings_section(df)
 
     html = f"""<!DOCTYPE html>
@@ -496,6 +640,9 @@ def build_report(master_path: str, out_path: str):
     {sp5_table}
     {wr_table}
     {top_table}
+    {top_annual}
+    {best_win_sharpe}
+    {best_win_annual}
     {findings}
     <p style="margin-top:60px;font-size:0.75em;color:#aaa">
       Generated from {master_path}
@@ -513,8 +660,8 @@ def build_report(master_path: str, out_path: str):
 def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--master", default=os.path.join(ROOT, "results", "master_results_phase5.csv"),
-                        help="Path to phase 5 master CSV")
+    parser.add_argument("--master", default=os.path.join(ROOT, "results", "master_results.csv"),
+                        help="Path to master CSV")
     parser.add_argument("--out", default=os.path.join(ROOT, "results", "phase_5_report.html"),
                         help="Output HTML path")
     args = parser.parse_args()

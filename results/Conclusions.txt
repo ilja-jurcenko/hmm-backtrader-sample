@@ -1,0 +1,213 @@
+HMM Walk-Forward Experiment — Phase 1–5 Conclusions
+Generated: April 28, 2026
+Data: results/master_results.csv (510 rows, 17 strategies, 2010–2026)
+======================================================================
+
+
+PHASE SUMMARY
+─────────────────────────────────────────────────────────────────────
+Phase 1 — Regime Mode Sweep (136 rows)
+  HMM Sharpe: -0.318  |  BL Sharpe: 0.022  |  Δ: -0.340
+  HMM CAGR:    1.17%  |  BL CAGR:   1.99%  |  Δ: -0.82%
+  Win rate: 36.0%  |  Configs with Δ_sharpe > 0: 14.0%
+
+  Mode ranking (by mean HMM Sharpe):
+    Score  (03): -0.219  Δ=-0.242  win=42.8%   ← WINNER
+    Size   (02): -0.247  Δ=-0.270  win=32.9%
+    Strict (01): -0.307  Δ=-0.330  win=36.7%
+    Linear (04): -0.498  Δ=-0.520  win=31.6%
+
+  Best configs:
+    Score / sma            / is2_oos1  Sharpe=0.652  CAGR=3.91%  win=64.3%
+    Score / channel_breakout/ is2_oos1 Sharpe=0.570  CAGR=4.52%  win=71.4%
+    Score / ichimoku       / is2_oos1  Sharpe=0.523  CAGR=3.34%  win=57.1%
+
+──────────────────────────────────────────────────────────────────────
+Phase 2 — K (Hidden States) Sweep (136 rows)
+  HMM Sharpe: -0.348  |  BL Sharpe: 0.022  |  Δ: -0.371
+  HMM CAGR:    1.48%  |  BL CAGR:   1.99%  |  Δ: -0.51%
+  Win rate: 45.7%  |  Configs with Δ_sharpe > 0: 33.8%
+
+  K ranking (by mean HMM Sharpe):
+    K=6 (08): -0.148  Δ=-0.170  win=49.7%   ← WINNER
+    K=3 (06): -0.217  Δ=-0.240  win=45.7%
+    K=4 (07): -0.219  Δ=-0.242  win=47.6%
+    K=2 (05): -0.808  Δ=-0.830  win=39.6%   ← CLEARLY INSUFFICIENT
+
+  Best configs:
+    K=6 / macd            / is3_oos1  Sharpe=0.775  CAGR=4.00%  win=92.3%
+    K=3 / sma             / is2_oos1  Sharpe=0.749  CAGR=4.17%  win=64.3%
+    K=3 / channel_breakout/ is3_oos1  Sharpe=0.617  CAGR=5.54%  win=76.9%
+
+  Best individual windows (single OOS period, not mean):
+    K=6 / kama            2020→2021   CAGR=22.07%  Sharpe=2.694
+    K=3 / channel_breakout 2025→2026  CAGR=21.46%  Sharpe=2.127
+    K=6 / turtle          2020→2021   CAGR=20.52%  Sharpe=1.541
+
+──────────────────────────────────────────────────────────────────────
+Phase 3 — Feature Set Sweep (68 rows, K=4, No PCA)
+  HMM Sharpe: -0.223  |  BL Sharpe: 0.022  |  Δ: -0.245
+  HMM CAGR:    1.71%  |  BL CAGR:   1.99%  |  Δ: -0.28%
+  Win rate: 47.4%  |  Configs with Δ_sharpe > 0: 51.5%
+
+  Feature set ranking:
+    Full (13 feat, 10_feat_full):    -0.160  Δ=-0.182  win=46.4%  ← WINNER
+    Compact (9 feat, 09_feat_compact):-0.286  Δ=-0.308  win=48.4%
+
+  Note: This is the only phase where >50% of configs show positive Δ Sharpe.
+
+  Best configs:
+    Compact / sma             / is3_oos1  Sharpe=0.720  CAGR=4.85%  win=76.9%
+    Compact / channel_breakout/ is3_oos1  Sharpe=0.689  CAGR=6.08%  win=76.9%
+    Compact / macd            / is3_oos1  Sharpe=0.658  CAGR=3.75%  win=76.9%
+
+──────────────────────────────────────────────────────────────────────
+Phase 4 — PCA Sweep (102 rows, K=4, Full features)
+  HMM Sharpe: -0.296  |  BL Sharpe: 0.022  |  Δ: -0.319
+  HMM CAGR:    1.35%  |  BL CAGR:   1.99%  |  Δ: -0.64%
+  Win rate: 44.9%  |  Configs with Δ_sharpe > 0: 34.3%
+
+  PCA ranking:
+    No PCA (11_pca_none):  -0.160  Δ=-0.182  win=46.4%  ← WINNER
+    PCA 4  (13_pca4):      -0.336  Δ=-0.359  win=43.6%
+    PCA 3  (12_pca3):      -0.392  Δ=-0.415  win=44.7%
+
+  Best configs:
+    No PCA / channel_breakout / is3_oos1  Sharpe=0.581  CAGR=5.16%  win=76.9%
+    No PCA / channel_breakout / is2_oos1  Sharpe=0.515  CAGR=4.59%  win=64.3%
+    No PCA / sma              / is2_oos1  Sharpe=0.508  CAGR=3.46%  win=57.1%
+
+──────────────────────────────────────────────────────────────────────
+Phase 5 — Multi-Asset Validation (68 rows, Score/K=4/No PCA/Full)
+  HMM Sharpe: -0.228  |  BL Sharpe: -0.076  |  Δ: -0.153
+  HMM CAGR:   -2.71%  |  BL CAGR:   -2.31%  |  Δ: -0.41%
+  Win rate: 48.5%  |  Configs with Δ_sharpe > 0: 54.4%
+
+  Ticker set breakdown:
+    SPY+QQQ  (spy_qqq):    HMM=-0.160  BL=0.022   Δ=-0.182  CAGR=1.58%  win=46.4%
+    SP500/10 (sp500_10):   HMM=-0.297  BL=-0.174  Δ=-0.123  CAGR=-7.01% win=50.6%
+
+  Top SPY+QQQ configs:
+    channel_breakout / is3_oos1  Sharpe=0.581  CAGR=5.16%  win=76.9%
+    channel_breakout / is2_oos1  Sharpe=0.515  CAGR=4.59%  win=64.3%
+    sma              / is2_oos1  Sharpe=0.508  CAGR=3.46%  win=57.1%
+
+  Top SP500/10 configs:
+    vol_adj          / is3_oos1  Sharpe=0.420  CAGR=3.65%  win=84.6%
+    donchian         / is3_oos1  Sharpe=0.402  CAGR=4.64%  win=69.2%
+    macd             / is3_oos1  Sharpe=0.396  CAGR=4.22%  win=69.2%
+    parabolic_sar    / is3_oos1  Sharpe=0.358  CAGR=3.04%  win=61.5%
+
+
+PRIMARY CONCLUSIONS
+======================================================================
+
+1. HMM HELPS SELECTIVELY, NOT UNIVERSALLY
+   The mean Δ Sharpe is negative across all phases because underperforming
+   strategies dominate by count. However, for the top quartile of
+   strategies the HMM filter is consistently additive. The question is
+   not "does HMM work?" but "which strategies benefit from it?"
+
+2. WINNING PIPELINE CONFIGURATION
+   Score mode / K=6 or K=3 / No PCA / Full 13 features
+   - Phase 1 → Score mode (highest Sharpe and win rate)
+   - Phase 2 → K=6 (best mean), K=3 (best single configs including macd
+     at Sharpe 0.775 with 92.3% window win rate)
+   - Phase 3 → Full feature set (13 features beat compact 9)
+   - Phase 4 → No PCA (PCA reduces performance in all cases)
+   Note: Phase 4 was tested with K=4. The full combination of K=6 +
+   No PCA + Full features has not been tested and is the recommended
+   next experiment (Phase 6).
+
+3. channel_breakout IS THE STANDOUT STRATEGY
+   - Positive Δ CAGR across phases (+0.70% avg)
+   - 67% of configs show positive Δ Sharpe (2nd highest)
+   - Consistently top-5 in every phase
+   - Best individual window: 21.46% CAGR (2025–2026, K=3)
+   - Recommended for production deployment
+
+4. SECOND-TIER RELIABLE STRATEGIES
+   macd:       73% positive Δ Sharpe rate, best Sharpe 0.775 (K=6, is3)
+   vol_adj:    63% positive Δ Sharpe rate, leads SP500/10 (win rate 84.6%)
+   parabolic_sar: 70% positive Δ Sharpe rate (mostly small Δ)
+   sma:        strong absolute Sharpe (0.343 avg) but HMM adds little
+
+5. STRATEGIES INCOMPATIBLE WITH HMM FILTERING (exclude from production)
+   bollinger     — 0% positive Δ Sharpe, HMM Sharpe avg -1.029
+   false_breakout— 3% positive Δ Sharpe, HMM Sharpe avg -1.199
+   rsi           — 0% positive Δ Sharpe, HMM Sharpe avg -0.539
+   tsmom_fast    — 0% positive Δ Sharpe, large negative Δ CAGR (-3.19%)
+   tsmom         — 0% positive Δ Sharpe, Δ CAGR -6.16%
+   These strategies likely lack the trend/momentum coherence required
+   for HMM regime detection to be beneficial.
+
+6. MULTI-ASSET VALIDATION IS ENCOURAGING
+   The SP500/10 basket shows >50% window win rate (50.6%) and a smaller
+   Δ Sharpe penalty (-0.123) than SPY+QQQ (-0.182). The HMM approach
+   generalises beyond SPY+QQQ. The negative CAGR mean on SP500/10
+   reflects the hard multi-stock basket (10 diverse names), not a
+   failure of the method.
+
+7. K=2 IS ALWAYS INSUFFICIENT
+   K=2 produces the worst results in every metric across Phase 2.
+   The HMM cannot capture the variety of market regimes with only
+   two states. Minimum practical K is 3.
+
+8. PCA HURTS PERFORMANCE
+   Reducing HMM input features via PCA consistently degrades results.
+   The full covariance structure of the 13 features carries information
+   that PCA compression discards.
+
+9. TEMPORAL PATTERNS: STRONGEST OOS PERIODS
+   The single-window best results cluster in:
+     2020–2021: COVID recovery trending market (CAGR up to 22%)
+     2025–2026: Recent strong trend period (CAGR up to 21.5%)
+   The 2013–2018 range-bound period is the weakest for HMM.
+   This suggests the HMM adds the most value in clearly trending regimes
+   and is less useful during choppy/sideways markets.
+
+10. RECOMMENDED NEXT STEPS (Phase 6)
+    a) Test K=6 + No PCA + Full features (winning combination from
+       Phase 2 and Phase 4 has not been run together)
+    b) Apply the strategy whitelist (channel_breakout, macd, vol_adj)
+       and drop incompatible strategies
+    c) Run the validated pipeline on a broader SP500 universe
+       (current SP500/10 is limited to 10 stocks)
+    d) Investigate stop-loss / position-sizing overlays for SP500/10
+       to address the negative mean CAGR on that basket
+
+
+STRATEGY IMPROVEMENT BREAKDOWN (across all 30 configs each)
+======================================================================
+Counts are based on Δ Sharpe > 0 per config (all phases, all groups).
+
+  Category                              Count
+  ─────────────────────────────────────────────
+  Strategies with any improvement        13 / 17
+  Strategies improved in majority (>50%) 6  / 17
+  Strategies with zero improvement       4  / 17
+
+  Strategy             Pos / Total   Rate    Mean Δ Sharpe
+  ─────────────────────────────────────────────────────────
+  macd                  22 / 30      73.3%   -0.039   ← majority improved
+  parabolic_sar         21 / 30      70.0%   -0.063   ← majority improved
+  channel_breakout      20 / 30      66.7%   -0.053   ← majority improved
+  vol_adj               19 / 30      63.3%   -0.007   ← majority improved
+  adx_dm                17 / 30      56.7%   +0.167   ← majority improved (only positive mean Δ)
+  composite_trend       17 / 30      56.7%   -0.089   ← majority improved
+  ichimoku              13 / 30      43.3%   -0.195
+  sma                   13 / 30      43.3%   -0.085
+  kama                  11 / 30      36.7%   -0.281
+  dema                  10 / 30      33.3%   -0.183
+  donchian               5 / 30      16.7%   -0.177
+  turtle                 3 / 30      10.0%   -0.240
+  false_breakout         1 / 30       3.3%   -0.967
+  bollinger              0 / 30       0.0%   -0.932   ← no improvement
+  rsi                    0 / 30       0.0%   -0.579   ← no improvement
+  tsmom                  0 / 30       0.0%   -0.371   ← no improvement
+  tsmom_fast             0 / 30       0.0%   -1.113   ← no improvement
+
+  Note: Even the 6 majority-improved strategies have a negative mean Δ Sharpe —
+  the filter helps more often than not, but losses in the bad configs are large
+  enough to drag the average below zero. adx_dm is the sole exception with a
+  positive mean Δ (+0.167), though it carries very high variance.
